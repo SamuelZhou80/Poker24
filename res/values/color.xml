@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 基本色 -->
+    <color name="background">#E8E4E4</color>
+    <color name="white">#ffffff</color>
+    <color name="white_pressed">#edeeef</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="red">#ff0000</color>
+    <color name="orange">#fe8401</color>
+    <color name="orange_pressed">#fc7202</color>
+    <color name="gray">#bfbfbf</color>
+    <color name="blue">#0D8CD5</color>
+    <color name="blue_pressed">#86c6ea</color>
+    <color name="blue_gray">#E9F4FD</color>
+    <color name="green">#7CB304</color>
+    <color name="green_pressed">#6fa103</color>
+    <color name="translucent_background">#50000000</color>
+    <color name="pressed_bg_color">#68a617</color>
+
+    <!-- 特殊颜色定义 -->
+
+    <!-- 边框灰色 -->
+    <color name="gray_background">#818183</color>
+    <!-- 地图上比例尺文字颜色 -->
+    <color name="ratio_color">#072338</color>
+    <!-- 通用圆角边框色  表格区标题栏分隔线颜色 -->
+    <color name="frame_color">#babcbd</color>
+    <!-- 内容区横线颜色,表格区分隔线颜色 -->
+    <color name="content_line_color">#d6d7d7</color>
+
+    <!-- 表格 -->
+    <!-- 表格标题背景颜色   二级列表色 -->
+    <color name="table_title_bg">#d5dded</color>
+    <!-- 表格内容区背景颜色 -->
+    <color name="table_content_bg">#ffffff</color>
+    <color name="newtable_title_bg">#f8efc3</color>
+    <!-- 新封装表格表头背景颜色 -->
+
+
+    <!-- 首页布局颜色, 包括标题栏, 底部页面标签 -->
+    <color name="bar_background_gray">#f0f0f0</color>
+    <color name="splite_line_gray">#dedede</color>
+
+    <!-- 个人信息界面颜色定义 -->
+    <color name="name_bar_orange_background">#feecd4</color>
+    <!-- 
+    <color name="name_bar_text_color">#A52339</color>
+    -->
+    <!-- 按钮 -->
+    <color name="button_text_blue_color">#0e5492</color>
+    <!-- 底部按钮蓝色按钮文字颜色 -->
+    <color name="button_text_orange_color">#ff6000</color>
+    <!-- 底部橙色按钮文字颜色  日历底部橙色文字 -->
+    <color name="bottom_text_red_color">#fc0000</color>
+    <!-- 底部红色文字颜色 -->
+
+
+    <!-- 列表 -->
+    <color name="listview_select_color">#bec7da</color>
+    <!-- 列表选中背景颜色 -->
+    <color name="prompt_color">#a8b2b6</color>
+    <!-- 提示文字颜色 灰色 -->
+    <color name="listview_text_gray_color">#9a9696</color>
+    <!-- 列表文字颜色 灰色 -->
+
+
+    <!-- 上传队列查看 -->
+    <color name="alert_color">#ff8400</color>
+    <!-- 白色底提示文字颜色 橙色 -->
+
+
+    <!-- 多张拍照 -->
+    <color name="multiphoto_bottom_top_color">#cccccd</color>
+    <!-- 多张拍照底部背景前两个像素颜色 灰色 -->
+    <color name="multiphoto_bottom_bg_color">#d5dded</color>
+    <!-- 多张拍照底部背景色 -->
+
+
+    <!-- 日历 -->
+    <color name="calendar_today_bg_color">#8ebb15</color>
+    <!-- 日历今天被绑定日程背景 绿色 -->
+    <color name="calendar_select_bg_color">#fd9e2e</color>
+    <!-- 日历被绑定日程背景  橙色 -->
+    <color name="calendar_not_curmonth_text_color">#cacaca</color>
+    <!-- 日历被绑定日程 文字 灰色 -->
+    <color name="calendar_bottom_bg_color">#fee9cd</color>
+    <!-- 日历提醒文字背景色 橙色 -->
+    <color name="calendar_frame_color">#c2c3c3</color>
+    <!-- 日历边框色 灰色 -->
+    <!-- 后续需要修改的 -->
+    <!-- 扫描用到 -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
+    <!-- 文字颜色 -->
+    <!-- 内容文字颜色 -->
+    <color name="text_color">#383838</color>
+    <color name="text_color_new">#666666</color>
+    <color name="text_gray">#838383</color>
+    <!-- 文本框的提示文本的颜色 -->
+    <color name="text_color_hint">#B5B4B4</color>
+    <color name="table_title_text">#383838</color>
+    <!-- 表格文字绿色 -->
+    <color name="table_text_green_color">#8ebb15</color>
+    <!-- 表格文字橙色 -->
+    <color name="table_text_orange_color">#ff8400</color>
+
+    <!-- TAB文字正常颜色 -->
+    <color name="tab_text_color_normal">#838383</color>
+
+</resources>
