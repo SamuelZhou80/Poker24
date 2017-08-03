@@ -114,6 +114,7 @@ public class MainActivity extends Activity {
 
             // 计算是否存在有效解
             mResultArray.clear();
+            mResultDetail.setText("");
             number = new int[] { num1, num2, num3, num4 };
             exp = new String[] { String.valueOf(num1), String.valueOf(num2), String.valueOf(num3), String.valueOf(num4) };
             // is24(4);
@@ -291,58 +292,83 @@ public class MainActivity extends Activity {
      * @param d
      */
     private void caluate(int a, int b, int c, int d) {
-        if (a + b + c + d == 24) {// × ÷
+        if (a <= b && b <= c && c <= d && a + b + c + d == 24) {
             mResultArray.add(String.format("%d+%d+%d+%d ", a, b, c, d));
-        } else if (a + b + c - d == 24) {
+        }
+        if ((a <= b && b <= c) && a + b + c - d == 24) {
             mResultArray.add(String.format("%d+%d+%d-%d ", a, b, c, d));
-        } else if ((a + b) * (c + d) == 24) {
+        }
+        if (a <= b && c <= d && a <= c && (a + b) * (c + d) == 24) {
             mResultArray.add(String.format("(%d+%d)×(%d+%d) ", a, b, c, d));
-        } else if ((a - b) * (c + d) == 24) {
+        }
+        if (c <= d && (a - b) * (c + d) == 24) {
             mResultArray.add(String.format("(%d-%d)×(%d+%d) ", a, b, c, d));
-        } else if ((a - b) * (c - d) == 24) {
+        }
+        if (a >= b && a <= c && (a - b) * (c - d) == 24) {
             mResultArray.add(String.format("(%d-%d)×(%d-%d) ", a, b, c, d));
-        } else if ((a + b + c) * d == 24) {
+        }
+        if ((a <= b && b <= c) && (a + b + c) * d == 24) {
             mResultArray.add(String.format("(%d+%d+%d)×%d ", a, b, c, d));
-        } else if ((a - b - c) * d == 24) {
+        }
+        if (b <= c && (a - b - c) * d == 24) {
             mResultArray.add(String.format("(%d-%d-%d)×%d ", a, b, c, d));
-        } else if ((a + b - c) * d == 24) {
+        }
+        if (a <= b && (a + b - c) * d == 24) {
             mResultArray.add(String.format("(%d+%d-%d)×%d ", a, b, c, d));
-        } else if ((a * b * c) % d == 0 && (a * b * c) / d == 24) {
+        }
+        if ((a <= b && b <= c) && (a * b * c) % d == 0 && (a * b * c) / d == 24) {
             mResultArray.add(String.format("%d×%d×%d÷%d ", a, b, c, d));
-        } else if ((a * b) * (c + d) == 24) {
+        }
+        if ((a <= b && c <= d) && (a * b) * (c + d) == 24) {
             mResultArray.add(String.format("%d×%d×(%d+%d) ", a, b, c, d));
-        } else if ((a * b) * (c - d) == 24) {
+        }
+        if (a <= b && (a * b) * (c - d) == 24) {
             mResultArray.add(String.format("%d×%d×(%d-%d) ", a, b, c, d));
-        } else if ((a * b) * c - d == 24) {
+        }
+        if (a <= b && b <= c && (a * b) * c - d == 24) {
             mResultArray.add(String.format("%d×%d×%d-%d ", a, b, c, d));
-        } else if ((a * b) * c + d == 24) {
+        }
+        if (a <= b && b < c && (a * b) * c + d == 24) {
             mResultArray.add(String.format("%d×%d×%d+%d ", a, b, c, d));
-        } else if (a * b * c * d == 24) {
+        }
+        if (a <= b && b <= c && c <= d && a * b * c * d == 24) {
             mResultArray.add(String.format("%d×%d×%d×%d ", a, b, c, d));
-        } else if (c % d == 0 && (a + b) + (c / d) == 24) {
+        }
+        if (a <= b && c % d == 0 && (a + b) + (c / d) == 24) {
             mResultArray.add(String.format("(%d+%d)+(%d÷%d) ", a, b, c, d));
-        } else if (c % d == 0 && (a + b) * (c / d) == 24) {
+        }
+        if (a <= b && c % d == 0 && (a + b) * (c / d) == 24) {
             mResultArray.add(String.format("(%d+%d)×(%d÷%d) ", a, b, c, d));
-        } else if ((a * b) + c + d == 24) {
+        }
+        if (a <= b && c <= d && (a * b) + c + d == 24) {
             mResultArray.add(String.format("%d×%d+%d+%d ", a, b, c, d));
-        } else if ((a * b) + c - d == 24) {
+        }
+        if (a <= b && (a * b) + c - d == 24) {
             mResultArray.add(String.format("%d×%d+%d-%d ", a, b, c, d));
-        } else if (c % d == 0 && (a * b) - (c / d) == 24) {
+        }
+        if (a <= b && c % d == 0 && (a * b) - (c / d) == 24) {
             mResultArray.add(String.format("(%d×%d)-(%d÷%d) ", a, b, c, d));
-        } else if (c % d == 0 && (a * b) + (c / d) == 24) {
+        }
+        if (a <= b && c % d == 0 && (a * b) + (c / d) == 24) {
             mResultArray.add(String.format("(%d×%d)+(%d÷%d) ", a, b, c, d));
-        } else if ((a * b) - c - d == 24) {
+        }
+        if (a <= b && c <= d && (a * b) - c - d == 24) {
             mResultArray.add(String.format("%d×%d-%d-%d ", a, b, c, d));
-        } else if ((a * b) + (c * d) == 24) {
+        }
+        if (a <= b && c <= d && a <= c && (a * b) + (c * d) == 24) {
             mResultArray.add(String.format("%d×%d+%d×%d ", a, b, c, d));
-        } else if ((a * b) - (c * d) == 24) {
+        }
+        if (a <= b && c <= d && (a * b) - (c * d) == 24) {
             mResultArray.add(String.format("%d×%d-%d×%d ", a, b, c, d));
-        } else if ((a * b) % (c * d) == 0 && (a * b) / (c * d) == 24) {
+        }
+        if (a <= b && c <= d && (a * b) % (c * d) == 0 && (a * b) / (c * d) == 24) {
             mResultArray.add(String.format("(%d×%d)÷(%d×%d) ", a, b, c, d));
-        } else if ((c - d) != 0 && (a * b) % (c - d) == 0 && (a * b) / (c - d) == 24) {
+        }
+        if (a <= b && (c - d) != 0 && (a * b) % (c - d) == 0 && (a * b) / (c - d) == 24) {
             mResultArray.add(String.format("(%d×%d)÷(%d-%d) ", a, b, c, d));
-        } else if ((a * b) % (c + d) == 0 && (a * b) / (c + d) == 24) {
+        }
+        if (a <= b && c <= d && (a * b) % (c + d) == 0 && (a * b) / (c + d) == 24) {
             mResultArray.add(String.format("(%d×%d)÷(%d+%d) ", a, b, c, d));
-        } // × ÷
+        }
     }
 }
