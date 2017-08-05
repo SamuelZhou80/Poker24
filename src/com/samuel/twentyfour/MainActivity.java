@@ -301,16 +301,28 @@ public class MainActivity extends Activity {
         if (a <= b && c <= d && a <= c && (a + b) * (c + d) == 24) {
             mResultArray.add(String.format("(%d+%d)¡Á(%d+%d) ", a, b, c, d));
         }
-        if (c <= d && (a - b) * (c + d) == 24) {
-            mResultArray.add(String.format("(%d-%d)¡Á(%d+%d) ", a, b, c, d));
+        if (a <= b && (a + b) * (c - d) == 24) {
+            mResultArray.add(String.format("(%d+%d)¡Á(%d-%d) ", a, b, c, d));
         }
         if (a >= b && a <= c && (a - b) * (c - d) == 24) {
             mResultArray.add(String.format("(%d-%d)¡Á(%d-%d) ", a, b, c, d));
         }
+        if (a >= b && (a - b) * c + d == 24) {
+            mResultArray.add(String.format("(%d-%d)¡Á%d+%d ", a, b, c, d));
+        }
+        if (a >= b && (a - b) * c - d == 24) {
+            mResultArray.add(String.format("(%d-%d)¡Á%d-%d ", a, b, c, d));
+        }
+        if (a >= b && ((a - b) * c % d == 0) && (a - b) * c / d == 24) {
+            mResultArray.add(String.format("(%d-%d)¡Á%d¡Â%d ", a, b, c, d));
+        }
         if ((a <= b && b <= c) && (a + b + c) * d == 24) {
             mResultArray.add(String.format("(%d+%d+%d)¡Á%d ", a, b, c, d));
         }
-        if (b <= c && (a - b - c) * d == 24) {
+        if ((a <= b && b <= c) && (a + b + c) % d == 0 && (a + b + c) / d == 24) {
+            mResultArray.add(String.format("(%d+%d+%d)¡Â%d ", a, b, c, d));
+        }
+        if (b >= c && (a - b - c) * d == 24) {
             mResultArray.add(String.format("(%d-%d-%d)¡Á%d ", a, b, c, d));
         }
         if (a <= b && (a + b - c) * d == 24) {
@@ -325,10 +337,10 @@ public class MainActivity extends Activity {
         if (a <= b && (a * b) * (c - d) == 24) {
             mResultArray.add(String.format("%d¡Á%d¡Á(%d-%d) ", a, b, c, d));
         }
-        if (a <= b && b <= c && (a * b) * c - d == 24) {
+        if (a <= b && b <= c && a * b * c - d == 24) {
             mResultArray.add(String.format("%d¡Á%d¡Á%d-%d ", a, b, c, d));
         }
-        if (a <= b && b < c && (a * b) * c + d == 24) {
+        if (a <= b && b < c && a * b * c + d == 24) {
             mResultArray.add(String.format("%d¡Á%d¡Á%d+%d ", a, b, c, d));
         }
         if (a <= b && b <= c && c <= d && a * b * c * d == 24) {
@@ -337,19 +349,31 @@ public class MainActivity extends Activity {
         if (a <= b && c % d == 0 && (a + b) + (c / d) == 24) {
             mResultArray.add(String.format("(%d+%d)+(%d¡Â%d) ", a, b, c, d));
         }
-        if (a <= b && c % d == 0 && (a + b) * (c / d) == 24) {
-            mResultArray.add(String.format("(%d+%d)¡Á(%d¡Â%d) ", a, b, c, d));
+        if (a <= b && ((a + b) * c % d == 0) && (a + b) * c / d == 24) {
+            mResultArray.add(String.format("(%d+%d)¡Á%d¡Â%d ", a, b, c, d));
         }
-        if (a <= b && c <= d && (a * b) + c + d == 24) {
+        if (a <= b && (a + b) * c + d == 24) {
+            mResultArray.add(String.format("(%d+%d)¡Á%d+%d ", a, b, c, d));
+        }
+        if (a <= b && (a + b) * c - d == 24) {
+            mResultArray.add(String.format("(%d+%d)¡Á%d-%d ", a, b, c, d));
+        }
+        if (a <= b && (a + b) % c == 0 && (a + b) / c + d == 24) {
+            mResultArray.add(String.format("(%d+%d)¡Â%d+%d ", a, b, c, d));
+        }
+        if (a <= b && c <= d && (a * b + c + d) == 24) {
             mResultArray.add(String.format("%d¡Á%d+%d+%d ", a, b, c, d));
         }
         if (a <= b && (a * b) + c - d == 24) {
             mResultArray.add(String.format("%d¡Á%d+%d-%d ", a, b, c, d));
         }
+        if (a <= b && (a * b + c) * d == 24) {
+            mResultArray.add(String.format("(%d¡Á%d+%d)¡Á%d ", a, b, c, d));
+        }
         if (a <= b && c % d == 0 && (a * b) - (c / d) == 24) {
             mResultArray.add(String.format("(%d¡Á%d)-(%d¡Â%d) ", a, b, c, d));
         }
-        if (a <= b && c % d == 0 && (a * b) + (c / d) == 24) {
+        if (a <= b && a <= c && c % d == 0 && (a * b) + (c / d) == 24) {
             mResultArray.add(String.format("(%d¡Á%d)+(%d¡Â%d) ", a, b, c, d));
         }
         if (a <= b && c <= d && (a * b) - c - d == 24) {
@@ -369,6 +393,30 @@ public class MainActivity extends Activity {
         }
         if (a <= b && c <= d && (a * b) % (c + d) == 0 && (a * b) / (c + d) == 24) {
             mResultArray.add(String.format("(%d¡Á%d)¡Â(%d+%d) ", a, b, c, d));
+        }
+        if ((a % b == 0) && (a / b + c) * d == 24) {
+            mResultArray.add(String.format("((%d¡Â%d)+%d)¡Á%d ", a, b, c, d));
+        }
+        if ((a % b == 0) && (a / b - c) * d == 24) {
+            mResultArray.add(String.format("((%d¡Â%d)-%d)¡Á%d ", a, b, c, d));
+        }
+        if (a <= b && (a * b % c == 0) && (a * b) / c - d == 24) {
+            mResultArray.add(String.format("(%d¡Á%d)¡Â%d-%d ", a, b, c, d));
+        }
+        if (a <= b && (a * b % c == 0) && (a * b) / c + d == 24) {
+            mResultArray.add(String.format("(%d¡Á%d)¡Â%d+%d ", a, b, c, d));
+        }
+        if (a <= b && ((a * b - c) % d == 0) && ((a * b) - c) / d == 24) {
+            mResultArray.add(String.format("(%d¡Á%d-%d)¡Â%d ", a, b, c, d));
+        }
+        if (a <= b && ((a * b) - c) * d == 24) {
+            mResultArray.add(String.format("(%d¡Á%d-%d)¡Á%d ", a, b, c, d));
+        }
+        if ((b % c == 0) && (a - b / c) * d == 24) {
+            mResultArray.add(String.format("(%d-(%d¡Â%d))¡Á%d ", a, b, c, d));
+        }
+        if (b <= c && (a - b * c) * d == 24) {
+            mResultArray.add(String.format("(%d-(%d¡Á%d))¡Á%d ", a, b, c, d));
         }
     }
 }
