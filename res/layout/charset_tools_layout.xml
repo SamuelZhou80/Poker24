@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bar_background_gray"
+    android:orientation="vertical" >
+
+    <!-- 汉字输入区域 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_horizontal_small"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="汉字:"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_content" />
+
+            <EditText
+                android:id="@+id/edit_hanzi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_smallest"
+                android:layout_marginStart="@dimen/margin_smallest"
+                android:background="@drawable/corners_bg"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/margin_horizontal_extrasmall"
+                android:scrollHorizontally="false"
+                android:singleLine="false"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_content" />
+        </LinearLayout>
+        <!-- GBK输入区域 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_horizontal_small"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GBK:"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_content" />
+
+            <EditText
+                android:id="@+id/edit_gbk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_smallest"
+                android:layout_marginStart="@dimen/margin_smallest"
+                android:background="@drawable/corners_bg"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/margin_horizontal_extrasmall"
+                android:scrollHorizontally="false"
+                android:singleLine="false"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_content" />
+        </LinearLayout>
+        <!-- UTF16输入区域 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_horizontal_small"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UTF16:"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_content" />
+
+            <EditText
+                android:id="@+id/edit_utf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_smallest"
+                android:layout_marginStart="@dimen/margin_smallest"
+                android:background="@drawable/corners_bg"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/margin_horizontal_extrasmall"
+                android:scrollHorizontally="false"
+                android:singleLine="false"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_content_vertical"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/button_hanzi"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_size_height"
+                android:layout_weight="1"
+                android:background="@drawable/selector_orange_corner_btn"
+                android:text="汉字"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_content" />
+
+            <Button
+                android:id="@+id/button_gbk"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_size_height"
+                android:layout_marginLeft="@dimen/margin_content"
+                android:layout_marginStart="@dimen/margin_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_green_corner_btn"
+                android:text="GBK"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_titlebtn" />
+
+            <Button
+                android:id="@+id/button_utf"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_size_height"
+                android:layout_marginLeft="@dimen/margin_content"
+                android:layout_marginStart="@dimen/margin_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_orange_corner_btn"
+                android:text="UTF-16"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

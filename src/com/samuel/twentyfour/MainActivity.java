@@ -3,6 +3,7 @@ package com.samuel.twentyfour;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * @author Administrator
+ * @author Samuel Zhou
  *
  */
 public class MainActivity extends Activity {
@@ -26,7 +27,8 @@ public class MainActivity extends Activity {
     private Spinner mSpinner4;
     private Button mButtonCalc;
     private TextView mResultDetail;
-    // private boolean isNeedInit = false;
+    /** 是否显示答案 */
+    private boolean mIsShowResult = false;
     private int[] number = new int[4];
     private String[] exp = new String[4];
     private ArrayList<String> mResultArray = new ArrayList<String>();
@@ -42,7 +44,7 @@ public class MainActivity extends Activity {
 
         mButtonCalc = (Button) findViewById(R.id.button_check);
         mButtonCalc.setOnClickListener(checkClickListener);
-        mButtonCalc.setText("开始计算");
+        mButtonCalc.setText("显示答案");
         Button buttonReset = (Button) findViewById(R.id.button_reset);
         buttonReset.setOnClickListener(resetClickListener);
         buttonReset.setText("随机发牌");
@@ -61,6 +63,31 @@ public class MainActivity extends Activity {
         mSpinner3.setPromptId(R.string.please_select);
         mSpinner4.setAdapter(mAdapter);
         mSpinner4.setPromptId(R.string.please_select);
+
+//        TextView btnLoan = (TextView) findViewById(R.id.button_loan);
+//        btnLoan.setText("投资计算器");
+//        btnLoan.setTextColor(getResources().getColor(R.drawable.list_item_texview_gray_color));
+//        btnLoan.setOnClickListener(new OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setClass(MainActivity.this, CalcLoadActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+        TextView btnLoan = (TextView) findViewById(R.id.button_loan);
+        btnLoan.setText("编码工具");
+        btnLoan.setTextColor(getResources().getColor(R.drawable.list_item_texview_gray_color));
+        btnLoan.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, GBKToUTFActivity.class);
+                startActivity(intent);                
+            }
+        });
     }
 
     @Override
@@ -89,6 +116,8 @@ public class MainActivity extends Activity {
 
         @Override
         public void onClick(View v) {
+            mIsShowResult = false;
+            mButtonCalc.setText("显示答案");
             mResultDetail.setText("");
             mSpinner1.setSelection((int) Math.floor(Math.random() * 10));
             mSpinner2.setSelection((int) Math.floor(Math.random() * 10));
@@ -97,6 +126,9 @@ public class MainActivity extends Activity {
         }
     };
 
+    /**
+     * 点击显示或隐藏计算结果
+     */
     private OnClickListener checkClickListener = new OnClickListener() {
 
         @Override
@@ -112,19 +144,27 @@ public class MainActivity extends Activity {
                 return;
             }
 
-            // 计算是否存在有效解
-            mResultArray.clear();
-            mResultDetail.setText("");
-            number = new int[] { num1, num2, num3, num4 };
-            exp = new String[] { String.valueOf(num1), String.valueOf(num2), String.valueOf(num3), String.valueOf(num4) };
-            // is24(4);
-            exhaustiveCalc(num1, num2, num3, num4);
-            if (mResultArray != null && mResultArray.size() > 0) {
-                String result = mResultArray.toString();
-                // result = result.replace(',', '\n');
-                mResultDetail.setText(result.substring(1, result.length() - 1));
+            mIsShowResult = !mIsShowResult;
+            if (mIsShowResult) {
+                // 计算是否存在有效解
+                mButtonCalc.setText("隐藏答案");
+                mResultArray.clear();
+                mResultDetail.setText("");
+                number = new int[] { num1, num2, num3, num4 };
+                exp = new String[] { String.valueOf(num1), String.valueOf(num2), String.valueOf(num3), String.valueOf(num4) };
+                // is24(4);
+                exhaustiveCalc(num1, num2, num3, num4);
+                if (mResultArray != null && mResultArray.size() > 0) {
+                    String result = mResultArray.toString();
+                    // result = result.replace(',', '\n');
+                    mResultDetail.setText(result.substring(1, result.length() - 1));
+                } else {
+                    Toast.makeText(MainActivity.this, "没有符合条件的结果", Toast.LENGTH_SHORT).show();
+                }
             } else {
-                Toast.makeText(MainActivity.this, "没有符合条件的结果", Toast.LENGTH_SHORT).show();
+                mResultArray.clear();
+                mResultDetail.setText("");
+                mButtonCalc.setText("显示答案");
             }
         }
     };

@@ -250,8 +250,18 @@
             android:background="@drawable/selector_green_corner_btn"
             android:text="@string/result_success"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_content" />
+            android:textSize="@dimen/text_size_titlebtn" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/button_loan"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_height"
+        android:layout_margin="@dimen/margin_content"
+        android:background="@drawable/selector_green_corner_btn"
+        android:gravity="center"
+        android:text="@string/result_success"
+        android:textSize="@dimen/text_size_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
