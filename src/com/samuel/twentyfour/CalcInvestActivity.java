@@ -9,12 +9,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CalcLoadActivity extends Activity {
+/**
+ * 定投收益计算器
+ * 
+ * @author Administrator
+ *
+ */
+public class CalcInvestActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calc_loan_layout);
+
+        initTitle();
         Button btnCalc = (Button) findViewById(R.id.button_calc);
         btnCalc.setText("计  算");
         btnCalc.setOnClickListener(calcListener);
@@ -40,6 +48,21 @@ public class CalcLoadActivity extends Activity {
         super.onDestroy();
     }
 
+    private void initTitle() {
+        TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
+        textViewTitle.setText("投资计算器");
+
+        Button btnReturn = (Button) findViewById(R.id.common_btn_left);
+        btnReturn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CalcInvestActivity.this.finish();
+            }
+        });
+
+        findViewById(R.id.common_btn_right).setVisibility(View.GONE);
+    }
+
     private OnClickListener calcListener = new OnClickListener() {
 
         @Override
@@ -54,7 +77,7 @@ public class CalcLoadActivity extends Activity {
             int yearNum = GpsUtils.strToInt(editYear.getText().toString());
             double rate = GpsUtils.strToFloat(editRate.getText().toString());
             if (initMoney <= 0 || yearNum <= 0 || rate <= 0) {
-                Toast.makeText(CalcLoadActivity.this, "请输入投资金额、期数、回报率等!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalcInvestActivity.this, "请输入投资金额、期数、回报率等!", Toast.LENGTH_SHORT).show();
                 return;
             }
 

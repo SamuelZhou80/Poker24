@@ -82,4 +82,5 @@
     <dimen name="text_size_tab">16sp</dimen>
     <!-- wheelview外框视图高度定义 -->
     <dimen name="wheelview_container_height">190dp</dimen>
+    <dimen name="list_height_1">40dip</dimen>
 </resources>

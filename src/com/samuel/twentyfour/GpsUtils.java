@@ -28,6 +28,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
 
 /**
  * 工具函数类
@@ -1586,5 +1588,47 @@ public class GpsUtils {
             intent.setAction("android.intent.action.VIEW");
         }
         context.startActivity(intent);
+    }
+
+    /**
+     * 根据手机的分辨率从 dip 的单位 转成为 px(像素)
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    /**
+     * 根据手机的分辨率从 px 的单位 转成为 dip
+     */
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+    
+    /**
+     * 获取屏幕高度
+     * 
+     * @return
+     */
+    public static int getScreenHeight(Context context) {
+        // 因为手机的横竖屏状态以及导航栏是否显示会影响到显示区域, 因此每次都要重新获取
+        DisplayMetrics dm = new DisplayMetrics();
+        ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
+                    .getMetrics(dm);
+        return dm.heightPixels;
+    }
+
+    /**
+     * 获取屏幕宽度
+     * 
+     * @return
+     */
+    public static int getScreenWidth(Context context) {
+        // 因为手机的横竖屏状态以及导航栏是否显示会影响到显示区域, 因此每次都要重新获取
+        DisplayMetrics dm = new DisplayMetrics();
+        ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
+                    .getMetrics(dm);
+        return dm.widthPixels;
     }
 }

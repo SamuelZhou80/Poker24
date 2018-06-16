@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -16,10 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
+ * 24点游戏界面
+ * 
  * @author Samuel Zhou
  *
  */
-public class MainActivity extends Activity {
+public class PlayPoker24 extends Activity {
 
     private Spinner mSpinner1;
     private Spinner mSpinner2;
@@ -37,6 +37,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initTitle();
+
         mSpinner1 = (Spinner) findViewById(R.id.spinner_num1);
         mSpinner2 = (Spinner) findViewById(R.id.spinner_num2);
         mSpinner3 = (Spinner) findViewById(R.id.spinner_num3);
@@ -54,7 +56,7 @@ public class MainActivity extends Activity {
 
         String[] numAry = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
         ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, R.layout.common_spinner, numAry);
-        mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mAdapter.setDropDownViewResource(R.layout.my_simple_spinner);
         mSpinner1.setAdapter(mAdapter);
         mSpinner1.setPromptId(R.string.please_select);
         mSpinner2.setAdapter(mAdapter);
@@ -64,18 +66,6 @@ public class MainActivity extends Activity {
         mSpinner4.setAdapter(mAdapter);
         mSpinner4.setPromptId(R.string.please_select);
 
-//        TextView btnLoan = (TextView) findViewById(R.id.button_loan);
-//        btnLoan.setText("投资计算器");
-//        btnLoan.setTextColor(getResources().getColor(R.drawable.list_item_texview_gray_color));
-//        btnLoan.setOnClickListener(new OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent();
-//                intent.setClass(MainActivity.this, CalcLoadActivity.class);
-//                startActivity(intent);
-//            }
-//        });
         TextView btnLoan = (TextView) findViewById(R.id.button_loan);
         btnLoan.setText("编码工具");
         btnLoan.setTextColor(getResources().getColor(R.drawable.list_item_texview_gray_color));
@@ -84,29 +74,45 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this, GBKToUTFActivity.class);
-                startActivity(intent);                
+                intent.setClass(PlayPoker24.this, GBKToUTFActivity.class);
+                startActivity(intent);
             }
         });
+        btnLoan.setVisibility(View.GONE);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    private void initTitle() {
+        TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
+        textViewTitle.setText("24点游戏");
+
+        Button btnReturn = (Button) findViewById(R.id.common_btn_left);
+        btnReturn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlayPoker24.this.finish();
+            }
+        });
+
+        findViewById(R.id.common_btn_right).setVisibility(View.GONE);
     }
 
     /**
@@ -140,7 +146,7 @@ public class MainActivity extends Activity {
             num3 = Integer.parseInt((String) mSpinner3.getSelectedItem());
             num4 = Integer.parseInt((String) mSpinner4.getSelectedItem());
             if (num1 == 0 || num2 == 0 || num3 == 0 || num4 == 0) {
-                Toast.makeText(MainActivity.this, "请选择输入的数字", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PlayPoker24.this, "请选择输入的数字", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -159,7 +165,7 @@ public class MainActivity extends Activity {
                     // result = result.replace(',', '\n');
                     mResultDetail.setText(result.substring(1, result.length() - 1));
                 } else {
-                    Toast.makeText(MainActivity.this, "没有符合条件的结果", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlayPoker24.this, "没有符合条件的结果", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 mResultArray.clear();
