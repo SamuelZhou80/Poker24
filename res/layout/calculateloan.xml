@@ -50,15 +50,54 @@
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_content" />
 
-        <Spinner
-            android:id="@+id/spinner_type"
-            android:layout_width="60dp"
+        <RelativeLayout
+            android:id="@+id/layout_num1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/margin_medium"
-            android:background="@color/white"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/text_size_content" />
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/type_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_content_vertical"
+                android:layout_marginStart="@dimen/margin_content_vertical"
+                android:text="格式: "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_content" />
+
+            <ImageView
+                android:id="@+id/image_num1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/margin_content_horizontal"
+                android:layout_marginRight="@dimen/margin_content_horizontal"
+                android:contentDescription="@string/arrow"
+                android:src="@drawable/imageview_arrow" />
+
+            <Spinner
+                android:id="@+id/spinner_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginRight="@dimen/margin_smallest"
+                android:layout_toEndOf="@id/type_hint"
+                android:layout_toLeftOf="@id/image_num1"
+                android:layout_toRightOf="@id/type_hint"
+                android:layout_toStartOf="@id/image_num1"
+                android:background="@color/white"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_content" />
+        </RelativeLayout>
     </LinearLayout>
     <!-- 贷款年限 -->
 
@@ -151,6 +190,7 @@
         android:textSize="@dimen/text_size_content" />
 
     <!-- 明细计算结果 -->
+
     <com.samuel.common.TableView
         android:id="@+id/table_detail"
         android:layout_width="match_parent"

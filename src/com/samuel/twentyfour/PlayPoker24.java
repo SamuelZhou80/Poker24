@@ -3,15 +3,15 @@ package com.samuel.twentyfour;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.samuel.common.SelectPokerDialogView;
+import com.samuel.common.SelectPokerDialogView.ConfirmListener;
 
 /**
  * 24点游戏界面
@@ -20,11 +20,9 @@ import android.widget.Toast;
  *
  */
 public class PlayPoker24 extends Activity {
+    private TextView mText1, mText2, mText3, mText4;
+    private int mCurCardId;
 
-    private Spinner mSpinner1;
-    private Spinner mSpinner2;
-    private Spinner mSpinner3;
-    private Spinner mSpinner4;
     private Button mButtonCalc;
     private TextView mResultDetail;
     /** 是否显示答案 */
@@ -36,13 +34,9 @@ public class PlayPoker24 extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.play_poker);
         initTitle();
-
-        mSpinner1 = (Spinner) findViewById(R.id.spinner_num1);
-        mSpinner2 = (Spinner) findViewById(R.id.spinner_num2);
-        mSpinner3 = (Spinner) findViewById(R.id.spinner_num3);
-        mSpinner4 = (Spinner) findViewById(R.id.spinner_num4);
+        initPokerCard();
 
         mButtonCalc = (Button) findViewById(R.id.button_check);
         mButtonCalc.setOnClickListener(checkClickListener);
@@ -53,52 +47,7 @@ public class PlayPoker24 extends Activity {
 
         mResultDetail = (TextView) findViewById(R.id.text_result_detail);
         mResultDetail.setText("");
-
-        String[] numAry = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
-        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, R.layout.common_spinner, numAry);
-        mAdapter.setDropDownViewResource(R.layout.my_simple_spinner);
-        mSpinner1.setAdapter(mAdapter);
-        mSpinner1.setPromptId(R.string.please_select);
-        mSpinner2.setAdapter(mAdapter);
-        mSpinner2.setPromptId(R.string.please_select);
-        mSpinner3.setAdapter(mAdapter);
-        mSpinner3.setPromptId(R.string.please_select);
-        mSpinner4.setAdapter(mAdapter);
-        mSpinner4.setPromptId(R.string.please_select);
-
-        TextView btnLoan = (TextView) findViewById(R.id.button_loan);
-        btnLoan.setText("编码工具");
-        btnLoan.setTextColor(getResources().getColor(R.drawable.list_item_texview_gray_color));
-        btnLoan.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(PlayPoker24.this, GBKToUTFActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnLoan.setVisibility(View.GONE);
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
@@ -115,6 +64,64 @@ public class PlayPoker24 extends Activity {
         findViewById(R.id.common_btn_right).setVisibility(View.GONE);
     }
 
+    private void initPokerCard() {
+        mText1 = (TextView) findViewById(R.id.text_num1);
+        mText2 = (TextView) findViewById(R.id.text_num2);
+        mText3 = (TextView) findViewById(R.id.text_num3);
+        mText4 = (TextView) findViewById(R.id.text_num4);
+
+        // 随机初始化一组牌面
+        mText1.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
+        mText2.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
+        mText3.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
+        mText4.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
+
+        // 点击可以手动选择数字
+        mText1.setOnClickListener(selectNumListener);
+        mText2.setOnClickListener(selectNumListener);
+        mText3.setOnClickListener(selectNumListener);
+        mText4.setOnClickListener(selectNumListener);
+    }
+
+    /**
+     * 手动选择数字接口
+     */
+    private OnClickListener selectNumListener = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            mCurCardId = v.getId();
+            int prevNum = 0;
+            if (mCurCardId == R.id.text_num1) {
+                prevNum = GpsUtils.strToInt(mText1.getText().toString());
+            } else if (mCurCardId == R.id.text_num2) {
+                prevNum = GpsUtils.strToInt(mText2.getText().toString());
+            } else if (mCurCardId == R.id.text_num3) {
+                prevNum = GpsUtils.strToInt(mText3.getText().toString());
+            } else if (mCurCardId == R.id.text_num4) {
+                prevNum = GpsUtils.strToInt(mText4.getText().toString());
+            }
+            SelectPokerDialogView dialog = new SelectPokerDialogView(PlayPoker24.this, new ConfirmListener() {
+
+                @Override
+                public void onConfirm(int num) {
+                    if (num > 0 && num <= 10) {
+                        if (mCurCardId == R.id.text_num1) {
+                            mText1.setText(String.valueOf(num));
+                        } else if (mCurCardId == R.id.text_num2) {
+                            mText2.setText(String.valueOf(num));
+                        } else if (mCurCardId == R.id.text_num3) {
+                            mText3.setText(String.valueOf(num));
+                        } else if (mCurCardId == R.id.text_num4) {
+                            mText4.setText(String.valueOf(num));
+                        }
+                    }
+                }
+            }, prevNum);
+            dialog.show();
+        }
+    };
+
     /**
      * 随机发牌按钮的点击监听接口
      */
@@ -125,10 +132,10 @@ public class PlayPoker24 extends Activity {
             mIsShowResult = false;
             mButtonCalc.setText("显示答案");
             mResultDetail.setText("");
-            mSpinner1.setSelection((int) Math.floor(Math.random() * 10));
-            mSpinner2.setSelection((int) Math.floor(Math.random() * 10));
-            mSpinner3.setSelection((int) Math.floor(Math.random() * 10));
-            mSpinner4.setSelection((int) Math.floor(Math.random() * 10));
+            mText1.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
+            mText2.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
+            mText3.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
+            mText4.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
         }
     };
 
@@ -141,10 +148,10 @@ public class PlayPoker24 extends Activity {
         public void onClick(View v) {
             // 获取输入的4个数字, 检查是否都有输入
             int num1, num2, num3, num4;
-            num1 = Integer.parseInt((String) mSpinner1.getSelectedItem());
-            num2 = Integer.parseInt((String) mSpinner2.getSelectedItem());
-            num3 = Integer.parseInt((String) mSpinner3.getSelectedItem());
-            num4 = Integer.parseInt((String) mSpinner4.getSelectedItem());
+            num1 = GpsUtils.strToInt(mText1.getText().toString());
+            num2 = GpsUtils.strToInt(mText2.getText().toString());
+            num3 = GpsUtils.strToInt(mText3.getText().toString());
+            num4 = GpsUtils.strToInt(mText4.getText().toString());
             if (num1 == 0 || num2 == 0 || num3 == 0 || num4 == 0) {
                 Toast.makeText(PlayPoker24.this, "请选择输入的数字", Toast.LENGTH_SHORT).show();
                 return;

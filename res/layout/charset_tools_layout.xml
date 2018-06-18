@@ -40,6 +40,17 @@
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/text_size_content" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button_query"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_size_height"
+            android:layout_marginLeft="@dimen/margin_content_vertical"
+            android:layout_marginRight="@dimen/margin_content_vertical"
+            android:background="@drawable/selector_green_corner_btn"
+            android:text="@string/query"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_content" />
         <!-- GBK输入区域 -->
 
         <LinearLayout
@@ -100,6 +111,21 @@
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/text_size_content" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/listview_line"
+            android:padding="@dimen/margin_small" />
+
+        <TextView
+            android:id="@+id/text_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_small"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_list_small" />
 
         <LinearLayout
             android:layout_width="match_parent"

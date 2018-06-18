@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_small" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/poker_card_height"
+        android:layout_marginTop="@dimen/margin_small"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_small" >
+
+        <TextView
+            android:id="@+id/text_num1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1"
+            android:background="@drawable/corners_bg"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_poker_number" />
+
+        <TextView
+            android:id="@+id/text_num2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1"
+            android:background="@drawable/corners_bg"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_poker_number" />
+
+        <TextView
+            android:id="@+id/text_num3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1"
+            android:background="@drawable/corners_bg"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_poker_number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/poker_card_height"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_small" >
+
+        <TextView
+            android:id="@+id/text_num4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1"
+            android:background="@drawable/corners_bg"
+            android:gravity="center"
+            android:text="4"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_poker_number" />
+
+        <TextView
+            android:id="@+id/text_num5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1"
+            android:background="@drawable/corners_bg"
+            android:gravity="center"
+            android:text="5"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_poker_number" />
+
+        <TextView
+            android:id="@+id/text_num6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1"
+            android:background="@drawable/corners_bg"
+            android:gravity="center"
+            android:text="6"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_poker_number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/poker_card_height"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_small" >
+
+        <TextView
+            android:id="@+id/text_num7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1"
+            android:background="@drawable/corners_bg"
+            android:gravity="center"
+            android:text="7"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_poker_number" />
+
+        <TextView
+            android:id="@+id/text_num8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1"
+            android:background="@drawable/corners_bg"
+            android:gravity="center"
+            android:text="8"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_poker_number" />
+
+        <TextView
+            android:id="@+id/text_num9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1"
+            android:background="@drawable/corners_bg"
+            android:gravity="center"
+            android:text="9"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_poker_number" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/poker_card_height"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_small"
+        android:weightSum="3" >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/text_num10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1"
+            android:background="@drawable/corners_bg"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_poker_number" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_smallest"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

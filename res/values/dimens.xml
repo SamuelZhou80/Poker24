@@ -51,7 +51,7 @@
     <!-- 标题栏高度 -->
     <dimen name="common_title_height">48dp</dimen>
     <!-- 姓名栏高度 -->
-    <dimen name="name_bar_height">120dp</dimen>
+    <dimen name="name_bar_height">110dp</dimen>
     <!-- 头像高度 -->
     <dimen name="person_photo_height">78dp</dimen>
     <!-- 列表高度大小 -->
@@ -83,4 +83,6 @@
     <!-- wheelview外框视图高度定义 -->
     <dimen name="wheelview_container_height">190dp</dimen>
     <dimen name="list_height_1">40dip</dimen>
+    <dimen name="text_poker_number">48sp</dimen>
+    <dimen name="poker_card_height">80dp</dimen>
 </resources>

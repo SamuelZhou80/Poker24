@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    private String[] mToolArray = { "贷款计算器", "投资收益计算", "24点游戏" };
+    private String[] mToolArray = { "贷款计算器", "投资收益计算", "24点游戏", "编码工具" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,9 @@ public class MainActivity extends Activity {
                     intent.setClass(MainActivity.this, CalcInvestActivity.class); // 投资计算器
                 } else if (position == 2) {
                     intent.setClass(MainActivity.this, PlayPoker24.class); // 24点游戏
+                } else if (position == 3) {
+                    intent.setClass(MainActivity.this, GBKToUTFActivity.class); // GBK编码工具
                 }
-
                 startActivity(intent);
             }
         });
