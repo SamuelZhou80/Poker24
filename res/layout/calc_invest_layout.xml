@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/bar_background_gray"
     android:orientation="vertical" >
-    <com.samuel.common.CommonTitleView
+
+    <com.samuel.common.CommonTitleView
         android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -113,34 +114,27 @@
             android:textSize="@dimen/text_size_content" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_calc"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/button_size_height"
-        android:layout_marginLeft="@dimen/margin_medium"
-        android:layout_marginRight="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/margin_smallest"
-        android:background="@drawable/selector_green_corner_btn"
-        android:text="@string/result_success"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_title" />
-    <!-- 计算结果 -->
+        android:layout_height="2dp"
+        android:background="@drawable/listview_line" />
+    <!-- 简要计算结果 -->
 
-    <ScrollView
+    <TextView
+        android:id="@+id/text_summary_result"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_small"
-        android:background="@drawable/corners_bg"
-        android:padding="@dimen/margin_content" >
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_size_content"
+        android:visibility="gone" />
+    <!-- 明细计算结果 -->
 
-        <TextView
-            android:id="@+id/text_result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minLines="4"
-            android:padding="@dimen/margin_divider"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/text_size_content" />
-    </ScrollView>
+    <com.samuel.common.TableView
+        android:id="@+id/table_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

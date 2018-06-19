@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    private String[] mToolArray = { "贷款计算器", "投资收益计算", "24点游戏", "编码工具" };
+    private String[] mToolArray = { "贷款计算器", "投资收益计算", "24点游戏", "汉字编码工具" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -166,17 +166,11 @@
             android:textSize="@dimen/text_size_content" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_calc"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/button_size_height"
-        android:layout_marginLeft="@dimen/margin_medium"
-        android:layout_marginRight="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/margin_smallest"
-        android:background="@drawable/selector_green_corner_btn"
-        android:text="@string/result_success"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_title" />
+        android:layout_height="2dp"
+        android:background="@drawable/listview_line"
+        android:layout_marginTop="@dimen/margin_small" />
     <!-- 简要计算结果 -->
 
     <TextView
@@ -187,7 +181,8 @@
         android:scrollHorizontally="false"
         android:singleLine="false"
         android:textColor="@color/text_color"
-        android:textSize="@dimen/text_size_content" />
+        android:textSize="@dimen/text_size_content"
+        android:visibility="gone" />
 
     <!-- 明细计算结果 -->
 

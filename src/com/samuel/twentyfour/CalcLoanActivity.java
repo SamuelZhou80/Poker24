@@ -41,10 +41,6 @@ public class CalcLoanActivity extends Activity {
         // 表格组件
         initTableView();
 
-        Button btnCalc = (Button) findViewById(R.id.button_calc);
-        btnCalc.setText("计  算");
-        btnCalc.setOnClickListener(calcListener);
-
         // 表格显示格式选择框
         String[] numAry = { "年", "月" };
         ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, R.layout.common_spinner, numAry);
@@ -98,7 +94,9 @@ public class CalcLoanActivity extends Activity {
             }
         });
 
-        findViewById(R.id.common_btn_right).setVisibility(View.GONE);
+        Button btnRight = (Button) findViewById(R.id.common_btn_right);
+        btnRight.setText("计算");
+        btnRight.setOnClickListener(calcListener);
     }
 
     private OnClickListener calcListener = new OnClickListener() {
@@ -133,6 +131,7 @@ public class CalcLoanActivity extends Activity {
             summaryStr += String.format(" 总还款额: %.1f元,", summary[0]);// 还款总额
             summaryStr += String.format(" 利息合计: %.1f元", summary[1]);// 还款总利息
             tvSummary.setText(summaryStr);
+            tvSummary.setVisibility(View.VISIBLE);
 
             // 加载明细表格的数据
             if (mTableView != null) {

@@ -20,6 +20,18 @@ public class GBKToUTFActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.charset_tools_layout);
 
+        TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
+        textViewTitle.setText("ºº×Ö±àÂë");
+
+        Button btnReturn = (Button) findViewById(R.id.common_btn_left);
+        btnReturn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GBKToUTFActivity.this.finish();
+            }
+        });
+        findViewById(R.id.common_btn_right).setVisibility(View.GONE);
+
         initData();
         Button btnHanzi = (Button) findViewById(R.id.button_hanzi);
         Button btnGbk = (Button) findViewById(R.id.button_gbk);
