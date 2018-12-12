@@ -2,7 +2,7 @@
  * Copyright (C) 2012 XiaMen Yaxon NetWorks Co.,LTD.
  */
 
-package com.samuel.twentyfour;
+package com.samuel.main;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -269,6 +269,29 @@ public class FileManager {
     /**
      * 将文件数据读取到缓存
      * 
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    public static String readFile(File file, String charset) {
+        String readBuf = "";
+        FileInputStream fis;
+        try {
+            fis = new FileInputStream(file);
+            int length = fis.available();
+            byte[] buffer = new byte[length];
+            fis.read(buffer);
+            readBuf = new String(buffer, 0, length, charset);
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return readBuf;
+    }
+
+    /**
+     * 将文件数据读取到缓存
+     * 
      * @param fileName
      *            文件名
      * @param offset
@@ -298,6 +321,29 @@ public class FileManager {
             e.printStackTrace();
         }
         return readBuf;
+    }
+
+    /**
+     * 读取文件中的二进制数据
+     * 
+     * @param fileName 文件名全路径
+     * @return
+     */
+    public static byte[] readFileByte(String fileName) {
+        int fileSize = (int) getFileSize(fileName);
+        if (fileSize == 0) {
+            return null;
+        }
+        byte fileData[] = new byte[fileSize];
+        FileInputStream fis;
+        try {
+            fis = new FileInputStream(fileName);
+            fis.read(fileData, 0, fileSize);
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileData;
     }
 
     /**

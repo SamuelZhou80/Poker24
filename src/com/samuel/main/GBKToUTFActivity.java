@@ -1,7 +1,6 @@
-package com.samuel.twentyfour;
+package com.samuel.main;
 
 import java.io.UnsupportedEncodingException;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.samuel.mytools.R;
 
 public class GBKToUTFActivity extends Activity {
     private static final String GbkTableFile = Constant.CRM_DIR + "/gbk_table.txt";

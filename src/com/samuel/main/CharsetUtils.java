@@ -1,4 +1,4 @@
-package com.samuel.twentyfour;
+package com.samuel.main;
 
 import java.io.UnsupportedEncodingException;
 

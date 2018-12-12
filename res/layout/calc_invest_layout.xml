@@ -22,9 +22,7 @@
             android:id="@+id/text_loan_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_content_vertical"
-            android:layout_marginStart="@dimen/margin_content_vertical"
-            android:text="每期定投金额:"
+            android:text="每期定投:"
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_content" />
 
@@ -46,6 +44,34 @@
             android:text=" 元"
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_content_vertical"
+            android:layout_marginStart="@dimen/margin_content_vertical"
+            android:text="投资总期数:"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_content" />
+
+        <EditText
+            android:id="@+id/edit_total_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:background="@color/white"
+            android:hint="@string/please_input"
+            android:inputType="numberDecimal"
+            android:maxLength="6"
+            android:minEms="3"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/text_size_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 期"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_content" />
     </LinearLayout>
     <!-- 投资时间 -->
 
@@ -58,8 +84,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_content_vertical"
-            android:layout_marginStart="@dimen/margin_content_vertical"
             android:text="定投期数:"
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_content" />

@@ -2,8 +2,12 @@
  * Copyright (C) 2012 XiaMen Yaxon NetWorks Co.,LTD.
  */
 
-package com.samuel.twentyfour;
+package com.samuel.main;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +17,22 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
+
+
+
+
+
+
+import net.sourceforge.pinyin4j.PinyinHelper;
+
+
+
+import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
+import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
+
+import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
 //import net.sourceforge.pinyin4j.PinyinHelper;
 //import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
@@ -60,6 +80,45 @@ public class GpsUtils {
      */
     public static int get1000Changed(int value) {
         return (int) (value * ((float) 1000 / 1024));
+    }
+    /**
+     * 获取当前日期和时间
+     * 
+     * @return YYYY-MM-dd HH:mm:ss格式输出时间
+     */
+    public static String getDateTime() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return formatter.format(new Date());
+    }
+
+    /**
+     * 获取当前日期
+     * 
+     * @return YYYY-MM-dd 格式输出时间
+     */
+    public static String getDate() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        return formatter.format(new Date());
+    }
+
+    /**
+     * 获取打卡时间
+     * 
+     * @return HH:mm:ss格式输出时间
+     */
+    public static String getDTime() {
+        String datetime = getDateTime();
+        return datetime.substring(11);
+    }
+
+    /**
+     * 获取时间
+     * 
+     * @return HH:mm格式输出时间
+     */
+    public static String getFTime() {
+        String datetime = getDateTime();
+        return datetime.substring(11, 16);
     }
 
     /**
@@ -1630,5 +1689,117 @@ public class GpsUtils {
         ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
                     .getMetrics(dm);
         return dm.widthPixels;
+    }
+
+    /**
+     * 将GB码转换成拼音首字母字符串, 大写格式
+     * 
+     * @param str
+     *            待转换的GB码
+     * @return 拼首字母字符串
+     */
+    public static String GB2PinyinSzmStr(String str) {
+        String convert = "";
+        for (int j = 0; j < str.length(); j++) {
+            if (j > 10) { // 最大不能超过10个汉字
+                break;
+            }
+            char word = str.charAt(j);
+            // 提取汉字的首字母
+            String[] pinyinArray = PinyinHelper.toHanyuPinyinStringArray(word);
+            if (pinyinArray != null) {
+                convert += pinyinArray[0].charAt(0);
+            } else {
+                convert += word;
+            }
+        }
+        return convert.toUpperCase(Locale.CHINA);
+    }
+
+    /**
+     * 将人名转换为拼音首字母字符串, 大写格式, 对部分多音字进行特殊处理
+     * 
+     * @param str
+     *            人员姓名字符串
+     * @return 拼首字母字符串
+     */
+    public static String name2PinyinSzmStr(String str) {
+        String convert = "";
+//        str = str.trim();
+//        if (str != null && str.length() > 0) {
+//            char firstChar = str.charAt(0);
+//            if ("曾".equals(String.valueOf(firstChar))) {
+//                str = str.replaceFirst("曾", "Z");
+//            } else if ("解".equals(String.valueOf(firstChar))) {
+//                str = str.replaceFirst("解", "X");
+//            } else if ("单".equals(String.valueOf(firstChar))) {
+//                str = str.replaceFirst("单", "S");
+//            }
+//        }
+        // 设置拼音输出格式, 小写, 带音标
+        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+        format.setToneType(HanyuPinyinToneType.WITH_TONE_MARK);
+        format.setVCharType(HanyuPinyinVCharType.WITH_U_UNICODE);
+        try {
+            for (int j = 0; j < str.length(); j++) {
+                char word = str.charAt(j);
+                // 提取汉字的拼音字母
+                String[] pinyinArray = PinyinHelper.toHanyuPinyinStringArray(word, format);
+                if (pinyinArray != null && pinyinArray.length > 0) {
+                    convert += pinyinArray[0];
+                } else {
+                    convert += word;
+                }
+            }
+        } catch (BadHanyuPinyinOutputFormatCombination e) {
+            e.printStackTrace();
+        }
+        return convert; //.toUpperCase(Locale.CHINA);
+    }
+
+    /**
+     * 输入流转换为字符串
+     * 
+     * @param inputStream
+     *            输入流
+     * @param encoding
+     *            编码格式
+     * @return 转换后的字符串
+     * @throws Exception
+     */
+    public static String inputStreamToString(InputStream inputStream) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "GBK"));
+        StringBuilder sb = new StringBuilder();
+        String line = null;
+
+        while ((line = reader.readLine()) != null) {
+            sb.append(line + "\n");
+        }
+
+        inputStream.close();
+        return sb.toString();
+    }
+
+    /**
+     * 输入流转换为二进制数据
+     * 
+     * @param inputStream
+     *            输入流
+     * @return 字节数组
+     * @throws Exception
+     */
+    public static byte[] inputStreamToByteArray(InputStream inputStream) throws Exception {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024 * 10];
+        int len = 0;
+
+        while ((len = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, len);
+        }
+
+        inputStream.close();
+
+        return outputStream.toByteArray();
     }
 }

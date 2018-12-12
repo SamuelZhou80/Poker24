@@ -1,7 +1,6 @@
-package com.samuel.twentyfour;
+package com.samuel.main;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.samuel.common.TableView;
+import com.samuel.mytools.R;
 
 /**
  * 定投收益计算器
@@ -93,6 +92,7 @@ public class CalcInvestActivity extends Activity {
             EditText editMoney = (EditText) findViewById(R.id.edit_money);
             // 期数
             EditText editYear = (EditText) findViewById(R.id.edit_year);
+            EditText editTotalYear = (EditText) findViewById(R.id.edit_total_year);
             // 回报率
             EditText editRate = (EditText) findViewById(R.id.edit_rate);
             int initMoney = GpsUtils.strToInt(editMoney.getText().toString());
@@ -116,12 +116,30 @@ public class CalcInvestActivity extends Activity {
                 mTableData.add(itemData);
                 prevYearMoney = totalMoney;
             }
+            int totalYearNum = GpsUtils.strToInt(editTotalYear.getText().toString());
+            if (totalYearNum < yearNum) {
+                totalYearNum = yearNum;
+            }
+            // 计算停止定投后到投资期末的收益
+            initMoney = initMoney * yearNum;
+            for (int i = yearNum + 1; i < totalYearNum + 1; i++) {
+                // 总金额=(往期金额)*(1+每期收益率)
+                int totalMoney = (int) (prevYearMoney * (1 + rate / 100));
+                ArrayList<String> itemData = new ArrayList<String>();
+                itemData.add("第" + i + "期");
+                itemData.add(String.valueOf(initMoney)); // 累计投入本金
+                itemData.add(String.valueOf(totalMoney - initMoney)); // 累计收益
+                itemData.add(String.valueOf(totalMoney)); // 总金额
+                mTableData.add(itemData);
+                prevYearMoney = totalMoney;
+            }
+
             mTableView.refreshTableView();
 
             StringBuffer sb = new StringBuffer(200);
-            sb.append(String.format("总投资额: %.2f万元, ", (float) (initMoney * yearNum) / 10000L));
+            sb.append(String.format("总投资额: %.2f万元, ", (float) (initMoney) / 10000L));
             sb.append("累计收益: ");
-            sb.append(String.format("%.2f万元, ", (prevYearMoney - initMoney * yearNum) / 10000L));
+            sb.append(String.format("%.2f万元, ", (prevYearMoney - initMoney) / 10000L));
             sb.append(String.format("期末总金额: %.2f万元", prevYearMoney / 10000L));
             TextView tvResult = (TextView) findViewById(R.id.text_summary_result);
             tvResult.setText(sb.toString());

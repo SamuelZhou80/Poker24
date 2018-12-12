@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import com.samuel.common.TableAdapter.TableCell;
 import com.samuel.common.TableAdapter.TableRow;
-import com.samuel.twentyfour.GpsUtils;
-import com.samuel.twentyfour.R;
+import com.samuel.main.GpsUtils;
+import com.samuel.mytools.R;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -82,6 +82,7 @@ public class TableView extends LinearLayout {
         if (title == null) {
             return;
         }
+        this.removeAllViews();
         lv = new CornerListView(context);
 
         int width = GpsUtils.getScreenWidth(context) / title.length;

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <!-- 数据库名 -->
+    <dbname value="education" >
+    </dbname>
+
+    <!-- 版本号 -->
+
+    <version value="1" >
+    </version>
+
+    <list>
+
+        <!-- 基础信息数据库表 -->
+        <mapping class="com.samuel.main.education.ZhongKao" >
+        </mapping>
+        <mapping class="com.samuel.main.education.DingXiang" >
+        </mapping>
+    </list>
+</litepal>

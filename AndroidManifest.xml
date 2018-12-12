@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.samuel.twentyfour"
+    package="com.samuel.mytools"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -31,12 +31,13 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
+        android:name="com.samuel.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.samuel.twentyfour.MainActivity"
+            android:name="com.samuel.main.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,25 +46,44 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.samuel.twentyfour.CalcInvestActivity"
+            android:name="com.samuel.main.CalcInvestActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name="com.samuel.twentyfour.GBKToUTFActivity"
+            android:name="com.samuel.main.GBKToUTFActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name="com.samuel.twentyfour.PlayPoker24"
+            android:name="com.samuel.main.PlayPoker24"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
-                <activity
-            android:name="com.samuel.twentyfour.CalcLoanActivity"
+        <activity
+            android:name="com.samuel.main.CalcLoanActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="com.samuel.main.PhotoDetectActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="com.samuel.main.PacerCalculate"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+
+        <activity
+            android:name="com.samuel.main.student.SearchNameActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >

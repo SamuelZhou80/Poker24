@@ -1,4 +1,8 @@
-package com.samuel.twentyfour;
+package com.samuel.main;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,10 +17,14 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.samuel.MyApplication;
+import com.samuel.main.student.SearchNameActivity;
+import com.samuel.mytools.R;
 
 public class MainActivity extends Activity {
-
-    private String[] mToolArray = { "贷款计算器", "投资收益计算", "24点游戏", "汉字编码工具" };
+    private ArrayList<Modules> mToolList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +32,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.tool_list);
 
         initTitle();
+        initList();
         ToolListAdapter adapter = new ToolListAdapter();
         ListView listView = (ListView) findViewById(R.id.listview_tools);
         listView.setAdapter(adapter);
@@ -31,17 +40,11 @@ public class MainActivity extends Activity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent();
-                if (position == 0) {
-                    intent.setClass(MainActivity.this, CalcLoanActivity.class); // 贷款计算器
-                } else if (position == 1) {
-                    intent.setClass(MainActivity.this, CalcInvestActivity.class); // 投资计算器
-                } else if (position == 2) {
-                    intent.setClass(MainActivity.this, PlayPoker24.class); // 24点游戏
-                } else if (position == 3) {
-                    intent.setClass(MainActivity.this, GBKToUTFActivity.class); // GBK编码工具
+                if (mToolList != null && mToolList.size() > position) {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this, mToolList.get(position).moduleClass);
+                    startActivity(intent);
                 }
-                startActivity(intent);
             }
         });
     }
@@ -54,6 +57,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        MyApplication.getApp().exitApp();
     }
 
     private void initTitle() {
@@ -68,22 +72,59 @@ public class MainActivity extends Activity {
             }
         });
 
-        findViewById(R.id.common_btn_right).setVisibility(View.GONE);
+        Button btnRight = (Button) findViewById(R.id.common_btn_right);
+        // btnRight.setVisibility(View.GONE);
+        btnRight.setText("拷贝数据库");
+        btnRight.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                copyDbFile();
+            }
+        });
+    }
+
+    private void initList() {
+        mToolList = new ArrayList<Modules>();
+        mToolList.add(new Modules("贷款计算器", CalcLoanActivity.class));
+        mToolList.add(new Modules("投资收益计算", CalcInvestActivity.class)); // 投资计算器
+        mToolList.add(new Modules("24点游戏", PlayPoker24.class));
+//        mToolList.add(new Modules("汉字编码工具", GBKToUTFActivity.class));
+//        mToolList.add(new Modules("图像识别", PhotoDetectActivity.class));
+        mToolList.add(new Modules("姓名统计", SearchNameActivity.class));
+        mToolList.add(new Modules("配速计算器", PacerCalculate.class));
+    }
+
+    private void copyDbFile() {
+        String destPath = Constant.CRM_DIR + File.separator;
+        String srcDataPath = Constant.SYS_DIR + File.separator + "databases"
+                + File.separator + Constant.DATABASE_NAME;
+        /* 目标数据库文件路径 */
+        String destDataPath = destPath + Constant.DATABASE_NAME;
+        /* 拷贝数据库文件 */
+        try {
+            if (FileManager.copyFile(srcDataPath, destDataPath)) {
+                Toast.makeText(MainActivity.this, "数据库拷贝成功", Toast.LENGTH_LONG).show();
+            } else {
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private class ToolListAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
-            if (mToolArray != null) {
-                return mToolArray.length;
+            if (mToolList != null) {
+                return mToolList.size();
             }
             return 0;
         }
 
         @Override
         public Object getItem(int position) {
-            return mToolArray[position];
+            return mToolList.get(position);
         }
 
         @Override
@@ -99,7 +140,7 @@ public class MainActivity extends Activity {
                 convertView = inflater.inflate(R.layout.common_listview_item, parent, false);
                 holder = new ViewHolder();
                 holder.txtView = (TextView) convertView.findViewById(R.id.text);
-                holder.txtView.setText(mToolArray[position]);
+                holder.txtView.setText(mToolList.get(position).name);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
@@ -111,7 +152,16 @@ public class MainActivity extends Activity {
             TextView txtView;
             // ImageView image;
         }
+    }
 
+    private class Modules {
+        String name;
+        Class<?> moduleClass;
+
+        Modules(String name, Class<?> className) {
+            this.name = name;
+            this.moduleClass = className;
+        }
     }
 
 }

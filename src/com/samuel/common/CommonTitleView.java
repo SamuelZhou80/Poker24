@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
-import com.samuel.twentyfour.R;
+import com.samuel.mytools.R;
 
 /**
  * 公共标题栏组件
@@ -22,6 +22,9 @@ public class CommonTitleView extends LinearLayout {
     }
 
     private void init() {
+        if (isInEditMode()) {
+            return;
+        }
         String infServiString = Context.LAYOUT_INFLATER_SERVICE;
         LayoutInflater lInflater;
         lInflater = (LayoutInflater) getContext().getSystemService(infServiString);

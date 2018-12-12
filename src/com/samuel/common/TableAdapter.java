@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.samuel.twentyfour.GpsUtils;
-import com.samuel.twentyfour.R;
+import com.samuel.main.GpsUtils;
+import com.samuel.mytools.R;
 
 /**
  * 表格控件使用的适配器

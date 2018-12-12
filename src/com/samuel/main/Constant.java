@@ -1,8 +1,14 @@
-package com.samuel.twentyfour;
+package com.samuel.main;
+
+import java.io.File;
 
 import android.os.Environment;
 
 public class Constant {
+    public static final String PACKAGE_NAME = "com.samuel.mytools";
+    // 系统目录
+    public static final String SYS_DIR = File.separator + "data" + File.separator + "data"
+            + File.separator + PACKAGE_NAME;
     /** 根目录 */
     public static final String ROOT_DIR = Environment.getExternalStorageDirectory().getPath();
     /** 掌务通目录 */
@@ -32,6 +38,7 @@ public class Constant {
     /** 拜访数据文件名 */
     public static final String PREFSVISITINFO_NAME = "PrefsVisitInfo";
     /** 数据库文件路径 */
-    // public static final String DATABASE_DIR = SYS_DIR + "/databases/";
-
+    public static final String DATABASE_DIR = SYS_DIR + "/databases/";
+    /** 数据库文件名 */
+    public static final String DATABASE_NAME = "education.db";
 }

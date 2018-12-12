@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.samuel.twentyfour.R;
+import com.samuel.mytools.R;
 
 public class CornerListView extends ListView {
 

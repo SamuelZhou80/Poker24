@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bar_background_gray"
+    android:orientation="vertical" >
+
+    <com.samuel.common.CommonTitleView
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.samuel.common.CommonTitleView>
+
+    <!-- 查找文字的输入框 -->
+
+    <EditText
+        android:id="@+id/edit_keyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_horizontal_medium"
+        android:layout_marginStart="@dimen/margin_horizontal_medium"
+        android:hint="@string/please_input"
+        android:inputType="text"
+        android:maxLength="10"
+        android:minEms="8"
+        android:textSize="@dimen/text_size_tab" />
+
+    <!-- 选择文件接口 -->
+
+    <LinearLayout
+        android:id="@+id/layout_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_small" >
+
+        <Button
+            android:id="@+id/button_selectfile"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_size_height"
+            android:layout_weight="1"
+            android:background="@drawable/selector_orange_corner_btn"
+            android:text="@string/please_select"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_content" />
+
+        <Button
+            android:id="@+id/button_start"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_size_height"
+            android:layout_marginLeft="@dimen/margin_content"
+            android:layout_marginStart="@dimen/margin_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_green_corner_btn"
+            android:text="@string/start"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_titlebtn" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:background="@drawable/listview_line" />
+    <!-- 简要计算结果 -->
+
+    <TextView
+        android:id="@+id/text_summary_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_size_content"
+        android:visibility="gone" />
+
+    <!-- 明细计算结果 -->
+
+    <com.samuel.common.TableView
+        android:id="@+id/table_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -1,7 +1,6 @@
-package com.samuel.twentyfour;
+package com.samuel.main;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,8 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.samuel.common.TableView;
+import com.samuel.mytools.R;
 
 /**
  * ´û¿î¼ÆËãÆ÷
