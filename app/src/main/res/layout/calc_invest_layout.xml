@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bar_background_gray"
+    android:orientation="vertical" >
+
+    <com.samuel.common.CommonTitleView
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.samuel.common.CommonTitleView>
+    <!-- 每年投入金额 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_content" >
+
+        <TextView
+            android:id="@+id/text_loan_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="每期定投:"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_content" />
+
+        <EditText
+            android:id="@+id/edit_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:background="@color/white"
+            android:hint="@string/please_input"
+            android:inputType="number"
+            android:maxLength="10"
+            android:minEms="4"
+            android:textSize="@dimen/text_size_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 元"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_content_vertical"
+            android:layout_marginStart="@dimen/margin_content_vertical"
+            android:text="投资总期数:"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_content" />
+
+        <EditText
+            android:id="@+id/edit_total_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:background="@color/white"
+            android:hint="@string/please_input"
+            android:inputType="numberDecimal"
+            android:maxLength="6"
+            android:minEms="3"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/text_size_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 期"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_content" />
+    </LinearLayout>
+    <!-- 投资时间 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="定投期数:"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_content" />
+
+        <EditText
+            android:id="@+id/edit_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:background="@color/white"
+            android:hint="@string/please_input"
+            android:inputType="numberDecimal"
+            android:maxLength="6"
+            android:minEms="3"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/text_size_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 期"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_content" />
+        <!-- 年回报率 -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:text="每期回报率:"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_content" />
+
+        <EditText
+            android:id="@+id/edit_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:background="@color/white"
+            android:hint="@string/please_input"
+            android:inputType="numberDecimal"
+            android:maxLength="6"
+            android:minEms="3"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/text_size_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" %"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_content" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/listview_line" />
+    <!-- 简要计算结果 -->
+
+    <TextView
+        android:id="@+id/text_summary_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_size_content"
+        android:visibility="gone" />
+    <!-- 明细计算结果 -->
+
+    <com.samuel.common.TableView
+        android:id="@+id/table_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
