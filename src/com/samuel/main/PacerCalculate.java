@@ -1,7 +1,7 @@
 package com.samuel.main;
 
 import java.util.ArrayList;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,13 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.samuel.common.TableView;
 import com.samuel.mytools.R;
 
+@SuppressLint("DefaultLocale")
 public class PacerCalculate extends Activity {
     private TableView mTableView;
     private ArrayList<ArrayList<String>> mTableData = new ArrayList<ArrayList<String>>();
+    private EditText mEditSpeed;
+    private EditText mEditTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,8 @@ public class PacerCalculate extends Activity {
 
         setContentView(R.layout.activity_pacer_calculate);
 
+        mEditSpeed = (EditText) findViewById(R.id.edit_speed);
+        mEditTime = (EditText) findViewById(R.id.edit_totaltime);
         initTitle();
         // 表格组件
         initTableView();
@@ -68,14 +72,14 @@ public class PacerCalculate extends Activity {
 
     @SuppressWarnings("unused")
     private void refreshLoanTable() {
-        EditText editSpeed = (EditText) findViewById(R.id.edit_speed);
-        String speedStr = editSpeed.getEditableText().toString();
+        String speedStr = mEditSpeed.getEditableText().toString();
         if (TextUtils.isEmpty(speedStr)) {
             return;
         }
         if (mTableView != null) {
             getTableData(speedStr, 1);
             mTableView.refreshTableView();
+            mTableView.setVisibility(View.VISIBLE);
         }
     }
 
@@ -92,6 +96,7 @@ public class PacerCalculate extends Activity {
         mTableView.setTitle(title);
         mTableView.setDatasArray(mTableData);
         mTableView.buildListView();
+        mTableView.setVisibility(View.GONE);
     }
 
     private OnClickListener calcListener = new OnClickListener() {
@@ -103,15 +108,15 @@ public class PacerCalculate extends Activity {
                     .getSystemService(Activity.INPUT_METHOD_SERVICE);
             imManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
-            EditText editSpeed = (EditText) findViewById(R.id.edit_speed);
-            String speedStr = editSpeed.getEditableText().toString();
-            if (TextUtils.isEmpty(speedStr)) {
+            String speedStr = mEditSpeed.getEditableText().toString();
+            if (TextUtils.isEmpty(speedStr) || speedStr.length() < 3) {
                 Toast.makeText(PacerCalculate.this, "配速输入不正确", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (mTableView != null) {
                 getTableData(speedStr, 1);
                 mTableView.refreshTableView();
+                mTableView.setVisibility(View.VISIBLE);
             }
         }
     };
@@ -125,8 +130,7 @@ public class PacerCalculate extends Activity {
                     .getSystemService(Activity.INPUT_METHOD_SERVICE);
             imManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
-            EditText edit = (EditText) findViewById(R.id.edit_totaltime);
-            String timeStr = edit.getEditableText().toString();
+            String timeStr = mEditTime.getEditableText().toString();
             if (TextUtils.isEmpty(timeStr)) {
                 Toast.makeText(PacerCalculate.this, "全程用时输入不正确", Toast.LENGTH_SHORT).show();
                 return;
@@ -134,6 +138,7 @@ public class PacerCalculate extends Activity {
             if (mTableView != null) {
                 getTableData(timeStr, 2);
                 mTableView.refreshTableView();
+                mTableView.setVisibility(View.VISIBLE);
             }
         }
     };
@@ -144,14 +149,17 @@ public class PacerCalculate extends Activity {
         // 1: 由配速计算时间; 2: 由时间计算配速 */
         if (inputType == 1) {
             int speed = GpsUtils.strToInt(inputStr); // 将配速单位转化为秒数
-            speedInSeconds = speed / 100 * 60 + speed % 100;
+            if (speed < 100) {
+                Toast.makeText(PacerCalculate.this, "配速输入不正确", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             // 计算全程用时
+            speedInSeconds = speed / 100 * 60 + speed % 100;
             int totalTime = (int) Math.round(speedInSeconds * 42.195);
             int usedHour = totalTime / 3600;
             int usedMinute = (totalTime % 3600) / 60;
-            EditText edit = (EditText) findViewById(R.id.edit_totaltime);
-            edit.setText(String.format("%d%02d", usedHour, usedMinute));
+            mEditTime.setText(String.format("%d%02d", usedHour, usedMinute));
         } else {
             int input = GpsUtils.strToInt(inputStr);
             int hour = input / 100;
@@ -164,14 +172,28 @@ public class PacerCalculate extends Activity {
             speedInSeconds = (int) Math.round(totalSeconds / 42.195);
 
             // 计算配速
-            EditText edit = (EditText) findViewById(R.id.edit_speed);
             int pacerMinute = speedInSeconds / 60;
             int pacerSecond = speedInSeconds % 60;
-            edit.setText(String.format("%d%02d", pacerMinute, pacerSecond));
+            mEditSpeed.setText(String.format("%d%02d", pacerMinute, pacerSecond));
         }
 
         ArrayList<String> itemData = new ArrayList<String>();
-        itemData.add("十公里");
+        itemData.add("800米");
+        itemData.add(convertTime(speedInSeconds * 4 / 5));
+        mTableData.add(itemData);
+
+        itemData = new ArrayList<String>();
+        itemData.add("1公里");
+        itemData.add(convertTime(speedInSeconds));
+        mTableData.add(itemData);
+
+        itemData = new ArrayList<String>();
+        itemData.add("5公里");
+        itemData.add(convertTime(speedInSeconds * 5));
+        mTableData.add(itemData);
+
+        itemData = new ArrayList<String>();
+        itemData.add("10公里");
         itemData.add(convertTime(speedInSeconds * 10));
         mTableData.add(itemData);
 
@@ -181,7 +203,7 @@ public class PacerCalculate extends Activity {
         mTableData.add(itemData);
 
         itemData = new ArrayList<String>();
-        itemData.add("三十公里");
+        itemData.add("30公里");
         itemData.add(convertTime(speedInSeconds * 30));
         mTableData.add(itemData);
 

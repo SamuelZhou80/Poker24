@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bar_background_gray"
+    android:orientation="vertical" >
+
+    <com.samuel.common.CommonTitleView
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.samuel.common.CommonTitleView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_small" >
+
+        <Button
+            android:id="@+id/button_reset"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_size_height"
+            android:layout_weight="1"
+            android:background="@drawable/selector_orange_corner_btn"
+            android:text="@string/result_success"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_content" />
+
+        <Button
+            android:id="@+id/button_check"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_size_height"
+            android:layout_marginLeft="@dimen/margin_content"
+            android:layout_marginStart="@dimen/margin_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_green_corner_btn"
+            android:text="@string/result_success"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_titlebtn" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:background="@drawable/corners_bg"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/text_result_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/body_padding_small"
+            android:textColor="@color/text_color"
+            android:textIsSelectable="true"
+            android:textSize="@dimen/text_size_main_grid" />
+    </LinearLayout>
+
+</LinearLayout>

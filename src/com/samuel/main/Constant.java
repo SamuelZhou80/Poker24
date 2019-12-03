@@ -31,6 +31,8 @@ public class Constant {
     public static final String FILE_CRASH_DIR = CRM_DIR + "/crash/";
     /** 7天内拜访记录目录 */
     public static final String FILE_VISITED_DIR = CRM_DIR + "/visited/";
+    /** ECO LOG目录 */
+    public static final String FILE_ECOLOG_DIR = CRM_DIR + "/ecolog/";
     /** 参数文件名 */
     public static final String PREFSSYS_NAME = "PrefsSys";
     /** 全局变量文件名 */

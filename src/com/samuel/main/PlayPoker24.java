@@ -131,10 +131,22 @@ public class PlayPoker24 extends Activity {
             mIsShowResult = false;
             mButtonCalc.setText("ÏÔÊ¾´ð°¸");
             mResultDetail.setText("");
-            mText1.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
-            mText2.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
-            mText3.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
-            mText4.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
+
+            while (true) {
+                int num1 = (int) Math.ceil(Math.random() * 10);
+                int num2 = (int) Math.ceil(Math.random() * 10);
+                int num3 = (int) Math.ceil(Math.random() * 10);
+                int num4 = (int) Math.ceil(Math.random() * 10);
+                mResultArray.clear();
+                exhaustiveCalc(num1, num2, num3, num4);
+                if (mResultArray != null && mResultArray.size() > 0) {
+                    mText1.setText(String.valueOf(num1));
+                    mText2.setText(String.valueOf(num2));
+                    mText3.setText(String.valueOf(num3));
+                    mText4.setText(String.valueOf(num4));
+                    break;
+                }
+            }
         }
     };
 
