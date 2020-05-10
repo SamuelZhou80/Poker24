@@ -3,7 +3,9 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 19
     buildToolsVersion "29.0.2"
-
+    compileOptions {
+        encoding "GBK"
+    }
     defaultConfig {
         applicationId "com.samuel.mytools"
         minSdkVersion 14
@@ -20,6 +22,6 @@ android {
 
 dependencies {
     implementation 'com.android.support:support-v4:19.1.0'
-    compile files('libs/litepal.jar')
-    compile files('libs/pinyin4j-2.5.0.jar')
+    implementation files('libs/litepal.jar')
+    implementation files('libs/pinyin4j-2.5.0.jar')
 }

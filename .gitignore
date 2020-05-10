@@ -57,3 +57,5 @@ freeline_project_description.json
 # SVN
 .svn/
 /.svn/
+caches
+.idea

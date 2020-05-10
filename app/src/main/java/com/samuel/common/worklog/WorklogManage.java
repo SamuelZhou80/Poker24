@@ -161,10 +161,12 @@ public class WorklogManage {
             return;
         }
         fileList = dir.listFiles();
-        for (int i = 0; i < fileList.length; i++) {
-            file = fileList[i];
-            if (!isLogFileValid(file.getName())) {
-                file.delete();
+        if (fileList != null) {
+            for (int i = 0; i < fileList.length; i++) {
+                file = fileList[i];
+                if (!isLogFileValid(file.getName())) {
+                    file.delete();
+                }
             }
         }
     }

@@ -17,9 +17,9 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.samuel.MyApplication;
-import com.samuel.main.eco.EcoDataTest;
 import com.samuel.main.student.SearchNameActivity;
 import com.samuel.mytools.R;
 
@@ -99,7 +99,6 @@ public class MainActivity extends Activity {
 //        mToolList.add(new Modules("图像识别", PhotoDetectActivity.class));
         mToolList.add(new Modules("姓名统计", SearchNameActivity.class));
         mToolList.add(new Modules("配速计算器", PacerCalculate.class));
-        mToolList.add(new Modules("Eco数据分析", EcoDataTest.class));
         mToolList.add(new Modules("正则表达式", PatternMatchTest.class));
     }
 
@@ -112,8 +111,8 @@ public class MainActivity extends Activity {
         /* 拷贝数据库文件 */
         try {
             if (FileManager.copyFile(srcDataPath, destDataPath)) {
-                // Toast.makeText(MainActivity.this, "数据库拷贝成功", Toast.LENGTH_LONG).show();
-            } else {
+                Toast.makeText(MainActivity.this, "数据库拷贝成功", Toast.LENGTH_LONG).show();
+            // } else {
             }
         } catch (IOException e) {
             e.printStackTrace();

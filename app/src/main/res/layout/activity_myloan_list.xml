@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <com.samuel.common.CommonTitleView
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.samuel.common.CommonTitleView>
+
+    <LinearLayout
+        android:id="@+id/layout_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_small"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/button_add"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_size_height"
+            android:layout_weight="1"
+            android:background="@drawable/selector_orange_corner_btn"
+            android:text="@string/add"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_content" />
+
+        <Button
+            android:id="@+id/button_return_load"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_size_height"
+            android:layout_marginLeft="@dimen/margin_content"
+            android:layout_marginStart="@dimen/margin_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_green_corner_btn"
+            android:text="提前还款"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_titlebtn" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview_loan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/list_line"
+        android:layout_above="@id/layout_buttons"
+        android:layout_below="@id/title_layout"
+        android:fadingEdge="none"
+        android:scrollbars="none" />
+
+</RelativeLayout>
