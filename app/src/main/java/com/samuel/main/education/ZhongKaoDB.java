@@ -1,12 +1,12 @@
 package com.samuel.main.education;
 
-import java.util.ArrayList;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 
 import com.samuel.common.DBUtils;
+
+import java.util.ArrayList;
 
 public class ZhongKaoDB {
 

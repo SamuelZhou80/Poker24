@@ -1,8 +1,22 @@
-/**
- * Copyright (C) 2012 XiaMen Yaxon NetWorks Co.,LTD.
- */
-
 package com.samuel.utils;
+
+import android.content.ComponentName;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
+
+import net.sourceforge.pinyin4j.PinyinHelper;
+import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
+import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
+import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -17,39 +31,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
-
-
-
-
-
-
-import net.sourceforge.pinyin4j.PinyinHelper;
-
-
-
-import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
-import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
-import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
-import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
-
-import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
-
-//import net.sourceforge.pinyin4j.PinyinHelper;
-//import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
-//import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
-//import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
-//import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
-//import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import android.content.ComponentName;
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.util.DisplayMetrics;
-import android.view.WindowManager;
 
 /**
  * 工具函数类
@@ -150,16 +131,14 @@ public class GpsUtils {
     /**
      * 获取从2000年到date一共有多少天
      * 
-     * @param date
-     *            ：输入格林尼志日期
+     * @param year
+     *            输入年份
      * @return 总共天数
      */
     public static int getAllDays(int year, int month, int day) {
         int yearDays = 0, monthDays = 0, allDays = 0;
 
-        if (year == 0) {
-            yearDays = 0;
-        } else {
+        if (year > 0) {
             yearDays = year * 365 + ((year - 1) / 4 + 1) * 1;
         }
         switch (month) {
@@ -536,31 +515,6 @@ public class GpsUtils {
     }
 
     /**
-     * 对CELL ID进行转换
-     * 
-     * @param [in] id: 待转换的CELL ID
-     * @return 转换后的CELL ID
-     */
-    public static int changeCellId(int id) {
-        short tmp1, tmp2, tmp3;
-
-        // 低5位
-        tmp1 = (short) (id & 0x001f);
-
-        // 高5位
-        tmp2 = (short) (id & 0xf800);
-
-        // 中6位
-        tmp3 = (short) (id & 0x07e0);
-
-        tmp3 = (short) ~tmp3;
-        tmp3 &= ~0xf81f;
-
-        id = (tmp1 << 11) | tmp3 | (tmp2 >> 11);
-        return id;
-    }
-
-    /**
      * 对读写数据进行掩码处理
      * 
      * @param mData
@@ -794,7 +748,7 @@ public class GpsUtils {
     /**
      * 获取数据区带进位累加校验码
      * 
-     * @param byteData数据
+     * @param byteData 数据
      * @return 单字节带进位累加校验码
      */
     public static byte getChkSum(byte[] byteData) {
@@ -817,7 +771,7 @@ public class GpsUtils {
     /**
      * 计算累加和 (使用时确保要计算累加和数据长度是byteData的长度)
      * 
-     * @param byteData数据体
+     * @param byteData 数据体
      * @return 累加和
      */
     public static int CalCheckSum(byte[] byteData) {
@@ -827,7 +781,7 @@ public class GpsUtils {
     /**
      * 计算累加和
      * 
-     * @param byteData数据体
+     * @param byteData 数据体
      * @param len
      *            数据长度
      * @return 累加和
@@ -856,7 +810,7 @@ public class GpsUtils {
     /**
      * 将字节数组转成整数(大端模式,高字节在低位即byteArray[0])
      * 
-     * @param byteArray
+     * @param byteData
      * @return 整数
      */
     public static int byteArrayToInt(byte[] byteData) {
@@ -897,7 +851,7 @@ public class GpsUtils {
     /**
      * 整形转数组
      * 
-     * @param intValue
+     * @param value
      * @return
      */
     public static byte[] intToByteArray(int value) {
@@ -961,7 +915,7 @@ public class GpsUtils {
     /**
      * 将数组转化为arraylist
      * 
-     * @param arraylist
+     * @param src
      * @return 数组
      */
     public static ArrayList<Integer> getArrayListByIntegerArray(int[] src) {
@@ -1127,7 +1081,7 @@ public class GpsUtils {
     /**
      * 将整型数组根据分隔符整合成一个字符串
      * 
-     * @param strArray
+     * @param intArray
      * @param split
      * @return
      */
@@ -1763,8 +1717,6 @@ public class GpsUtils {
      * 
      * @param inputStream
      *            输入流
-     * @param encoding
-     *            编码格式
      * @return 转换后的字符串
      * @throws Exception
      */

@@ -1,6 +1,5 @@
 package com.samuel.main;
 
-import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.samuel.mytools.R;
 import com.samuel.utils.GpsUtils;
 import com.samuel.views.SelectPokerDialogView;
 import com.samuel.views.SelectPokerDialogView.ConfirmListener;
-import com.samuel.mytools.R;
+
+import java.util.ArrayList;
 
 /**
  * 24点游戏界面

@@ -1,6 +1,5 @@
 package com.samuel.main;
 
-import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.samuel.mytools.R;
 import com.samuel.utils.GpsUtils;
 import com.samuel.views.TableView;
-import com.samuel.mytools.R;
+
+import java.util.ArrayList;
 
 /**
  * 定投收益计算器

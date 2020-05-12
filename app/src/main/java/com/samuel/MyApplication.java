@@ -1,15 +1,15 @@
 package com.samuel;
 
-import org.litepal.LitePalApplication;
-import org.litepal.tablemanager.Connector;
-
 import android.content.Context;
 
+import com.framework.FileManager;
+import com.samuel.common.Constant;
 import com.samuel.common.PrefsSys;
 import com.samuel.debug.CrashExceptionHandler;
 import com.samuel.debug.worklog.WorklogManage;
-import com.samuel.common.Constant;
-import com.framework.FileManager;
+
+import org.litepal.LitePalApplication;
+import org.litepal.tablemanager.Connector;
 
 public class MyApplication extends LitePalApplication {
     @SuppressWarnings("unused")

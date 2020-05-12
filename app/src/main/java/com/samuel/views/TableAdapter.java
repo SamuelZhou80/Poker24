@@ -1,5 +1,4 @@
 package com.samuel.views;
-import java.util.List;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -14,15 +13,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.samuel.utils.GpsUtils;
 import com.samuel.mytools.R;
+import com.samuel.utils.GpsUtils;
+
+import java.util.List;
 
 /**
  * 表格控件使用的适配器
  * @author 解玉芳
  *
  */
-
 public class TableAdapter extends BaseAdapter {
     private Context context;
     private List<TableRow> table;

@@ -1,5 +1,7 @@
 package com.framework.http;
 
+import com.samuel.utils.GpsUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,8 +12,6 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
-
-import com.samuel.utils.GpsUtils;
 
 public class CommonHttpRequest {
 

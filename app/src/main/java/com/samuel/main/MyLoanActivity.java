@@ -13,9 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.samuel.mytools.R;
 import com.samuel.utils.GpsUtils;
 import com.samuel.views.TableView;
-import com.samuel.mytools.R;
 
 import java.util.ArrayList;
 

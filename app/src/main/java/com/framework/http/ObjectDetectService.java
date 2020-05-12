@@ -1,5 +1,7 @@
 package com.framework.http;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -7,8 +9,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
-
-import org.json.JSONObject;
 
 /**
  * 物体检测服务接口

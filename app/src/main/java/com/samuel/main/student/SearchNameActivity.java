@@ -1,14 +1,5 @@
 package com.samuel.main.student;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -21,12 +12,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.samuel.common.PrefsSys;
-import com.samuel.views.TableView;
 import com.framework.FileManager;
-import com.samuel.utils.GpsUtils;
+import com.samuel.common.PrefsSys;
 import com.samuel.mytools.R;
+import com.samuel.utils.GpsUtils;
 import com.samuel.utils.OpenFileUtil;
+import com.samuel.views.TableView;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class SearchNameActivity extends Activity {
     private String mNameStr = "";

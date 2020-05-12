@@ -1,9 +1,5 @@
 package com.samuel.main;
 
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
@@ -16,9 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.samuel.mytools.R;
 import com.samuel.utils.GpsUtils;
 import com.samuel.views.TableView;
-import com.samuel.mytools.R;
+
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 正则表达式匹配测试接口

@@ -1,22 +1,14 @@
 package com.samuel.main;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.graphics.Bitmap.Config;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,11 +24,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.framework.FileManager;
-import com.samuel.common.Constant;
-import com.samuel.utils.Base64Util;
 import com.framework.http.HttpGetTask;
+import com.samuel.common.Constant;
 import com.samuel.debug.worklog.WorklogManage;
 import com.samuel.mytools.R;
+import com.samuel.utils.Base64Util;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 图像识别工具接口

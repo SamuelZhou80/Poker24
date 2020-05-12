@@ -1,9 +1,5 @@
 package com.samuel.main;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +20,10 @@ import com.samuel.MyApplication;
 import com.samuel.common.Constant;
 import com.samuel.main.student.SearchNameActivity;
 import com.samuel.mytools.R;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     private ArrayList<Modules> mToolList;

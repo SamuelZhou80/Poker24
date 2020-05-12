@@ -1,12 +1,5 @@
 package com.samuel.views;
 
-import java.util.ArrayList;
-
-import com.samuel.views.TableAdapter.TableCell;
-import com.samuel.views.TableAdapter.TableRow;
-import com.samuel.utils.GpsUtils;
-import com.samuel.mytools.R;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -17,6 +10,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.samuel.mytools.R;
+import com.samuel.utils.GpsUtils;
+import com.samuel.views.TableAdapter.TableCell;
+import com.samuel.views.TableAdapter.TableRow;
+
+import java.util.ArrayList;
 
 /**
  * 表格控件 本质是列表

@@ -1,11 +1,11 @@
 package com.framework;
 
+import android.content.Context;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import android.content.Context;
 
 /**
  * 文件管理类
@@ -88,8 +88,8 @@ public class FileManager {
     /**
      * 获取文件大小
      * 
-     * @param filename
-     *            : 文件名
+     * @param fileName
+     *             文件名
      * @return
      */
     public static long getFileSize(String fileName) {
@@ -131,8 +131,8 @@ public class FileManager {
      * 
      * @param fileName
      *            写入文件名
-     * @param write_str
-     *            : 写入数据
+     * @param writeStr
+     *            写入数据
      */
     public static void writeFile(String fileName, String writeStr) {
         FileOutputStream fos;
@@ -151,8 +151,8 @@ public class FileManager {
      * 
      * @param fileName
      *            写入文件名
-     * @param write_str
-     *            : 写入数据
+     * @param writeStr
+     *            写入数据
      */
     public static void writeDataFile(String fileName, String writeStr) {
         FileOutputStream fos;
@@ -193,7 +193,7 @@ public class FileManager {
      * 
      * @param fileName
      *            原有文件
-     * @param writeStr
+     * @param writebytes
      *            文件内容
      * @return
      * @throws IOException

@@ -38,7 +38,7 @@ public class AddLoanActivity extends Activity {
 
         initTitle();
 
-        mTextDate = (TextView) findViewById(R.id.text_seldate);
+        mTextDate = findViewById(R.id.text_seldate);
         mTextDate.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,10 +68,10 @@ public class AddLoanActivity extends Activity {
     }
 
     private void initTitle() {
-        TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
+        TextView textViewTitle = findViewById(R.id.commontitle_textview);
         textViewTitle.setText("新增贷款");
 
-        Button btnReturn = (Button) findViewById(R.id.common_btn_left);
+        Button btnReturn = findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +79,7 @@ public class AddLoanActivity extends Activity {
             }
         });
 
-        Button btnRight = (Button) findViewById(R.id.common_btn_right);
+        Button btnRight = findViewById(R.id.common_btn_right);
         btnRight.setText("保存");
         btnRight.setOnClickListener(calcListener);
     }
@@ -95,11 +95,11 @@ public class AddLoanActivity extends Activity {
             }
 
             // 定投金额
-            EditText editMoney = (EditText) findViewById(R.id.edit_money);
+            EditText editMoney = findViewById(R.id.edit_money);
             // 期数
-            EditText editYear = (EditText) findViewById(R.id.edit_year);
+            EditText editYear = findViewById(R.id.edit_year);
             // 回报率
-            EditText editRate = (EditText) findViewById(R.id.edit_rate);
+            EditText editRate = findViewById(R.id.edit_rate);
             int initMoney = GpsUtils.strToInt(editMoney.getText().toString());
             int yearNum = GpsUtils.strToInt(editYear.getText().toString());
             double rate = GpsUtils.strToFloat(editRate.getText().toString());
@@ -109,7 +109,7 @@ public class AddLoanActivity extends Activity {
             }
 
             // 显示概要信息
-            TextView tvSummary = (TextView) findViewById(R.id.text_summary_result);
+            TextView tvSummary = findViewById(R.id.text_summary_result);
             double[] summary = calcEqualPrincipalAndInterest(initMoney, yearNum * 12, rate);
             String summaryStr = "";
             summaryStr += String.format(Locale.CHINA, " 月供: %.2f元,", summary[2]);// 每月还款金额
