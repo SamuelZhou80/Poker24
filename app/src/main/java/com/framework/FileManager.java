@@ -1,8 +1,4 @@
-/**
- * Copyright (C) 2012 XiaMen Yaxon NetWorks Co.,LTD.
- */
-
-package com.samuel.main;
+package com.framework;
 
 import java.io.File;
 import java.io.FileInputStream;

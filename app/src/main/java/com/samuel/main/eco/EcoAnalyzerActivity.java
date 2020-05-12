@@ -17,9 +17,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.samuel.main.Constant;
-import com.samuel.main.FileManager;
-import com.samuel.main.GpsUtils;
+import com.samuel.common.Constant;
+import com.framework.FileManager;
+import com.samuel.utils.GpsUtils;
 import com.samuel.mytools.R;
 import com.samuel.utils.OpenFileUtil;
 

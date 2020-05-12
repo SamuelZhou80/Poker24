@@ -1,4 +1,4 @@
-package com.samuel.common;
+package com.samuel.views;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;

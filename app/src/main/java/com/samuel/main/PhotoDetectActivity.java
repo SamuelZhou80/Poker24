@@ -30,9 +30,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.samuel.common.Base64Util;
-import com.samuel.common.http.HttpGetTask;
-import com.samuel.common.worklog.WorklogManage;
+
+import com.framework.FileManager;
+import com.samuel.common.Constant;
+import com.samuel.utils.Base64Util;
+import com.framework.http.HttpGetTask;
+import com.samuel.debug.worklog.WorklogManage;
 import com.samuel.mytools.R;
 
 /**

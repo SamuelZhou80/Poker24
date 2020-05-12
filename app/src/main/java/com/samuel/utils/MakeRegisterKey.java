@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.Random;
 import java.util.zip.CRC32;
 
-import com.samuel.main.Constant;
-import com.samuel.main.FileManager;
+import com.samuel.common.Constant;
+import com.framework.FileManager;
 
 public class MakeRegisterKey {
 

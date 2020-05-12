@@ -8,8 +8,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.samuel.common.SelectPokerDialogView;
-import com.samuel.common.SelectPokerDialogView.ConfirmListener;
+
+import com.samuel.utils.GpsUtils;
+import com.samuel.views.SelectPokerDialogView;
+import com.samuel.views.SelectPokerDialogView.ConfirmListener;
 import com.samuel.mytools.R;
 
 /**

@@ -1,4 +1,7 @@
-package com.samuel.common.debug;
+package com.samuel.debug;
+
+import com.samuel.common.Constant;
+import com.samuel.debug.worklog.WorklogManage;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,9 +12,6 @@ import java.io.Writer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import com.samuel.common.worklog.WorklogManage;
-import com.samuel.main.Constant;
 
 /**
  * 保存日志信息

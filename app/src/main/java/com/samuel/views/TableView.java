@@ -1,10 +1,10 @@
-package com.samuel.common;
+package com.samuel.views;
 
 import java.util.ArrayList;
 
-import com.samuel.common.TableAdapter.TableCell;
-import com.samuel.common.TableAdapter.TableRow;
-import com.samuel.main.GpsUtils;
+import com.samuel.views.TableAdapter.TableCell;
+import com.samuel.views.TableAdapter.TableRow;
+import com.samuel.utils.GpsUtils;
 import com.samuel.mytools.R;
 
 import android.content.Context;

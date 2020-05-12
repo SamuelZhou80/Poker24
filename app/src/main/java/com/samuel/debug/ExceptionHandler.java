@@ -1,8 +1,4 @@
-/**
- * Copyright (C) 2012 XiaMen Yaxon NetWorks Co.,LTD.
- */
-
-package com.samuel.common.debug;
+package com.samuel.debug;
 
 /**
  * 异常处理器

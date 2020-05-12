@@ -22,9 +22,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.samuel.common.PrefsSys;
-import com.samuel.common.TableView;
-import com.samuel.main.FileManager;
-import com.samuel.main.GpsUtils;
+import com.samuel.views.TableView;
+import com.framework.FileManager;
+import com.samuel.utils.GpsUtils;
 import com.samuel.mytools.R;
 import com.samuel.utils.OpenFileUtil;
 

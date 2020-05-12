@@ -1,4 +1,4 @@
-package com.samuel.common.http;
+package com.framework.http;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

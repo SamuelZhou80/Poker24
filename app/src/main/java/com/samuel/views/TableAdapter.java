@@ -1,4 +1,4 @@
-package com.samuel.common;
+package com.samuel.views;
 import java.util.List;
 
 import android.content.Context;
@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.samuel.main.GpsUtils;
+import com.samuel.utils.GpsUtils;
 import com.samuel.mytools.R;
 
 /**

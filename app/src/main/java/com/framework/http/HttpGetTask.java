@@ -1,4 +1,4 @@
-package com.samuel.common.http;
+package com.framework.http;
 
 import android.os.AsyncTask;
 import android.os.Handler;

@@ -6,10 +6,10 @@ import org.litepal.tablemanager.Connector;
 import android.content.Context;
 
 import com.samuel.common.PrefsSys;
-import com.samuel.common.debug.CrashExceptionHandler;
-import com.samuel.common.worklog.WorklogManage;
-import com.samuel.main.Constant;
-import com.samuel.main.FileManager;
+import com.samuel.debug.CrashExceptionHandler;
+import com.samuel.debug.worklog.WorklogManage;
+import com.samuel.common.Constant;
+import com.framework.FileManager;
 
 public class MyApplication extends LitePalApplication {
     @SuppressWarnings("unused")

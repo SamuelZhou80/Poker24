@@ -1,4 +1,4 @@
-package com.samuel.common.worklog;
+package com.samuel.debug.worklog;
 
 /**
  * 待上传日志的数据类

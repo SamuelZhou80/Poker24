@@ -1,11 +1,11 @@
-package com.samuel.common.debug;
-
-import java.lang.Thread.UncaughtExceptionHandler;
+package com.samuel.debug;
 
 import android.content.Context;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
+
+import java.lang.Thread.UncaughtExceptionHandler;
 
 /**
  * 捕捉工程中未捕捉到的异常

@@ -1,4 +1,4 @@
-package com.samuel.main;
+package com.samuel.common;
 
 import java.io.File;
 

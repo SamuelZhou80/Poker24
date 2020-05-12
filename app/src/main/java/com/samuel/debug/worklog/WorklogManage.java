@@ -1,10 +1,10 @@
-package com.samuel.common.worklog;
+package com.samuel.debug.worklog;
+
+import com.framework.FileManager;
+import com.samuel.common.Constant;
+import com.samuel.utils.GpsUtils;
 
 import java.io.File;
-
-import com.samuel.main.Constant;
-import com.samuel.main.FileManager;
-import com.samuel.main.GpsUtils;
 
 /**
  * 

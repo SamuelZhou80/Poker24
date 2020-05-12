@@ -2,7 +2,7 @@
  * Copyright (C) 2012 XiaMen Yaxon NetWorks Co.,LTD.
  */
 
-package com.samuel.main;
+package com.samuel.utils;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.samuel.main.bean.LoanDB;
 import com.samuel.main.bean.LoanInfo;
 import com.samuel.mytools.R;
+import com.samuel.utils.GpsUtils;
 
 import java.util.Locale;
 

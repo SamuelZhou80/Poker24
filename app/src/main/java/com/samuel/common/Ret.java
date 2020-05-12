@@ -1,13 +1,9 @@
-/**
- * Copyright (C) 2012 XiaMen Yaxon NetWorks Co.,LTD.
- */
-
 package com.samuel.common;
 
 /**
  * 返回值类型
  * 
- * @author: zzh 2013-3-22 创建<br>
+ * @author zzh 2013-3-22 创建<br>
  */
 public interface Ret {
     public static final int NULL = 0; // 无应答

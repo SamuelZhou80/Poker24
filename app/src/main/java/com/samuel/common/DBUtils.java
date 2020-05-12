@@ -1,11 +1,4 @@
-/**
- * Copyright (C) 2013 XiaMen Yaxon NetWorks Co.,LTD.
- */
 package com.samuel.common;
-
-import java.util.Locale;
-
-import org.litepal.tablemanager.Connector;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -14,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.text.TextUtils;
 import android.util.Log;
+
+import org.litepal.tablemanager.Connector;
+
+import java.util.Locale;
 
 /**
  * 数据库操作工具类
