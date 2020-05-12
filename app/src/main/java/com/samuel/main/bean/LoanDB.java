@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class LoanDB {
 
     private static LoanDB mInstance;
-    // ====»ù´¡Êı¾İ±í====//
+    // ====åŸºç¡€æ•°æ®è¡¨====//
     private final static String TABLE_LOAN = "LoanInfo";
 
     public static LoanDB getInstance() {
@@ -22,7 +22,7 @@ public class LoanDB {
     }
 
     /**
-     * Çå³ıµ¥Àı¶ÔÏó
+     * æ¸…é™¤å•ä¾‹å¯¹è±¡
      */
     public void clearInstance() {
         if (mInstance != null) {
@@ -31,7 +31,7 @@ public class LoanDB {
     }
 
     /**
-     * ÁĞÃû
+     * åˆ—å
      */
     public interface AckLoanColumns extends BaseColumns {
         String LOAN_ID = "loanid";
@@ -42,9 +42,9 @@ public class LoanDB {
     }
 
     /**
-     * »ñÈ¡ÒÑ±£´æµÄ´û¿îÁĞ±í
+     * è·å–å·²ä¿å­˜çš„è´·æ¬¾åˆ—è¡¨
      *
-     * @return ´û¿îÁĞ±í, ÈôÎŞÕÒµ½Ôò·µ»Ø¿ÕÊı×é
+     * @return è´·æ¬¾åˆ—è¡¨, è‹¥æ— æ‰¾åˆ°åˆ™è¿”å›ç©ºæ•°ç»„
      */
     public ArrayList<LoanInfo> getLoanList() {
         Cursor cur;
@@ -67,7 +67,7 @@ public class LoanDB {
     }
 
     /**
-     * ±£´æ´û¿îÏêÇéĞÅÏ¢
+     * ä¿å­˜è´·æ¬¾è¯¦æƒ…ä¿¡æ¯
      */
     public void saveLoanInfo(LoanInfo form) {
         ContentValues cv = new ContentValues();
@@ -87,10 +87,10 @@ public class LoanDB {
     }
 
     /**
-     * ½«Êı¾İ¿â²éÕÒµ½µÄ¼ÇÂ¼Ğ´Èë´û¿îÏêÇé¶ÔÏóÖĞ
+     * å°†æ•°æ®åº“æŸ¥æ‰¾åˆ°çš„è®°å½•å†™å…¥è´·æ¬¾è¯¦æƒ…å¯¹è±¡ä¸­
      *
-     * @param cur Êı¾İ¿âÓÎ±ê
-     * @param formItem Êı¾İ¶ÔÏó
+     * @param cur æ•°æ®åº“æ¸¸æ ‡
+     * @param formItem æ•°æ®å¯¹è±¡
      */
     private void setItemFromCur(Cursor cur, LoanInfo formItem) {
         if (cur == null || formItem == null) {

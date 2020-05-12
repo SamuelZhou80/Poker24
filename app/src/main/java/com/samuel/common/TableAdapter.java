@@ -18,156 +18,156 @@ import com.samuel.main.GpsUtils;
 import com.samuel.mytools.R;
 
 /**
- * ±í¸ñ¿Ø¼şÊ¹ÓÃµÄÊÊÅäÆ÷
- * @author ½âÓñ·¼
+ * è¡¨æ ¼æ§ä»¶ä½¿ç”¨çš„é€‚é…å™¨
+ * @author è§£ç‰èŠ³
  *
  */
 
 public class TableAdapter extends BaseAdapter {
-	private Context context;
-	private List<TableRow> table;
+    private Context context;
+    private List<TableRow> table;
 
-	public TableAdapter(Context context, List<TableRow> table) {
-		this.context = context;
-		this.table = table;
-	}
-
-	@Override
-	public int getCount() {
-		return table.size();
-	}
-
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
-
-	public TableRow getItem(int position) {
-		return table.get(position);
-	}
+    public TableAdapter(Context context, List<TableRow> table) {
+        this.context = context;
+        this.table = table;
+    }
 
     @Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		TableRow tableRow = table.get(position);
-		if (convertView == null) {
-			return new TableRowView(this.context, tableRow, position);
-		} else {
-			LinearLayout ll = (LinearLayout) convertView;
-			updateConvertView(tableRow, ll);
-			return convertView;
-		}
-	}
-	
-	/**
-	 * convertview´æÔÚÊ±Ë¢ĞÂview£¬²¢²»ÖØĞÂnew
-	 * 
-	 * @author xieyufang
-	 */
-	private void updateConvertView(TableRow tableRow, LinearLayout ll){
-		for (int i = 0; i < tableRow.getSize(); i++) {
-			if (tableRow.getCellValue(i).type == TableCell.STRING) {// Èç¹û¸ñµ¥ÔªÊÇÎÄ±¾ÄÚÈİ
-				TextView tv = (TextView) ll.getChildAt(i);
-				tv.setText((CharSequence) tableRow.getCellValue(i).value);
-			} else if (tableRow.getCellValue(i).type == TableCell.IMAGE) {// Èç¹û¸ñµ¥ÔªÊÇÍ¼Æ¬
-				LinearLayout layout = (LinearLayout)ll.getChildAt(i);
-				ImageView imgCell = (ImageView) layout.getChildAt(0);
-				imgCell.setImageResource(GpsUtils.strToInt((String) tableRow.getCellValue(i).value));
-			}
+    public int getCount() {
+        return table.size();
+    }
 
-		}
-	}
-	
-	
-	/**
-	 * TableRowView ÊµÏÖ±í¸ñĞĞµÄÑùÊ½
-	 * 
-	 * @author hellogv
-	 */
-	class TableRowView extends LinearLayout {
-		public TableRowView(Context context, TableRow tableRow, int position) {
-			super(context);
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-			this.setOrientation(LinearLayout.HORIZONTAL);
-			for (int i = 0; i < tableRow.getSize(); i++) {// Öğ¸ö¸ñµ¥ÔªÌí¼Óµ½ĞĞ
-				TableCell tableCell = tableRow.getCellValue(i);
-				LinearLayout.LayoutParams layoutParams =
-						new LinearLayout.LayoutParams(tableCell.width, tableCell.height);// °´ÕÕ¸ñµ¥ÔªÖ¸¶¨µÄ´óĞ¡ÉèÖÃ¿Õ¼ä
-				layoutParams.setMargins(0, 0, 1, 0);// Ô¤Áô¿ÕÏ¶ÖÆÔì±ß¿ò
+    public TableRow getItem(int position) {
+        return table.get(position);
+    }
 
-				if (tableCell.type == TableCell.STRING) {// Èç¹û¸ñµ¥ÔªÊÇÎÄ±¾ÄÚÈİ
-					TextView textCell = new TextView(context);
-					// textCell.setLines(1);
-					textCell.setGravity(Gravity.CENTER);
-					textCell.setBackgroundColor(getResources().getColor(R.color.white));//
-					textCell.setText(String.valueOf(tableCell.value));
-					textCell.setTextColor(getResources().getColor(R.color.text_color));
-					textCell.setPadding(0, GpsUtils.dip2px(context, 10), 0, GpsUtils.dip2px(context, 10));
-					addView(textCell, layoutParams);
-
-					if (tableCell.listener != null) {
-						textCell.setOnClickListener(tableCell.listener);
-					}
-					if (tableCell.width == 0) {
-						textCell.setVisibility(View.GONE);
-					}
-				} else if (tableCell.type == TableCell.IMAGE) {// Èç¹û¸ñµ¥ÔªÊÇÍ¼ÏñÄÚÈİ
-					ImageView imgCell = new ImageView(context);
-					imgCell.setBackgroundColor(getResources().getColor(R.color.table_content_bg));// ±³¾°ºÚÉ«
-					imgCell.setImageResource(GpsUtils.strToInt((String)tableCell.value));
-					LinearLayout layout = new LinearLayout(context);
-					layout.setGravity(Gravity.CENTER);
-					Resources resources = context.getResources();
-					Bitmap bm = BitmapFactory.decodeResource(resources, GpsUtils.strToInt((String)tableCell.value));
-					layout.addView(imgCell, bm.getWidth(), bm.getHeight());
-					layout.setBackgroundColor(getResources().getColor(R.color.white));
-					addView(layout, layoutParams);
-					if (tableCell.listener != null) {
-						layout.setOnClickListener(tableCell.listener);
-					}
-					if (tableCell.width == 0) {
-						layout.setVisibility(View.GONE);
-					}
-				}
-			}
-			this.setBackgroundColor(getResources().getColor(R.color.content_line_color));// ÀûÓÃ¿ÕÏ¶À´ÊµÏÖ±ß¿ò
-		}
-	}
-        /**
-         * TableRow ÊµÏÖ±í¸ñµÄĞĞ
-         * @author hellogv
-         */
-        static public class TableRow {
-                private TableCell[] cell;
-                public TableRow(TableCell[] cell) {
-                        this.cell = cell;
-                }
-                public int getSize() {
-                        return cell.length;
-                }
-                public TableCell getCellValue(int index) {
-                        if (index >= cell.length)
-                                return null;
-                        return cell[index];
-                }
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        TableRow tableRow = table.get(position);
+        if (convertView == null) {
+            return new TableRowView(this.context, tableRow, position);
+        } else {
+            LinearLayout ll = (LinearLayout) convertView;
+            updateConvertView(tableRow, ll);
+            return convertView;
         }
-        /**
-         * TableCell ÊµÏÖ±í¸ñµÄ¸ñµ¥Ôª
-         * @author hellogv
-         */
-        static public class TableCell {
-                static public final int STRING = 0;
-                static public final int IMAGE = 1;
-                public Object value;
-                public int width;
-                public int height;
-                private int type;
-                public OnClickListener listener;
-                public TableCell(Object value, int width, int height, int type, OnClickListener listener) {
-                        this.value = value;
-                        this.width = width;
-                        this.height = height;
-                        this.type = type;
-                        this.listener = listener;
-                }
+    }
+
+    /**
+     * convertviewå­˜åœ¨æ—¶åˆ·æ–°viewï¼Œå¹¶ä¸é‡æ–°new
+     *
+     * @author xieyufang
+     */
+    private void updateConvertView(TableRow tableRow, LinearLayout ll){
+        for (int i = 0; i < tableRow.getSize(); i++) {
+            if (tableRow.getCellValue(i).type == TableCell.STRING) {// å¦‚æœæ ¼å•å…ƒæ˜¯æ–‡æœ¬å†…å®¹
+                TextView tv = (TextView) ll.getChildAt(i);
+                tv.setText((CharSequence) tableRow.getCellValue(i).value);
+            } else if (tableRow.getCellValue(i).type == TableCell.IMAGE) {// å¦‚æœæ ¼å•å…ƒæ˜¯å›¾ç‰‡
+                LinearLayout layout = (LinearLayout)ll.getChildAt(i);
+                ImageView imgCell = (ImageView) layout.getChildAt(0);
+                imgCell.setImageResource(GpsUtils.strToInt((String) tableRow.getCellValue(i).value));
+            }
+
         }
+    }
+
+
+    /**
+     * TableRowView å®ç°è¡¨æ ¼è¡Œçš„æ ·å¼
+     *
+     * @author hellogv
+     */
+    class TableRowView extends LinearLayout {
+        public TableRowView(Context context, TableRow tableRow, int position) {
+            super(context);
+
+            this.setOrientation(LinearLayout.HORIZONTAL);
+            for (int i = 0; i < tableRow.getSize(); i++) {// é€ä¸ªæ ¼å•å…ƒæ·»åŠ åˆ°è¡Œ
+                TableCell tableCell = tableRow.getCellValue(i);
+                LinearLayout.LayoutParams layoutParams =
+                        new LinearLayout.LayoutParams(tableCell.width, tableCell.height);// æŒ‰ç…§æ ¼å•å…ƒæŒ‡å®šçš„å¤§å°è®¾ç½®ç©ºé—´
+                layoutParams.setMargins(0, 0, 1, 0);// é¢„ç•™ç©ºéš™åˆ¶é€ è¾¹æ¡†
+
+                if (tableCell.type == TableCell.STRING) {// å¦‚æœæ ¼å•å…ƒæ˜¯æ–‡æœ¬å†…å®¹
+                    TextView textCell = new TextView(context);
+                    // textCell.setLines(1);
+                    textCell.setGravity(Gravity.CENTER);
+                    textCell.setBackgroundColor(getResources().getColor(R.color.white));//
+                    textCell.setText(String.valueOf(tableCell.value));
+                    textCell.setTextColor(getResources().getColor(R.color.text_color));
+                    textCell.setPadding(0, GpsUtils.dip2px(context, 10), 0, GpsUtils.dip2px(context, 10));
+                    addView(textCell, layoutParams);
+
+                    if (tableCell.listener != null) {
+                        textCell.setOnClickListener(tableCell.listener);
+                    }
+                    if (tableCell.width == 0) {
+                        textCell.setVisibility(View.GONE);
+                    }
+                } else if (tableCell.type == TableCell.IMAGE) {// å¦‚æœæ ¼å•å…ƒæ˜¯å›¾åƒå†…å®¹
+                    ImageView imgCell = new ImageView(context);
+                    imgCell.setBackgroundColor(getResources().getColor(R.color.table_content_bg));// èƒŒæ™¯é»‘è‰²
+                    imgCell.setImageResource(GpsUtils.strToInt((String)tableCell.value));
+                    LinearLayout layout = new LinearLayout(context);
+                    layout.setGravity(Gravity.CENTER);
+                    Resources resources = context.getResources();
+                    Bitmap bm = BitmapFactory.decodeResource(resources, GpsUtils.strToInt((String)tableCell.value));
+                    layout.addView(imgCell, bm.getWidth(), bm.getHeight());
+                    layout.setBackgroundColor(getResources().getColor(R.color.white));
+                    addView(layout, layoutParams);
+                    if (tableCell.listener != null) {
+                        layout.setOnClickListener(tableCell.listener);
+                    }
+                    if (tableCell.width == 0) {
+                        layout.setVisibility(View.GONE);
+                    }
+                }
+            }
+            this.setBackgroundColor(getResources().getColor(R.color.content_line_color));// åˆ©ç”¨ç©ºéš™æ¥å®ç°è¾¹æ¡†
+        }
+    }
+    /**
+     * TableRow å®ç°è¡¨æ ¼çš„è¡Œ
+     * @author hellogv
+     */
+    static public class TableRow {
+        private TableCell[] cell;
+        public TableRow(TableCell[] cell) {
+            this.cell = cell;
+        }
+        public int getSize() {
+            return cell.length;
+        }
+        public TableCell getCellValue(int index) {
+            if (index >= cell.length)
+                return null;
+            return cell[index];
+        }
+    }
+    /**
+     * TableCell å®ç°è¡¨æ ¼çš„æ ¼å•å…ƒ
+     * @author hellogv
+     */
+    static public class TableCell {
+        static public final int STRING = 0;
+        static public final int IMAGE = 1;
+        public Object value;
+        public int width;
+        public int height;
+        private int type;
+        public OnClickListener listener;
+        public TableCell(Object value, int width, int height, int type, OnClickListener listener) {
+            this.value = value;
+            this.width = width;
+            this.height = height;
+            this.type = type;
+            this.listener = listener;
+        }
+    }
 }

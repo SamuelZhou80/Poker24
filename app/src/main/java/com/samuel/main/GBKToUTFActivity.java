@@ -21,7 +21,7 @@ public class GBKToUTFActivity extends Activity {
         setContentView(R.layout.charset_tools_layout);
 
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("汉字编码");
+        textViewTitle.setText("姹夊瓧缂栫爜");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -41,7 +41,7 @@ public class GBKToUTFActivity extends Activity {
         btnUtf.setOnClickListener(onPressButton);
 
         TextView tvHint = (TextView) findViewById(R.id.text_hint);
-        tvHint.setText("点击汉字按钮用于获取全部GBK汉字的总表, 点击GBK按钮将获取全部汉字的GBK编码文件, 点击UTF-16按钮将获取全部汉字的UTF-16编码文件");
+        tvHint.setText("鐐瑰嚮姹夊瓧鎸夐挳鐢ㄤ簬鑾峰彇鍏ㄩ儴GBK姹夊瓧鐨勬�昏〃, 鐐瑰嚮GBK鎸夐挳灏嗚幏鍙栧叏閮ㄦ眽瀛楃殑GBK缂栫爜鏂囦欢, 鐐瑰嚮UTF-16鎸夐挳灏嗚幏鍙栧叏閮ㄦ眽瀛楃殑UTF-16缂栫爜鏂囦欢");
 
         Button btnQuery = (Button) findViewById(R.id.button_query);
         btnQuery.setOnClickListener(new OnClickListener() {
@@ -151,10 +151,10 @@ public class GBKToUTFActivity extends Activity {
     private void getTotalTable() {
         String totalStr = CharsetUtils.getGBKTable(0x8140, 0xFEFF);
         FileManager.writeFile(GbkTableFile, totalStr);
-        // 显示字符串的片段
+        // 鏄剧ず瀛楃涓茬殑鐗囨
         EditText edit = (EditText) findViewById(R.id.edit_hanzi);
         edit.setText(totalStr.substring(0, 100));
-        Toast.makeText(GBKToUTFActivity.this, "合计输出GBK字符 " + totalStr.length(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(GBKToUTFActivity.this, "鍚堣杈撳嚭GBK瀛楃 " + totalStr.length(), Toast.LENGTH_SHORT).show();
     }
 
     private void getGbkCodeFile(String input) {
@@ -198,10 +198,10 @@ public class GBKToUTFActivity extends Activity {
     }
 
     /**
-     * 将字节转化为整型
+     * 灏嗗瓧鑺傝浆鍖栦负鏁村瀷
      * 
      * @param a
-     * @return 整数
+     * @return 鏁存暟
      */
     private int byteToInt(byte a) {
         return (a & 0xff);

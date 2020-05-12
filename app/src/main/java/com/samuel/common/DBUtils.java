@@ -16,9 +16,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Êı¾İ¿â²Ù×÷¹¤¾ßÀà
+ * æ•°æ®åº“æ“ä½œå·¥å…·ç±»
  * 
- * @author ½âÓñ·¼ 2012-02-15 ´´½¨<br>
+ * @author è§£ç‰èŠ³ 2012-02-15 åˆ›å»º<br>
  * 
  */
 public class DBUtils {
@@ -27,14 +27,14 @@ public class DBUtils {
     private SQLiteDatabase mSQLiteDatabase = null;
 
     /**
-     * Êı¾İ¿â¹¹Ôì ĞĞÊı
+     * æ•°æ®åº“æ„é€  è¡Œæ•°
      */
     private DBUtils() {
         super();
         mSQLiteDatabase = Connector.getDatabase();
         // mSQLiteDatabase = Database.getInstance().openSQLiteDatabase();
         try {
-            // ÉèÖÃÊı¾İ¿âµÄ±¾µØ»¯ÇøÓòÎªÖĞ¹ú, ÒÔ±ãÓÚ¶ÔÖĞÎÄ×Ö·û½øĞĞÅÅĞò´¦Àí
+            // è®¾ç½®æ•°æ®åº“çš„æœ¬åœ°åŒ–åŒºåŸŸä¸ºä¸­å›½, ä»¥ä¾¿äºå¯¹ä¸­æ–‡å­—ç¬¦è¿›è¡Œæ’åºå¤„ç†
             mSQLiteDatabase.setLocale(Locale.CHINA);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,7 +42,7 @@ public class DBUtils {
     }
 
     /**
-     * »ñÈ¡Êı¾İ¿â²Ù×÷ÊµÀı
+     * è·å–æ•°æ®åº“æ“ä½œå®ä¾‹
      * 
      * @return
      */
@@ -54,14 +54,14 @@ public class DBUtils {
     }
 
     /**
-     * ¿ªÊ¼ÊÂÎñ ÓÃÓÚ¶àÌõÊı¾İ²åÈëÇ°µ÷ÓÃ Ä¿Ç°ÇøÓò¡¢ÃÅµê¡¢ÉÌÆ·ÈıÌõĞ­ÒéÊ¹ÓÃ
+     * å¼€å§‹äº‹åŠ¡ ç”¨äºå¤šæ¡æ•°æ®æ’å…¥å‰è°ƒç”¨ ç›®å‰åŒºåŸŸã€é—¨åº—ã€å•†å“ä¸‰æ¡åè®®ä½¿ç”¨
      */
     public void beginTransaction() {
         mSQLiteDatabase.beginTransaction();
     }
 
     /**
-     * ½áÊøÊÂÎñ ÓÃÓÚ¶àÌõ²åÈëÓï¾ä½áÊøºó µ÷ÓÃ ´ËÊ±Ò»ÆğÌá½»Êı¾İ
+     * ç»“æŸäº‹åŠ¡ ç”¨äºå¤šæ¡æ’å…¥è¯­å¥ç»“æŸå è°ƒç”¨ æ­¤æ—¶ä¸€èµ·æäº¤æ•°æ®
      */
     public void endTransaction() {
         try {
@@ -72,10 +72,10 @@ public class DBUtils {
     }
 
     /**
-     * É¾³ıÒ»¸öÊı¾İ¿â±í
+     * åˆ é™¤ä¸€ä¸ªæ•°æ®åº“è¡¨
      * 
      * @param tableName
-     *            : ±íÃû
+     *            : è¡¨å
      * @return
      */
     public void deleteTable(String tableName) {
@@ -88,10 +88,10 @@ public class DBUtils {
     }
 
     /**
-     * Çå¿ÕÒ»¸öÊı¾İ¿â±íÄÚÈİ
+     * æ¸…ç©ºä¸€ä¸ªæ•°æ®åº“è¡¨å†…å®¹
      * 
      * @param tableName
-     *            £º±íÃû
+     *            ï¼šè¡¨å
      * @return
      */
     public void clearTable(String tableName) {
@@ -104,7 +104,7 @@ public class DBUtils {
     }
 
     /**
-     * ¸üĞÂÊı¾İ
+     * æ›´æ–°æ•°æ®
      * 
      * @param mSQLiteDatabase
      * @param table
@@ -122,16 +122,16 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İÕûĞÍÊıÖµÆ¥Åä¸üĞÂ±í
+     * æ ¹æ®æ•´å‹æ•°å€¼åŒ¹é…æ›´æ–°è¡¨
      * 
      * @param table
-     *            :Êı¾İ¿â±íÃû
+     *            :æ•°æ®åº“è¡¨å
      * @param cv
-     *            :ÄÚÈİ
+     *            :å†…å®¹
      * @param condition
-     *            :Ìõ¼ş
+     *            :æ¡ä»¶
      * @param value
-     *            :ÕûĞÍÊıÖµ
+     *            :æ•´å‹æ•°å€¼
      */
     public void updateTable(String table, ContentValues cv, String condition, int value) {
         try {
@@ -142,16 +142,16 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İÕûĞÍÊıÖµÆ¥Åä¸üĞÂ±í
+     * æ ¹æ®æ•´å‹æ•°å€¼åŒ¹é…æ›´æ–°è¡¨
      * 
      * @param table
-     *            :Êı¾İ¿â±íÃû
+     *            :æ•°æ®åº“è¡¨å
      * @param cv
-     *            :ÄÚÈİ
+     *            :å†…å®¹
      * @param condition
-     *            :Ìõ¼ş
+     *            :æ¡ä»¶
      * @param value
-     *            :×Ö·û´®
+     *            :å­—ç¬¦ä¸²
      */
     public void updateTable(String table, ContentValues cv, String condition, String value) {
         try {
@@ -162,11 +162,11 @@ public class DBUtils {
     }
 
     /**
-     * É¾³ıÊı¾İ
+     * åˆ é™¤æ•°æ®
      * 
      * @param mSQLiteDatabase
      * @param table
-     *            ±íÃû
+     *            è¡¨å
      * @param whereClause
      * @param whereArgs
      * @return
@@ -180,14 +180,14 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İÕûĞÍÊıÖµÆ¥ÅäÉ¾³ı±íÖĞÄ³Ïî
+     * æ ¹æ®æ•´å‹æ•°å€¼åŒ¹é…åˆ é™¤è¡¨ä¸­æŸé¡¹
      * 
      * @param table
-     *            ±íÃû
+     *            è¡¨å
      * @param condition
-     *            ÁĞÃû
+     *            åˆ—å
      * @param value
-     *            ÊıÖµ
+     *            æ•°å€¼
      * @return
      */
     public void DeleteDataByCondition(String table, String condition, Integer value) {
@@ -200,16 +200,16 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İ×Ö·û´®Æ¥ÅäÉ¾³ı±íÖĞÏî
+     * æ ¹æ®å­—ç¬¦ä¸²åŒ¹é…åˆ é™¤è¡¨ä¸­é¡¹
      * 
      * @param mSQLiteDatabase
-     *            Êı¾İ¿â¶ÔÏó
+     *            æ•°æ®åº“å¯¹è±¡
      * @param table
-     *            ±íÃû
+     *            è¡¨å
      * @param condition
-     *            ÁĞÃû
+     *            åˆ—å
      * @param value
-     *            ×Ö·û´®
+     *            å­—ç¬¦ä¸²
      * @return
      */
     public void DeleteDataByStr(String table, String condition,
@@ -224,14 +224,14 @@ public class DBUtils {
     }
 
     /**
-     * Ïò±íÖĞÌí¼ÓÒ»ÌõÊı¾İ
+     * å‘è¡¨ä¸­æ·»åŠ ä¸€æ¡æ•°æ®
      * 
      * @param mSQLiteDatabase
-     *            Êı¾İ¿â¶ÔÏó
+     *            æ•°æ®åº“å¯¹è±¡
      * @param cv
-     *            Êı¾İÄÚÈİ¼¯ºÏ
+     *            æ•°æ®å†…å®¹é›†åˆ
      * @param table
-     *            ±íÃû
+     *            è¡¨å
      * @return the row ID of the newly inserted row, or -1 if an error occurred
      */
     public long AddData(ContentValues cv, String table) {
@@ -243,7 +243,7 @@ public class DBUtils {
     }
 
     /**
-     * Ö´ĞĞsql²éÑ¯Óï¾ä»ñÈ¡¶ÔÓ¦ÓÎ±ê
+     * æ‰§è¡ŒsqlæŸ¥è¯¢è¯­å¥è·å–å¯¹åº”æ¸¸æ ‡
      * 
      * @param sql
      * @param selectionArgs
@@ -257,7 +257,7 @@ public class DBUtils {
     }
 
     /**
-     * »ñÈ¡±íÊı¾İÌõÊı
+     * è·å–è¡¨æ•°æ®æ¡æ•°
      * 
      * @param table
      */
@@ -274,13 +274,13 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İID ²éÕÒÄ³¸ö±íµÄ¼ÇÂ¼ÊÇ·ñ´æÔÚ
+     * æ ¹æ®ID æŸ¥æ‰¾æŸä¸ªè¡¨çš„è®°å½•æ˜¯å¦å­˜åœ¨
      * 
      * @param sqlite
-     *            Êı¾İ¿â¶ÔÏó
+     *            æ•°æ®åº“å¯¹è±¡
      * @param tablename
      * @param columnname
-     * @return boolean ÊÇ·ñ´æÔÚ
+     * @return boolean æ˜¯å¦å­˜åœ¨
      */
     public boolean isExistbyCondition(String tablename,
             String whereClause, String[] whereArgs) {
@@ -306,13 +306,13 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İID ²éÕÒÄ³¸ö±íµÄ¼ÇÂ¼ÊÇ·ñ´æÔÚ
+     * æ ¹æ®ID æŸ¥æ‰¾æŸä¸ªè¡¨çš„è®°å½•æ˜¯å¦å­˜åœ¨
      * 
      * @param sqlite
-     *            Êı¾İ¿â¶ÔÏó
+     *            æ•°æ®åº“å¯¹è±¡
      * @param tablename
      * @param columnname
-     * @return boolean ÊÇ·ñ´æÔÚ
+     * @return boolean æ˜¯å¦å­˜åœ¨
      */
     public boolean isExistbyId(String tablename,
             String columnname, int id) {
@@ -338,13 +338,13 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İID ²éÕÒÄ³¸ö±íµÄ¼ÇÂ¼ÊÇ·ñ´æÔÚ
+     * æ ¹æ®ID æŸ¥æ‰¾æŸä¸ªè¡¨çš„è®°å½•æ˜¯å¦å­˜åœ¨
      * 
      * @param sqlite
-     *            Êı¾İ¿â¶ÔÏó
+     *            æ•°æ®åº“å¯¹è±¡
      * @param tablename
      * @param columnname
-     * @return boolean ÊÇ·ñ´æÔÚ
+     * @return boolean æ˜¯å¦å­˜åœ¨
      */
     public boolean isExistby2Id(String tablename,
             String columnname, int id, String columnname2, int id2) {
@@ -370,11 +370,11 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İstr ²éÕÒÄ³¸ö±íµÄ¼ÇÂ¼ÊÇ·ñ´æÔÚ
+     * æ ¹æ®str æŸ¥æ‰¾æŸä¸ªè¡¨çš„è®°å½•æ˜¯å¦å­˜åœ¨
      * 
      * @param tablename
      * @param columnname
-     * @return boolean ÊÇ·ñ´æÔÚ
+     * @return boolean æ˜¯å¦å­˜åœ¨
      */
     public boolean isExistByStr(String tablename, String columnname, String str) {
         Cursor cur = null;
@@ -398,13 +398,13 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İIDºÍ×Ö·û´® ²éÕÒÄ³¸ö±íµÄ¼ÇÂ¼ÊÇ·ñ´æÔÚ
+     * æ ¹æ®IDå’Œå­—ç¬¦ä¸² æŸ¥æ‰¾æŸä¸ªè¡¨çš„è®°å½•æ˜¯å¦å­˜åœ¨
      * 
      * @param sqlite
-     *            Êı¾İ¿â¶ÔÏó
+     *            æ•°æ®åº“å¯¹è±¡
      * @param tablename
      * @param columnname
-     * @return boolean ÊÇ·ñ´æÔÚ
+     * @return boolean æ˜¯å¦å­˜åœ¨
      */
     public boolean isExistbyIdAndStr(String tablename,
             String columnname, int id,
@@ -432,13 +432,13 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İÊäÈëÌõ¼ş²ÎÊıÅĞ¶ÏÊı¾İ¼ÇÂ¼ÊÇ·ñ´æÔÚ
+     * æ ¹æ®è¾“å…¥æ¡ä»¶å‚æ•°åˆ¤æ–­æ•°æ®è®°å½•æ˜¯å¦å­˜åœ¨
      * 
      * @param tableName
-     *            Êı¾İ¿âµÄ±íÃû
+     *            æ•°æ®åº“çš„è¡¨å
      * @param params
-     *            Ìõ¼ş²ÎÊı¼¯, ±ØĞëÊÇÌõ¼şÁĞºÍÌõ¼şÖµ½»ÌæµÄ¸ñÊ½
-     * @return true: Êı¾İ¼ÇÂ¼ÒÑ´æÔÚ
+     *            æ¡ä»¶å‚æ•°é›†, å¿…é¡»æ˜¯æ¡ä»¶åˆ—å’Œæ¡ä»¶å€¼äº¤æ›¿çš„æ ¼å¼
+     * @return true: æ•°æ®è®°å½•å·²å­˜åœ¨
      */
     public boolean isExist(String tableName, Object... params) {
         boolean result = false;
@@ -454,7 +454,7 @@ public class DBUtils {
             selection = "";
             args = new String[count];
             for (int i = 0; i < params.length; i++) {
-                // ÅĞ¶ÏÌõ¼şµÄÁĞ×Ö¶Î, ±ØĞëÊÇ×Ö·û´®ÀàĞÍ
+                // åˆ¤æ–­æ¡ä»¶çš„åˆ—å­—æ®µ, å¿…é¡»æ˜¯å­—ç¬¦ä¸²ç±»å‹
                 if (params[i] instanceof String) {
                     selection += params[i] + "=?";
                     if (index < count - 1) {
@@ -465,7 +465,7 @@ public class DBUtils {
                     throw new RuntimeException("Error selection type");
                 }
 
-                // ÅĞ¶ÏÌõ¼şµÄÖµ×Ö¶Î
+                // åˆ¤æ–­æ¡ä»¶çš„å€¼å­—æ®µ
                 i++;
                 args[index++] = String.valueOf(params[i]);
             }
@@ -485,15 +485,15 @@ public class DBUtils {
     }
 
     /**
-     * ¸ù¾İÊäÈëÌõ¼ş²ÎÊı¸üĞÂÊı¾İ¿â±í
+     * æ ¹æ®è¾“å…¥æ¡ä»¶å‚æ•°æ›´æ–°æ•°æ®åº“è¡¨
      * 
      * @param tableName
-     *            Êı¾İ¿âµÄ±íÃû
+     *            æ•°æ®åº“çš„è¡¨å
      * @param cv
-     *            ¸üĞÂµÄÊı¾İÄÚÈİ
+     *            æ›´æ–°çš„æ•°æ®å†…å®¹
      * @param params
-     *            Ìõ¼ş²ÎÊı¼¯, ±ØĞëÊÇÌõ¼şÁĞºÍÌõ¼şÖµ½»ÌæµÄ¸ñÊ½
-     * @return ¸üĞÂÌõÊı
+     *            æ¡ä»¶å‚æ•°é›†, å¿…é¡»æ˜¯æ¡ä»¶åˆ—å’Œæ¡ä»¶å€¼äº¤æ›¿çš„æ ¼å¼
+     * @return æ›´æ–°æ¡æ•°
      */
     public int update(String tableName, ContentValues cv, Object... params) {
         if (TextUtils.isEmpty(tableName) || cv == null) {
@@ -508,7 +508,7 @@ public class DBUtils {
             selection = "";
             args = new String[count];
             for (int i = 0; i < params.length; i++) {
-                // ÅĞ¶ÏÌõ¼şµÄÁĞ×Ö¶Î, ±ØĞëÊÇ×Ö·û´®ÀàĞÍ
+                // åˆ¤æ–­æ¡ä»¶çš„åˆ—å­—æ®µ, å¿…é¡»æ˜¯å­—ç¬¦ä¸²ç±»å‹
                 if (params[i] instanceof String) {
                     selection += params[i] + "=?";
                     if (index < count - 1) {
@@ -519,7 +519,7 @@ public class DBUtils {
                     throw new RuntimeException("Error selection type");
                 }
 
-                // ÅĞ¶ÏÌõ¼şµÄÖµ×Ö¶Î
+                // åˆ¤æ–­æ¡ä»¶çš„å€¼å­—æ®µ
                 i++;
                 args[index++] = String.valueOf(params[i]);
             }
@@ -540,7 +540,7 @@ public class DBUtils {
             selection = "";
             args = new String[count];
             for (int i = 0; i < params.length; i++) {
-                // ÅĞ¶ÏÌõ¼şµÄÁĞ×Ö¶Î, ±ØĞëÊÇ×Ö·û´®ÀàĞÍ
+                // åˆ¤æ–­æ¡ä»¶çš„åˆ—å­—æ®µ, å¿…é¡»æ˜¯å­—ç¬¦ä¸²ç±»å‹
                 if (params[i] instanceof String) {
                     selection += params[i] + "=?";
                     if (index < count - 1) {
@@ -551,7 +551,7 @@ public class DBUtils {
                     throw new RuntimeException("Error selection type");
                 }
 
-                // ÅĞ¶ÏÌõ¼şµÄÖµ×Ö¶Î
+                // åˆ¤æ–­æ¡ä»¶çš„å€¼å­—æ®µ
                 i++;
                 args[index++] = String.valueOf(params[i]);
             }
@@ -565,7 +565,7 @@ public class DBUtils {
     }
 
     /**
-     * Êı¾İ¿âÊÇ·ñ´ò¿ª
+     * æ•°æ®åº“æ˜¯å¦æ‰“å¼€
      * 
      * @return
      */

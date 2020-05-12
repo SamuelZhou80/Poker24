@@ -11,7 +11,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 /**
- * ÎïÌå¼ì²â·şÎñ½Ó¿Ú
+ * ç‰©ä½“æ£€æµ‹æœåŠ¡æ¥å£
  * 
  * @author Administrator
  *
@@ -19,18 +19,18 @@ import org.json.JSONObject;
 public class ObjectDetectService {
 
     /**
-     * ¶ÔÕÕÆ¬ÎÄ¼ş½øĞĞÎïÌå¼ì²â, »ñÈ¡¼ì²âµ½µÄÎïÌå±êÇ©ºÍÎ»ÖÃĞÅÏ¢
+     * å¯¹ç…§ç‰‡æ–‡ä»¶è¿›è¡Œç‰©ä½“æ£€æµ‹, è·å–æ£€æµ‹åˆ°çš„ç‰©ä½“æ ‡ç­¾å’Œä½ç½®ä¿¡æ¯
      * 
      * @param accessToken
-     *            ÎïÌå¼ì²â·şÎñµÄ·ÃÎÊÁîÅÆ»·
+     *            ç‰©ä½“æ£€æµ‹æœåŠ¡çš„è®¿é—®ä»¤ç‰Œç¯
      * @param base64Data
-     *            ´ı¼ì²âÍ¼Æ¬µÄBase64Êı¾İÌå
+     *            å¾…æ£€æµ‹å›¾ç‰‡çš„Base64æ•°æ®ä½“
      * @param threshold
-     *            ¼ì²âãĞÖµ, Èç¹ûÎª0ÔòÄ¬ÈÏÎª0.3
-     * @return JSON¶ÔÏó, °üº¬¼ì²âµ½µÄÎïÌå±êÇ©ºÍÎ»ÖÃĞÅÏ¢µÈ
+     *            æ£€æµ‹é˜ˆå€¼, å¦‚æœä¸º0åˆ™é»˜è®¤ä¸º0.3
+     * @return JSONå¯¹è±¡, åŒ…å«æ£€æµ‹åˆ°çš„ç‰©ä½“æ ‡ç­¾å’Œä½ç½®ä¿¡æ¯ç­‰
      */
     public static JSONObject getObjectDetection(String accessToken, String base64Data, double threshold) {
-        // ·şÎñµØÖ·
+        // æœåŠ¡åœ°å€
         String serviceHost = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/detection/mbes_sku_test";
         serviceHost += "?access_token=" + accessToken;
         try {
@@ -40,16 +40,16 @@ public class ObjectDetectService {
             byte[] bodyData = dataObj.toString().getBytes();
 
             URL realUrl = new URL(serviceHost);
-            // ´ò¿ªºÍURLÖ®¼äµÄÁ¬½Ó
+            // æ‰“å¼€å’ŒURLä¹‹é—´çš„è¿æ¥
             HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
-            // ÉèÖÃHTTPÁ¬½Ó³¬Ê±Ê±¼ä
+            // è®¾ç½®HTTPè¿æ¥è¶…æ—¶æ—¶é—´
             connection.setConnectTimeout(15 * 1000);
             // connection.setReadTimeout(overTime * 1000);
 
-            // ÉèÖÃÔÊĞíHTTP¶ÁĞ´
+            // è®¾ç½®å…è®¸HTTPè¯»å†™
             connection.setDoOutput(true);
             connection.setDoInput(true);
-            // POSTÇëÇó²»ÄÜÊ¹ÓÃ»º´æ
+            // POSTè¯·æ±‚ä¸èƒ½ä½¿ç”¨ç¼“å­˜
             connection.setUseCaches(false);
 
             connection.setRequestMethod("POST");
@@ -57,13 +57,13 @@ public class ObjectDetectService {
             connection.setRequestProperty("Content-Length", String.valueOf(bodyData.length));
             connection.connect();
 
-            // Ğ´Èë´ıÉÏ´«Êı¾İ
+            // å†™å…¥å¾…ä¸Šä¼ æ•°æ®
 
             OutputStream outStream = connection.getOutputStream();
             if (outStream != null) {
-                // ÒªÉÏ´«µÄÄÚÈİĞ´ÈëÁ÷ÖĞ
+                // è¦ä¸Šä¼ çš„å†…å®¹å†™å…¥æµä¸­
                 outStream.write(bodyData);
-                // Ë¢ĞÂ¹Ø±Õ
+                // åˆ·æ–°å…³é—­
                 outStream.flush();
                 outStream.close();
             }
@@ -73,13 +73,13 @@ public class ObjectDetectService {
 
             }
 
-            // »ñÈ¡ËùÓĞÏìÓ¦Í·×Ö¶Î
+            // è·å–æ‰€æœ‰å“åº”å¤´å­—æ®µ
             Map<String, List<String>> map = connection.getHeaderFields();
-            // ±éÀúËùÓĞµÄÏìÓ¦Í·×Ö¶Î
+            // éå†æ‰€æœ‰çš„å“åº”å¤´å­—æ®µ
             for (String key : map.keySet()) {
                 System.err.println(key + "--->" + map.get(key));
             }
-            // ¶¨Òå BufferedReaderÊäÈëÁ÷À´¶ÁÈ¡URLµÄÏìÓ¦
+            // å®šä¹‰ BufferedReaderè¾“å…¥æµæ¥è¯»å–URLçš„å“åº”
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String result = "";
             String line;
@@ -87,11 +87,11 @@ public class ObjectDetectService {
                 result += line;
             }
 
-            // ·µ»Ø½á¹ûÊ¾Àı
+            // è¿”å›ç»“æœç¤ºä¾‹
             JSONObject jsonObject = new JSONObject(result);
             return jsonObject;
         } catch (Exception e) {
-            System.err.printf("»ñÈ¡tokenÊ§°Ü£¡");
+            System.err.printf("è·å–tokenå¤±è´¥ï¼");
             e.printStackTrace(System.err);
         }
         return null;

@@ -50,19 +50,19 @@ public class SearchNameActivity extends Activity {
             public void onClick(View v) {
                 String path = PrefsSys.getRecentFileName();
                 if (TextUtils.isEmpty(path)) {
-                    Toast.makeText(SearchNameActivity.this, "ÇëÏÈÑ¡ÔñÒ»¸öÎÄ±¾ÎÄ¼ş", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchNameActivity.this, "è¯·å…ˆé€‰æ‹©ä¸€ä¸ªæ–‡æœ¬æ–‡ä»¶", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 File file = new File(path);
                 mNameStr = FileManager.readFile(file, "UTF-16");
                 if (TextUtils.isEmpty(mNameStr)) {
-                    Toast.makeText(SearchNameActivity.this, path + " ´ò¿ªÊ§°Ü", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchNameActivity.this, path + " æ‰“å¼€å¤±è´¥", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 TextView tvSummary = (TextView) findViewById(R.id.text_summary_result);
                 tvSummary.setVisibility(View.GONE);
 
-                // Èç¹ûÊ×´Î¼ÓÔØ»òÊÇÎÄ¼ş´óĞ¡ÓĞ¸Ä±äÔò¼ì²éÊı¾İÊÇ·ñÕıÈ·
+                // å¦‚æœé¦–æ¬¡åŠ è½½æˆ–æ˜¯æ–‡ä»¶å¤§å°æœ‰æ”¹å˜åˆ™æ£€æŸ¥æ•°æ®æ˜¯å¦æ­£ç¡®
                 if (mNameStr.length() != mFileInfo.getFileSize()) {
                     mFileInfo.setChecked(false);
                     mFileInfo.setInvalidName("");
@@ -85,7 +85,7 @@ public class SearchNameActivity extends Activity {
 
                         if (!TextUtils.isEmpty(checkResult)) {
                             mFileInfo.setInvalidName(checkResult);
-                            Toast.makeText(SearchNameActivity.this, "Ãû×ÖÊı¾İÓĞÖØ¸´:" + checkResult, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SearchNameActivity.this, "åå­—æ•°æ®æœ‰é‡å¤:" + checkResult, Toast.LENGTH_SHORT).show();
                             return;
                         }
                         refreshTableView();
@@ -118,7 +118,7 @@ public class SearchNameActivity extends Activity {
                     PrefsSys.setRecentFileName(path);
                 }
             } catch (Exception e) {
-                Toast.makeText(SearchNameActivity.this, "½âÎöÎÄ¼şÒì³£", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchNameActivity.this, "è§£ææ–‡ä»¶å¼‚å¸¸", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         }
@@ -126,7 +126,7 @@ public class SearchNameActivity extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("ĞÕÃû·ÖÎö");
+        textViewTitle.setText("å§“ååˆ†æ");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -137,18 +137,18 @@ public class SearchNameActivity extends Activity {
         });
 
         Button btnRight = (Button) findViewById(R.id.common_btn_right);
-        btnRight.setText("Òş²Ø");
+        btnRight.setText("éšè—");
         btnRight.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 mIsHideBar = !mIsHideBar;
                 if (mIsHideBar) {
-                    ((Button) v).setText("ÏÔÊ¾");
+                    ((Button) v).setText("æ˜¾ç¤º");
                     findViewById(R.id.layout_select).setVisibility(View.GONE);
                     findViewById(R.id.edit_keyword).setVisibility(View.GONE);
                 } else {
-                    ((Button) v).setText("Òş²Ø");
+                    ((Button) v).setText("éšè—");
                     findViewById(R.id.layout_select).setVisibility(View.VISIBLE);
                     findViewById(R.id.edit_keyword).setVisibility(View.VISIBLE);
                 }
@@ -157,7 +157,7 @@ public class SearchNameActivity extends Activity {
     }
 
     /**
-     * ³õÊ¼»¯±í¸ñ
+     * åˆå§‹åŒ–è¡¨æ ¼
      */
     private void initTableView(String[] titles) {
         int itemWidth = GpsUtils.getScreenWidth(SearchNameActivity.this) / 3 - 2;
@@ -174,7 +174,7 @@ public class SearchNameActivity extends Activity {
         String[] nameAry = GpsUtils.stringToArray(mNameStr, "\r\n");
         for (int i = 0; i < nameAry.length - 1; i++) {
             for (int j = i + 1; j < nameAry.length - 1; j++) {
-                // ³öÏÖÁ½¸öÃû×ÖÒ»ÑùµÄÊ±ºò, ÅĞ¶ÏËûÃÇµÄÇ°Ò»ÏîºÍºóÒ»ÏîÈç¹û»¹ÊÇÍ¬ÃûµÄ»°ËµÃ÷Êı¾İÓĞÎÊÌâ
+                // å‡ºç°ä¸¤ä¸ªåå­—ä¸€æ ·çš„æ—¶å€™, åˆ¤æ–­ä»–ä»¬çš„å‰ä¸€é¡¹å’Œåä¸€é¡¹å¦‚æœè¿˜æ˜¯åŒåçš„è¯è¯´æ˜æ•°æ®æœ‰é—®é¢˜
                 if (nameAry[i].equals(nameAry[j])) {
                     if (i > 0) {
                         if (nameAry[i - 1].equals(nameAry[j - 1])
@@ -195,15 +195,15 @@ public class SearchNameActivity extends Activity {
     }
 
     /**
-     * ¸üĞÂ±í¸ñÊı¾İ
+     * æ›´æ–°è¡¨æ ¼æ•°æ®
      */
     private void refreshTableView() {
-        // »ñÈ¡ĞÕÃûµÄÃû×Ö²¿·ÖµÄÆ´ÒôMAP
+        // è·å–å§“åçš„åå­—éƒ¨åˆ†çš„æ‹¼éŸ³MAP
         String[] nameAry = GpsUtils.stringToArray(mNameStr, "\r\n");
         HashMap<String, ArrayList<String>> pinyinMaps = new HashMap<String, ArrayList<String>>(100);
         HashMap<String, Integer> wordFreqMap = new HashMap<String, Integer>(nameAry.length);
         for (int i = 0; i < nameAry.length; i++) {
-            // »ñÈ¡Ãû×ÖµÄ×Ö·û´®ÁĞ±í
+            // è·å–åå­—çš„å­—ç¬¦ä¸²åˆ—è¡¨
             int nameLen = nameAry[i].length();
             if (nameLen < 2) {
                 continue;
@@ -220,9 +220,9 @@ public class SearchNameActivity extends Activity {
                 }
             }
 
-            // Æ´Òô¼ìË÷²»´¦Àíµ¥ÃûµÄÇé¿ö
+            // æ‹¼éŸ³æ£€ç´¢ä¸å¤„ç†å•åçš„æƒ…å†µ
             if (nameLen > 2) {
-                // °ÑĞÕÈ¥µô, Ö»»ñÈ¡Ãû×Ö²¿·ÖµÄÆ´Òô
+                // æŠŠå§“å»æ‰, åªè·å–åå­—éƒ¨åˆ†çš„æ‹¼éŸ³
                 String pinyin = GpsUtils.name2PinyinSzmStr(secondName);
                 if (pinyinMaps.containsKey(pinyin)) {
                     pinyinMaps.get(pinyin).add(nameAry[i]);
@@ -234,7 +234,7 @@ public class SearchNameActivity extends Activity {
             }
         }
 
-        // Ìí¼ÓÅÅĞò½Ó¿Ú, °´³öÏÖ´ÎÊı½øĞĞ½µĞòÅÅÁĞ
+        // æ·»åŠ æ’åºæ¥å£, æŒ‰å‡ºç°æ¬¡æ•°è¿›è¡Œé™åºæ’åˆ—
         List<Map.Entry<String, ArrayList<String>>> secNameList;
         secNameList = new ArrayList<Map.Entry<String, ArrayList<String>>>(pinyinMaps.entrySet());
         Collections.sort(secNameList, new Comparator<Map.Entry<String, ArrayList<String>>>() {
@@ -247,8 +247,8 @@ public class SearchNameActivity extends Activity {
 
         });
 
-        // Êä³öÊı¾İµ½±í¸ñ
-        String maxName = "ĞÕÃû×ÜÊı:" + nameAry.length + "¸ö,";
+        // è¾“å‡ºæ•°æ®åˆ°è¡¨æ ¼
+        String maxName = "å§“åæ€»æ•°:" + nameAry.length + "ä¸ª,";
         mTableData.clear();
         for (Map.Entry<String, ArrayList<String>> mapping : secNameList) {
             ArrayList<String> values = mapping.getValue();
@@ -257,15 +257,15 @@ public class SearchNameActivity extends Activity {
             }
             ArrayList<String> rowData = new ArrayList<String>();
             rowData.add(mapping.getKey());
-            rowData.add(values.size() > 0 ? values.get(0) : "ÎŞÊı¾İ");
+            rowData.add(values.size() > 0 ? values.get(0) : "æ— æ•°æ®");
             rowData.add(String.valueOf(values.size()));
             mTableData.add(rowData);
         }
-        // ±í¸ñ×é¼ş
-        String[] title = { "Æ´Òô", "Ãû×ÖÊ¾Àı", "´ÎÊı" };
+        // è¡¨æ ¼ç»„ä»¶
+        String[] title = { "æ‹¼éŸ³", "åå­—ç¤ºä¾‹", "æ¬¡æ•°" };
         initTableView(title);
 
-        // ÅÅĞò²¢Í³¼ÆÃû×ÖÀï³öÏÖ×î¶àµÄµ¥×ÖÇé¿ö
+        // æ’åºå¹¶ç»Ÿè®¡åå­—é‡Œå‡ºç°æœ€å¤šçš„å•å­—æƒ…å†µ
         List<Map.Entry<String, Integer>> wordList;
         wordList = new ArrayList<Map.Entry<String, Integer>>(wordFreqMap.entrySet());
         Collections.sort(wordList, new Comparator<Map.Entry<String, Integer>>() {
@@ -277,13 +277,13 @@ public class SearchNameActivity extends Activity {
 
         });
 
-        maxName += "µ¥×Ö³öÏÖ×î¶àµÄ: ";
+        maxName += "å•å­—å‡ºç°æœ€å¤šçš„: ";
         int wordCount = Math.min(10, wordList.size());
         for (int i = 0; i < wordCount; i++) {
-            maxName += String.format("%s(%d´Î),", wordList.get(i).getKey(), wordList.get(i).getValue());
+            maxName += String.format("%s(%dæ¬¡),", wordList.get(i).getKey(), wordList.get(i).getValue());
         }
 
-        // ÏÔÊ¾¼òÒªÍ³¼ÆĞÅÏ¢
+        // æ˜¾ç¤ºç®€è¦ç»Ÿè®¡ä¿¡æ¯
         TextView tvSummary = (TextView) findViewById(R.id.text_summary_result);
         tvSummary.setText(maxName);
         tvSummary.setVisibility(View.VISIBLE);
@@ -293,7 +293,7 @@ public class SearchNameActivity extends Activity {
         String[] nameAry = GpsUtils.stringToArray(mNameStr, "\r\n");
         ArrayList<String> nameList = new ArrayList<String>();
         for (int i = 0; i < nameAry.length; i++) {
-            // »ñÈ¡Ãû×ÖµÄ×Ö·û´®ÁĞ±í
+            // è·å–åå­—çš„å­—ç¬¦ä¸²åˆ—è¡¨
             int nameLen = nameAry[i].length();
             String secondName = nameAry[i].substring(1, nameLen);
             if (secondName.contains(keyword)) {
@@ -309,28 +309,28 @@ public class SearchNameActivity extends Activity {
             rowData.add(String.valueOf(1));
             mTableData.add(rowData);
         }
-        String[] title = { "ĞòºÅ", "ĞÕÃû", "´ÎÊı" };
+        String[] title = { "åºå·", "å§“å", "æ¬¡æ•°" };
         initTableView(title);
 
-        // ÏÔÊ¾¼òÒªÍ³¼ÆĞÅÏ¢
-        String maxName = String.format("'%s' ÀÛ¼Æ³öÏÖ%d´Î", keyword, nameList.size());
+        // æ˜¾ç¤ºç®€è¦ç»Ÿè®¡ä¿¡æ¯
+        String maxName = String.format("'%s' ç´¯è®¡å‡ºç°%dæ¬¡", keyword, nameList.size());
         TextView tvSummary = (TextView) findViewById(R.id.text_summary_result);
         tvSummary.setText(maxName);
         tvSummary.setVisibility(View.VISIBLE);
     }
 
     private void searchSchoolTable() {
-        // »ñÈ¡ĞÕÃûµÄÃû×Ö²¿·ÖµÄÆ´ÒôMAP
+        // è·å–å§“åçš„åå­—éƒ¨åˆ†çš„æ‹¼éŸ³MAP
         String[] nameAry = GpsUtils.stringToArray(mNameStr, "\r\n");
         HashMap<String, ArrayList<String>> countyMaps = new HashMap<String, ArrayList<String>>(100);
         HashMap<String, Integer> schoolFreqMap = new HashMap<String, Integer>(nameAry.length);
         for (int i = 0; i < nameAry.length; i++) {
-            // »ñÈ¡Ãû×ÖµÄ×Ö·û´®ÁĞ±í
+            // è·å–åå­—çš„å­—ç¬¦ä¸²åˆ—è¡¨
             int nameLen = nameAry[i].length();
             if (nameLen < 3) {
                 continue;
             }
-            // »ñÈ¡ÇøÃûºÍĞ£Ãû
+            // è·å–åŒºåå’Œæ ¡å
             String county = nameAry[i].substring(0, 3);
             String secondName = nameAry[i].substring(3, nameLen);
             if (schoolFreqMap.containsKey(nameAry[i])) {
@@ -349,7 +349,7 @@ public class SearchNameActivity extends Activity {
             }
         }
 
-        // Ìí¼ÓÅÅĞò½Ó¿Ú, °´³öÏÖ´ÎÊı½øĞĞ½µĞòÅÅÁĞ
+        // æ·»åŠ æ’åºæ¥å£, æŒ‰å‡ºç°æ¬¡æ•°è¿›è¡Œé™åºæ’åˆ—
         List<Map.Entry<String, ArrayList<String>>> secNameList;
         secNameList = new ArrayList<Map.Entry<String, ArrayList<String>>>(countyMaps.entrySet());
         Collections.sort(secNameList, new Comparator<Map.Entry<String, ArrayList<String>>>() {
@@ -362,7 +362,7 @@ public class SearchNameActivity extends Activity {
 
         });
 
-        // ÅÅĞò²¢Í³¼ÆÑ§Ğ£µÄ¸öÊı
+        // æ’åºå¹¶ç»Ÿè®¡å­¦æ ¡çš„ä¸ªæ•°
         List<Map.Entry<String, Integer>> schoolList;
         schoolList = new ArrayList<Map.Entry<String, Integer>>(schoolFreqMap.entrySet());
         Collections.sort(schoolList, new Comparator<Map.Entry<String, Integer>>() {
@@ -374,16 +374,16 @@ public class SearchNameActivity extends Activity {
 
         });
 
-        // Êä³öÊı¾İµ½±í¸ñ
+        // è¾“å‡ºæ•°æ®åˆ°è¡¨æ ¼
         mTableData.clear();
         for (Map.Entry<String, Integer> mapping : schoolList) {
             int nameLen = mapping.getKey().length();
             if (nameLen < 3) {
                 continue;
             }
-            // »ñÈ¡ÇøÃûºÍĞ£Ãû
+            // è·å–åŒºåå’Œæ ¡å
             String county = mapping.getKey().substring(0, 3);
-            if (county.equals("Ë¼Ã÷Çø") || county.equals("ºşÀïÇø")) {
+            if (county.equals("æ€æ˜åŒº") || county.equals("æ¹–é‡ŒåŒº")) {
                 continue;
             }
             String secondName = mapping.getKey().substring(3, nameLen);
@@ -393,17 +393,17 @@ public class SearchNameActivity extends Activity {
             rowData.add(String.valueOf(mapping.getValue()));
             mTableData.add(rowData);
         }
-        String[] title = { "µØÇø", "Ñ§Ğ£", "´ÎÊı" };
+        String[] title = { "åœ°åŒº", "å­¦æ ¡", "æ¬¡æ•°" };
         initTableView(title);
 
-        String maxName = "Ñù±¾ÊıÁ¿" + nameAry.length;
-        maxName += "\n¸÷Çø±¨ÃûÈËÊı: ";
+        String maxName = "æ ·æœ¬æ•°é‡" + nameAry.length;
+        maxName += "\nå„åŒºæŠ¥åäººæ•°: ";
         int wordCount = Math.min(6, secNameList.size());
         for (int i = 0; i < wordCount; i++) {
-            maxName += String.format("%s(%dÈË),", secNameList.get(i).getKey(), secNameList.get(i).getValue().size());
+            maxName += String.format("%s(%däºº),", secNameList.get(i).getKey(), secNameList.get(i).getValue().size());
         }
 
-        // ÏÔÊ¾¼òÒªÍ³¼ÆĞÅÏ¢
+        // æ˜¾ç¤ºç®€è¦ç»Ÿè®¡ä¿¡æ¯
         TextView tvSummary = (TextView) findViewById(R.id.text_summary_result);
         tvSummary.setText(maxName);
         tvSummary.setVisibility(View.VISIBLE);
@@ -414,11 +414,11 @@ public class SearchNameActivity extends Activity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-            // intent.setType(¡°image/*¡±);//Ñ¡ÔñÍ¼Æ¬
-            // intent.setType(¡°audio/*¡±); //Ñ¡ÔñÒôÆµ
-            // intent.setType(¡°video/*¡±); //Ñ¡ÔñÊÓÆµ £¨mp4 3gp ÊÇandroidÖ§³ÖµÄÊÓÆµ¸ñÊ½£©
-            // intent.setType(¡°video/*;image/*¡±);//Í¬Ê±Ñ¡ÔñÊÓÆµºÍÍ¼Æ¬
-            intent.setType("*/*");// ÎŞÀàĞÍÏŞÖÆ
+            // intent.setType(â€œimage/*â€);//é€‰æ‹©å›¾ç‰‡
+            // intent.setType(â€œaudio/*â€); //é€‰æ‹©éŸ³é¢‘
+            // intent.setType(â€œvideo/*â€); //é€‰æ‹©è§†é¢‘ ï¼ˆmp4 3gp æ˜¯androidæ”¯æŒçš„è§†é¢‘æ ¼å¼ï¼‰
+            // intent.setType(â€œvideo/*;image/*â€);//åŒæ—¶é€‰æ‹©è§†é¢‘å’Œå›¾ç‰‡
+            intent.setType("*/*");// æ— ç±»å‹é™åˆ¶
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             startActivityForResult(intent, 1);
         }

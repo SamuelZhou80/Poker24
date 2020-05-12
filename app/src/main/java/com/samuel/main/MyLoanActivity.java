@@ -19,7 +19,7 @@ import com.samuel.mytools.R;
 import java.util.ArrayList;
 
 /**
- * ÎÒµÄ´û¿î»ã×Ü
+ * æˆ‘çš„è´·æ¬¾æ±‡æ€»
  * 
  * @author Administrator
  *
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class MyLoanActivity extends Activity {
     private Spinner mSpinnerType;
     private double[] mLoanSummary = new double[3];
-    // 0: °´ÄêÏÔÊ¾; 2: °´ÔÂÏÔÊ¾
+    // 0: æŒ‰å¹´æ˜¾ç¤º; 2: æŒ‰æœˆæ˜¾ç¤º
     private int mCurType = 0;
     private TableView mTableView;
     private ArrayList<ArrayList<String>> mTableData = new ArrayList<ArrayList<String>>();
@@ -38,11 +38,11 @@ public class MyLoanActivity extends Activity {
         setContentView(R.layout.calculateloan);
 
         initTitle();
-        // ±í¸ñ×é¼ş
+        // è¡¨æ ¼ç»„ä»¶
         initTableView();
 
-        // ±í¸ñÏÔÊ¾¸ñÊ½Ñ¡Ôñ¿ò
-        String[] numAry = { "Äê", "ÔÂ" };
+        // è¡¨æ ¼æ˜¾ç¤ºæ ¼å¼é€‰æ‹©æ¡†
+        String[] numAry = { "å¹´", "æœˆ" };
         ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, R.layout.common_spinner, numAry);
         mAdapter.setDropDownViewResource(R.layout.my_simple_spinner);
         mSpinnerType = (Spinner) findViewById(R.id.spinner_type);
@@ -84,7 +84,7 @@ public class MyLoanActivity extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("´û¿î¼ÆËãÆ÷");
+        textViewTitle.setText("è´·æ¬¾è®¡ç®—å™¨");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -95,7 +95,7 @@ public class MyLoanActivity extends Activity {
         });
 
         Button btnRight = (Button) findViewById(R.id.common_btn_right);
-        btnRight.setText("¼ÆËã");
+        btnRight.setText("è®¡ç®—");
         btnRight.setOnClickListener(calcListener);
     }
 
@@ -103,32 +103,32 @@ public class MyLoanActivity extends Activity {
 
         @Override
         public void onClick(View v) {
-            // ¶¨Í¶½ğ¶î
+            // å®šæŠ•é‡‘é¢
             EditText editMoney = (EditText) findViewById(R.id.edit_money);
-            // ÆÚÊı
+            // æœŸæ•°
             EditText editYear = (EditText) findViewById(R.id.edit_year);
-            // »Ø±¨ÂÊ
+            // å›æŠ¥ç‡
             EditText editRate = (EditText) findViewById(R.id.edit_rate);
             int initMoney = GpsUtils.strToInt(editMoney.getText().toString());
             int yearNum = GpsUtils.strToInt(editYear.getText().toString());
             double rate = GpsUtils.strToFloat(editRate.getText().toString());
             if (initMoney <= 0 || yearNum <= 0 || rate <= 0) {
-                Toast.makeText(MyLoanActivity.this, "ÇëÊäÈë´û¿î½ğ¶î¡¢ÄêÏŞ¡¢ÀûÂÊµÈ!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyLoanActivity.this, "è¯·è¾“å…¥è´·æ¬¾é‡‘é¢ã€å¹´é™ã€åˆ©ç‡ç­‰!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // ÏÔÊ¾¸ÅÒªĞÅÏ¢
+            // æ˜¾ç¤ºæ¦‚è¦ä¿¡æ¯
             TextView tvSummary = (TextView) findViewById(R.id.text_summary_result);
             double[] summary = calcEqualPrincipalAndInterest(initMoney, yearNum * 12, rate);
             String summaryStr = "";
-            summaryStr += String.format(" ÔÂ¹©: %.2fÔª,", summary[2]);// Ã¿ÔÂ»¹¿î½ğ¶î
-            summaryStr += String.format(" Äê¹©: %.2fÔª\n", summary[2] * 12);// Ã¿Äê»¹¿î½ğ¶î
-            summaryStr += String.format(" ×Ü»¹¿î¶î: %.1fÔª,", summary[0]);// »¹¿î×Ü¶î
-            summaryStr += String.format(" ÀûÏ¢ºÏ¼Æ: %.1fÔª", summary[1]);// »¹¿î×ÜÀûÏ¢
+            summaryStr += String.format(" æœˆä¾›: %.2få…ƒ,", summary[2]);// æ¯æœˆè¿˜æ¬¾é‡‘é¢
+            summaryStr += String.format(" å¹´ä¾›: %.2få…ƒ\n", summary[2] * 12);// æ¯å¹´è¿˜æ¬¾é‡‘é¢
+            summaryStr += String.format(" æ€»è¿˜æ¬¾é¢: %.1få…ƒ,", summary[0]);// è¿˜æ¬¾æ€»é¢
+            summaryStr += String.format(" åˆ©æ¯åˆè®¡: %.1få…ƒ", summary[1]);// è¿˜æ¬¾æ€»åˆ©æ¯
             tvSummary.setText(summaryStr);
             tvSummary.setVisibility(View.VISIBLE);
 
-            // ¼ÓÔØÃ÷Ï¸±í¸ñµÄÊı¾İ
+            // åŠ è½½æ˜ç»†è¡¨æ ¼çš„æ•°æ®
             if (mTableView != null) {
                 getTableData(initMoney, yearNum, rate, summary[2]);
                 mTableView.refreshTableView();
@@ -154,12 +154,12 @@ public class MyLoanActivity extends Activity {
     }
 
     /**
-     * ³õÊ¼»¯±í¸ñ
+     * åˆå§‹åŒ–è¡¨æ ¼
      */
     private void initTableView() {
         int itemWidth = GpsUtils.getScreenWidth(MyLoanActivity.this) / 4 - 2;
         int[] columnwidth = { itemWidth, itemWidth, itemWidth, itemWidth };
-        String[] title = { "ÆÚÊı", "±¾½ğ(Ôª)", "ÀûÏ¢(Ôª)", "Óà¶î(Ôª)" };
+        String[] title = { "æœŸæ•°", "æœ¬é‡‘(å…ƒ)", "åˆ©æ¯(å…ƒ)", "ä½™é¢(å…ƒ)" };
 
         mTableView = (TableView) findViewById(R.id.table_detail);
         mTableView.setColumeWidth(columnwidth);
@@ -169,20 +169,20 @@ public class MyLoanActivity extends Activity {
     }
 
     /**
-     * »ñÈ¡´û¿î»¹¿îµÄÃ÷Ï¸±í¸ñ, ·ÖÎª°´ÄêºÍ°´ÔÂÁ½ÖÖÄ£Ê½
+     * è·å–è´·æ¬¾è¿˜æ¬¾çš„æ˜ç»†è¡¨æ ¼, åˆ†ä¸ºæŒ‰å¹´å’ŒæŒ‰æœˆä¸¤ç§æ¨¡å¼
      * 
      * @param principal
-     *            ´û¿î×Ü¶î
+     *            è´·æ¬¾æ€»é¢
      * @param years
-     *            ´û¿îÄêÏŞ
+     *            è´·æ¬¾å¹´é™
      * @param rate
-     *            ´û¿îÄêÀûÂÊ
+     *            è´·æ¬¾å¹´åˆ©ç‡
      * @param preLoan
-     *            ÔÂ¹©¶î
+     *            æœˆä¾›é¢
      */
     private void getTableData(double principal, int years, double rate, double preLoan) {
-        double curPrincipal = principal; // µ±ÆÚÓà¶î
-        double monthRate = rate / (100 * 12);// ÔÂÀûÂÊ
+        double curPrincipal = principal; // å½“æœŸä½™é¢
+        double monthRate = rate / (100 * 12);// æœˆåˆ©ç‡
         mTableData.clear();
         for (int i = 0; i < years; i++) {
             double yearInterest = 0.0;
@@ -191,14 +191,14 @@ public class MyLoanActivity extends Activity {
                 if (curPrincipal <= 0) {
                     break;
                 }
-                double monthInterest = curPrincipal * monthRate; // ±¾ÔÂµÄÀûÏ¢
-                double monthPrincipal = preLoan - monthInterest; // ±¾ÔÂ¹é»¹±¾½ğ
+                double monthInterest = curPrincipal * monthRate; // æœ¬æœˆçš„åˆ©æ¯
+                double monthPrincipal = preLoan - monthInterest; // æœ¬æœˆå½’è¿˜æœ¬é‡‘
                 curPrincipal = curPrincipal - monthPrincipal;
                 yearInterest += monthInterest;
                 yearPrincipal += monthPrincipal;
                 if (mCurType == 1) {
                     ArrayList<String> rowData = new ArrayList<String>();
-                    rowData.add(String.format("µÚ%dÄê%dÔÂ", (i + 1), j + 1));
+                    rowData.add(String.format("ç¬¬%då¹´%dæœˆ", (i + 1), j + 1));
                     rowData.add(String.format("%.1f", monthPrincipal));
                     rowData.add(String.format("%.1f", monthInterest));
                     rowData.add(String.format("%.1f", curPrincipal));
@@ -207,7 +207,7 @@ public class MyLoanActivity extends Activity {
             }
             if (mCurType == 0) {
                 ArrayList<String> rowData = new ArrayList<String>();
-                rowData.add(String.format("µÚ%dÄê", i + 1));
+                rowData.add(String.format("ç¬¬%då¹´", i + 1));
                 rowData.add(String.format("%.1f", yearPrincipal));
                 rowData.add(String.format("%.1f", yearInterest));
                 rowData.add(String.format("%.1f", curPrincipal));
@@ -217,23 +217,23 @@ public class MyLoanActivity extends Activity {
     }
 
     /**
-     * ¼ÆËãµÈ¶î±¾Ï¢»¹¿î
+     * è®¡ç®—ç­‰é¢æœ¬æ¯è¿˜æ¬¾
      *
      * @param principal
-     *            ´û¿î×Ü¶î
+     *            è´·æ¬¾æ€»é¢
      * @param months
-     *            ´û¿îÔÂÊı(ÄêÏŞ*12)
+     *            è´·æ¬¾æœˆæ•°(å¹´é™*12)
      * @param rate
-     *            ´û¿îÄêÀûÂÊ
-     * @return ·µ»Ø´û¿îµÄ { ×Ü»¹¿î¶î, ×ÜÀûÏ¢, ÔÂ¹© }
+     *            è´·æ¬¾å¹´åˆ©ç‡
+     * @return è¿”å›è´·æ¬¾çš„ { æ€»è¿˜æ¬¾é¢, æ€»åˆ©æ¯, æœˆä¾› }
      */
     private double[] calcEqualPrincipalAndInterest(double principal, int months, double rate) {
-        double monthRate = rate / (100 * 12);// ÔÂÀûÂÊ
-        // Ã¿ÔÂÔÂ¹©¶î=´û¿î±¾½ğ¡ÁÔÂÀûÂÊ¡Á[(1+ÔÂÀûÂÊ)^»¹¿îÔÂÊı]¡Â[(1+ÔÂÀûÂÊ)^»¹¿îÔÂÊı-1]
+        double monthRate = rate / (100 * 12);// æœˆåˆ©ç‡
+        // æ¯æœˆæœˆä¾›é¢=è´·æ¬¾æœ¬é‡‘Ã—æœˆåˆ©ç‡Ã—[(1+æœˆåˆ©ç‡)^è¿˜æ¬¾æœˆæ•°]Ã·[(1+æœˆåˆ©ç‡)^è¿˜æ¬¾æœˆæ•°-1]
         double tempValue = Math.pow((1 + monthRate), months);
-        double preLoan = (principal * monthRate * tempValue) / (tempValue - 1);// Ã¿ÔÂ»¹¿î½ğ¶î
-        double totalMoney = preLoan * months;// »¹¿î×Ü¶î
-        double interest = totalMoney - principal;// »¹¿î×ÜÀûÏ¢
+        double preLoan = (principal * monthRate * tempValue) / (tempValue - 1);// æ¯æœˆè¿˜æ¬¾é‡‘é¢
+        double totalMoney = preLoan * months;// è¿˜æ¬¾æ€»é¢
+        double interest = totalMoney - principal;// è¿˜æ¬¾æ€»åˆ©æ¯
         mLoanSummary = new double[] { totalMoney, interest, preLoan };
         return mLoanSummary;
     }

@@ -20,7 +20,7 @@ import com.samuel.common.TableView;
 import com.samuel.mytools.R;
 
 /**
- * ÕıÔò±í´ïÊ½Æ¥Åä²âÊÔ½Ó¿Ú
+ * æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…æµ‹è¯•æ¥å£
  * @author Samuel Zhou
  *
  */
@@ -40,15 +40,15 @@ public class PatternMatchTest extends Activity {
         mEditPattern = (EditText) findViewById(R.id.edit_speed);
         mEditResource = (EditText) findViewById(R.id.edit_totaltime);
         initTitle();
-        // ±í¸ñ×é¼ş
+        // è¡¨æ ¼ç»„ä»¶
         initTableView();
 
         Button mButtonCalc = (Button) findViewById(R.id.button_1);
         mButtonCalc.setOnClickListener(calcListener);
-        mButtonCalc.setText("²âÊÔÓï¾ä");
+        mButtonCalc.setText("æµ‹è¯•è¯­å¥");
         Button buttonReset = (Button) findViewById(R.id.button_2);
         buttonReset.setOnClickListener(calcSpeedListener);
-        buttonReset.setText("¼ÆËãÅäËÙ");
+        buttonReset.setText("è®¡ç®—é…é€Ÿ");
     }
 
     @Override
@@ -63,7 +63,7 @@ public class PatternMatchTest extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("ÕıÔò±í´ïÊ½");
+        textViewTitle.setText("æ­£åˆ™è¡¨è¾¾å¼");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -74,18 +74,18 @@ public class PatternMatchTest extends Activity {
         });
 
         Button btnRight = (Button) findViewById(R.id.common_btn_right);
-        btnRight.setText("¼ÆËã");
+        btnRight.setText("è®¡ç®—");
         btnRight.setOnClickListener(calcListener);
         btnRight.setVisibility(View.INVISIBLE);
     }
 
     /**
-     * ³õÊ¼»¯±í¸ñ
+     * åˆå§‹åŒ–è¡¨æ ¼
      */
     private void initTableView() {
         int itemWidth = GpsUtils.getScreenWidth(PatternMatchTest.this) / 2;
         int[] columnwidth = { itemWidth, itemWidth, itemWidth, itemWidth };
-        String[] title = { "Àï³Ì", "Ê±¼ä" };
+        String[] title = { "é‡Œç¨‹", "æ—¶é—´" };
 
         mTableView = (TableView) findViewById(R.id.table_detail);
         mTableView.setColumeWidth(columnwidth);
@@ -99,21 +99,21 @@ public class PatternMatchTest extends Activity {
 
         @Override
         public void onClick(View v) {
-            // ÊÕÆğÈí¼üÅÌ
+            // æ”¶èµ·è½¯é”®ç›˜
             InputMethodManager imManager = (InputMethodManager) PatternMatchTest.this
                     .getSystemService(Activity.INPUT_METHOD_SERVICE);
             imManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
             if (isMatchedPattern()) {
-                Toast.makeText(PatternMatchTest.this, "ÕıÔò±í´ïÊ½Æ¥ÅäÕıÈ·", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PatternMatchTest.this, "æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…æ­£ç¡®", Toast.LENGTH_SHORT).show();
                 return;
             } else {
-                Toast.makeText(PatternMatchTest.this, "ÕıÔò±í´ïÊ½Æ¥Åä´íÎó", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PatternMatchTest.this, "æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…é”™è¯¯", Toast.LENGTH_SHORT).show();
                 return;
             }
 
 //            if (TextUtils.isEmpty(speedStr) || speedStr.length() < 3) {
-//                Toast.makeText(PatternMatchTest.this, "ÅäËÙÊäÈë²»ÕıÈ·", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(PatternMatchTest.this, "é…é€Ÿè¾“å…¥ä¸æ­£ç¡®", Toast.LENGTH_SHORT).show();
 //                return;
 //            }
 //            if (mTableView != null) {
@@ -144,44 +144,44 @@ public class PatternMatchTest extends Activity {
     }
     
     private void calcCarWeight() {
-        // ³£Á¿¶¨Òå
-        final double gravityAcce = 9.8; // ÖØÁ¦¼ÓËÙ¶È
-        final double tMax = 500; // ·¢¶¯»ú×î´óÊä³öÅ¤¾Ø
-        final double re = 5.143; // Ö÷¼õËÙÆ÷ËÙ±È  Re
-        final double me = 0.95; // »úĞµĞ§ÂÊ Me ÊÖ¶¯±äËÙÏäÔ¼95%£¬×Ô¶¯±äËÙÏäÔ¼88%£¬¶ø´«¶¯ÖáµÄÍòÏò½ÚĞ§ÂÊÔ¼98%
-        final double radius = 0.487; // ÂÖÌ¥°ë¾¶    Ra µ¥Î»Ã×
+        // å¸¸é‡å®šä¹‰
+        final double gravityAcce = 9.8; // é‡åŠ›åŠ é€Ÿåº¦
+        final double tMax = 500; // å‘åŠ¨æœºæœ€å¤§è¾“å‡ºæ‰­çŸ©
+        final double re = 5.143; // ä¸»å‡é€Ÿå™¨é€Ÿæ¯”  Re
+        final double me = 0.95; // æœºæ¢°æ•ˆç‡ Me æ‰‹åŠ¨å˜é€Ÿç®±çº¦95%ï¼Œè‡ªåŠ¨å˜é€Ÿç®±çº¦88%ï¼Œè€Œä¼ åŠ¨è½´çš„ä¸‡å‘èŠ‚æ•ˆç‡çº¦98%
+        final double radius = 0.487; // è½®èƒåŠå¾„    Ra å•ä½ç±³
 
 
-        // ´ÓÊı¾İ²É¼¯Àï»ñÈ¡³µÁ¾µÄĞĞÊ»Êı¾İ
-        double prevSpeed = 40.796875; // Ç°Ò»ÃëµÄËÙ¶È
+        // ä»æ•°æ®é‡‡é›†é‡Œè·å–è½¦è¾†çš„è¡Œé©¶æ•°æ®
+        double prevSpeed = 40.796875; // å‰ä¸€ç§’çš„é€Ÿåº¦
         double speed = 40.19921875;
         double act = 94;
         double rotateSpeed = 1078;
         double oss = 1074.625;
-        double slope = 1.16199994087219; // ÆÂ¶È
+        double slope = 1.16199994087219; // å¡åº¦
 
-        // ³µµÄÖÊÁ¿     m=F¡Âa, F = F(Çı¶¯)-F(Ä¦²Á)-F(ÏÂ»¬)-F(¿ÕÆø)
+        // è½¦çš„è´¨é‡     m=FÃ·a, F = F(é©±åŠ¨)-F(æ‘©æ“¦)-F(ä¸‹æ»‘)-F(ç©ºæ°”)
 
-        //¼ÓËÙ¶È   a   (v-v0)¡Â?t
+        //åŠ é€Ÿåº¦   a   (v-v0)Ã·?t
         double acce = (speed - prevSpeed);
 
-        // F(Çı¶¯)    T¡ÁGr¡ÁRe¡ÁMe¡ÂRa,µ±Ç°Å¤¾Ø T=Tmax¡Áact
-        double curIg = rotateSpeed / oss; // ±äËÙÏä³İ±È  Gr  n¡Âoss
+        // F(é©±åŠ¨)    TÃ—GrÃ—ReÃ—MeÃ·Ra,å½“å‰æ‰­çŸ© T=TmaxÃ—act
+        double curIg = rotateSpeed / oss; // å˜é€Ÿç®±é½¿æ¯”  Gr  nÃ·oss
         double drivingForce = tMax * act * curIg * re * me * radius;
 
-        // ¿ÕÆø×èÁ¦ F(¿ÕÆø)   1/2¡ÁC¡ÁAd¡ÁWa¡Áv?
-        double coefficient = 0.6; // ¿ÕÆø×èÁ¦ÏµÊı, Í¨³£Çé¿öÏÂ£¬½Î³µµÄ·ç×èÏµÊıÎª0.4µ½0.6£¬¿¨³µµÄ¿ÕÆø×èÁ¦ÏµÊıÔ¼Îª0.6µ½0.8
-        double airDensity = 1.293; // ¿ÕÆøÃÜ¶È
-        double wa = 8; // Ó­·çÃæ»ı
-        double airResistance = 0.5 * speed * speed * coefficient * airDensity * wa; // ¿ÕÆø×èÁ¦
+        // ç©ºæ°”é˜»åŠ› F(ç©ºæ°”)   1/2Ã—CÃ—AdÃ—WaÃ—v?
+        double coefficient = 0.6; // ç©ºæ°”é˜»åŠ›ç³»æ•°, é€šå¸¸æƒ…å†µä¸‹ï¼Œè½¿è½¦çš„é£é˜»ç³»æ•°ä¸º0.4åˆ°0.6ï¼Œå¡è½¦çš„ç©ºæ°”é˜»åŠ›ç³»æ•°çº¦ä¸º0.6åˆ°0.8
+        double airDensity = 1.293; // ç©ºæ°”å¯†åº¦
+        double wa = 8; // è¿é£é¢ç§¯
+        double airResistance = 0.5 * speed * speed * coefficient * airDensity * wa; // ç©ºæ°”é˜»åŠ›
 
-        // Ä¦²ÁÁ¦  F(Ä¦²Á)   ¦Ì¡Ám¡Ág¡Á[1¡Â¡Ì(1+s?)], ¼ÆËãm*gÖ®ÍâµÄ²ÎÊı¦Ì¡Á[1¡Â¡Ì(1+s?)]
+        // æ‘©æ“¦åŠ›  F(æ‘©æ“¦)   Î¼Ã—mÃ—gÃ—[1Ã·âˆš(1+s?)], è®¡ç®—m*gä¹‹å¤–çš„å‚æ•°Î¼Ã—[1Ã·âˆš(1+s?)]
         double paramA = 0.6 * (1 / Math.sqrt(1+ slope * slope));
-        //ÏÂ»¬Á¦   F(ÏÂ»¬)   m¡Ág¡Á[s¡Â¡Ì(1+s?)] , ¼ÆËãm*gÖ®ÍâµÄ²ÎÊı[s¡Â¡Ì(1+s?)]
+        //ä¸‹æ»‘åŠ›   F(ä¸‹æ»‘)   mÃ—gÃ—[sÃ·âˆš(1+s?)] , è®¡ç®—m*gä¹‹å¤–çš„å‚æ•°[sÃ·âˆš(1+s?)]
         double paramB = slope / Math.sqrt(1 + slope * slope);
 
         double weight = (drivingForce - airResistance) / (acce + gravityAcce * (paramA + paramB));
-        Toast.makeText(PatternMatchTest.this, "¼ÆËã³µÁ¾ÖÊÁ¿=" + weight, Toast.LENGTH_LONG).show();
+        Toast.makeText(PatternMatchTest.this, "è®¡ç®—è½¦è¾†è´¨é‡=" + weight, Toast.LENGTH_LONG).show();
     }
 
 }

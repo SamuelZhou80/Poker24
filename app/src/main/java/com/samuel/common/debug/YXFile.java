@@ -1,7 +1,3 @@
-/**
- * Copyright (C) 2012 XiaMen Yaxon NetWorks Co.,LTD.
- */
-
 package com.samuel.common.debug;
 
 import java.io.BufferedWriter;
@@ -18,24 +14,24 @@ import com.samuel.common.worklog.WorklogManage;
 import com.samuel.main.Constant;
 
 /**
- * ±£´æÈÕÖ¾ĞÅÏ¢
+ * ä¿å­˜æ—¥å¿—ä¿¡æ¯
  * 
- * @author zzh 2012.11.15 ´´½¨<br>
+ * @author zzh 2012.11.15 åˆ›å»º<br>
  * 
  */
 public class YXFile {
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      */
     private YXFile() {
 
     }
 
     /**
-     * ±£´æ´íÎóĞÅÏ¢µ½ÎÄ¼şÖĞ(Ã¿¸ö´íÎóÒ»¸öÎÄ¼ş)
+     * ä¿å­˜é”™è¯¯ä¿¡æ¯åˆ°æ–‡ä»¶ä¸­(æ¯ä¸ªé”™è¯¯ä¸€ä¸ªæ–‡ä»¶)
      * 
      * @param ex
-     * @return ·µ»ØÎÄ¼şÃû³Æ
+     * @return è¿”å›æ–‡ä»¶åç§°
      */
     public static String saveException(Throwable ex) {
         Writer writer = new StringWriter();
@@ -51,7 +47,7 @@ public class YXFile {
         WorklogManage.saveWorklog(WorklogManage.OPER_ERROR, 0, result, WorklogManage.RESULT_ERROR);
         try {
             long timestamp = System.currentTimeMillis();
-            DateFormat mFormatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");// ÓÃÓÚ¸ñÊ½»¯ÈÕÆÚ,×÷ÎªÈÕÖ¾ÎÄ¼şÃûµÄÒ»²¿·Ö
+            DateFormat mFormatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");// ç”¨äºæ ¼å¼åŒ–æ—¥æœŸ,ä½œä¸ºæ—¥å¿—æ–‡ä»¶åçš„ä¸€éƒ¨åˆ†
             String time = mFormatter.format(new Date());
             String fileName = "crash-" + time + "-" + timestamp + ".log";
 
@@ -61,7 +57,7 @@ public class YXFile {
             } else {
                 File[] fileList = dir.listFiles();
                 if (fileList.length > 100) {
-                    // ·ÀÖ¹ÎÄ¼ş¹ı¶à,Æô¶¯É¾³ı
+                    // é˜²æ­¢æ–‡ä»¶è¿‡å¤š,å¯åŠ¨åˆ é™¤
                     for (int i = 0; i < 100; i++) {
                         File file = fileList[i];
                         file.delete();

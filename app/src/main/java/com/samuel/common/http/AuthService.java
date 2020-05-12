@@ -10,55 +10,55 @@ import java.util.Map;
 import org.json.JSONObject;
 
 /**
- * »ñÈ¡tokenÀà
+ * è·å–tokenç±»
  */
 public class AuthService {
 
     /**
-     * »ñÈ¡È¨ÏŞtoken
-     * @return ·µ»ØÊ¾Àı£º
+     * è·å–æƒé™token
+     * @return è¿”å›ç¤ºä¾‹ï¼š
      * {
      * "access_token": "24.460da4889caad24cccdb1fea17221975.2592000.1491995545.282335-1234567",
      * "expires_in": 2592000
      * }
      */
     public static String getAuth() {
-        // ¹ÙÍø»ñÈ¡µÄ API Key ¸üĞÂÎªÄã×¢²áµÄ
+        // å®˜ç½‘è·å–çš„ API Key æ›´æ–°ä¸ºä½ æ³¨å†Œçš„
         String clientId = "5dAF7HeH6DS1jjAIYXbtDkyn";
-        // ¹ÙÍø»ñÈ¡µÄ Secret Key ¸üĞÂÎªÄã×¢²áµÄ
+        // å®˜ç½‘è·å–çš„ Secret Key æ›´æ–°ä¸ºä½ æ³¨å†Œçš„
         String clientSecret = "ugogs85xL1ycDWT7meT6rLKlE9b1BA9X";
         return getAuth(clientId, clientSecret);
     }
 
     /**
-     * »ñÈ¡API·ÃÎÊtoken, ¸ÃtokenÓĞÒ»¶¨µÄÓĞĞ§ÆÚ, ĞèÒª×ÔĞĞ¹ÜÀí, µ±Ê§Ğ§Ê±ĞèÖØĞÂ»ñÈ¡.
-     * @param ak °Ù¶ÈÔÆ¹ÙÍø»ñÈ¡µÄ API Key
-     * @param sk °Ù¶ÈÔÆ¹ÙÍø»ñÈ¡µÄ Secret Key
-     * @return assess_token ×Ö·û´®, ·ÃÎÊÁîÅÆ»·
+     * è·å–APIè®¿é—®token, è¯¥tokenæœ‰ä¸€å®šçš„æœ‰æ•ˆæœŸ, éœ€è¦è‡ªè¡Œç®¡ç†, å½“å¤±æ•ˆæ—¶éœ€é‡æ–°è·å–.
+     * @param ak ç™¾åº¦äº‘å®˜ç½‘è·å–çš„ API Key
+     * @param sk ç™¾åº¦äº‘å®˜ç½‘è·å–çš„ Secret Key
+     * @return assess_token å­—ç¬¦ä¸², è®¿é—®ä»¤ç‰Œç¯
      */
     public static String getAuth(String ak, String sk) {
-        // »ñÈ¡tokenµØÖ·
+        // è·å–tokenåœ°å€
         String authHost = "https://aip.baidubce.com/oauth/2.0/token?";
         String getAccessTokenUrl = authHost
-                // 1. grant_typeÎª¹Ì¶¨²ÎÊı
+                // 1. grant_typeä¸ºå›ºå®šå‚æ•°
                 + "grant_type=client_credentials"
-                // 2. ¹ÙÍø»ñÈ¡µÄ API Key
+                // 2. å®˜ç½‘è·å–çš„ API Key
                 + "&client_id=" + ak
-                // 3. ¹ÙÍø»ñÈ¡µÄ Secret Key
+                // 3. å®˜ç½‘è·å–çš„ Secret Key
                 + "&client_secret=" + sk;
         try {
             URL realUrl = new URL(getAccessTokenUrl);
-            // ´ò¿ªºÍURLÖ®¼äµÄÁ¬½Ó
+            // æ‰“å¼€å’ŒURLä¹‹é—´çš„è¿æ¥
             HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
-            // »ñÈ¡ËùÓĞÏìÓ¦Í·×Ö¶Î
+            // è·å–æ‰€æœ‰å“åº”å¤´å­—æ®µ
             Map<String, List<String>> map = connection.getHeaderFields();
-            // ±éÀúËùÓĞµÄÏìÓ¦Í·×Ö¶Î
+            // éå†æ‰€æœ‰çš„å“åº”å¤´å­—æ®µ
             for (String key : map.keySet()) {
                 System.err.println(key + "--->" + map.get(key));
             }
-            // ¶¨Òå BufferedReaderÊäÈëÁ÷À´¶ÁÈ¡URLµÄÏìÓ¦
+            // å®šä¹‰ BufferedReaderè¾“å…¥æµæ¥è¯»å–URLçš„å“åº”
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String result = "";
             String line;
@@ -66,12 +66,12 @@ public class AuthService {
                 result += line;
             }
 
-            // ·µ»Ø½á¹ûÊ¾Àı
+            // è¿”å›ç»“æœç¤ºä¾‹
             JSONObject jsonObject = new JSONObject(result);
             String access_token = jsonObject.getString("access_token");
             return access_token;
         } catch (Exception e) {
-            System.err.printf("»ñÈ¡tokenÊ§°Ü£¡");
+            System.err.printf("è·å–tokenå¤±è´¥ï¼");
             e.printStackTrace(System.err);
         }
         return null;

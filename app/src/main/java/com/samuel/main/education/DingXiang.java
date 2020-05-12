@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.litepal.crud.DataSupport;
 
 /**
- * ¶¨ÏòÉú·ÖÊı
+ * å®šå‘ç”Ÿåˆ†æ•°
  * 
  * @author Administrator
  *
@@ -15,15 +15,15 @@ public class DingXiang extends DataSupport implements Serializable {
     /**  */
     private static final long serialVersionUID = 1L;
 
-    /** ³õÖĞÑ§Ğ£Ãû³Æ */
+    /** åˆä¸­å­¦æ ¡åç§° */
     private String schoolName = "";
-    /** Â¼È¡Ñ§Ğ£Ãû³Æ */
+    /** å½•å–å­¦æ ¡åç§° */
     private String recruitSchoolName = "";
-    /** ·ÖÅäÃû¶î */
+    /** åˆ†é…åé¢ */
     private int allocationNum = 0;
-    /** Â¼È¡Ãû¶î */
+    /** å½•å–åé¢ */
     private int recruitNum = 0;
-    /** ×îµÍ·Ö */
+    /** æœ€ä½åˆ† */
     private int minScore = 0;
 
     public String getSchoolName() {

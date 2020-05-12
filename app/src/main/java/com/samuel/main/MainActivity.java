@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("Ğ¡¹¤¾ß");
+        textViewTitle.setText("å°å·¥å…·");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
 
         Button btnRight = (Button) findViewById(R.id.common_btn_right);
         // btnRight.setVisibility(View.GONE);
-        btnRight.setText("¿½±´Êı¾İ¿â");
+        btnRight.setText("æ‹·è´æ•°æ®åº“");
         btnRight.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -92,26 +92,26 @@ public class MainActivity extends Activity {
 
     private void initList() {
         mToolList = new ArrayList<Modules>();
-        mToolList.add(new Modules("´û¿î¼ÆËãÆ÷", CalcLoanActivity.class));
-        mToolList.add(new Modules("Í¶×ÊÊÕÒæ¼ÆËã", CalcInvestActivity.class)); // Í¶×Ê¼ÆËãÆ÷
-        mToolList.add(new Modules("24µãÓÎÏ·", PlayPoker24.class));
-//        mToolList.add(new Modules("ºº×Ö±àÂë¹¤¾ß", GBKToUTFActivity.class));
-//        mToolList.add(new Modules("Í¼ÏñÊ¶±ğ", PhotoDetectActivity.class));
-        mToolList.add(new Modules("ĞÕÃûÍ³¼Æ", SearchNameActivity.class));
-        mToolList.add(new Modules("ÅäËÙ¼ÆËãÆ÷", PacerCalculate.class));
-        mToolList.add(new Modules("ÕıÔò±í´ïÊ½", PatternMatchTest.class));
+        mToolList.add(new Modules("è´·æ¬¾è®¡ç®—å™¨", MyLoanActivity.class)); // CalcLoanActivity.class));
+        mToolList.add(new Modules("æŠ•èµ„æ”¶ç›Šè®¡ç®—", CalcInvestActivity.class)); // æŠ•èµ„è®¡ç®—å™¨
+        mToolList.add(new Modules("24ç‚¹æ¸¸æˆ", PlayPoker24.class));
+//        mToolList.add(new Modules("æ±‰å­—ç¼–ç å·¥å…·", GBKToUTFActivity.class));
+//        mToolList.add(new Modules("å›¾åƒè¯†åˆ«", PhotoDetectActivity.class));
+        mToolList.add(new Modules("å§“åç»Ÿè®¡", SearchNameActivity.class));
+        mToolList.add(new Modules("é…é€Ÿè®¡ç®—å™¨", PacerCalculate.class));
+        mToolList.add(new Modules("æ­£åˆ™è¡¨è¾¾å¼", PatternMatchTest.class));
     }
 
     private void copyDbFile() {
         String destPath = Constant.CRM_DIR + File.separator;
         String srcDataPath = Constant.SYS_DIR + File.separator + "databases"
                 + File.separator + Constant.DATABASE_NAME;
-        /* Ä¿±êÊı¾İ¿âÎÄ¼şÂ·¾¶ */
+        /* ç›®æ ‡æ•°æ®åº“æ–‡ä»¶è·¯å¾„ */
         String destDataPath = destPath + Constant.DATABASE_NAME;
-        /* ¿½±´Êı¾İ¿âÎÄ¼ş */
+        /* æ‹·è´æ•°æ®åº“æ–‡ä»¶ */
         try {
             if (FileManager.copyFile(srcDataPath, destDataPath)) {
-                Toast.makeText(MainActivity.this, "Êı¾İ¿â¿½±´³É¹¦", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "æ•°æ®åº“æ‹·è´æˆåŠŸ", Toast.LENGTH_LONG).show();
             // } else {
             }
         } catch (IOException e) {

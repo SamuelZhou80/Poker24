@@ -8,53 +8,53 @@ import com.samuel.main.GpsUtils;
 
 /**
  * 
- * ÈÕÖ¾¹ÜÀí, °üÀ¨ĞÂÔöºÍÉ¾³ı¹ıÆÚÊı¾İµÄ½Ó¿Ú
+ * æ—¥å¿—ç®¡ç†, åŒ…æ‹¬æ–°å¢å’Œåˆ é™¤è¿‡æœŸæ•°æ®çš„æ¥å£
  * 
  * @author Samuel Zhou
  * 
  */
 public class WorklogManage {
-    /** Ä¬ÈÏµÄ²Ù×÷ÀàĞÍ */
+    /** é»˜è®¤çš„æ“ä½œç±»å‹ */
     public static final int OPER_RUN = 0;
-    /** µÇÂ¼²Ù×÷ */
+    /** ç™»å½•æ“ä½œ */
     public static final int OPER_LOGIN = 1;
-    /** ×¢Ïú²Ù×÷ */
+    /** æ³¨é”€æ“ä½œ */
     public static final int OPER_LOGOUT = 2;
-    /** ¿ªÊ¼ */
+    /** å¼€å§‹ */
     public static final int OPER_START = 3;
-    /** Íê³É */
+    /** å®Œæˆ */
     public static final int OPER_FINISH = 4;
-    /** ·¢ËÍ²Ù×÷ */
+    /** å‘é€æ“ä½œ */
     public static final int OPER_SEND = 5;
-    /** Ó¦´ğ²Ù×÷ */
+    /** åº”ç­”æ“ä½œ */
     public static final int OPER_ACK = 6;
-    /** ´íÎó¼ÇÂ¼ */
+    /** é”™è¯¯è®°å½• */
     public static final int OPER_ERROR = 7;
 
-    /** ´ıÓ¦´ğ */
+    /** å¾…åº”ç­” */
     public static final int RESULT_WAIT = 0;
-    /** ³É¹¦ */
+    /** æˆåŠŸ */
     public static final int RESULT_SUCCESS = 1;
-    /** Ó¦´ğ´íÎó */
+    /** åº”ç­”é”™è¯¯ */
     public static final int RESULT_ERROR = 2;
-    /** ³¬Ê±ÎŞÓ¦´ğ */
+    /** è¶…æ—¶æ— åº”ç­” */
     public static final int RESULT_OVERTIME = 3;
-    /** ¿Õ¼ä²»×ã */
+    /** ç©ºé—´ä¸è¶³ */
     public static final int RESULT_NO_SPACE = 4;
-    /** ÖØ¸´ÉÏ´« */
+    /** é‡å¤ä¸Šä¼  */
     public static final int RESULT_REPEAT = 5;
 
-    /** ¶¨ÒåÈÕÖ¾ÎÄ¼ş´óĞ¡µÄ×î´óÖµ: 200K×Ö½Ú */
+    /** å®šä¹‰æ—¥å¿—æ–‡ä»¶å¤§å°çš„æœ€å¤§å€¼: 200Kå­—èŠ‚ */
     private static final int CRM_LOG_SIZE_MAX = (500 * 1024);
 
     /**
-     * »ñÈ¡Ä³Ò»ÌìµÄÖ¸¶¨°üµÄÈÕÖ¾¼ÇÂ¼¶ÔÏó
+     * è·å–æŸä¸€å¤©çš„æŒ‡å®šåŒ…çš„æ—¥å¿—è®°å½•å¯¹è±¡
      * 
      * @param date
-     *            ÈÕÖ¾µÄÈÕÆÚ
+     *            æ—¥å¿—çš„æ—¥æœŸ
      * @param curPack
-     *            µ±Ç°°üĞòºÅ, ´Ó1¿ªÊ¼
-     * @return ÈÕÖ¾¼ÇÂ¼¶ÔÏó
+     *            å½“å‰åŒ…åºå·, ä»1å¼€å§‹
+     * @return æ—¥å¿—è®°å½•å¯¹è±¡
      */
     public static WorklogForm getWorklog(String date, int curPack) {
         int filesize, totalPack, offset, length;
@@ -65,7 +65,7 @@ public class WorklogManage {
         worklog.setTotalPack(1);
         worklog.setCurPack(1);
         worklog.setLogDate(date);
-        worklog.setLog("ÈÕÖ¾Îª¿Õ");
+        worklog.setLog("æ—¥å¿—ä¸ºç©º");
         try {
             dir = new File(Constant.FILE_LOG_DIR);
             if (!dir.exists()) {
@@ -79,7 +79,7 @@ public class WorklogManage {
             if (curPack <= 1) {
                 curPack = 1;
             }
-            // ¼ÆËã×Ü°üÊıºÍ±¾´ÎÉÏ´«ÈÕÖ¾µÄ³¤¶È
+            // è®¡ç®—æ€»åŒ…æ•°å’Œæœ¬æ¬¡ä¸Šä¼ æ—¥å¿—çš„é•¿åº¦
             offset = (curPack - 1) * WorklogForm.LOG_PACKET_SIZE;
             totalPack = filesize / WorklogForm.LOG_PACKET_SIZE;
             if (filesize % WorklogForm.LOG_PACKET_SIZE != 0) {
@@ -102,22 +102,22 @@ public class WorklogManage {
     }
 
     /**
-     * ĞÂÔöÒ»Ìõ¹¤×÷ÈÕÖ¾µ½½ñÌìµÄÈÕÖ¾ÎÄ¼şÖĞ
+     * æ–°å¢ä¸€æ¡å·¥ä½œæ—¥å¿—åˆ°ä»Šå¤©çš„æ—¥å¿—æ–‡ä»¶ä¸­
      * 
      * @param operType
-     *            ²Ù×÷ÀàĞÍ, 1: µÇÂ¼; 2: µÇ³ö; 3: ¿ªÊ¼; 4: Íê³É; 5: ¿ªÊ¼·¢ËÍ; 6: Ó¦´ğ; 7: ´íÎó
+     *            æ“ä½œç±»å‹, 1: ç™»å½•; 2: ç™»å‡º; 3: å¼€å§‹; 4: å®Œæˆ; 5: å¼€å§‹å‘é€; 6: åº”ç­”; 7: é”™è¯¯
      * @param id
-     *            Ëù²Ù×÷µÄÊı¾İµÄID, Í¨³£ÊÇÃÅµêID
+     *            æ‰€æ“ä½œçš„æ•°æ®çš„ID, é€šå¸¸æ˜¯é—¨åº—ID
      * @param text
-     *            ÌáÊ¾ÎÄ±¾
+     *            æç¤ºæ–‡æœ¬
      * @param result
-     *            ´¦Àí½á¹û, 0: ´ıÓ¦´ğ; 1: Ó¦´ğ³É¹¦; 2: ´íÎó; 3: ³¬Ê±
-     * @return ±£´æ³É¹¦»òÊÇÊ§°Ü
+     *            å¤„ç†ç»“æœ, 0: å¾…åº”ç­”; 1: åº”ç­”æˆåŠŸ; 2: é”™è¯¯; 3: è¶…æ—¶
+     * @return ä¿å­˜æˆåŠŸæˆ–æ˜¯å¤±è´¥
      */
     public static boolean saveWorklog(int operType, int id, String text, int result) {
         String logStr, timeStr;
         String operStr[] = { "Run", "Login", "Logout", "Start", "Finish", "Send", "Ack", "Error" };
-        String resultStr[] = { "´ıÓ¦´ğ", "³É¹¦", "´íÎó", "³¬Ê±", "¿Õ¼ä²»×ã", "ÖØ¸´" };
+        String resultStr[] = { "å¾…åº”ç­”", "æˆåŠŸ", "é”™è¯¯", "è¶…æ—¶", "ç©ºé—´ä¸è¶³", "é‡å¤" };
         File dir;
 
         if (operType < 0 || operType > 7) {
@@ -129,7 +129,7 @@ public class WorklogManage {
         if (text == null) {
             text = "";
         }
-        // ×éÖ¡ÈÕÖ¾×Ö·û´®
+        // ç»„å¸§æ—¥å¿—å­—ç¬¦ä¸²
         timeStr = GpsUtils.getDTime();
         logStr = String.format("%s [%s %d %s %s]\r\n",
                 timeStr, operStr[operType], id, text, resultStr[result]);
@@ -150,7 +150,7 @@ public class WorklogManage {
     }
 
     /**
-     * ³õÊ¼»¯½Ó¿Ú, ÓÃÓÚÉ¾³ı¹ıÆÚµÄÈÕÖ¾ÎÄ¼ş, ³ÌĞòÔËĞĞÖÜÆÚÄÚµ÷ÓÃÒ»´Î¾Í¹»ÁË
+     * åˆå§‹åŒ–æ¥å£, ç”¨äºåˆ é™¤è¿‡æœŸçš„æ—¥å¿—æ–‡ä»¶, ç¨‹åºè¿è¡Œå‘¨æœŸå†…è°ƒç”¨ä¸€æ¬¡å°±å¤Ÿäº†
      */
     public static void init() {
         File dir, file;
@@ -172,11 +172,11 @@ public class WorklogManage {
     }
 
     /**
-     * ¸ù¾İÎÄ¼şÃûÖĞµÄÈÕÆÚÅĞ¶ÏÊÇ·ñÒÑ¹ıÆÚ, µ±Ç°ÓĞĞ§ÆÚÉè¶¨Îª100ÌìÖ®ÄÚ
+     * æ ¹æ®æ–‡ä»¶åä¸­çš„æ—¥æœŸåˆ¤æ–­æ˜¯å¦å·²è¿‡æœŸ, å½“å‰æœ‰æ•ˆæœŸè®¾å®šä¸º100å¤©ä¹‹å†…
      * 
      * @param filename
-     *            ÈÕÖ¾ÎÄ¼şÃû
-     * @return true: ÈÕÖ¾ÎÄ¼şÔÚÓĞĞ§ÆÚÄÚ; false: ÎÄ¼şÒÑ¹ıÆÚ
+     *            æ—¥å¿—æ–‡ä»¶å
+     * @return true: æ—¥å¿—æ–‡ä»¶åœ¨æœ‰æ•ˆæœŸå†…; false: æ–‡ä»¶å·²è¿‡æœŸ
      */
     private static boolean isLogFileValid(String filename) {
         int pos, dayOffset1, dayOffset2;

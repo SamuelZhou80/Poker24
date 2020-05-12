@@ -7,13 +7,13 @@ import java.util.UUID;
 
 public class LoanInfo extends DataSupport implements Serializable {
     private String loanId = "";
-    /** ¿ªÊ¼ÈÕÆÚ */
+    /** å¼€å§‹æ—¥æœŸ */
     private String startDate = "";
-    /** ×Ü½ğ¶î */
+    /** æ€»é‡‘é¢ */
     private int amount;
-    /** ´û¿îÄêÏŞ */
+    /** è´·æ¬¾å¹´é™ */
     private int years;
-    /** ´û¿îÀûÂÊ(ÖµÎª°Ù·Ö±È, Èç6.6%) */
+    /** è´·æ¬¾åˆ©ç‡(å€¼ä¸ºç™¾åˆ†æ¯”, å¦‚6.6%) */
     private double rate;
 
     public LoanInfo() {

@@ -48,23 +48,23 @@ public class TestGpsActivity extends Activity {
 //        int longitudeHour = (int) gpsLonD;
 //        double tmpLongitudeHour = gpsLonD - longitudeHour;
 //        double tmpLongitudeMinue = tmpLongitudeHour * 60;
-//        int longitudeMinue = (int) tmpLongitudeMinue;// æ≠∂»∑÷
+//        int longitudeMinue = (int) tmpLongitudeMinue;// ÁªèÂ∫¶ÂàÜ
 //        double tmpLongitudeSecond = tmpLongitudeMinue - longitudeMinue;
-//        int longitudeSecond = (int) (tmpLongitudeSecond * 60);// æ≠∂»√Î
+//        int longitudeSecond = (int) (tmpLongitudeSecond * 60);// ÁªèÂ∫¶Áßí
 //        double floatSecondLon = tmpLongitudeSecond * 60 - longitudeSecond;
 //        int minSecond = (int) (floatSecondLon * 10);
 //
 //        int latitudeHour = (int) gpsLatD;
 //        double tmpLatitudeHour = gpsLatD - latitudeHour;
 //        double tmpLatitudeMinue = tmpLatitudeHour * 60;
-//        int latitudeMinue = (int) tmpLatitudeMinue;// Œ≥∂»∑÷
+//        int latitudeMinue = (int) tmpLatitudeMinue;// Á∫¨Â∫¶ÂàÜ
 //        double tmpLatitudeSecond = tmpLatitudeMinue - latitudeMinue;
-//        int latitudeSecond = (int) (tmpLatitudeSecond * 60);// Œ≥∂»√Î
+//        int latitudeSecond = (int) (tmpLatitudeSecond * 60);// Á∫¨Â∫¶Áßí
 //        double floatSecondLat = tmpLatitudeSecond * 60 - latitudeSecond;
 //        int minSecondLat = (int) (floatSecondLat * 10);
 //
 //        TextView tvGps = (TextView) findViewById(R.id.text_gps);
-//        String gpsStr = String.format("GPS: %d, æ≠∂»: %d(%d∂»%d∑÷%d.%d√Î), Œ≥∂»: %d(%d∂»%d∑÷%d.%d√Î)",
+//        String gpsStr = String.format("GPS: %d, ÁªèÂ∫¶: %d(%dÂ∫¶%dÂàÜ%d.%dÁßí), Á∫¨Â∫¶: %d(%dÂ∫¶%dÂàÜ%d.%dÁßí)",
 //                status, gpsLon, longitudeHour, longitudeMinue, longitudeSecond, minSecond,
 //                gpsLat, latitudeHour, latitudeMinue, latitudeSecond, minSecondLat);
 //        tvGps.setText(gpsStr);
@@ -82,29 +82,29 @@ public class TestGpsActivity extends Activity {
 //        int longitudeHour = (int) baiduLonD;
 //        double tmpLongitudeHour = baiduLonD - longitudeHour;
 //        double tmpLongitudeMinue = tmpLongitudeHour * 60;
-//        int longitudeMinue = (int) tmpLongitudeMinue;// æ≠∂»∑÷
+//        int longitudeMinue = (int) tmpLongitudeMinue;// ÁªèÂ∫¶ÂàÜ
 //        double tmpLongitudeSecond = tmpLongitudeMinue - longitudeMinue;
-//        int longitudeSecond = (int) (tmpLongitudeSecond * 60);// æ≠∂»√Î
+//        int longitudeSecond = (int) (tmpLongitudeSecond * 60);// ÁªèÂ∫¶Áßí
 //        double floatSecondLon = tmpLongitudeSecond * 60 - longitudeSecond;
 //        int minSecond = (int) (floatSecondLon * 10);
 //
 //        int latitudeHour = (int) baiduLatD;
 //        double tmpLatitudeHour = baiduLatD - latitudeHour;
 //        double tmpLatitudeMinue = tmpLatitudeHour * 60;
-//        int latitudeMinue = (int) tmpLatitudeMinue;// Œ≥∂»∑÷
+//        int latitudeMinue = (int) tmpLatitudeMinue;// Á∫¨Â∫¶ÂàÜ
 //        double tmpLatitudeSecond = tmpLatitudeMinue - latitudeMinue;
-//        int latitudeSecond = (int) (tmpLatitudeSecond * 60);// Œ≥∂»√Î
+//        int latitudeSecond = (int) (tmpLatitudeSecond * 60);// Á∫¨Â∫¶Áßí
 //        double floatSecondLat = tmpLatitudeSecond * 60 - latitudeSecond;
 //        int minSecondLat = (int) (floatSecondLat * 10);
 //
 //        TextView tvBaidu = (TextView) findViewById(R.id.text_baidu);
-//        String baiduStr = String.format("Baidu: %d, æ≠∂»: %d(%d∂»%d∑÷%d.%d√Î), Œ≥∂»: %d(%d∂»%d∑÷%d.%d√Î)",
+//        String baiduStr = String.format("Baidu: %d, ÁªèÂ∫¶: %d(%dÂ∫¶%dÂàÜ%d.%dÁßí), Á∫¨Â∫¶: %d(%dÂ∫¶%dÂàÜ%d.%dÁßí)",
 //                bdStatus, bdLon, longitudeHour, longitudeMinue, longitudeSecond, minSecond,
 //                bdLat, latitudeHour, latitudeMinue, latitudeSecond, minSecondLat);
 //        tvBaidu.setText(baiduStr);
 //
 ////        TextView tvBaidu = (TextView) findViewById(R.id.text_baidu);
-////        String baiduStr = String.format("Baidu: %d, æ≠∂»: %d(%3.6f), Œ≥∂»: %d()", bdStatus, bdLon, baiduLonD, bdLat);
+////        String baiduStr = String.format("Baidu: %d, ÁªèÂ∫¶: %d(%3.6f), Á∫¨Â∫¶: %d()", bdStatus, bdLon, baiduLonD, bdLat);
 ////        tvBaidu.setText(baiduStr);
 //    }
 }

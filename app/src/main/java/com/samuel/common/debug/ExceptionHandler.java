@@ -5,17 +5,17 @@
 package com.samuel.common.debug;
 
 /**
- * Òì³£´¦ÀíÆ÷
+ * å¼‚å¸¸å¤„ç†å™¨
  * 
- * @author ³Â´Ó»ª V1.00 2011.05.20 ´´½¨<br>
+ * @author é™ˆä»å V1.00 2011.05.20 åˆ›å»º<br>
  *
  */
 public class ExceptionHandler {
     /**
-     * ´¦ÀíÔËĞĞÒì³£
+     * å¤„ç†è¿è¡Œå¼‚å¸¸
      * 
      * @param e
-     *            Òì³£
+     *            å¼‚å¸¸
      */
     public static void handle(RuntimeException e) {
         throw e;

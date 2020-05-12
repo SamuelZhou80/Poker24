@@ -19,7 +19,7 @@ import com.samuel.mytools.R;
 import java.util.Locale;
 
 /**
- * ĞÂÔö´û¿î½çÃæ
+ * æ–°å¢è´·æ¬¾ç•Œé¢
  * 
  * @author Administrator
  *
@@ -68,7 +68,7 @@ public class AddLoanActivity extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("ĞÂÔö´û¿î");
+        textViewTitle.setText("æ–°å¢è´·æ¬¾");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -79,7 +79,7 @@ public class AddLoanActivity extends Activity {
         });
 
         Button btnRight = (Button) findViewById(R.id.common_btn_right);
-        btnRight.setText("±£´æ");
+        btnRight.setText("ä¿å­˜");
         btnRight.setOnClickListener(calcListener);
     }
 
@@ -87,41 +87,41 @@ public class AddLoanActivity extends Activity {
 
         @Override
         public void onClick(View v) {
-            // ÊÕÆğÈí¼üÅÌ
+            // æ”¶èµ·è½¯é”®ç›˜
             InputMethodManager imManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
             if (imManager != null) {
                 imManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }
 
-            // ¶¨Í¶½ğ¶î
+            // å®šæŠ•é‡‘é¢
             EditText editMoney = (EditText) findViewById(R.id.edit_money);
-            // ÆÚÊı
+            // æœŸæ•°
             EditText editYear = (EditText) findViewById(R.id.edit_year);
-            // »Ø±¨ÂÊ
+            // å›æŠ¥ç‡
             EditText editRate = (EditText) findViewById(R.id.edit_rate);
             int initMoney = GpsUtils.strToInt(editMoney.getText().toString());
             int yearNum = GpsUtils.strToInt(editYear.getText().toString());
             double rate = GpsUtils.strToFloat(editRate.getText().toString());
             if (initMoney <= 0 || yearNum <= 0 || rate <= 0) {
-                Toast.makeText(AddLoanActivity.this, "ÇëÊäÈë´û¿î½ğ¶î¡¢ÄêÏŞ¡¢ÀûÂÊµÈ!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddLoanActivity.this, "è¯·è¾“å…¥è´·æ¬¾é‡‘é¢ã€å¹´é™ã€åˆ©ç‡ç­‰!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // ÏÔÊ¾¸ÅÒªĞÅÏ¢
+            // æ˜¾ç¤ºæ¦‚è¦ä¿¡æ¯
             TextView tvSummary = (TextView) findViewById(R.id.text_summary_result);
             double[] summary = calcEqualPrincipalAndInterest(initMoney, yearNum * 12, rate);
             String summaryStr = "";
-            summaryStr += String.format(Locale.CHINA, " ÔÂ¹©: %.2fÔª,", summary[2]);// Ã¿ÔÂ»¹¿î½ğ¶î
-            summaryStr += String.format(Locale.CHINA, " Äê¹©: %.2fÔª\n", summary[2] * 12);// Ã¿Äê»¹¿î½ğ¶î
-            summaryStr += String.format(Locale.CHINA, " ×Ü»¹¿î¶î: %.1fÔª,", summary[0]);// »¹¿î×Ü¶î
-            summaryStr += String.format(Locale.CHINA, " ÀûÏ¢ºÏ¼Æ: %.1fÔª", summary[1]);// »¹¿î×ÜÀûÏ¢
+            summaryStr += String.format(Locale.CHINA, " æœˆä¾›: %.2få…ƒ,", summary[2]);// æ¯æœˆè¿˜æ¬¾é‡‘é¢
+            summaryStr += String.format(Locale.CHINA, " å¹´ä¾›: %.2få…ƒ\n", summary[2] * 12);// æ¯å¹´è¿˜æ¬¾é‡‘é¢
+            summaryStr += String.format(Locale.CHINA, " æ€»è¿˜æ¬¾é¢: %.1få…ƒ,", summary[0]);// è¿˜æ¬¾æ€»é¢
+            summaryStr += String.format(Locale.CHINA, " åˆ©æ¯åˆè®¡: %.1få…ƒ", summary[1]);// è¿˜æ¬¾æ€»åˆ©æ¯
             tvSummary.setText(summaryStr);
             tvSummary.setVisibility(View.VISIBLE);
 
 
             String dateStr = mTextDate.getText().toString();
-            if (dateStr.startsWith("¿ªÊ¼")) {
-                Toast.makeText(AddLoanActivity.this, "ÇëÑ¡Ôñ¿ªÊ¼ÈÕÆÚ", Toast.LENGTH_SHORT).show();
+            if (dateStr.startsWith("å¼€å§‹")) {
+                Toast.makeText(AddLoanActivity.this, "è¯·é€‰æ‹©å¼€å§‹æ—¥æœŸ", Toast.LENGTH_SHORT).show();
                 return;
             }
             LoanInfo loan = new LoanInfo(dateStr, initMoney, yearNum, rate);
@@ -132,23 +132,23 @@ public class AddLoanActivity extends Activity {
     };
 
     /**
-     * ¼ÆËãµÈ¶î±¾Ï¢»¹¿î
+     * è®¡ç®—ç­‰é¢æœ¬æ¯è¿˜æ¬¾
      *
      * @param principal
-     *            ´û¿î×Ü¶î
+     *            è´·æ¬¾æ€»é¢
      * @param months
-     *            ´û¿îÔÂÊı(ÄêÏŞ*12)
+     *            è´·æ¬¾æœˆæ•°(å¹´é™*12)
      * @param rate
-     *            ´û¿îÄêÀûÂÊ
-     * @return ·µ»Ø´û¿îµÄ { ×Ü»¹¿î¶î, ×ÜÀûÏ¢, ÔÂ¹© }
+     *            è´·æ¬¾å¹´åˆ©ç‡
+     * @return è¿”å›è´·æ¬¾çš„ { æ€»è¿˜æ¬¾é¢, æ€»åˆ©æ¯, æœˆä¾› }
      */
     private double[] calcEqualPrincipalAndInterest(double principal, int months, double rate) {
-        double monthRate = rate / (100 * 12);// ÔÂÀûÂÊ
-        // Ã¿ÔÂÔÂ¹©¶î=´û¿î±¾½ğ¡ÁÔÂÀûÂÊ¡Á[(1+ÔÂÀûÂÊ)^»¹¿îÔÂÊı]¡Â[(1+ÔÂÀûÂÊ)^»¹¿îÔÂÊı-1]
+        double monthRate = rate / (100 * 12);// æœˆåˆ©ç‡
+        // æ¯æœˆæœˆä¾›é¢=è´·æ¬¾æœ¬é‡‘Ã—æœˆåˆ©ç‡Ã—[(1+æœˆåˆ©ç‡)^è¿˜æ¬¾æœˆæ•°]Ã·[(1+æœˆåˆ©ç‡)^è¿˜æ¬¾æœˆæ•°-1]
         double tempValue = Math.pow((1 + monthRate), months);
-        double preLoan = (principal * monthRate * tempValue) / (tempValue - 1);// Ã¿ÔÂ»¹¿î½ğ¶î
-        double totalMoney = preLoan * months;// »¹¿î×Ü¶î
-        double interest = totalMoney - principal;// »¹¿î×ÜÀûÏ¢
+        double preLoan = (principal * monthRate * tempValue) / (tempValue - 1);// æ¯æœˆè¿˜æ¬¾é‡‘é¢
+        double totalMoney = preLoan * months;// è¿˜æ¬¾æ€»é¢
+        double interest = totalMoney - principal;// è¿˜æ¬¾æ€»åˆ©æ¯
         return new double[] { totalMoney, interest, preLoan };
     }
 
@@ -159,7 +159,7 @@ public class AddLoanActivity extends Activity {
                 mTextDate.setText(String.format(Locale.CHINA, "%04d-%02d-%02d", year, (monthOfYear + 1), dayOfMonth));
             }
         }, 2020, 1, 1);
-        dialog.setTitle("Ñ¡Ôñ¿ªÊ¼ÈÕÆÚ");
+        dialog.setTitle("é€‰æ‹©å¼€å§‹æ—¥æœŸ");
         dialog.show();
     }
 }

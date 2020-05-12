@@ -70,23 +70,23 @@ public class CornerListView extends ListView {
         case MotionEvent.ACTION_DOWN:
             int x = (int) ev.getX();
             int y = (int) ev.getY();
-            // ¸ù¾İ°´ÏÂµÄµã»ñÈ¡ÏàÓ¦µÄitemÎ»ÖÃË÷Òı
+            // æ ¹æ®æŒ‰ä¸‹çš„ç‚¹è·å–ç›¸åº”çš„itemä½ç½®ç´¢å¼•
             int itemPosition = pointToPosition(x, y);
-            // ×îºóÒ»ÏîitemµÄË÷Òı
+            // æœ€åä¸€é¡¹itemçš„ç´¢å¼•
             // int last = getAdapter().getCount() - 1;
 
             if (itemPosition != AdapterView.INVALID_POSITION) {
 
-                if (itemPosition == 0) {// µÚÒ»Ïî
-                    // Ö»ÓĞÒ»Ïî
+                if (itemPosition == 0) {// ç¬¬ä¸€é¡¹
+                    // åªæœ‰ä¸€é¡¹
                     if (itemPosition == getAdapter().getCount() - 1) {
                          setSelector(R.color.transparent);
                     } else {
                         setSelector(R.color.transparent);
                     }
-                } else if (itemPosition == getAdapter().getCount() - 1) {// ×îºóÒ»Ïî
+                } else if (itemPosition == getAdapter().getCount() - 1) {// æœ€åä¸€é¡¹
                      setSelector(R.color.transparent);
-                } else {// ÖĞ¼äÏî
+                } else {// ä¸­é—´é¡¹
                     setSelector(R.color.transparent);
                 }
 

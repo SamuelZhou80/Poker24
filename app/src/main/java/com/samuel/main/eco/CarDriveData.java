@@ -1,7 +1,7 @@
 package com.samuel.main.eco;
 
 /**
- * ³µÁ¾µÄĞĞÊ»¹¤¿öÊı¾İ
+ * è½¦è¾†çš„è¡Œé©¶å·¥å†µæ•°æ®
  * 
  * @author Administrator
  *
@@ -9,11 +9,11 @@ package com.samuel.main.eco;
 public class CarDriveData {
     private String timeStr;
     private double speed;
-    private double prevSpeed; // Ç°Ò»ÃëµÄËÙ¶È
+    private double prevSpeed; // å‰ä¸€ç§’çš„é€Ÿåº¦
     private int act;
     private int rotateSpeed;
     private double oss;
-    private double slope; // ÆÂ¶È
+    private double slope; // å¡åº¦
 
     private double weight;
 

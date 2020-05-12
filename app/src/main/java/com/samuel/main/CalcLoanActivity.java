@@ -20,7 +20,7 @@ import com.samuel.mytools.R;
 import java.util.ArrayList;
 
 /**
- * ´û¿î¼ÆËãÆ÷
+ * è´·æ¬¾è®¡ç®—å™¨
  *
  * @author Administrator
  */
@@ -68,7 +68,7 @@ public class CalcLoanActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_LOAN) {
             if (resultCode == RESULT_OK) {
-                // todo ĞÂÔöºóµÄ½çÃæË¢ĞÂ
+                // todo æ–°å¢åçš„ç•Œé¢åˆ·æ–°
                 mLoanList = LoanDB.getInstance().getLoanList();
                 mAdapter.notifyDataSetChanged();
             }
@@ -97,7 +97,7 @@ public class CalcLoanActivity extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("´û¿î¼ÆËãÆ÷");
+        textViewTitle.setText("è´·æ¬¾è®¡ç®—å™¨");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -108,7 +108,7 @@ public class CalcLoanActivity extends Activity {
         });
 
         Button btnRight = (Button) findViewById(R.id.common_btn_right);
-        btnRight.setText("¼ÆËã");
+        btnRight.setText("è®¡ç®—");
         btnRight.setVisibility(View.INVISIBLE);
     }
 

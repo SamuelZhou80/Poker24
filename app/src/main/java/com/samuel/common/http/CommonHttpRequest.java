@@ -16,16 +16,16 @@ import com.samuel.main.GpsUtils;
 public class CommonHttpRequest {
 
     /**
-     * Ö´ĞĞHttp GetÃüÁî
+     * æ‰§è¡ŒHttp Getå‘½ä»¤
      * 
      * @param hostUrl
-     *            ·şÎñÆ÷µØÖ·
-     * @return ·şÎñÆ÷Ó¦´ğÊı¾İ
+     *            æœåŠ¡å™¨åœ°å€
+     * @return æœåŠ¡å™¨åº”ç­”æ•°æ®
      */
     public static String getHttp(String hostUrl) {
         try {
             URL realUrl = new URL(hostUrl);
-            // ´ò¿ªºÍURLÖ®¼äµÄÁ¬½Ó
+            // æ‰“å¼€å’ŒURLä¹‹é—´çš„è¿æ¥
             HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
 //            connection.setRequestMethod("GET");
 //            connection.setRequestProperty("Content-Type" , "application/octet-stream");
@@ -36,18 +36,18 @@ public class CommonHttpRequest {
 //            conn.setRequestProperty("User-Agent", "UNTRUSTED/1.0");
 //            conn.setRequestProperty("Accept", "*/*");
             connection.setConnectTimeout(30 * 1000);
-            //getÇëÇóÓÃ²»µ½conn.getOutputStream()£¬ÒòÎª²ÎÊıÖ±½Ó×·¼ÓÔÚµØÖ·ºóÃæ£¬Òò´ËÄ¬ÈÏÊÇfalse¡£
-            //·ñÔò»á³öÏÖ 405´íÎó
+            //getè¯·æ±‚ç”¨ä¸åˆ°conn.getOutputStream()ï¼Œå› ä¸ºå‚æ•°ç›´æ¥è¿½åŠ åœ¨åœ°å€åé¢ï¼Œå› æ­¤é»˜è®¤æ˜¯falseã€‚
+            //å¦åˆ™ä¼šå‡ºç° 405é”™è¯¯
             connection.setDoOutput(false);
             connection.setDoInput(true);
             connection.connect();
-            // »ñÈ¡ËùÓĞÏìÓ¦Í·×Ö¶Î
+            // è·å–æ‰€æœ‰å“åº”å¤´å­—æ®µ
             Map<String, List<String>> map = connection.getHeaderFields();
-            // ±éÀúËùÓĞµÄÏìÓ¦Í·×Ö¶Î
+            // éå†æ‰€æœ‰çš„å“åº”å¤´å­—æ®µ
             for (String key : map.keySet()) {
                 System.err.println(key + "--->" + map.get(key));
             }
-            // ¶¨Òå BufferedReaderÊäÈëÁ÷À´¶ÁÈ¡URLµÄÏìÓ¦
+            // å®šä¹‰ BufferedReaderè¾“å…¥æµæ¥è¯»å–URLçš„å“åº”
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String result = "";
             String line;
@@ -55,12 +55,12 @@ public class CommonHttpRequest {
                 result += line;
             }
 
-            // ·µ»Ø½á¹ûÊ¾Àı
+            // è¿”å›ç»“æœç¤ºä¾‹
 //            JSONObject jsonObject = new JSONObject(result);
 //            String access_token = jsonObject.getString("access_token");
             return result;
         } catch (Exception e) {
-            System.err.printf("»ñÈ¡tokenÊ§°Ü£¡");
+            System.err.printf("è·å–tokenå¤±è´¥ï¼");
             e.printStackTrace(System.err);
         }
         return null;
@@ -94,11 +94,11 @@ public class CommonHttpRequest {
     /**
      * 
      * @param path
-     *            URLµØÖ·
+     *            URLåœ°å€
      * @param secondTimeout
-     *            ³¬Ê±Ê±¼ä
+     *            è¶…æ—¶æ—¶é—´
      * @param dataBody
-     *            £ºÊı¾İÌå
+     *            ï¼šæ•°æ®ä½“
      * @return
      */
     private static HttpURLConnection getHttpConnection(String path, int secondTimeout) {
@@ -126,7 +126,7 @@ public class CommonHttpRequest {
             httpurlconnection.setReadTimeout(secondTimeout * 1000);
             httpurlconnection.setDoOutput(false);
             httpurlconnection.setDoInput(true);
-            // POSTÇëÇó²»ÄÜÊ¹ÓÃ»º´æ
+            // POSTè¯·æ±‚ä¸èƒ½ä½¿ç”¨ç¼“å­˜
             httpurlconnection.setUseCaches(false);
             httpurlconnection.setInstanceFollowRedirects(true);
 
@@ -142,14 +142,14 @@ public class CommonHttpRequest {
             }
             httpurlconnection.setRequestProperty("Content-Type", "application/octet-stream");
 //            httpurlconnection.setRequestProperty("Content-Length", String.valueOf(dataBody.length));
-            // ·¢ËÍÊı¾İ
+            // å‘é€æ•°æ®
 //            OutputStream outStream;
 //            try {
 //                outStream = httpurlconnection.getOutputStream();
 //                if (outStream != null) {
-//                    // ÒªÉÏ´«µÄÄÚÈİĞ´ÈëÁ÷ÖĞ
+//                    // è¦ä¸Šä¼ çš„å†…å®¹å†™å…¥æµä¸­
 //                    outStream.write(dataBody);
-//                    // Ë¢ĞÂ¹Ø±Õ
+//                    // åˆ·æ–°å…³é—­
 //                    outStream.flush();
 //                    outStream.close();
 //                }

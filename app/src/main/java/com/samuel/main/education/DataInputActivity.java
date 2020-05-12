@@ -33,7 +33,7 @@ public class DataInputActivity extends Activity {
 
     private void saveItem() {
         ZhongKao item = new ZhongKao();
-        item.setSchoolName("集美中学");
+        item.setSchoolName("闆嗙編涓");
         item.setShuangshibenbu(9);
         item.setToHighSchool(-1);
         item.setTop3(88);

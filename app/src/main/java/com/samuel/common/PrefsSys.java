@@ -11,15 +11,15 @@ public class PrefsSys {
     private static SharedPreferences mPrefsSys = null;
     private static Editor mEditorSys = null;
 
-    /** °Ù¶ÈAIÆ½Ì¨µÄ·ÃÎÊÁîÅÆ»· */
+    /** ç™¾åº¦AIå¹³å°çš„è®¿é—®ä»¤ç‰Œç¯ */
     private static final String PRE_ACCESS_TOKEN = "access_token";
-    /** °Ù¶ÈAIÆ½Ì¨µÄ·ÃÎÊÁîÅÆ»·µÄ½ØÖ¹ÓĞĞ§ÆÚ */
+    /** ç™¾åº¦AIå¹³å°çš„è®¿é—®ä»¤ç‰Œç¯çš„æˆªæ­¢æœ‰æ•ˆæœŸ */
     private static final String PRE_EXPIRES_DATE = "expires_date";
     
     private static final String PRE_RECENT_FILENAME = "recent_filename";
 
     /**
-     * »ñÈ¡ÏµÍ³²ÎÊıPreferences,
+     * è·å–ç³»ç»Ÿå‚æ•°Preferences,
      * 
      * @param context
      * @param prefersname
@@ -30,7 +30,7 @@ public class PrefsSys {
     }
 
     /**
-     * Çå³ıËùÓĞÊı¾İ
+     * æ¸…é™¤æ‰€æœ‰æ•°æ®
      */
     public static void clearPrefsSysData() {
         if (mEditorSys != null) {
@@ -39,7 +39,7 @@ public class PrefsSys {
     }
 
     /**
-     * Ìá½»±£´æ×Ö·û´®
+     * æäº¤ä¿å­˜å­—ç¬¦ä¸²
      * 
      * @param value
      */
@@ -52,7 +52,7 @@ public class PrefsSys {
     }
 
     /**
-     * Ìá½»±£´æÕûÊıÖµ
+     * æäº¤ä¿å­˜æ•´æ•°å€¼
      * 
      * @param value
      */
@@ -66,7 +66,7 @@ public class PrefsSys {
     }
 
     /**
-     * Ìá½»±£´æÕûÊıÖµ
+     * æäº¤ä¿å­˜æ•´æ•°å€¼
      * 
      * @param value
      */
@@ -80,7 +80,7 @@ public class PrefsSys {
     }
 
     /**
-     * Ìá½»±£´æ²¼¶ûÖµ
+     * æäº¤ä¿å­˜å¸ƒå°”å€¼
      * 
      * @param value
      */
@@ -94,16 +94,16 @@ public class PrefsSys {
     }
 
     /**
-     * »ñÈ¡°Ù¶ÈAIÆ½Ì¨µÄ·ÃÎÊÁîÅÆ»·
+     * è·å–ç™¾åº¦AIå¹³å°çš„è®¿é—®ä»¤ç‰Œç¯
      * 
-     * @return ·ÃÎÊÁîÅÆ»·
+     * @return è®¿é—®ä»¤ç‰Œç¯
      */
     public static String getAccessToken() {
         return mPrefsSys.getString(PRE_ACCESS_TOKEN, "");
     }
 
     /**
-     * ÉèÖÃ°Ù¶ÈAIÆ½Ì¨µÄ·ÃÎÊÁîÅÆ»·
+     * è®¾ç½®ç™¾åº¦AIå¹³å°çš„è®¿é—®ä»¤ç‰Œç¯
      * 
      * @param token
      */
@@ -113,16 +113,16 @@ public class PrefsSys {
     }
     
     /**
-     * »ñÈ¡·ÃÎÊÁîÅÆ»·µÄÓĞĞ§ÆÚ
+     * è·å–è®¿é—®ä»¤ç‰Œç¯çš„æœ‰æ•ˆæœŸ
      * 
-     * @return ·ÃÎÊÁîÅÆ»·
+     * @return è®¿é—®ä»¤ç‰Œç¯
      */
     public static String getExpiresDate() {
         return mPrefsSys.getString(PRE_EXPIRES_DATE, "");
     }
 
     /**
-     * ÉèÖÃ·ÃÎÊÁîÅÆ»·µÄÓĞĞ§ÆÚ
+     * è®¾ç½®è®¿é—®ä»¤ç‰Œç¯çš„æœ‰æ•ˆæœŸ
      * 
      * @param date
      */
@@ -132,16 +132,16 @@ public class PrefsSys {
     }
     
     /**
-     * »ñÈ¡×î½ü·ÃÎÊµÄÎÄ¼şÃû³Æ
+     * è·å–æœ€è¿‘è®¿é—®çš„æ–‡ä»¶åç§°
      * 
-     * @return ×î½ü·ÃÎÊµÄÎÄ¼şÃû³Æ
+     * @return æœ€è¿‘è®¿é—®çš„æ–‡ä»¶åç§°
      */
     public static String getRecentFileName() {
         return mPrefsSys.getString(PRE_RECENT_FILENAME, "");
     }
 
     /**
-     * ÉèÖÃ×î½ü·ÃÎÊµÄÎÄ¼şÃû³Æ
+     * è®¾ç½®æœ€è¿‘è®¿é—®çš„æ–‡ä»¶åç§°
      * 
      * @param fileName
      */

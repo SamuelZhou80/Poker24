@@ -19,27 +19,27 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 /**
- * ±í¸ñ¿Ø¼ş ±¾ÖÊÊÇÁĞ±í
+ * è¡¨æ ¼æ§ä»¶ æœ¬è´¨æ˜¯åˆ—è¡¨
  * 
- * @author ½âÓñ·¼
+ * @author è§£ç‰èŠ³
  * 
  */
 public class TableView extends LinearLayout {
 
     private Context context;
     private ListView lv;
-    private OnItemClickListener itemClickEvent; // Ä³ĞĞµã»÷ÏìÓ¦
-    private OnItemLongClickListener itemLongclickListener; // ³¤°´ÏìÓ¦
+    private OnItemClickListener itemClickEvent; // æŸè¡Œç‚¹å‡»å“åº”
+    private OnItemLongClickListener itemLongclickListener; // é•¿æŒ‰å“åº”
 
     private String[] title;
     private ArrayList<Integer> clickColumeArray = new ArrayList<Integer>();
     private ArrayList<OnClickListener> clickListenerArray = new ArrayList<View.OnClickListener>();
     private int[] columeWidth;
-    private ArrayList<ArrayList<String>> datasArray; // Êı¾İÔ´¶şÎ¬Êı×é
+    private ArrayList<ArrayList<String>> datasArray; // æ•°æ®æºäºŒç»´æ•°ç»„
     private LinearLayout titleLayout;
 
-    // Êı¾İÔ´ÀàĞÍÊı×é 0£º×Ö·û´®TableCell.STRING£¬1£ºÍ¼Æ¬£¬TableCell.IMAGE Èô¶ÔÏóÎª¿ÕÔò±íÊ¾È«Îª×Ö·û´®
-    // ºÍdatasArrayÍ¬Ê±´«Èë £¬Ğë±£Ö¤ÓëdatasArrayµÄÊı×é³¤¶ÈÒ»ÖÂ
+    // æ•°æ®æºç±»å‹æ•°ç»„ 0ï¼šå­—ç¬¦ä¸²TableCell.STRINGï¼Œ1ï¼šå›¾ç‰‡ï¼ŒTableCell.IMAGE è‹¥å¯¹è±¡ä¸ºç©ºåˆ™è¡¨ç¤ºå…¨ä¸ºå­—ç¬¦ä¸²
+    // å’ŒdatasArrayåŒæ—¶ä¼ å…¥ ï¼Œé¡»ä¿è¯ä¸datasArrayçš„æ•°ç»„é•¿åº¦ä¸€è‡´
     private ArrayList<ArrayList<Integer>> dataTypesArray;
 
     private TableAdapter tableAdapter;
@@ -75,7 +75,7 @@ public class TableView extends LinearLayout {
     }
 
     /**
-     * ´´½¨±í¸ñ£¬Ö®Ç°Ò»¶¨ÒªÏÈ´«Èëtitle ºÍdatas
+     * åˆ›å»ºè¡¨æ ¼ï¼Œä¹‹å‰ä¸€å®šè¦å…ˆä¼ å…¥title å’Œdatas
      * 
      */
     public void buildListView() {
@@ -86,7 +86,7 @@ public class TableView extends LinearLayout {
         lv = new CornerListView(context);
 
         int width = GpsUtils.getScreenWidth(context) / title.length;
-        // ¶¨Òå±êÌâ
+        // å®šä¹‰æ ‡é¢˜
 
         if (columeWidth == null) {
             columeWidth = new int[title.length];
@@ -117,7 +117,7 @@ public class TableView extends LinearLayout {
                 TextView textCell1 = new TextView(context);
                 textCell1.setGravity(Gravity.CENTER);
                 textCell1.setBackgroundColor(getResources().getColor(
-                        R.color.content_line_color));// ±³¾°ºÚÉ«
+                        R.color.content_line_color));// èƒŒæ™¯é»‘è‰²
                 textCell1.setWidth(1);
                 textCell1.setHeight(GpsUtils.dip2px(context, 30));
                 titleLayout.addView(textCell1);
@@ -128,7 +128,7 @@ public class TableView extends LinearLayout {
         TextView textCell1 = new TextView(context);
         textCell1.setGravity(Gravity.CENTER);
         textCell1.setBackgroundColor(getResources().getColor(
-                R.color.content_line_color));// ±³¾°ºÚÉ«
+                R.color.content_line_color));// èƒŒæ™¯é»‘è‰²
         textCell1.setHeight(1);
         this.addView(textCell1);
 
@@ -158,14 +158,14 @@ public class TableView extends LinearLayout {
       	    TextView textCell2 = new TextView(context);
     	    textCell2.setGravity(Gravity.CENTER);
     	    textCell2.setBackgroundColor(getResources().getColor(
-    	                R.color.content_line_color));// ±³¾°ºÚÉ«
+    	                R.color.content_line_color));// èƒŒæ™¯é»‘è‰²
     	    textCell2.setHeight(1);
     	    this.addView(textCell2);
         }
     }
 
     /**
-     * »ñÈ¡µ±Ç°Ò»¸ö¸ñ×ÓµÄview´¦ÓÚÄÄĞĞµÄÎ»ÖÃ
+     * è·å–å½“å‰ä¸€ä¸ªæ ¼å­çš„viewå¤„äºå“ªè¡Œçš„ä½ç½®
      * 
      */
     public int getPositionItem(View v) {
@@ -173,7 +173,7 @@ public class TableView extends LinearLayout {
     }
 
     /**
-     * Ë¢ĞÂ±í¸ñ
+     * åˆ·æ–°è¡¨æ ¼
      * 
      */
     public void refreshTableView() {
@@ -182,10 +182,10 @@ public class TableView extends LinearLayout {
     }
 
     /**
-     * Ë¢ĞÂ±í¸ñ, ±í¸ñµ¥ÔªµÄÊı¾İÀàĞÍÓĞ±ä¸üÊ±ĞèÒªÖØĞÂNewÒ»¸öÊÊÅäÆ÷
+     * åˆ·æ–°è¡¨æ ¼, è¡¨æ ¼å•å…ƒçš„æ•°æ®ç±»å‹æœ‰å˜æ›´æ—¶éœ€è¦é‡æ–°Newä¸€ä¸ªé€‚é…å™¨
      * 
      * @param isNeedNewAdapter
-     *            ÊÇ·ñĞèÒªNewÒ»¸öÊÊÅäÆ÷
+     *            æ˜¯å¦éœ€è¦Newä¸€ä¸ªé€‚é…å™¨
      */
     public void refreshTableView(boolean isNeedNewAdapter) {
         getTableRowData();
@@ -197,7 +197,7 @@ public class TableView extends LinearLayout {
     }
 
     /**
-     * »ñÈ¡±êÌâ
+     * è·å–æ ‡é¢˜
      * 
      */
     public String[] getTitle() {
@@ -205,7 +205,7 @@ public class TableView extends LinearLayout {
     }
 
     /**
-     * ÉèÖÃ±êÌâ
+     * è®¾ç½®æ ‡é¢˜
      * 
      */
     public void setTitle(String[] title) {
@@ -223,16 +223,16 @@ public class TableView extends LinearLayout {
     }
 
     /**
-     * »ñÈ¡±í¸ñÁĞ¿í
+     * è·å–è¡¨æ ¼åˆ—å®½
      * 
-     * @return ±í¸ñµÄÁĞ¿í¶ÈÊı×é
+     * @return è¡¨æ ¼çš„åˆ—å®½åº¦æ•°ç»„
      */
     public int[] getColumeWidth() {
         return columeWidth;
     }
 
     /**
-     * ÉèÖÃ±í¸ñÁĞ¿í
+     * è®¾ç½®è¡¨æ ¼åˆ—å®½
      * 
      */
     public void setColumeWidth(int[] columeWidth) {
@@ -240,16 +240,16 @@ public class TableView extends LinearLayout {
     }
 
     /**
-     * »ñÈ¡±í¸ñµÄÊı¾İÌõÊı, ¼´ÓĞ¶àÉÙĞĞ
+     * è·å–è¡¨æ ¼çš„æ•°æ®æ¡æ•°, å³æœ‰å¤šå°‘è¡Œ
      * 
-     * @return Êı¾İÌõÊı
+     * @return æ•°æ®æ¡æ•°
      */
     public int getTableRowCount() {
         return datasArray.size();
     }
 
     /**
-     * ÉèÖÃ¿ÉÒÔµã»÷µÄÁĞ¼°Æä¶ÔÓ¦µÄÏìÓ¦
+     * è®¾ç½®å¯ä»¥ç‚¹å‡»çš„åˆ—åŠå…¶å¯¹åº”çš„å“åº”
      * 
      */
     public void setClickColume(int clickColume, OnClickListener clickListener) {
@@ -258,7 +258,7 @@ public class TableView extends LinearLayout {
     }
 
     /**
-     * »ñÈ¡±í¸ñÊı¾İ
+     * è·å–è¡¨æ ¼æ•°æ®
      * 
      */
     private void getTableRowData() {
@@ -266,7 +266,7 @@ public class TableView extends LinearLayout {
 
         tableRowData.clear();
         TableCell[] cells1 = new TableCell[title.length];
-        // °Ñ±í¸ñµÄĞĞÌí¼Óµ½±í¸ñ
+        // æŠŠè¡¨æ ¼çš„è¡Œæ·»åŠ åˆ°è¡¨æ ¼
         for (int i = 0; i < datasArray.size(); i++) {
             cells1 = new TableCell[title.length];
             for (int j = 0; j < cells1.length; j++) {

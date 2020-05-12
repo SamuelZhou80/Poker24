@@ -10,7 +10,7 @@ public class HttpGetTask extends AsyncTask<Object, Void, Object> {
     private Handler mHandler = null;
 
     /**
-     * ¹¹Ôìº¯Êý
+     * æž„é€ å‡½æ•°
      * 
      * @param handler
      */

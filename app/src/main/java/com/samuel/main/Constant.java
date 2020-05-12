@@ -6,41 +6,41 @@ import android.os.Environment;
 
 public class Constant {
     public static final String PACKAGE_NAME = "com.samuel.mytools";
-    // ÏµÍ³Ä¿Â¼
+    // ç³»ç»Ÿç›®å½•
     public static final String SYS_DIR = File.separator + "data" + File.separator + "data"
             + File.separator + PACKAGE_NAME;
-    /** ¸ùÄ¿Â¼ */
+    /** æ ¹ç›®å½• */
     public static final String ROOT_DIR = Environment.getExternalStorageDirectory().getPath();
-    /** ÕÆÎñÍ¨Ä¿Â¼ */
+    /** æŒåŠ¡é€šç›®å½• */
     public static final String CRM_DIR = ROOT_DIR + "/crm_test";
-    /** Éı¼¶°üÄ¿Â¼ */
+    /** å‡çº§åŒ…ç›®å½• */
     public static final String FILE_UPDATE_DIR = CRM_DIR + "/update/";
-    /** Í¼Æ¬Ä¿Â¼ */
+    /** å›¾ç‰‡ç›®å½• */
     public static final String FILE_IMAGE_DIR = CRM_DIR + "/image/";
-    /** Ñ²²é²âÊÔÍ¼Æ¬Ä¿Â¼ */
+    /** å·¡æŸ¥æµ‹è¯•å›¾ç‰‡ç›®å½• */
     public static final String CHECK_IMAGE_DIR = CRM_DIR + "/testimage/";
-    /** ´ÓÖĞĞÄÏÂÔØµÄÍ¼Æ¬´æ·ÅµÄÄ¿Â¼ */
+    /** ä»ä¸­å¿ƒä¸‹è½½çš„å›¾ç‰‡å­˜æ”¾çš„ç›®å½• */
     public static final String FILE_LOAD_IMAGE_DIR = CRM_DIR + "/loadimage/";
-    /** ĞĞÕşÇøÓòÄ¿Â¼ */
+    /** è¡Œæ”¿åŒºåŸŸç›®å½• */
     public static final String FILE_DISTRICT_DIR = CRM_DIR + "/district/";
-    /** ĞĞÕşÇøÓòÄ¿Â¼ */
+    /** è¡Œæ”¿åŒºåŸŸç›®å½• */
     public static final String FILE_INFO_DIR = CRM_DIR + "/info/";
-    /** LOGÄ¿Â¼ */
+    /** LOGç›®å½• */
     public static final String FILE_LOG_DIR = CRM_DIR + "/log/";
-    /** Òì³£Ä¿Â¼ */
+    /** å¼‚å¸¸ç›®å½• */
     public static final String FILE_CRASH_DIR = CRM_DIR + "/crash/";
-    /** 7ÌìÄÚ°İ·Ã¼ÇÂ¼Ä¿Â¼ */
+    /** 7å¤©å†…æ‹œè®¿è®°å½•ç›®å½• */
     public static final String FILE_VISITED_DIR = CRM_DIR + "/visited/";
-    /** ECO LOGÄ¿Â¼ */
+    /** ECO LOGç›®å½• */
     public static final String FILE_ECOLOG_DIR = CRM_DIR + "/ecolog/";
-    /** ²ÎÊıÎÄ¼şÃû */
+    /** å‚æ•°æ–‡ä»¶å */
     public static final String PREFSSYS_NAME = "PrefsSys";
-    /** È«¾Ö±äÁ¿ÎÄ¼şÃû */
+    /** å…¨å±€å˜é‡æ–‡ä»¶å */
     public static final String PREFSGLOBAL_NAME = "PrefsGlobal";
-    /** °İ·ÃÊı¾İÎÄ¼şÃû */
+    /** æ‹œè®¿æ•°æ®æ–‡ä»¶å */
     public static final String PREFSVISITINFO_NAME = "PrefsVisitInfo";
-    /** Êı¾İ¿âÎÄ¼şÂ·¾¶ */
+    /** æ•°æ®åº“æ–‡ä»¶è·¯å¾„ */
     public static final String DATABASE_DIR = SYS_DIR + "/databases/";
-    /** Êı¾İ¿âÎÄ¼şÃû */
+    /** æ•°æ®åº“æ–‡ä»¶å */
     public static final String DATABASE_NAME = "education.db";
 }

@@ -3,24 +3,24 @@ package com.samuel.main;
 import java.io.UnsupportedEncodingException;
 
 /**
- * ×Ö·û¼¯×ª»»¹¤¾ß½Ó¿Ú
+ * å­—ç¬¦é›†è½¬æ¢å·¥å…·æ¥å£
  * 
- * @author ÖÜË¼Õş
+ * @author å‘¨æ€æ”¿
  *
  */
 public class CharsetUtils {
 
     /**
-     * GBK²ÉÓÃË«×Ö½Ú±íÊ¾£¬×ÜÌå±àÂë·¶Î§Îª 8140-FEFE£¬Ê××Ö½ÚÔÚ 81-FE Ö®¼ä£¬Î²×Ö½ÚÔÚ 40-FE Ö®¼ä£¬ÌŞ³ı xx7F Ò»ÌõÏß
+     * GBKé‡‡ç”¨åŒå­—èŠ‚è¡¨ç¤ºï¼Œæ€»ä½“ç¼–ç èŒƒå›´ä¸º 8140-FEFEï¼Œé¦–å­—èŠ‚åœ¨ 81-FE ä¹‹é—´ï¼Œå°¾å­—èŠ‚åœ¨ 40-FE ä¹‹é—´ï¼Œå‰”é™¤ xx7F ä¸€æ¡çº¿
      */
 
     /**
-     * »ñÈ¡Ò»¶ÎGBK±àÂë·¶Î§ÄÚµÄ×Ö·û´®, ×ÜÌå±àÂë·¶Î§Îª 8140-FEFE
+     * è·å–ä¸€æ®µGBKç¼–ç èŒƒå›´å†…çš„å­—ç¬¦ä¸², æ€»ä½“ç¼–ç èŒƒå›´ä¸º 8140-FEFE
      * 
      * @param start
-     *            ±àÂëÆğÊ¼Öµ, ´óÓÚµÈÓÚ0x8140
+     *            ç¼–ç èµ·å§‹å€¼, å¤§äºç­‰äº0x8140
      * @param end
-     *            ±àÂë½áÊøÖµ, Ğ¡ÓÚµÈÓÚ0xFEFE
+     *            ç¼–ç ç»“æŸå€¼, å°äºç­‰äº0xFEFE
      * @return
      */
     public static String getGBKTable(int start, int end) {
@@ -39,16 +39,16 @@ public class CharsetUtils {
         try {
             for (int high = highStart; high <= highEnd; high++) {
                 for (int low = lowStart; low < lowEnd; low++) {
-                    // Ìø¹ı0xXX7FÕâ¸ö¿Õ°×µÄÂëÎ»
+                    // è·³è¿‡0xXX7Fè¿™ä¸ªç©ºç™½çš„ç ä½
                     if (low == 0x7F) {
                         continue;
                     }
 
-                    // Ìø¹ı¿Õ°×ÂëÎ», ÓÃ»§×Ô¶¨ÒåÇø: F8A1-FEFE
+                    // è·³è¿‡ç©ºç™½ç ä½, ç”¨æˆ·è‡ªå®šä¹‰åŒº: F8A1-FEFE
                     if (high >= 0xF8 && low > 0xA0) {
                         continue;
                     }
-                    // Ìø¹ıÓÃ»§×Ô¶¨ÒåÇø: A140-A7A0
+                    // è·³è¿‡ç”¨æˆ·è‡ªå®šä¹‰åŒº: A140-A7A0
                     if (high >= 0xA1 && high <= 0xA7) {
                         if (low <= 0xA0) {
                             continue;

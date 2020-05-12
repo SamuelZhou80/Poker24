@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 
 public class OpenFileUtil {
     /**
-     * 专为Android4.4设计的从Uri获取文件绝对路径，以前的方法已不好使
+     * 涓撲负Android4.4璁捐鐨勪粠Uri鑾峰彇鏂囦欢缁濆璺緞锛屼互鍓嶇殑鏂规硶宸蹭笉濂戒娇
      */
     @SuppressLint("NewApi")
     public static String getPath(final Context context, final Uri uri) {

@@ -1,7 +1,3 @@
-/**
- * Copyright (C) 2012 XiaMen Yaxon NetWorks Co.,LTD.
- */
-
 package com.samuel.common.debug;
 
 import java.lang.Thread.UncaughtExceptionHandler;
@@ -12,17 +8,16 @@ import android.util.Log;
 import android.widget.Toast;
 
 /**
- * ²¶×½¹¤³ÌÖĞÎ´²¶×½µ½µÄÒì³£
+ * æ•æ‰å·¥ç¨‹ä¸­æœªæ•æ‰åˆ°çš„å¼‚å¸¸
  * 
- * @author zhangmingxun 2012-9-4 ´´½¨<br>
+ * @author zhangmingxun 2012-9-4 åˆ›å»º<br>
  * 
  */
-
 public class CrashExceptionHandler implements UncaughtExceptionHandler {
     private static final String TAG = "CrashExceptionHandler";
-    private Thread.UncaughtExceptionHandler mDefaultHandler; // ÏµÍ³Ä¬ÈÏµÄUncaughtException´¦ÀíÀà
+    private Thread.UncaughtExceptionHandler mDefaultHandler; // ç³»ç»Ÿé»˜è®¤çš„UncaughtExceptionå¤„ç†ç±»
     private static CrashExceptionHandler mInstance;
-    private Context mContext; // ³ÌĞòµÄContext¶ÔÏó
+    private Context mContext; // ç¨‹åºçš„Contextå¯¹è±¡
 
     private CrashExceptionHandler() {
 
@@ -36,17 +31,17 @@ public class CrashExceptionHandler implements UncaughtExceptionHandler {
     }
 
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      * 
      * @param context
      */
     public void init(Context context) {
         mContext = context;
 
-        // »ñÈ¡ÏµÍ³Ä¬ÈÏµÄUncaughtException´¦ÀíÆ÷
+        // è·å–ç³»ç»Ÿé»˜è®¤çš„UncaughtExceptionå¤„ç†å™¨
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
 
-        // ÉèÖÃ¸ÃCrashHandlerÎª³ÌĞòµÄÄ¬ÈÏ´¦ÀíÆ÷
+        // è®¾ç½®è¯¥CrashHandlerä¸ºç¨‹åºçš„é»˜è®¤å¤„ç†å™¨
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
@@ -61,7 +56,7 @@ public class CrashExceptionHandler implements UncaughtExceptionHandler {
             } catch (InterruptedException e) {
                 Log.e(TAG, "error : ", e);
             }
-            // ÍË³ö³ÌĞò
+            // é€€å‡ºç¨‹åº
 
             // CrmApplication.getApp().exitApp(mContext);
             android.os.Process.killProcess(android.os.Process.myPid());
@@ -70,22 +65,22 @@ public class CrashExceptionHandler implements UncaughtExceptionHandler {
     }
 
     /**
-     * ×Ô¶¨Òå´íÎó´¦Àí,ÊÕ¼¯´íÎóĞÅÏ¢ ·¢ËÍ´íÎó±¨¸æµÈ²Ù×÷¾ùÔÚ´ËÍê³É.
+     * è‡ªå®šä¹‰é”™è¯¯å¤„ç†,æ”¶é›†é”™è¯¯ä¿¡æ¯ å‘é€é”™è¯¯æŠ¥å‘Šç­‰æ“ä½œå‡åœ¨æ­¤å®Œæˆ.
      * 
      * @param ex
-     * @return true:Èç¹û´¦ÀíÁË¸ÃÒì³£ĞÅÏ¢;·ñÔò·µ»Øfalse.
+     * @return true:å¦‚æœå¤„ç†äº†è¯¥å¼‚å¸¸ä¿¡æ¯;å¦åˆ™è¿”å›false.
      */
     private boolean handleException(Throwable ex) {
 
         if (ex == null) {
             return true;
         }
-        // Ê¹ÓÃToastÀ´ÏÔÊ¾Òì³£ĞÅÏ¢
+        // ä½¿ç”¨Toastæ¥æ˜¾ç¤ºå¼‚å¸¸ä¿¡æ¯
         new Thread() {
             @Override
             public void run() {
                 Looper.prepare();
-                Toast.makeText(mContext, "\n\nºÜ±§Ç¸,³ÌĞò³öÏÖÒì³£,ÇëÁªÏµ¿Í·ş.\n\n", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "\n\nå¾ˆæŠ±æ­‰,ç¨‹åºå‡ºç°å¼‚å¸¸,è¯·è”ç³»å®¢æœ.\n\n", Toast.LENGTH_LONG).show();
                 Looper.loop();
             }
         }.start();

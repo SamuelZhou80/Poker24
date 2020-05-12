@@ -46,7 +46,7 @@ public class SelectPokerDialogView extends Dialog {
 
     @SuppressLint("InflateParams")
     private void Init(Context context) {
-        // ÕÒµ½dialogµÄ²¼¾ÖÎÄ¼þ
+        // æ‰¾åˆ°dialogçš„å¸ƒå±€æ–‡ä»¶
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.poker_dialog_view, null);
@@ -109,7 +109,7 @@ public class SelectPokerDialogView extends Dialog {
             break;
         }
 
-        // ÉèÖÃdialogµÄ²¼¾Ö,²¢ÏÔÊ¾
+        // è®¾ç½®dialogçš„å¸ƒå±€,å¹¶æ˜¾ç¤º
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);

@@ -27,11 +27,11 @@ public class EcoAnalyzerActivity extends Activity {
     private Button mButtonCalc;
     private TextView mResultDetail;
     /**
-     * ËÙ¶ÈÇø¼äµÄ×î´óÖµ
+     * é€Ÿåº¦åŒºé—´çš„æœ€å¤§å€¼
      */
     public static final int SPEED_RANGE_MAX = 16;
-    private static int roadTypeNum = 12;// Â·¿öÀàĞÍ×ÜÊı
-    private static int speedRangeNum = SPEED_RANGE_MAX + 1;// ËÙ¶ÈÇø¼ä×ÜÊı
+    private static int roadTypeNum = 12;// è·¯å†µç±»å‹æ€»æ•°
+    private static int speedRangeNum = SPEED_RANGE_MAX + 1;// é€Ÿåº¦åŒºé—´æ€»æ•°
     private double[][] mDistanceArray = new double[roadTypeNum][speedRangeNum];
     private double[][] mSelfDistanceArray = new double[roadTypeNum][speedRangeNum];
     private double[][] mFuelArray = new double[roadTypeNum][speedRangeNum];
@@ -48,10 +48,10 @@ public class EcoAnalyzerActivity extends Activity {
 
         mButtonCalc = (Button) findViewById(R.id.button_check);
         mButtonCalc.setOnClickListener(checkClickListener);
-        mButtonCalc.setText("¼ÆËã½ÚÓÍÁ¿");
+        mButtonCalc.setText("è®¡ç®—èŠ‚æ²¹é‡");
         Button buttonReset = (Button) findViewById(R.id.button_reset);
         buttonReset.setOnClickListener(fuelStatListener);
-        buttonReset.setText("±£´æÓÍºÄÈÕÖ¾");
+        buttonReset.setText("ä¿å­˜æ²¹è€—æ—¥å¿—");
 
         mResultDetail = (TextView) findViewById(R.id.text_result_detail);
         mResultDetail.setText("");
@@ -81,12 +81,12 @@ public class EcoAnalyzerActivity extends Activity {
                 File file = new File(path);
                 logStr = FileManager.readFile(file, "UTF-16");
                 if (TextUtils.isEmpty(logStr)) {
-                    Toast.makeText(EcoAnalyzerActivity.this, path + " ´ò¿ªÊ§°Ü", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EcoAnalyzerActivity.this, path + " æ‰“å¼€å¤±è´¥", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 parserLog(logStr);
             } catch (Exception e) {
-                Toast.makeText(EcoAnalyzerActivity.this, "½âÎöÎÄ¼şÒì³£", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EcoAnalyzerActivity.this, "è§£ææ–‡ä»¶å¼‚å¸¸", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         }
@@ -94,7 +94,7 @@ public class EcoAnalyzerActivity extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("EcoÊı¾İ·ÖÎö");
+        textViewTitle.setText("Ecoæ•°æ®åˆ†æ");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -105,14 +105,14 @@ public class EcoAnalyzerActivity extends Activity {
         });
 
         Button rightBtn = (Button) findViewById(R.id.common_btn_right);
-        rightBtn.setText("Ñ¡ÔñÈÕÖ¾");
+        rightBtn.setText("é€‰æ‹©æ—¥å¿—");
         rightBtn.setVisibility(View.VISIBLE);
         rightBtn.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");// ÎŞÀàĞÍÏŞÖÆ
+                intent.setType("*/*");// æ— ç±»å‹é™åˆ¶
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 startActivityForResult(intent, 1);
             }
@@ -120,21 +120,21 @@ public class EcoAnalyzerActivity extends Activity {
     }
 
     /**
-     * ¼ÆËã½ÚÓÍÊı¾İ
+     * è®¡ç®—èŠ‚æ²¹æ•°æ®
      */
     private OnClickListener checkClickListener = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
-            // Ê¡ÓÍÉıÊı
+            // çœæ²¹å‡æ•°
             double savedFuel = 0;
             double ecoTotalDistance = 0;
-            double ecoDriveFuelTotal = 0; // ÓÅ¼İµÄ×ÜÓÍºÄ
-            double selfDriveDistTotal = 0; // ×Ô¼İµÄ×ÜÀï³Ì
-            double selfDriveFuelTotal = 0; // ×Ô¼İµÄ×ÜÓÍºÄ
+            double ecoDriveFuelTotal = 0; // ä¼˜é©¾çš„æ€»æ²¹è€—
+            double selfDriveDistTotal = 0; // è‡ªé©¾çš„æ€»é‡Œç¨‹
+            double selfDriveFuelTotal = 0; // è‡ªé©¾çš„æ€»æ²¹è€—
             for (int i = 0; i < roadTypeNum; i++) {
                 for (int j = 0; j < speedRangeNum; j++) {
-                    // È¥µôÃ»ÓĞ½øÈëÓÅ¼İÄ£Ê½µÄÂ·¶Î
+                    // å»æ‰æ²¡æœ‰è¿›å…¥ä¼˜é©¾æ¨¡å¼çš„è·¯æ®µ
                     if (mDistanceArray[i][j] <= mSelfDistanceArray[i][j]) {
                         continue;
                     }
@@ -148,7 +148,7 @@ public class EcoAnalyzerActivity extends Activity {
             ecoTotalDistance = ecoTotalDistance - selfDriveDistTotal;
             ecoDriveFuelTotal = ecoDriveFuelTotal - selfDriveFuelTotal;
 
-            // ¼ÆËã×Ô¼İºÍÓÅ¼İ½×¶ÎµÄ°Ù¹«ÀïÓÍºÄ
+            // è®¡ç®—è‡ªé©¾å’Œä¼˜é©¾é˜¶æ®µçš„ç™¾å…¬é‡Œæ²¹è€—
             double selfFuelHkm = 0;
             double ecoFuelHkm = 0;
             if (selfDriveDistTotal > 0) {
@@ -157,18 +157,18 @@ public class EcoAnalyzerActivity extends Activity {
             if (ecoTotalDistance > 0) {
                 ecoFuelHkm = ecoDriveFuelTotal * 100 / ecoTotalDistance;
             }
-            // ¼ÆËãÊ¡ÓÍÉıÊı=[Í¬µÈ¹¤¿ö(Í¬Ò»Â·¶ÎÀàĞÍ¡¢Í¬Ò»ËÙ¶ÈÇø¼ä)£¬×Ô¼İÆÚ¼äÆ½¾ù°Ù¹«ÀïÓÍºÄ-ÓÅ¼İÆÚ¼äµÄÆ½¾ù°Ù¹«ÀïÓÍºÄ]¡ÁÓÅ¼İĞĞÊ»Àï³Ì
+            // è®¡ç®—çœæ²¹å‡æ•°=[åŒç­‰å·¥å†µ(åŒä¸€è·¯æ®µç±»å‹ã€åŒä¸€é€Ÿåº¦åŒºé—´)ï¼Œè‡ªé©¾æœŸé—´å¹³å‡ç™¾å…¬é‡Œæ²¹è€—-ä¼˜é©¾æœŸé—´çš„å¹³å‡ç™¾å…¬é‡Œæ²¹è€—]Ã—ä¼˜é©¾è¡Œé©¶é‡Œç¨‹
             savedFuel = (selfFuelHkm - ecoFuelHkm) * ecoTotalDistance / 100;
             String resultStr = "";
-            resultStr += String.format("×Ô¼İÀï³Ì%.2f,ÓÍºÄ%.2fÉı,ĞĞÊ»ÓÍºÄ%.2fL/hkm\n", selfDriveDistTotal, selfDriveFuelTotal, selfFuelHkm);
-            resultStr += String.format("ÓÅ¼İÀï³Ì%.2f,ÓÍºÄ%.2fÉı,ĞĞÊ»ÓÍºÄ%.2fL/hkm\n", ecoTotalDistance, ecoDriveFuelTotal, ecoFuelHkm);
-            resultStr += String.format("½ÚÓÍÁ¿=%.2fÉı", savedFuel);
+            resultStr += String.format("è‡ªé©¾é‡Œç¨‹%.2f,æ²¹è€—%.2få‡,è¡Œé©¶æ²¹è€—%.2fL/hkm\n", selfDriveDistTotal, selfDriveFuelTotal, selfFuelHkm);
+            resultStr += String.format("ä¼˜é©¾é‡Œç¨‹%.2f,æ²¹è€—%.2få‡,è¡Œé©¶æ²¹è€—%.2fL/hkm\n", ecoTotalDistance, ecoDriveFuelTotal, ecoFuelHkm);
+            resultStr += String.format("èŠ‚æ²¹é‡=%.2få‡", savedFuel);
             mResultDetail.setText(resultStr);
         }
     };
 
     /**
-     * Àï³ÌºÍÓÍºÄµÄ±í¸ñÍ³¼Æ½Ó¿Ú
+     * é‡Œç¨‹å’Œæ²¹è€—çš„è¡¨æ ¼ç»Ÿè®¡æ¥å£
      */
     private OnClickListener fuelStatListener = new OnClickListener() {
 
@@ -198,7 +198,7 @@ public class EcoAnalyzerActivity extends Activity {
                 selfFuelLog += "\n";
                 timeLog += "\n";
             }
-            // ±£´æµ½ÎÄ¼şÖĞ
+            // ä¿å­˜åˆ°æ–‡ä»¶ä¸­
             FileManager.createDir(Constant.FILE_ECOLOG_DIR);
             String fileName = Constant.FILE_ECOLOG_DIR + "distance.csv";
             FileManager.writeFile(fileName, distanceLog);
@@ -210,7 +210,7 @@ public class EcoAnalyzerActivity extends Activity {
             FileManager.writeFile(fileName, selfFuelLog);
             fileName = Constant.FILE_ECOLOG_DIR + "drivetime.csv";
             FileManager.writeFile(fileName, timeLog);
-            Toast.makeText(EcoAnalyzerActivity.this, "Àï³ÌºÍÓÍºÄÍ³¼ÆÍê³É" + selfDistTotal + ",fuel=" + selfFuelTotal, Toast.LENGTH_LONG).show();
+            Toast.makeText(EcoAnalyzerActivity.this, "é‡Œç¨‹å’Œæ²¹è€—ç»Ÿè®¡å®Œæˆ" + selfDistTotal + ",fuel=" + selfFuelTotal, Toast.LENGTH_LONG).show();
         }
     };
 
@@ -243,7 +243,7 @@ public class EcoAnalyzerActivity extends Activity {
         File file = new File(path);
         String logStr = FileManager.readFile(file, "UTF-16");
         if (TextUtils.isEmpty(logStr)) {
-            Toast.makeText(EcoAnalyzerActivity.this, path + " ´ò¿ªÊ§°Ü", Toast.LENGTH_SHORT).show();
+            Toast.makeText(EcoAnalyzerActivity.this, path + " æ‰“å¼€å¤±è´¥", Toast.LENGTH_SHORT).show();
             return;
         }
         int startPos = 0;
@@ -255,7 +255,7 @@ public class EcoAnalyzerActivity extends Activity {
                 int roadIndex = logStr.indexOf("=", startPos);
                 if (roadIndex != -1) {
                     startPos = roadIndex;
-                    roadEndIndex = logStr.indexOf(",ËÙ¶ÈÇø¼ä=", startPos);
+                    roadEndIndex = logStr.indexOf(",é€Ÿåº¦åŒºé—´=", startPos);
                 }
                 int speedIndex = logStr.indexOf("=", roadEndIndex);
                 if (speedIndex > 0) {
@@ -319,11 +319,11 @@ public class EcoAnalyzerActivity extends Activity {
                 }
                 resultLog += "\n";
             }
-            // ±£´æµ½ÎÄ¼şÖĞ
+            // ä¿å­˜åˆ°æ–‡ä»¶ä¸­
             FileManager.createDir(Constant.FILE_ECOLOG_DIR);
             String fileName = Constant.FILE_ECOLOG_DIR + "app_log.csv";
             FileManager.writeFile(fileName, resultLog);
-            Toast.makeText(EcoAnalyzerActivity.this, "½âÎöÓÍÃÅ¿ª¶ÈÍê³É!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(EcoAnalyzerActivity.this, "è§£ææ²¹é—¨å¼€åº¦å®Œæˆ!", Toast.LENGTH_SHORT).show();
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(EcoAnalyzerActivity.this, e.toString(), Toast.LENGTH_SHORT).show();

@@ -11,7 +11,7 @@ import com.samuel.common.DBUtils;
 public class ZhongKaoDB {
 
     private static ZhongKaoDB mInstance;
-    // ====»ù´¡Êı¾İ±í====//
+    // ====åŸºç¡€æ•°æ®è¡¨====//
     public final static String TABLE_ZHONGKAO = "ZhongKao";
 
     public static ZhongKaoDB getInstance() {
@@ -22,7 +22,7 @@ public class ZhongKaoDB {
     }
 
     /**
-     * Çå³ıµ¥Àı¶ÔÏó
+     * æ¸…é™¤å•ä¾‹å¯¹è±¡
      */
     public void clearInstance() {
         if (mInstance != null) {
@@ -31,7 +31,7 @@ public class ZhongKaoDB {
     }
 
     /**
-     * ÁĞÃû
+     * åˆ—å
      */
     public interface AckZhongkaoColumns extends BaseColumns {
         final static String SCHOOLNAME = "name";
@@ -46,9 +46,9 @@ public class ZhongKaoDB {
     }
 
     /**
-     * ¸ù¾İÑ§Ğ£Ãû³ÆºÍÄê·İ»ñÈ¡ÖĞ¿¼Êı¾İ
+     * æ ¹æ®å­¦æ ¡åç§°å’Œå¹´ä»½è·å–ä¸­è€ƒæ•°æ®
      * 
-     * @return ÖĞ¿¼Êı¾İ¶ÔÏó£¬ÈôÎŞÕÒµ½Ôò·µ»Ønull
+     * @return ä¸­è€ƒæ•°æ®å¯¹è±¡ï¼Œè‹¥æ— æ‰¾åˆ°åˆ™è¿”å›null
      */
     public ZhongKao getShopDetailInfo(String schoolName, int year) {
         Cursor cur = null;
@@ -68,9 +68,9 @@ public class ZhongKaoDB {
     }
 
     /**
-     * ¸ù¾İÑ§Ğ£Ãû³ÆºÍÄê·İ»ñÈ¡ÖĞ¿¼Êı¾İ
+     * æ ¹æ®å­¦æ ¡åç§°å’Œå¹´ä»½è·å–ä¸­è€ƒæ•°æ®
      * 
-     * @return ÖĞ¿¼Êı¾İ¶ÔÏó£¬ÈôÎŞÕÒµ½Ôò·µ»Ønull
+     * @return ä¸­è€ƒæ•°æ®å¯¹è±¡ï¼Œè‹¥æ— æ‰¾åˆ°åˆ™è¿”å›null
      */
     public ArrayList<ZhongKao> getShopDetailInfo(String schoolName) {
         Cursor cur = null;
@@ -93,7 +93,7 @@ public class ZhongKaoDB {
     }
 
     /**
-     * ±£´æÃÅµêÏêÇéĞÅÏ¢
+     * ä¿å­˜é—¨åº—è¯¦æƒ…ä¿¡æ¯
      */
     public void saveZhongkaoInfo(ZhongKao form) {
         ContentValues cv = new ContentValues();
@@ -118,7 +118,7 @@ public class ZhongKaoDB {
     }
 
     /**
-     * ½«Êı¾İ¿â²éÕÒµ½µÄ¼ÇÂ¼Ğ´ÈëÃÅµêÏêÇé¶ÔÏóÖĞ
+     * å°†æ•°æ®åº“æŸ¥æ‰¾åˆ°çš„è®°å½•å†™å…¥é—¨åº—è¯¦æƒ…å¯¹è±¡ä¸­
      * 
      * @param cur
      * @param formItem

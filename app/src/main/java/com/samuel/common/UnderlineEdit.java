@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 
 /**
- * ´øÏÂ»®ÏßµÄÊäÈë¿ò
+ * å¸¦ä¸‹åˆ’çº¿çš„è¾“å…¥æ¡†
  * 
  * @author Administrator
  *
@@ -32,7 +32,7 @@ public class UnderlineEdit extends EditText {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        // »­µ×Ïß
+        // ç”»åº•çº¿
         int yPos = this.getHeight() - 1;
         canvas.drawLine(0, yPos, this.getWidth() - 1, yPos, mPaint);
     }

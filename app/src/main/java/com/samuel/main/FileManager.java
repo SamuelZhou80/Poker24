@@ -12,9 +12,9 @@ import java.io.IOException;
 import android.content.Context;
 
 /**
- * ÎÄ¼ş¹ÜÀíÀà
+ * æ–‡ä»¶ç®¡ç†ç±»
  * 
- * @author zzh 2012.11.15 ´´½¨<br>
+ * @author zzh 2012.11.15 åˆ›å»º<br>
  * 
  */
 public class FileManager {
@@ -25,14 +25,14 @@ public class FileManager {
     private static int generateCount = 0;
 
     /**
-     * ¹¹Ôìº¯Êı³õÊ¼»¯
+     * æ„é€ å‡½æ•°åˆå§‹åŒ–
      */
     private FileManager(Context context) {
         mContext = context;
     }
 
     /**
-     * »ñÈ¡ÎÄ¼ş¹ÜÀíÊµÀı
+     * è·å–æ–‡ä»¶ç®¡ç†å®ä¾‹
      * 
      * @return
      */
@@ -44,7 +44,7 @@ public class FileManager {
     }
 
     /**
-     * ´´½¨ĞÂÎÄ¼ş
+     * åˆ›å»ºæ–°æ–‡ä»¶
      * 
      * @param fileName
      * @throws IOException
@@ -63,10 +63,10 @@ public class FileManager {
     }
 
     /**
-     * É¾³ıÎÄ¼ş
+     * åˆ é™¤æ–‡ä»¶
      * 
      * @param fileName
-     *            : ÎÄ¼şÃû
+     *            : æ–‡ä»¶å
      * @return
      */
     public static boolean deleteFile(String fileName) {
@@ -79,10 +79,10 @@ public class FileManager {
     }
 
     /**
-     * ÎÄ¼ş»òÄ¿Â¼ÊÇ·ñ´æÔÚ
+     * æ–‡ä»¶æˆ–ç›®å½•æ˜¯å¦å­˜åœ¨
      * 
      * @param fileName
-     *            : ÎÄ¼şÃû
+     *            : æ–‡ä»¶å
      * @return
      */
     public static Boolean fileIsExist(String fileName) {
@@ -90,10 +90,10 @@ public class FileManager {
     }
 
     /**
-     * »ñÈ¡ÎÄ¼ş´óĞ¡
+     * è·å–æ–‡ä»¶å¤§å°
      * 
      * @param filename
-     *            : ÎÄ¼şÃû
+     *            : æ–‡ä»¶å
      * @return
      */
     public static long getFileSize(String fileName) {
@@ -107,15 +107,15 @@ public class FileManager {
     }
 
     /**
-     * ½«»º´æÊı¾İĞ´ÈëÎÄ¼ş
+     * å°†ç¼“å­˜æ•°æ®å†™å…¥æ–‡ä»¶
      * 
      * @param file
      * @param buf
-     *            : Êı¾İ»º´æ
+     *            : æ•°æ®ç¼“å­˜
      * @param offset
-     *            £ºÊı¾İ»º´æµÄÆ«ÒÆ
+     *            ï¼šæ•°æ®ç¼“å­˜çš„åç§»
      * @param length
-     *            £ºĞ´ÈëÊı¾İ³¤¶È
+     *            ï¼šå†™å…¥æ•°æ®é•¿åº¦
      * @return
      * @throws IOException
      */
@@ -131,12 +131,12 @@ public class FileManager {
     }
 
     /**
-     * ½«»º´æÊı¾İĞ´ÈëÎÄ¼ş
+     * å°†ç¼“å­˜æ•°æ®å†™å…¥æ–‡ä»¶
      * 
      * @param fileName
-     *            Ğ´ÈëÎÄ¼şÃû
+     *            å†™å…¥æ–‡ä»¶å
      * @param write_str
-     *            : Ğ´ÈëÊı¾İ
+     *            : å†™å…¥æ•°æ®
      */
     public static void writeFile(String fileName, String writeStr) {
         FileOutputStream fos;
@@ -151,12 +151,12 @@ public class FileManager {
     }
 
     /**
-     * ½«»º´æÊı¾İĞ´Èëµ½/data/data/<Ó¦ÓÃ³ÌĞòÃû>Ä¿Â¼ÉÏµÄÎÄ¼ş
+     * å°†ç¼“å­˜æ•°æ®å†™å…¥åˆ°/data/data/<åº”ç”¨ç¨‹åºå>ç›®å½•ä¸Šçš„æ–‡ä»¶
      * 
      * @param fileName
-     *            Ğ´ÈëÎÄ¼şÃû
+     *            å†™å…¥æ–‡ä»¶å
      * @param write_str
-     *            : Ğ´ÈëÊı¾İ
+     *            : å†™å…¥æ•°æ®
      */
     public static void writeDataFile(String fileName, String writeStr) {
         FileOutputStream fos;
@@ -171,12 +171,12 @@ public class FileManager {
     }
 
     /**
-     * ÔÚÔ­ÓĞÎÄ¼şÉÏ¼ÌĞøĞ´ÎÄ¼ş
+     * åœ¨åŸæœ‰æ–‡ä»¶ä¸Šç»§ç»­å†™æ–‡ä»¶
      * 
      * @param fileName
-     *            Ô­ÓĞÎÄ¼ş
+     *            åŸæœ‰æ–‡ä»¶
      * @param writeStr
-     *            ÎÄ¼şÄÚÈİ
+     *            æ–‡ä»¶å†…å®¹
      * @return
      * @throws IOException
      */
@@ -193,12 +193,12 @@ public class FileManager {
     }
 
     /**
-     * ÔÚÔ­ÓĞÎÄ¼şÉÏ¼ÌĞøĞ´ÎÄ¼ş
+     * åœ¨åŸæœ‰æ–‡ä»¶ä¸Šç»§ç»­å†™æ–‡ä»¶
      * 
      * @param fileName
-     *            Ô­ÓĞÎÄ¼ş
+     *            åŸæœ‰æ–‡ä»¶
      * @param writeStr
-     *            ÎÄ¼şÄÚÈİ
+     *            æ–‡ä»¶å†…å®¹
      * @return
      * @throws IOException
      */
@@ -218,16 +218,16 @@ public class FileManager {
     }
 
     /**
-     * ½«»º´æÊı¾İĞ´ÈëÎÄ¼ş
+     * å°†ç¼“å­˜æ•°æ®å†™å…¥æ–‡ä»¶
      * 
      * @param file
      * @param buf
-     *            : Êı¾İ»º´æ
+     *            : æ•°æ®ç¼“å­˜
      * @param offset
-     *            £ºbufµÄÆğÊ¼µØÖ·
+     *            ï¼šbufçš„èµ·å§‹åœ°å€
      * @param length
-     *            £º¶ÁÈ¡³¤¶È
-     * @return ¶ÁÈ¡Êı¾İ×Ö½ÚÊı
+     *            ï¼šè¯»å–é•¿åº¦
+     * @return è¯»å–æ•°æ®å­—èŠ‚æ•°
      * @throws IOException
      */
     public static int ReadFile(File file, byte[] buf, int offset, int length) {
@@ -244,7 +244,7 @@ public class FileManager {
     }
 
     /**
-     * ½«ÎÄ¼şÊı¾İ¶ÁÈ¡µ½»º´æ
+     * å°†æ–‡ä»¶æ•°æ®è¯»å–åˆ°ç¼“å­˜
      * 
      * @param fileName
      * @return
@@ -267,7 +267,7 @@ public class FileManager {
     }
 
     /**
-     * ½«ÎÄ¼şÊı¾İ¶ÁÈ¡µ½»º´æ
+     * å°†æ–‡ä»¶æ•°æ®è¯»å–åˆ°ç¼“å­˜
      * 
      * @param file
      * @return
@@ -290,15 +290,15 @@ public class FileManager {
     }
 
     /**
-     * ½«ÎÄ¼şÊı¾İ¶ÁÈ¡µ½»º´æ
+     * å°†æ–‡ä»¶æ•°æ®è¯»å–åˆ°ç¼“å­˜
      * 
      * @param fileName
-     *            ÎÄ¼şÃû
+     *            æ–‡ä»¶å
      * @param offset
-     *            ¶ÁÈ¡Êı¾İµÄ¿ªÊ¼Î»ÖÃ
+     *            è¯»å–æ•°æ®çš„å¼€å§‹ä½ç½®
      * @param length
-     *            ¶ÁÈ¡µÄÊı¾İ³¤¶È
-     * @return »ñÈ¡µ½µÄÎÄ¼şÊı¾İ, ±£´æÎª×Ö·û´®
+     *            è¯»å–çš„æ•°æ®é•¿åº¦
+     * @return è·å–åˆ°çš„æ–‡ä»¶æ•°æ®, ä¿å­˜ä¸ºå­—ç¬¦ä¸²
      * @throws IOException
      */
     public static String readFile(String fileName, int offset, int length) {
@@ -324,9 +324,9 @@ public class FileManager {
     }
 
     /**
-     * ¶ÁÈ¡ÎÄ¼şÖĞµÄ¶ş½øÖÆÊı¾İ
+     * è¯»å–æ–‡ä»¶ä¸­çš„äºŒè¿›åˆ¶æ•°æ®
      * 
-     * @param fileName ÎÄ¼şÃûÈ«Â·¾¶
+     * @param fileName æ–‡ä»¶åå…¨è·¯å¾„
      * @return
      */
     public static byte[] readFileByte(String fileName) {
@@ -347,7 +347,7 @@ public class FileManager {
     }
 
     /**
-     * ĞŞ¸ÄÎÄ¼ş»òÄ¿Â¼Ãû
+     * ä¿®æ”¹æ–‡ä»¶æˆ–ç›®å½•å
      * 
      * @param oldFileName
      * @param newFileName
@@ -360,12 +360,12 @@ public class FileManager {
     }
 
     /**
-     * ¿½±´ÎÄ¼ş
+     * æ‹·è´æ–‡ä»¶
      * 
      * @param srcFile
-     *            Ô´ÎÄ¼ş
+     *            æºæ–‡ä»¶
      * @param destFile
-     *            Ä¿±êÎÄ¼ş
+     *            ç›®æ ‡æ–‡ä»¶
      * @throws IOException
      */
     public static boolean copyFile(File srcFile, File destFile) {
@@ -392,12 +392,12 @@ public class FileManager {
     }
 
     /**
-     * ¿½±´ÎÄ¼ş
+     * æ‹·è´æ–‡ä»¶
      * 
      * @param srcFileName
-     *            Ô´ÎÄ¼şÈ«Â·¾¶Ãû
+     *            æºæ–‡ä»¶å…¨è·¯å¾„å
      * @param destFileName
-     *            Ä¿±êÎÄ¼şÈ«Â·¾¶Ãû
+     *            ç›®æ ‡æ–‡ä»¶å…¨è·¯å¾„å
      * @throws IOException
      */
     public static boolean copyFile(String srcFileName, String destFileName)
@@ -408,12 +408,12 @@ public class FileManager {
     }
 
     /**
-     * ÒÆ¶¯Ò»¸öÎÄ¼ş
+     * ç§»åŠ¨ä¸€ä¸ªæ–‡ä»¶
      * 
      * @param srcFile
-     *            Ô´ÎÄ¼ş
+     *            æºæ–‡ä»¶
      * @param destFile
-     *            Ä¿±êÎÄ¼ş
+     *            ç›®æ ‡æ–‡ä»¶
      * @return
      * @throws IOException
      */
@@ -427,12 +427,12 @@ public class FileManager {
     }
 
     /**
-     * ÒÆ¶¯µ¥¸öÎÄ¼ş
+     * ç§»åŠ¨å•ä¸ªæ–‡ä»¶
      * 
      * @param srcFileName
-     *            Ô´ÎÄ¼şÈ«Â·¾¶Ãû
+     *            æºæ–‡ä»¶å…¨è·¯å¾„å
      * @param destFileName
-     *            Ä¿±êÎÄ¼şÈ«Â·¾¶Ãû
+     *            ç›®æ ‡æ–‡ä»¶å…¨è·¯å¾„å
      * @return
      * @throws IOException
      */
@@ -444,10 +444,10 @@ public class FileManager {
     }
 
     /**
-     * ´´½¨Ä¿Â¼
+     * åˆ›å»ºç›®å½•
      * 
      * @param dirName
-     *            : ÎÄ¼şÃû
+     *            : æ–‡ä»¶å
      * @return
      */
     public static boolean createDir(String dirName) {
@@ -455,10 +455,10 @@ public class FileManager {
     }
 
     /**
-     * É¾³ı¿ÕÄ¿Â¼
+     * åˆ é™¤ç©ºç›®å½•
      * 
      * @param dirName
-     *            : Ä¿Â¼Â·¾¶
+     *            : ç›®å½•è·¯å¾„
      * @return
      */
     public static boolean delDir(String dirName) {
@@ -467,10 +467,10 @@ public class FileManager {
     }
 
     /**
-     * É¾³ıÄ¿Â¼¼°Ä¿Â¼ÄÚµÄËùÓĞÎÄ¼ş
+     * åˆ é™¤ç›®å½•åŠç›®å½•å†…çš„æ‰€æœ‰æ–‡ä»¶
      * 
      * @param dir
-     *            : Ä¿Â¼
+     *            : ç›®å½•
      * @return
      */
     public static boolean deleteDir(File dir) {
@@ -489,10 +489,10 @@ public class FileManager {
     }
 
     /**
-     * É¾³ıÄ¿Â¼¼°Ä¿Â¼ÄÚµÄËùÓĞÎÄ¼ş
+     * åˆ é™¤ç›®å½•åŠç›®å½•å†…çš„æ‰€æœ‰æ–‡ä»¶
      * 
      * @param dirName
-     *            : Ä¿Â¼È«Â·¾¶Ãû
+     *            : ç›®å½•å…¨è·¯å¾„å
      * @return
      */
     public static boolean deleteDir(String dirName) {
@@ -501,7 +501,7 @@ public class FileManager {
     }
 
     /**
-     * ĞŞ¸ÄÄ¿Â¼»òÎÄ¼şÈ¨ÏŞ¼¶±ğ
+     * ä¿®æ”¹ç›®å½•æˆ–æ–‡ä»¶æƒé™çº§åˆ«
      * 
      * @param cmdStr
      * @param fileName
@@ -519,7 +519,7 @@ public class FileManager {
     }
 
     /**
-     * Éú³ÉÎ¨Ò»ÎÄ¼şÃû
+     * ç”Ÿæˆå”¯ä¸€æ–‡ä»¶å
      * 
      */
     public static String getUniqueString() {

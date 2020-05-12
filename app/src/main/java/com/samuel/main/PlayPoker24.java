@@ -13,7 +13,7 @@ import com.samuel.common.SelectPokerDialogView.ConfirmListener;
 import com.samuel.mytools.R;
 
 /**
- * 24µãÓÎÏ·½çÃæ
+ * 24ç‚¹æ¸¸æˆç•Œé¢
  * 
  * @author Samuel Zhou
  *
@@ -24,7 +24,7 @@ public class PlayPoker24 extends Activity {
 
     private Button mButtonCalc;
     private TextView mResultDetail;
-    /** ÊÇ·ñÏÔÊ¾´ğ°¸ */
+    /** æ˜¯å¦æ˜¾ç¤ºç­”æ¡ˆ */
     private boolean mIsShowResult = false;
     private int[] number = new int[4];
     private String[] exp = new String[4];
@@ -39,10 +39,10 @@ public class PlayPoker24 extends Activity {
 
         mButtonCalc = (Button) findViewById(R.id.button_check);
         mButtonCalc.setOnClickListener(checkClickListener);
-        mButtonCalc.setText("ÏÔÊ¾´ğ°¸");
+        mButtonCalc.setText("æ˜¾ç¤ºç­”æ¡ˆ");
         Button buttonReset = (Button) findViewById(R.id.button_reset);
         buttonReset.setOnClickListener(resetClickListener);
-        buttonReset.setText("Ëæ»ú·¢ÅÆ");
+        buttonReset.setText("éšæœºå‘ç‰Œ");
 
         mResultDetail = (TextView) findViewById(R.id.text_result_detail);
         mResultDetail.setText("");
@@ -50,7 +50,7 @@ public class PlayPoker24 extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("24µãÓÎÏ·");
+        textViewTitle.setText("24ç‚¹æ¸¸æˆ");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -69,13 +69,13 @@ public class PlayPoker24 extends Activity {
         mText3 = (TextView) findViewById(R.id.text_num3);
         mText4 = (TextView) findViewById(R.id.text_num4);
 
-        // Ëæ»ú³õÊ¼»¯Ò»×éÅÆÃæ
+        // éšæœºåˆå§‹åŒ–ä¸€ç»„ç‰Œé¢
         mText1.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
         mText2.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
         mText3.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
         mText4.setText(String.valueOf((int) Math.ceil(Math.random() * 10)));
 
-        // µã»÷¿ÉÒÔÊÖ¶¯Ñ¡ÔñÊı×Ö
+        // ç‚¹å‡»å¯ä»¥æ‰‹åŠ¨é€‰æ‹©æ•°å­—
         mText1.setOnClickListener(selectNumListener);
         mText2.setOnClickListener(selectNumListener);
         mText3.setOnClickListener(selectNumListener);
@@ -83,7 +83,7 @@ public class PlayPoker24 extends Activity {
     }
 
     /**
-     * ÊÖ¶¯Ñ¡ÔñÊı×Ö½Ó¿Ú
+     * æ‰‹åŠ¨é€‰æ‹©æ•°å­—æ¥å£
      */
     private OnClickListener selectNumListener = new OnClickListener() {
 
@@ -122,14 +122,14 @@ public class PlayPoker24 extends Activity {
     };
 
     /**
-     * Ëæ»ú·¢ÅÆ°´Å¥µÄµã»÷¼àÌı½Ó¿Ú
+     * éšæœºå‘ç‰ŒæŒ‰é’®çš„ç‚¹å‡»ç›‘å¬æ¥å£
      */
     private OnClickListener resetClickListener = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
             mIsShowResult = false;
-            mButtonCalc.setText("ÏÔÊ¾´ğ°¸");
+            mButtonCalc.setText("æ˜¾ç¤ºç­”æ¡ˆ");
             mResultDetail.setText("");
 
             while (true) {
@@ -151,27 +151,27 @@ public class PlayPoker24 extends Activity {
     };
 
     /**
-     * µã»÷ÏÔÊ¾»òÒş²Ø¼ÆËã½á¹û
+     * ç‚¹å‡»æ˜¾ç¤ºæˆ–éšè—è®¡ç®—ç»“æœ
      */
     private OnClickListener checkClickListener = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
-            // »ñÈ¡ÊäÈëµÄ4¸öÊı×Ö, ¼ì²éÊÇ·ñ¶¼ÓĞÊäÈë
+            // è·å–è¾“å…¥çš„4ä¸ªæ•°å­—, æ£€æŸ¥æ˜¯å¦éƒ½æœ‰è¾“å…¥
             int num1, num2, num3, num4;
             num1 = GpsUtils.strToInt(mText1.getText().toString());
             num2 = GpsUtils.strToInt(mText2.getText().toString());
             num3 = GpsUtils.strToInt(mText3.getText().toString());
             num4 = GpsUtils.strToInt(mText4.getText().toString());
             if (num1 == 0 || num2 == 0 || num3 == 0 || num4 == 0) {
-                Toast.makeText(PlayPoker24.this, "ÇëÑ¡ÔñÊäÈëµÄÊı×Ö", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PlayPoker24.this, "è¯·é€‰æ‹©è¾“å…¥çš„æ•°å­—", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             mIsShowResult = !mIsShowResult;
             if (mIsShowResult) {
-                // ¼ÆËãÊÇ·ñ´æÔÚÓĞĞ§½â
-                mButtonCalc.setText("Òş²Ø´ğ°¸");
+                // è®¡ç®—æ˜¯å¦å­˜åœ¨æœ‰æ•ˆè§£
+                mButtonCalc.setText("éšè—ç­”æ¡ˆ");
                 mResultArray.clear();
                 mResultDetail.setText("");
                 number = new int[] { num1, num2, num3, num4 };
@@ -183,18 +183,18 @@ public class PlayPoker24 extends Activity {
                     // result = result.replace(',', '\n');
                     mResultDetail.setText(result.substring(1, result.length() - 1));
                 } else {
-                    Toast.makeText(PlayPoker24.this, "Ã»ÓĞ·ûºÏÌõ¼şµÄ½á¹û", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlayPoker24.this, "æ²¡æœ‰ç¬¦åˆæ¡ä»¶çš„ç»“æœ", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 mResultArray.clear();
                 mResultDetail.setText("");
-                mButtonCalc.setText("ÏÔÊ¾´ğ°¸");
+                mButtonCalc.setText("æ˜¾ç¤ºç­”æ¡ˆ");
             }
         }
     };
 
     /**
-     * µİ¹éËã·¨, ¶ÔÊäÈëÊı¾İ½øĞĞËÄÔòÔËËã, ·µ»Ø½á¹ûÊÇ·ñµÈÓÚ24
+     * é€’å½’ç®—æ³•, å¯¹è¾“å…¥æ•°æ®è¿›è¡Œå››åˆ™è¿ç®—, è¿”å›ç»“æœæ˜¯å¦ç­‰äº24
      * 
      * @param n
      * @return
@@ -209,23 +209,23 @@ public class PlayPoker24 extends Activity {
         }
 
         for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) { // ½øĞĞ×éºÏ
+            for (int j = i + 1; j < n; j++) { // è¿›è¡Œç»„åˆ
                 int a, b;
                 String expa, expb;
-                a = number[i]; // ±£´æÆğÀ´£¬ÔÚ·½·¨×îºóÔÙ»Ö¸´£¬ÒÔ±ã¼ÌĞø¼ÆËã
-                b = number[j]; // ±£´æÆğÀ´£¬ÔÚ·½·¨×îºóÔÙ»Ö¸´£¬ÒÔ±ã¼ÌĞø¼ÆËã
-                number[j] = number[n - 1]; // ½«×îºóÒ»¸öÊıÅ²¹ıÀ´
-                expa = exp[i]; // ±£´æÆğÀ´£¬ÔÚ·½·¨×îºóÔÙ»Ö¸´£¬ÒÔ±ã¼ÌĞø¼ÆËã
-                expb = exp[j]; // ±£´æÆğÀ´£¬ÔÚ·½·¨×îºóÔÙ»Ö¸´£¬ÒÔ±ã¼ÌĞø¼ÆËã
-                exp[j] = exp[n - 1]; // ½«×îºóÒ»¸öÊ½×ÓÅ²¹ıÀ´j'
-                exp[i] = "(" + expa + "+" + expb + ")"; // ¿´¿´¼Ó·¨ÄÜ·ñËã³ö,Èç¹ûÄÜËã³ö£¬·µ»Øtrue
+                a = number[i]; // ä¿å­˜èµ·æ¥ï¼Œåœ¨æ–¹æ³•æœ€åå†æ¢å¤ï¼Œä»¥ä¾¿ç»§ç»­è®¡ç®—
+                b = number[j]; // ä¿å­˜èµ·æ¥ï¼Œåœ¨æ–¹æ³•æœ€åå†æ¢å¤ï¼Œä»¥ä¾¿ç»§ç»­è®¡ç®—
+                number[j] = number[n - 1]; // å°†æœ€åä¸€ä¸ªæ•°æŒªè¿‡æ¥
+                expa = exp[i]; // ä¿å­˜èµ·æ¥ï¼Œåœ¨æ–¹æ³•æœ€åå†æ¢å¤ï¼Œä»¥ä¾¿ç»§ç»­è®¡ç®—
+                expb = exp[j]; // ä¿å­˜èµ·æ¥ï¼Œåœ¨æ–¹æ³•æœ€åå†æ¢å¤ï¼Œä»¥ä¾¿ç»§ç»­è®¡ç®—
+                exp[j] = exp[n - 1]; // å°†æœ€åä¸€ä¸ªå¼å­æŒªè¿‡æ¥j'
+                exp[i] = "(" + expa + "+" + expb + ")"; // çœ‹çœ‹åŠ æ³•èƒ½å¦ç®—å‡º,å¦‚æœèƒ½ç®—å‡ºï¼Œè¿”å›true
                 number[i] = a + b;
                 if (is24(n - 1)) {
                     // return true;
                 }
 
                 if (a >= b) {
-                    exp[i] = "(" + expa + "-" + expb + ")"; // ¿´¿´¼õ·¨ÄÜ·ñËã
+                    exp[i] = "(" + expa + "-" + expb + ")"; // çœ‹çœ‹å‡æ³•èƒ½å¦ç®—
                     number[i] = a - b;
                     if (is24(n - 1)) {
                         // return true;
@@ -238,13 +238,13 @@ public class PlayPoker24 extends Activity {
                         // return true;
                     }
                 }
-                exp[i] = "(" + expa + "*" + expb + ")"; // ¿´¿´³Ë·¨ÄÜ·ñËã
+                exp[i] = "(" + expa + "*" + expb + ")"; // çœ‹çœ‹ä¹˜æ³•èƒ½å¦ç®—
                 number[i] = a * b;
                 if (is24(n - 1)) {
                     // return true;
                 }
                 if (b != 0 && (a % b == 0)) {
-                    exp[i] = "(" + expa + "/" + expb + ")"; // ¿´¿´³ı·¨ÄÜ·ñËã
+                    exp[i] = "(" + expa + "/" + expb + ")"; // çœ‹çœ‹é™¤æ³•èƒ½å¦ç®—
                     number[i] = a / b;
                     if (is24(n - 1)) {
                         // return true;
@@ -257,8 +257,8 @@ public class PlayPoker24 extends Activity {
                         // return true;
                     }
                 }
-                // Èç¹ûÒÔÉÏµÄ¼Ó¡¢¼õ¡¢³Ë¡¢³ı¶¼²»ÄÜµÃµ½ÓĞĞ§µÄ½á¹û£¬Ôò»Ö¸´Êı¾İ½øĞĞÏÂÒ»ÂÖµÄ¼ÆËã¡£
-                number[i] = a; // »Ö¸´
+                // å¦‚æœä»¥ä¸Šçš„åŠ ã€å‡ã€ä¹˜ã€é™¤éƒ½ä¸èƒ½å¾—åˆ°æœ‰æ•ˆçš„ç»“æœï¼Œåˆ™æ¢å¤æ•°æ®è¿›è¡Œä¸‹ä¸€è½®çš„è®¡ç®—ã€‚
+                number[i] = a; // æ¢å¤
                 number[j] = b;
                 exp[i] = expa;
                 exp[j] = expb;
@@ -268,7 +268,7 @@ public class PlayPoker24 extends Activity {
     }
 
     /**
-     * Çî¾ÙËã·¨, ¶Ô4¸öÊı×Ö½øĞĞÈ«ÅÅĞò¼ÆËã(È¥µôÖØ¸´µÄËãÊ½)
+     * ç©·ä¸¾ç®—æ³•, å¯¹4ä¸ªæ•°å­—è¿›è¡Œå…¨æ’åºè®¡ç®—(å»æ‰é‡å¤çš„ç®—å¼)
      */
     public void exhaustiveCalc(int a, int b, int c, int d) {
         // a
@@ -348,7 +348,7 @@ public class PlayPoker24 extends Activity {
     }
 
     /**
-     * ¸ù¾İËùÓĞ¿ÉÄÜµÄËãÊ½×éºÏ¼ÆËã, »ñÈ¡Âú×ãÌõ¼şµÄËãÊ½ÎÄ±¾ÁĞ±í
+     * æ ¹æ®æ‰€æœ‰å¯èƒ½çš„ç®—å¼ç»„åˆè®¡ç®—, è·å–æ»¡è¶³æ¡ä»¶çš„ç®—å¼æ–‡æœ¬åˆ—è¡¨
      * 
      * @param a
      * @param b
@@ -363,124 +363,124 @@ public class PlayPoker24 extends Activity {
             mResultArray.add(String.format("%d+%d+%d-%d ", a, b, c, d));
         }
         if (a <= b && c <= d && (a + b <= c + d) && (a + b) * (c + d) == 24) {
-            mResultArray.add(String.format("(%d+%d)¡Á(%d+%d) ", a, b, c, d));
+            mResultArray.add(String.format("(%d+%d)Ã—(%d+%d) ", a, b, c, d));
         }
         if (a <= b && (a + b) * (c - d) == 24) {
-            mResultArray.add(String.format("(%d+%d)¡Á(%d-%d) ", a, b, c, d));
+            mResultArray.add(String.format("(%d+%d)Ã—(%d-%d) ", a, b, c, d));
         }
         if (a >= b && (a - b <= c - d) && (a - b) * (c - d) == 24) {
-            mResultArray.add(String.format("(%d-%d)¡Á(%d-%d) ", a, b, c, d));
+            mResultArray.add(String.format("(%d-%d)Ã—(%d-%d) ", a, b, c, d));
         }
         if (a >= b && (a - b) * c + d == 24) {
-            mResultArray.add(String.format("(%d-%d)¡Á%d+%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d-%d)Ã—%d+%d ", a, b, c, d));
         }
         if (a >= b && (a - b) * c - d == 24) {
-            mResultArray.add(String.format("(%d-%d)¡Á%d-%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d-%d)Ã—%d-%d ", a, b, c, d));
         }
         if (a >= b && ((a - b) * c % d == 0) && (a - b) * c / d == 24) {
-            mResultArray.add(String.format("(%d-%d)¡Á%d¡Â%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d-%d)Ã—%dÃ·%d ", a, b, c, d));
         }
         if ((a <= b && b <= c) && (a + b + c) * d == 24) {
-            mResultArray.add(String.format("(%d+%d+%d)¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d+%d+%d)Ã—%d ", a, b, c, d));
         }
         if ((a <= b && b <= c) && (a + b + c) % d == 0 && (a + b + c) / d == 24) {
-            mResultArray.add(String.format("(%d+%d+%d)¡Â%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d+%d+%d)Ã·%d ", a, b, c, d));
         }
         if (b >= c && (a - b - c) * d == 24) {
-            mResultArray.add(String.format("(%d-%d-%d)¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d-%d-%d)Ã—%d ", a, b, c, d));
         }
         if (a <= b && (a + b - c) * d == 24) {
-            mResultArray.add(String.format("(%d+%d-%d)¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d+%d-%d)Ã—%d ", a, b, c, d));
         }
         if ((a <= b && b <= c) && (a * b * c) % d == 0 && (a * b * c) / d == 24) {
-            mResultArray.add(String.format("%d¡Á%d¡Á%d¡Â%d ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%dÃ—%dÃ·%d ", a, b, c, d));
         }
         if ((a <= b && c <= d) && (a * b) * (c + d) == 24) {
-            mResultArray.add(String.format("%d¡Á%d¡Á(%d+%d) ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%dÃ—(%d+%d) ", a, b, c, d));
         }
         if (a <= b && (a * b) * (c - d) == 24) {
-            mResultArray.add(String.format("%d¡Á%d¡Á(%d-%d) ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%dÃ—(%d-%d) ", a, b, c, d));
         }
         if (a <= b && b <= c && a * b * c - d == 24) {
-            mResultArray.add(String.format("%d¡Á%d¡Á%d-%d ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%dÃ—%d-%d ", a, b, c, d));
         }
         if (a <= b && b < c && a * b * c + d == 24) {
-            mResultArray.add(String.format("%d¡Á%d¡Á%d+%d ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%dÃ—%d+%d ", a, b, c, d));
         }
         if (a <= b && b <= c && c <= d && a * b * c * d == 24) {
-            mResultArray.add(String.format("%d¡Á%d¡Á%d¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%dÃ—%dÃ—%d ", a, b, c, d));
         }
         if (a <= b && c % d == 0 && (a + b) + (c / d) == 24) {
-            mResultArray.add(String.format("(%d+%d)+(%d¡Â%d) ", a, b, c, d));
+            mResultArray.add(String.format("(%d+%d)+(%dÃ·%d) ", a, b, c, d));
         }
         if (a <= b && ((a + b) * c % d == 0) && (a + b) * c / d == 24) {
-            mResultArray.add(String.format("(%d+%d)¡Á%d¡Â%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d+%d)Ã—%dÃ·%d ", a, b, c, d));
         }
         if (a <= b && (a + b) * c + d == 24) {
-            mResultArray.add(String.format("(%d+%d)¡Á%d+%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d+%d)Ã—%d+%d ", a, b, c, d));
         }
         if (a <= b && (a + b) * c - d == 24) {
-            mResultArray.add(String.format("(%d+%d)¡Á%d-%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d+%d)Ã—%d-%d ", a, b, c, d));
         }
         if (a <= b && (a + b) % c == 0 && (a + b) / c + d == 24) {
-            mResultArray.add(String.format("(%d+%d)¡Â%d+%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d+%d)Ã·%d+%d ", a, b, c, d));
         }
         if (a <= b && c <= d && (a * b + c + d) == 24) {
-            mResultArray.add(String.format("%d¡Á%d+%d+%d ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%d+%d+%d ", a, b, c, d));
         }
         if (a <= b && (a * b) + c - d == 24) {
-            mResultArray.add(String.format("%d¡Á%d+%d-%d ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%d+%d-%d ", a, b, c, d));
         }
         if (a <= b && (a * b + c) * d == 24) {
-            mResultArray.add(String.format("(%d¡Á%d+%d)¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("(%dÃ—%d+%d)Ã—%d ", a, b, c, d));
         }
         if (a <= b && c % d == 0 && (a * b) - (c / d) == 24) {
-            mResultArray.add(String.format("(%d¡Á%d)-(%d¡Â%d) ", a, b, c, d));
+            mResultArray.add(String.format("(%dÃ—%d)-(%dÃ·%d) ", a, b, c, d));
         }
         if (a <= b && a <= c && c % d == 0 && (a * b) + (c / d) == 24) {
-            mResultArray.add(String.format("(%d¡Á%d)+(%d¡Â%d) ", a, b, c, d));
+            mResultArray.add(String.format("(%dÃ—%d)+(%dÃ·%d) ", a, b, c, d));
         }
         if (a <= b && c >= d && (a * b) - c - d == 24) {
-            mResultArray.add(String.format("%d¡Á%d-%d-%d ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%d-%d-%d ", a, b, c, d));
         }
         if (a <= b && c <= d && a <= c && (a * b) + (c * d) == 24) {
-            mResultArray.add(String.format("%d¡Á%d+%d¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%d+%dÃ—%d ", a, b, c, d));
         }
         if (a <= b && c <= d && (a * b) - (c * d) == 24) {
-            mResultArray.add(String.format("%d¡Á%d-%d¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("%dÃ—%d-%dÃ—%d ", a, b, c, d));
         }
         if (a <= b && c <= d && (a * b) % (c * d) == 0 && (a * b) / (c * d) == 24) {
-            mResultArray.add(String.format("(%d¡Á%d)¡Â(%d¡Á%d) ", a, b, c, d));
+            mResultArray.add(String.format("(%dÃ—%d)Ã·(%dÃ—%d) ", a, b, c, d));
         }
         if (a <= b && (c - d) != 0 && (a * b) % (c - d) == 0 && (a * b) / (c - d) == 24) {
-            mResultArray.add(String.format("(%d¡Á%d)¡Â(%d-%d) ", a, b, c, d));
+            mResultArray.add(String.format("(%dÃ—%d)Ã·(%d-%d) ", a, b, c, d));
         }
         if (a <= b && c <= d && (a * b) % (c + d) == 0 && (a * b) / (c + d) == 24) {
-            mResultArray.add(String.format("(%d¡Á%d)¡Â(%d+%d) ", a, b, c, d));
+            mResultArray.add(String.format("(%dÃ—%d)Ã·(%d+%d) ", a, b, c, d));
         }
         if ((a % b == 0) && (a / b + c) * d == 24) {
-            mResultArray.add(String.format("((%d¡Â%d)+%d)¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("((%dÃ·%d)+%d)Ã—%d ", a, b, c, d));
         }
         if ((a % b == 0) && (a / b - c) * d == 24) {
-            mResultArray.add(String.format("((%d¡Â%d)-%d)¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("((%dÃ·%d)-%d)Ã—%d ", a, b, c, d));
         }
         if (a <= b && (a * b % c == 0) && (a * b) / c - d == 24) {
-            mResultArray.add(String.format("(%d¡Á%d)¡Â%d-%d ", a, b, c, d));
+            mResultArray.add(String.format("(%dÃ—%d)Ã·%d-%d ", a, b, c, d));
         }
         if (a <= b && (a * b % c == 0) && (a * b) / c + d == 24) {
-            mResultArray.add(String.format("(%d¡Á%d)¡Â%d+%d ", a, b, c, d));
+            mResultArray.add(String.format("(%dÃ—%d)Ã·%d+%d ", a, b, c, d));
         }
         if (a <= b && ((a * b - c) % d == 0) && ((a * b) - c) / d == 24) {
-            mResultArray.add(String.format("(%d¡Á%d-%d)¡Â%d ", a, b, c, d));
+            mResultArray.add(String.format("(%dÃ—%d-%d)Ã·%d ", a, b, c, d));
         }
         if (a <= b && ((a * b) - c) * d == 24) {
-            mResultArray.add(String.format("(%d¡Á%d-%d)¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("(%dÃ—%d-%d)Ã—%d ", a, b, c, d));
         }
         if ((b % c == 0) && (a - b / c) * d == 24) {
-            mResultArray.add(String.format("(%d-(%d¡Â%d))¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d-(%dÃ·%d))Ã—%d ", a, b, c, d));
         }
         if (b <= c && (a - b * c) * d == 24) {
-            mResultArray.add(String.format("(%d-(%d¡Á%d))¡Á%d ", a, b, c, d));
+            mResultArray.add(String.format("(%d-(%dÃ—%d))Ã—%d ", a, b, c, d));
         }
     }
 }

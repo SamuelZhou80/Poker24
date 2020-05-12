@@ -251,7 +251,7 @@ public class PhotoDetectActivity extends Activity {
                 textPaint.setColor(Color.RED);
                 mCanvas.drawText(itemMark.getName(), left, top, textPaint);
             }
-            mCanvas.save(Canvas.ALL_SAVE_FLAG);
+            mCanvas.save();
             mCanvas.restore();
             if (mCanvas != null) {
                 mCanvas = null;

@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.litepal.crud.DataSupport;
 
 /**
- * ÖĞ¿¼³É¼¨±íµ¥
+ * ä¸­è€ƒæˆç»©è¡¨å•
  * 
  * @author Administrator
  *
@@ -14,23 +14,23 @@ public class ZhongKao extends DataSupport implements Serializable {
 
     /**    */
     private static final long serialVersionUID = 1L;
-    /** ³õÖĞÑ§Ğ£Ãû³Æ */
+    /** åˆä¸­å­¦æ ¡åç§° */
     private String schoolName = "";
-    /** ÖĞ¿¼Äê·İ */
+    /** ä¸­è€ƒå¹´ä»½ */
     private int year;
-    /** ±¨¿¼ÈËÊı */
+    /** æŠ¥è€ƒäººæ•° */
     private int totalNum = 0;
-    /** Ò»ÖĞ±¾²¿Â¼È¡ÈËÊı */
+    /** ä¸€ä¸­æœ¬éƒ¨å½•å–äººæ•° */
     private int yizhongbenbu = 0;
-    /** Ë«Ê®±¾²¿Â¼È¡ÈËÊı */
+    /** åŒåæœ¬éƒ¨å½•å–äººæ•° */
     private int shuangshibenbu = 0;
-    /** Íâ¹úÓïÂ¼È¡ÈËÊı */
+    /** å¤–å›½è¯­å½•å–äººæ•° */
     private int waiguoyu = 0;
-    /** Ò»Ë«ÍâÂ¼È¡ÈËÊı(¿ÉÄÜÃ»ÓĞÑ§Ğ£µÄÃ÷Ï¸, Ö»ÓĞºÏ¼Æ) */
+    /** ä¸€åŒå¤–å½•å–äººæ•°(å¯èƒ½æ²¡æœ‰å­¦æ ¡çš„æ˜ç»†, åªæœ‰åˆè®¡) */
     private int top3 = 0;
-    /** Ò»ÖĞº£²×Â¼È¡ÈËÊı */
+    /** ä¸€ä¸­æµ·æ²§å½•å–äººæ•° */
     private int yizhonghaicang = 0;
-    /** ÆÕ¸ßÂ¼È¡ÈËÊı */
+    /** æ™®é«˜å½•å–äººæ•° */
     private int toHighSchool = 0;
 
     public String getSchoolName() {

@@ -52,9 +52,9 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 /**
- * ¹¤¾ßº¯ÊıÀà
+ * å·¥å…·å‡½æ•°ç±»
  * 
- * @author ½âÓñ·¼ 2012-01-08 ´´½¨<br>
+ * @author è§£ç‰èŠ³ 2012-01-08 åˆ›å»º<br>
  * 
  */
 public class GpsUtils {
@@ -63,7 +63,7 @@ public class GpsUtils {
     static final int MONTH_DAY[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
     /**
-     * ½«1/1000Ãë×ª»»³É1/1024µ¥Î»µÄÊı¾İ
+     * å°†1/1000ç§’è½¬æ¢æˆ1/1024å•ä½çš„æ•°æ®
      * 
      * @param value
      * @return
@@ -73,7 +73,7 @@ public class GpsUtils {
     }
 
     /**
-     * ½«1/1024Ãë×ª»»³É1/1000µ¥Î»µÄÊı¾İ
+     * å°†1/1024ç§’è½¬æ¢æˆ1/1000å•ä½çš„æ•°æ®
      * 
      * @param value
      * @return
@@ -82,9 +82,9 @@ public class GpsUtils {
         return (int) (value * ((float) 1000 / 1024));
     }
     /**
-     * »ñÈ¡µ±Ç°ÈÕÆÚºÍÊ±¼ä
+     * è·å–å½“å‰æ—¥æœŸå’Œæ—¶é—´
      * 
-     * @return YYYY-MM-dd HH:mm:ss¸ñÊ½Êä³öÊ±¼ä
+     * @return YYYY-MM-dd HH:mm:ssæ ¼å¼è¾“å‡ºæ—¶é—´
      */
     public static String getDateTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -92,9 +92,9 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡µ±Ç°ÈÕÆÚ
+     * è·å–å½“å‰æ—¥æœŸ
      * 
-     * @return YYYY-MM-dd ¸ñÊ½Êä³öÊ±¼ä
+     * @return YYYY-MM-dd æ ¼å¼è¾“å‡ºæ—¶é—´
      */
     public static String getDate() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -102,9 +102,9 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡´ò¿¨Ê±¼ä
+     * è·å–æ‰“å¡æ—¶é—´
      * 
-     * @return HH:mm:ss¸ñÊ½Êä³öÊ±¼ä
+     * @return HH:mm:ssæ ¼å¼è¾“å‡ºæ—¶é—´
      */
     public static String getDTime() {
         String datetime = getDateTime();
@@ -112,9 +112,9 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡Ê±¼ä
+     * è·å–æ—¶é—´
      * 
-     * @return HH:mm¸ñÊ½Êä³öÊ±¼ä
+     * @return HH:mmæ ¼å¼è¾“å‡ºæ—¶é—´
      */
     public static String getFTime() {
         String datetime = getDateTime();
@@ -122,21 +122,21 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡Ö¸¶¨ÔÂ·İµÄÔÂÌìÊı
+     * è·å–æŒ‡å®šæœˆä»½çš„æœˆå¤©æ•°
      * 
      * @param year
-     *            Ö¸¶¨µÄÄê·İ
+     *            æŒ‡å®šçš„å¹´ä»½
      * @param month
-     *            Ö¸¶¨µÄÔÂ·İ
+     *            æŒ‡å®šçš„æœˆä»½
      * 
-     * @return ÔÂÌìÊı
+     * @return æœˆå¤©æ•°
      */
     public static int getDay(int year, int month) {
         if (month > 12 || month == 0) {
             return 30;
         }
         if (month == 2) {
-            // ÅĞ¶ÏÊÇ·ñÎªÈòÄê
+            // åˆ¤æ–­æ˜¯å¦ä¸ºé—°å¹´
             if ((year % 4) == 0) {
                 return 29;
             } else {
@@ -148,11 +148,11 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡´Ó2000Äêµ½dateÒ»¹²ÓĞ¶àÉÙÌì
+     * è·å–ä»2000å¹´åˆ°dateä¸€å…±æœ‰å¤šå°‘å¤©
      * 
      * @param date
-     *            £ºÊäÈë¸ñÁÖÄáÖ¾ÈÕÆÚ
-     * @return ×Ü¹²ÌìÊı
+     *            ï¼šè¾“å…¥æ ¼æ—å°¼å¿—æ—¥æœŸ
+     * @return æ€»å…±å¤©æ•°
      */
     public static int getAllDays(int year, int month, int day) {
         int yearDays = 0, monthDays = 0, allDays = 0;
@@ -207,9 +207,9 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡Á½¸öÊäÈëÊ±¼äµÄ²îÖµ(YYYY-MM-dd HH:mm:ss¸ñÊ½ÊäÈë)
+     * è·å–ä¸¤ä¸ªè¾“å…¥æ—¶é—´çš„å·®å€¼(YYYY-MM-dd HH:mm:ssæ ¼å¼è¾“å…¥)
      * 
-     * @return µ¥Î»s
+     * @return å•ä½s
      */
     public static long getDateTimeDiffer(String startTime, String endTime) {
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -219,7 +219,7 @@ public class GpsUtils {
         try {
             begin = dfs.parse(startTime);
             end = dfs.parse(endTime);
-            between = (end.getTime() - begin.getTime()) / 1000;// ³ıÒÔ1000ÊÇÎªÁË×ª»»³ÉÃë
+            between = (end.getTime() - begin.getTime()) / 1000;// é™¤ä»¥1000æ˜¯ä¸ºäº†è½¬æ¢æˆç§’
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -227,7 +227,7 @@ public class GpsUtils {
         return Math.abs(between);
     }
 
-    /** ÅĞ¶Ïdate1ÊÇ·ñÔÚdate2»òdate3µÄÔÂ·İÄÚ */
+    /** åˆ¤æ–­date1æ˜¯å¦åœ¨date2æˆ–date3çš„æœˆä»½å†… */
     public static boolean isBetweenDate(String date1, String date2, String date3) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         int month1,month2,month3;
@@ -244,9 +244,9 @@ public class GpsUtils {
         return false;
     }
     /**
-     * »ñÈ¡Ä³Ò»¸öÈÕÆÚµÄÄêÔÂÈÕ²¢±£´æµ½Êı×éÖĞ
+     * è·å–æŸä¸€ä¸ªæ—¥æœŸçš„å¹´æœˆæ—¥å¹¶ä¿å­˜åˆ°æ•°ç»„ä¸­
      * 
-     * @return ±£´æÄêÔÂÈÕĞÅÏ¢µÄÊı×é
+     * @return ä¿å­˜å¹´æœˆæ—¥ä¿¡æ¯çš„æ•°ç»„
      */
     public static int[] getCurDateBytes(String date) {
         int[] curDate = { 2000, 1, 1 };
@@ -261,7 +261,7 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡ÈÕÆÚ×Ö½ÚÊı×é
+     * è·å–æ—¥æœŸå­—èŠ‚æ•°ç»„
      * 
      * @param date
      * @return
@@ -271,7 +271,7 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡Ê±¼ä×Ö½ÚÊı×é
+     * è·å–æ—¶é—´å­—èŠ‚æ•°ç»„
      * 
      * @param time
      * @return
@@ -292,7 +292,7 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡ÈÕÆÚÊ±¼ä×Ö½ÚÊı×é
+     * è·å–æ—¥æœŸæ—¶é—´å­—èŠ‚æ•°ç»„
      * 
      * @param time
      * @return
@@ -314,36 +314,36 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡µ±Ç°ĞÇÆÚ ÖĞÎÄ
+     * è·å–å½“å‰æ˜ŸæœŸ ä¸­æ–‡
      * 
      * @param weekday
-     *            µ±Ç°ĞÇÆÚË÷Òı, ÖÜÈÕ=1, ÖÜÒ»=2, ÖÜ¶ş=3, ÒÔ´ËÀàÍÆ
+     *            å½“å‰æ˜ŸæœŸç´¢å¼•, å‘¨æ—¥=1, å‘¨ä¸€=2, å‘¨äºŒ=3, ä»¥æ­¤ç±»æ¨
      * 
-     * @return string ĞÇÆÚÒ»£¬ĞÇÆÚ¶şµÈ
+     * @return string æ˜ŸæœŸä¸€ï¼Œæ˜ŸæœŸäºŒç­‰
      */
     public static String getWeekdayChineseName(int weekday) {
         String result = null;
         switch (weekday) {
         case 1:
-            result = "ĞÇÆÚÈÕ";
+            result = "æ˜ŸæœŸæ—¥";
             break;
         case 2:
-            result = "ĞÇÆÚÒ»";
+            result = "æ˜ŸæœŸä¸€";
             break;
         case 3:
-            result = "ĞÇÆÚ¶ş";
+            result = "æ˜ŸæœŸäºŒ";
             break;
         case 4:
-            result = "ĞÇÆÚÈı";
+            result = "æ˜ŸæœŸä¸‰";
             break;
         case 5:
-            result = "ĞÇÆÚËÄ";
+            result = "æ˜ŸæœŸå››";
             break;
         case 6:
-            result = "ĞÇÆÚÎå";
+            result = "æ˜ŸæœŸäº”";
             break;
         case 7:
-            result = "ĞÇÆÚÁù";
+            result = "æ˜ŸæœŸå…­";
             break;
         default:
             break;
@@ -352,12 +352,12 @@ public class GpsUtils {
     }
 
     /**
-     * ÅĞ¶Ïµ±Ç°ÈÕÆÚÊÇĞÇÆÚ¼¸
+     * åˆ¤æ–­å½“å‰æ—¥æœŸæ˜¯æ˜ŸæœŸå‡ 
      * 
      * @param pTime
-     *            ÉèÖÃµÄĞèÒªÅĞ¶ÏµÄÊ±¼ä //¸ñÊ½Èç2012-09-08
-     * @return dayForWeek ÅĞ¶Ï½á¹û
-     * @Exception ·¢ÉúÒì³£
+     *            è®¾ç½®çš„éœ€è¦åˆ¤æ–­çš„æ—¶é—´ //æ ¼å¼å¦‚2012-09-08
+     * @return dayForWeek åˆ¤æ–­ç»“æœ
+     * @Exception å‘ç”Ÿå¼‚å¸¸
      */
     public static int getWeek(String pTime) {
         int Week = 0;
@@ -394,9 +394,9 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡Ö¸¶¨ÈÕÆÚ µ±Ç°ĞÇÆÚ ÖĞÎÄ
+     * è·å–æŒ‡å®šæ—¥æœŸ å½“å‰æ˜ŸæœŸ ä¸­æ–‡
      * 
-     * @return string ĞÇÆÚÒ»£¬ĞÇÆÚ¶şµÈ
+     * @return string æ˜ŸæœŸä¸€ï¼Œæ˜ŸæœŸäºŒç­‰
      */
     public static String getWeekdayChineseName(String date) {
         GregorianCalendar calendar = new GregorianCalendar();
@@ -407,7 +407,7 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡ºÁÃë¼¶Ê±¼ä ×ª»¯ÎªÊ®Áù½øÖÆ×Ö·û´® ²¹ÉÏ³ÉÊ®ÁùÎ» Í¨³£ÓÃÓÚÅÄÕÕ±¾µØÉú³ÉµÄID
+     * è·å–æ¯«ç§’çº§æ—¶é—´ è½¬åŒ–ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸² è¡¥ä¸Šæˆåå…­ä½ é€šå¸¸ç”¨äºæ‹ç…§æœ¬åœ°ç”Ÿæˆçš„ID
      * 
      * @return
      */
@@ -424,7 +424,7 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡timeÈÕÆÚ½ÓÏÂÀ´daysÌìºóµÄÈÕÆÚ,Êı×éĞÎÊ½·µ»Ø
+     * è·å–timeæ—¥æœŸæ¥ä¸‹æ¥dayså¤©åçš„æ—¥æœŸ,æ•°ç»„å½¢å¼è¿”å›
      * 
      * @return 0:year,1:month,2:day
      */
@@ -434,7 +434,7 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡timeÈÕÆÚ½ÓÏÂÀ´daysÌìºóµÄÈÕÆÚ,×Ö·û´®ĞÎÊ½·µ»Ø
+     * è·å–timeæ—¥æœŸæ¥ä¸‹æ¥dayså¤©åçš„æ—¥æœŸ,å­—ç¬¦ä¸²å½¢å¼è¿”å›
      * 
      * @return
      */
@@ -449,9 +449,9 @@ public class GpsUtils {
     }
 
     /**
-     * ¿ªÊ¼ÈÕÆÚÊÇ·ñÔçÓÚ»òµÈÓÚ½áÊøÈÕÆÚ
+     * å¼€å§‹æ—¥æœŸæ˜¯å¦æ—©äºæˆ–ç­‰äºç»“æŸæ—¥æœŸ
      * 
-     * @return true:ÊÇ false: ·ñ
+     * @return true:æ˜¯ false: å¦
      */
     public static boolean isStartDateBeforeEndDate(String starttime,
             String endtime) {
@@ -472,9 +472,9 @@ public class GpsUtils {
     }
 
     /**
-     * ¿ªÊ¼Ê±¼äÊÇ·ñÔçÓÚ»òµÈÓÚ½áÊøÊ±¼ä
+     * å¼€å§‹æ—¶é—´æ˜¯å¦æ—©äºæˆ–ç­‰äºç»“æŸæ—¶é—´
      * 
-     * @return true:ÊÇ false: ·ñ
+     * @return true:æ˜¯ false: å¦
      */
     public static boolean isStartTimeBeforeEndTime(String starttime,
             String endtime) {
@@ -499,9 +499,9 @@ public class GpsUtils {
     }
 
     /**
-     * ¿ªÊ¼ÈÕÆÚÊÇ·ñÔçÓÚ»òµÈÓÚ½áÊøÈÕÆÚ
+     * å¼€å§‹æ—¥æœŸæ˜¯å¦æ—©äºæˆ–ç­‰äºç»“æŸæ—¥æœŸ
      * 
-     * @return true:ÊÇ false: ·ñ
+     * @return true:æ˜¯ false: å¦
      */
     public static boolean isStartDateTimeBeforeEndDateTime(String starttime,
             String endtime) {
@@ -522,9 +522,9 @@ public class GpsUtils {
     }
 
     /**
-     * ½áÊøÊ±¼ä ÊÇ·ñ´óÓÚµÈÓÚ ¿ªÊ¼Ê±¼ä+ÌìÊı
+     * ç»“æŸæ—¶é—´ æ˜¯å¦å¤§äºç­‰äº å¼€å§‹æ—¶é—´+å¤©æ•°
      * 
-     * @return true:ÊÇ false: ·ñ
+     * @return true:æ˜¯ false: å¦
      */
     public static boolean isEnddateAfterStartdateAddDays(String starttime,
             String endtime, int days) {
@@ -536,21 +536,21 @@ public class GpsUtils {
     }
 
     /**
-     * ¶ÔCELL ID½øĞĞ×ª»»
+     * å¯¹CELL IDè¿›è¡Œè½¬æ¢
      * 
-     * @param [in] id: ´ı×ª»»µÄCELL ID
-     * @return ×ª»»ºóµÄCELL ID
+     * @param [in] id: å¾…è½¬æ¢çš„CELL ID
+     * @return è½¬æ¢åçš„CELL ID
      */
     public static int changeCellId(int id) {
         short tmp1, tmp2, tmp3;
 
-        // µÍ5Î»
+        // ä½5ä½
         tmp1 = (short) (id & 0x001f);
 
-        // ¸ß5Î»
+        // é«˜5ä½
         tmp2 = (short) (id & 0xf800);
 
-        // ÖĞ6Î»
+        // ä¸­6ä½
         tmp3 = (short) (id & 0x07e0);
 
         tmp3 = (short) ~tmp3;
@@ -561,7 +561,7 @@ public class GpsUtils {
     }
 
     /**
-     * ¶Ô¶ÁĞ´Êı¾İ½øĞĞÑÚÂë´¦Àí
+     * å¯¹è¯»å†™æ•°æ®è¿›è¡Œæ©ç å¤„ç†
      * 
      * @param mData
      */
@@ -579,13 +579,13 @@ public class GpsUtils {
     }
 
     /**
-     * ÅĞ¶Ï×Ö·û´®ÊÇ·ñÈ«ÎªÊı×Ö²¢ÇÒ¼¸Î»ÒÔÉÏ
+     * åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦å…¨ä¸ºæ•°å­—å¹¶ä¸”å‡ ä½ä»¥ä¸Š
      * 
      * @param str
-     *            ×Ö·û´´
+     *            å­—ç¬¦åˆ›
      * @param num
-     *            °üº¬Êı×ÖÖÁÉÙ¼¸Î»
-     * @return trueÊÇ£¬false·ñ
+     *            åŒ…å«æ•°å­—è‡³å°‘å‡ ä½
+     * @return trueæ˜¯ï¼Œfalseå¦
      * 
      */
     public static boolean isAllDigitalByNum(String str, int num) {
@@ -615,7 +615,7 @@ public class GpsUtils {
     }
 
     /**
-     * ½«×Ö·û´®ÖĞµÄ0È¥³ı
+     * å°†å­—ç¬¦ä¸²ä¸­çš„0å»é™¤
      * 
      * @param str
      * @return string
@@ -631,7 +631,7 @@ public class GpsUtils {
     }
 
     /**
-     * Ã°ÅİÅÅĞò
+     * å†’æ³¡æ’åº
      * 
      * @param x
      */
@@ -648,15 +648,15 @@ public class GpsUtils {
     }
 
     /**
-     * ²éÕÒÖ¸¶¨×Ö·ûÎ»ÖÃ
+     * æŸ¥æ‰¾æŒ‡å®šå­—ç¬¦ä½ç½®
      * 
      * @param data
-     *            ´ı²éÕÒÊı¾İ
+     *            å¾…æŸ¥æ‰¾æ•°æ®
      * @param findchar
-     *            ´ı²éÕÒ×Ö·û
+     *            å¾…æŸ¥æ‰¾å­—ç¬¦
      * @param numchar
-     *            ´ı²éÕÒ×Ö·ûµÄĞòºÅ,´Ó0¿ªÊ¼
-     * @return ·µ»ØÖ¸¶¨×Ö·û³öÏÖµÄÎ»ÖÃ,Èç¹ûÃ»ÓĞÕÒµ½,·µ»ØÊı¾İ×Ü³¤¶È
+     *            å¾…æŸ¥æ‰¾å­—ç¬¦çš„åºå·,ä»0å¼€å§‹
+     * @return è¿”å›æŒ‡å®šå­—ç¬¦å‡ºç°çš„ä½ç½®,å¦‚æœæ²¡æœ‰æ‰¾åˆ°,è¿”å›æ•°æ®æ€»é•¿åº¦
      */
     public static int findCharPos(byte[] data, char findchar, int numchar) {
         if (data == null || data.length == 0) {
@@ -682,17 +682,17 @@ public class GpsUtils {
     }
 
     /**
-     * ²éÕÒÖ¸¶¨×Ö·ûÎ»ÖÃ
+     * æŸ¥æ‰¾æŒ‡å®šå­—ç¬¦ä½ç½®
      * 
      * @param str
-     *            ´ı²éÕÒ×Ö·û´®
+     *            å¾…æŸ¥æ‰¾å­—ç¬¦ä¸²
      * @param findchar
-     *            ´ı²éÕÒ×Ö·û
+     *            å¾…æŸ¥æ‰¾å­—ç¬¦
      * @param numchar
-     *            ´ı²éÕÒ×Ö·ûµÄĞòºÅ, ´Ó0¿ªÊ¼, Èç: numchar=1, Ôò±íÊ¾²éÕÒ×Ö·ûµÚ2´Î³öÏÖµÄÎ»ÖÃ
+     *            å¾…æŸ¥æ‰¾å­—ç¬¦çš„åºå·, ä»0å¼€å§‹, å¦‚: numchar=1, åˆ™è¡¨ç¤ºæŸ¥æ‰¾å­—ç¬¦ç¬¬2æ¬¡å‡ºç°çš„ä½ç½®
      * @param maxlen
-     *            ´ı²éÕÒ×Ö·û´®µÄ×î´ó³¤¶È
-     * @return ·µ»ØÖ¸¶¨×Ö·û³öÏÖµÄÎ»ÖÃ, ´Ó0¿ªÊ¼, Èç¹ûÃ»ÓĞÕÒµ½, ·µ»Ø×Ö·û´®µÄ³¤¶È
+     *            å¾…æŸ¥æ‰¾å­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦
+     * @return è¿”å›æŒ‡å®šå­—ç¬¦å‡ºç°çš„ä½ç½®, ä»0å¼€å§‹, å¦‚æœæ²¡æœ‰æ‰¾åˆ°, è¿”å›å­—ç¬¦ä¸²çš„é•¿åº¦
      */
     public static int findCharPos(String str, char findchar, int numchar, int maxlen) {
         int i, pos;
@@ -715,13 +715,13 @@ public class GpsUtils {
     }
 
     /**
-     * ²éÕÒÖ¸¶¨×Ö·ûÊıÁ¿
+     * æŸ¥æ‰¾æŒ‡å®šå­—ç¬¦æ•°é‡
      * 
      * @param data
-     *            : ´ı²éÕÒÊı¾İ
+     *            : å¾…æŸ¥æ‰¾æ•°æ®
      * @param findchar
-     *            :´ı²éÕÒ×Ö·û
-     * @return ·µ»ØÖ¸¶¨×Ö·ûÊıÁ¿
+     *            :å¾…æŸ¥æ‰¾å­—ç¬¦
+     * @return è¿”å›æŒ‡å®šå­—ç¬¦æ•°é‡
      */
     public static int findCharNum(byte[] data, char findchar) {
         if (data == null || data.length == 0) {
@@ -744,15 +744,15 @@ public class GpsUtils {
     }
 
     /**
-     * ²éÕÒÖ¸¶¨×Ö·ûµÄÊıÁ¿
+     * æŸ¥æ‰¾æŒ‡å®šå­—ç¬¦çš„æ•°é‡
      * 
      * @param str
-     *            ´ı²éÕÒµÄ×Ö·û´®
+     *            å¾…æŸ¥æ‰¾çš„å­—ç¬¦ä¸²
      * @param findchar
-     *            ´ı²éÕÒ×Ö·û
+     *            å¾…æŸ¥æ‰¾å­—ç¬¦
      * @param maxlen
-     *            ´ı²éÕÒ×Ö·û´®µÄ×î´ó³¤¶È
-     * @return Ö¸¶¨×Ö·ûµÄÊıÁ¿
+     *            å¾…æŸ¥æ‰¾å­—ç¬¦ä¸²çš„æœ€å¤§é•¿åº¦
+     * @return æŒ‡å®šå­—ç¬¦çš„æ•°é‡
      */
     public static int findCharNum(String str, char findchar, int maxlen) {
         int i, numchar = 0;
@@ -770,10 +770,10 @@ public class GpsUtils {
     }
 
     /**
-     * ½«×Ö·û´®±»³ÉÁùÎ»+¼Óµ¥Î»ÎªÆßÎ» ºóÃæ¼Ó¿Õ¸ñ
+     * å°†å­—ç¬¦ä¸²è¢«æˆå…­ä½+åŠ å•ä½ä¸ºä¸ƒä½ åé¢åŠ ç©ºæ ¼
      * 
      * @param str
-     * @return Æ´½ÓºóµÄ×Ö·û´®
+     * @return æ‹¼æ¥åçš„å­—ç¬¦ä¸²
      */
     public static String getSixBytesStr(String str) {
         if (str == null) {
@@ -792,10 +792,10 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡Êı¾İÇø´ø½øÎ»ÀÛ¼ÓĞ£ÑéÂë
+     * è·å–æ•°æ®åŒºå¸¦è¿›ä½ç´¯åŠ æ ¡éªŒç 
      * 
-     * @param byteDataÊı¾İ
-     * @return µ¥×Ö½Ú´ø½øÎ»ÀÛ¼ÓĞ£ÑéÂë
+     * @param byteDataæ•°æ®
+     * @return å•å­—èŠ‚å¸¦è¿›ä½ç´¯åŠ æ ¡éªŒç 
      */
     public static byte getChkSum(byte[] byteData) {
         short result = 0;
@@ -815,22 +815,22 @@ public class GpsUtils {
     }
 
     /**
-     * ¼ÆËãÀÛ¼ÓºÍ (Ê¹ÓÃÊ±È·±£Òª¼ÆËãÀÛ¼ÓºÍÊı¾İ³¤¶ÈÊÇbyteDataµÄ³¤¶È)
+     * è®¡ç®—ç´¯åŠ å’Œ (ä½¿ç”¨æ—¶ç¡®ä¿è¦è®¡ç®—ç´¯åŠ å’Œæ•°æ®é•¿åº¦æ˜¯byteDataçš„é•¿åº¦)
      * 
-     * @param byteDataÊı¾İÌå
-     * @return ÀÛ¼ÓºÍ
+     * @param byteDataæ•°æ®ä½“
+     * @return ç´¯åŠ å’Œ
      */
     public static int CalCheckSum(byte[] byteData) {
         return CalCheckSum(byteData, byteData.length);
     }
 
     /**
-     * ¼ÆËãÀÛ¼ÓºÍ
+     * è®¡ç®—ç´¯åŠ å’Œ
      * 
-     * @param byteDataÊı¾İÌå
+     * @param byteDataæ•°æ®ä½“
      * @param len
-     *            Êı¾İ³¤¶È
-     * @return ÀÛ¼ÓºÍ
+     *            æ•°æ®é•¿åº¦
+     * @return ç´¯åŠ å’Œ
      */
     public static int CalCheckSum(byte[] byteData, int len) {
         int chksum = 0;
@@ -844,20 +844,20 @@ public class GpsUtils {
     }
 
     /**
-     * ½«×Ö½Ú×ª»¯ÎªÕûĞÍ
+     * å°†å­—èŠ‚è½¬åŒ–ä¸ºæ•´å‹
      * 
      * @param a
-     * @return ÕûÊı
+     * @return æ•´æ•°
      */
     public static int byteToInt(byte a) {
         return (a & 0xff);
     }
 
     /**
-     * ½«×Ö½ÚÊı×é×ª³ÉÕûÊı(´ó¶ËÄ£Ê½,¸ß×Ö½ÚÔÚµÍÎ»¼´byteArray[0])
+     * å°†å­—èŠ‚æ•°ç»„è½¬æˆæ•´æ•°(å¤§ç«¯æ¨¡å¼,é«˜å­—èŠ‚åœ¨ä½ä½å³byteArray[0])
      * 
      * @param byteArray
-     * @return ÕûÊı
+     * @return æ•´æ•°
      */
     public static int byteArrayToInt(byte[] byteData) {
         int result = 0;
@@ -873,15 +873,15 @@ public class GpsUtils {
     }
 
     /**
-     * ½«Êı×éÖĞ´æµÄËÄ¸öÊı×éÎªÕûÊı
+     * å°†æ•°ç»„ä¸­å­˜çš„å››ä¸ªæ•°ç»„ä¸ºæ•´æ•°
      * 
      * @param a
-     *            ×î¸ßÎ»
+     *            æœ€é«˜ä½
      * @param b
      * @param c
      * @param d
-     *            ×îµÍÎ»
-     * @return ÕûÊı
+     *            æœ€ä½ä½
+     * @return æ•´æ•°
      */
     public static int byteArraytoInt(byte a, byte b, byte c, byte d) {
         int result = 0;
@@ -895,7 +895,7 @@ public class GpsUtils {
     }
 
     /**
-     * ÕûĞÎ×ªÊı×é
+     * æ•´å½¢è½¬æ•°ç»„
      * 
      * @param intValue
      * @return
@@ -909,7 +909,7 @@ public class GpsUtils {
     }
 
     /**
-     * shortĞÍ×ªÊı×é
+     * shortå‹è½¬æ•°ç»„
      * 
      * @param value
      * @return
@@ -923,10 +923,10 @@ public class GpsUtils {
     }
 
     /**
-     * ½«arraylist×ª»¯ÎªÊı×é
+     * å°†arraylistè½¬åŒ–ä¸ºæ•°ç»„
      * 
      * @param arraylist
-     * @return Êı×é
+     * @return æ•°ç»„
      */
     public static int[] getIntegerArraybyArraylist(ArrayList<Integer> arraylist) {
         if (arraylist != null) {
@@ -941,10 +941,10 @@ public class GpsUtils {
     }
 
     /**
-     * ½«arraylist×ª»¯ÎªÊı×é
+     * å°†arraylistè½¬åŒ–ä¸ºæ•°ç»„
      * 
      * @param arraylist
-     * @return Êı×é
+     * @return æ•°ç»„
      */
     public static String[] getStringArraybyArraylist(ArrayList<String> arraylist) {
         if (arraylist != null) {
@@ -959,10 +959,10 @@ public class GpsUtils {
     }
 
     /**
-     * ½«Êı×é×ª»¯Îªarraylist
+     * å°†æ•°ç»„è½¬åŒ–ä¸ºarraylist
      * 
      * @param arraylist
-     * @return Êı×é
+     * @return æ•°ç»„
      */
     public static ArrayList<Integer> getArrayListByIntegerArray(int[] src) {
         ArrayList<Integer> result = new ArrayList<Integer>();
@@ -975,12 +975,12 @@ public class GpsUtils {
     }
 
     /**
-     * ½«×Ö·û´®×ª»»ÎªArrayList
+     * å°†å­—ç¬¦ä¸²è½¬æ¢ä¸ºArrayList
      * 
      * @param src
-     *            ´ı·Ö¸ô×Ö·û´®
+     *            å¾…åˆ†éš”å­—ç¬¦ä¸²
      * @param split
-     *            ·Ö¸ô×Ö·û
+     *            åˆ†éš”å­—ç¬¦
      * @return
      */
     public static ArrayList<Integer> getArrayListByString(String src, String split) {
@@ -997,10 +997,10 @@ public class GpsUtils {
     }
 
     /**
-     * ×Ö·û´®×ªÕûĞÎÊı
+     * å­—ç¬¦ä¸²è½¬æ•´å½¢æ•°
      * 
      * @param str
-     * @return ÕûĞÎÊı,Èç¹û×Ö·û´®Îª¿Õ¶ÔÏó»ò×Ö·û´®ÓĞĞ§³¤¶ÈÎª0Ôò·µ»Ø0
+     * @return æ•´å½¢æ•°,å¦‚æœå­—ç¬¦ä¸²ä¸ºç©ºå¯¹è±¡æˆ–å­—ç¬¦ä¸²æœ‰æ•ˆé•¿åº¦ä¸º0åˆ™è¿”å›0
      */
     public static int strToInt(String str) {
         if (str == null) {
@@ -1015,13 +1015,13 @@ public class GpsUtils {
     }
 
     /**
-     * ¸ù¾İ·Ö¸ô·û²ğ·ÖÊäÈë×Ö·û´®Îª×Ö·û´®Êı×é, ÔÊĞíÁ½·Ö¸ô·û¼äÎŞÄÚÈİ
+     * æ ¹æ®åˆ†éš”ç¬¦æ‹†åˆ†è¾“å…¥å­—ç¬¦ä¸²ä¸ºå­—ç¬¦ä¸²æ•°ç»„, å…è®¸ä¸¤åˆ†éš”ç¬¦é—´æ— å†…å®¹
      * 
      * @param src
-     *            ´ı·Ö¸ô×Ö·û´®
+     *            å¾…åˆ†éš”å­—ç¬¦ä¸²
      * @param split
-     *            ·Ö¸ô×Ö·û
-     * @return ·Ö¸ôºóÊı×é, ¿ÕÊı¾İ·µ»Ø¿Õ´®
+     *            åˆ†éš”å­—ç¬¦
+     * @return åˆ†éš”åæ•°ç»„, ç©ºæ•°æ®è¿”å›ç©ºä¸²
      */
     public static String[] stringToArray(String src, String split) {
         String[] strs;
@@ -1033,13 +1033,13 @@ public class GpsUtils {
     }
 
     /**
-     * ¸ù¾İ·Ö¸ô·û²ğ·ÖÊäÈë×Ö·û´®ÎªÕûĞÍÊı×é, ÔÊĞíÁ½·Ö¸ô·û¼äÎŞÄÚÈİ
+     * æ ¹æ®åˆ†éš”ç¬¦æ‹†åˆ†è¾“å…¥å­—ç¬¦ä¸²ä¸ºæ•´å‹æ•°ç»„, å…è®¸ä¸¤åˆ†éš”ç¬¦é—´æ— å†…å®¹
      * 
      * @param src
-     *            ´ı·Ö¸ô×Ö·û´®
+     *            å¾…åˆ†éš”å­—ç¬¦ä¸²
      * @param split
-     *            ·Ö¸ô×Ö·û
-     * @return ·Ö¸ôºóÊı×é, ¿ÕÊı¾İ·µ»Ø¿Õ´®
+     *            åˆ†éš”å­—ç¬¦
+     * @return åˆ†éš”åæ•°ç»„, ç©ºæ•°æ®è¿”å›ç©ºä¸²
      */
     public static int[] stringToArray(String src, char split) {
         int i, len, count, start, end;
@@ -1056,23 +1056,23 @@ public class GpsUtils {
         count = 0;
         pos = new int[len];
         for (i = 0; i < len; i++) {
-            // »ñÈ¡Ã¿¸ö·Ö¸ô·ûµÄÎ»ÖÃ
+            // è·å–æ¯ä¸ªåˆ†éš”ç¬¦çš„ä½ç½®
             if (chars[i] == split) {
                 pos[count++] = i;
             }
         }
-        // ×Ó´®µÄ¸öÊıµÈÓÚ·Ö¸ô·ûµÄ¸öÊı¼Ó1
+        // å­ä¸²çš„ä¸ªæ•°ç­‰äºåˆ†éš”ç¬¦çš„ä¸ªæ•°åŠ 1
         strs = new int[count + 1];
         start = 0;
         end = 0;
         for (i = 0; i < count + 1; i++) {
             end = pos[i];
-            // ÅĞ¶ÏÊÇ·ñÒÑµ½´ï×Ö·û´®µÄ×îºóÒ»¸ö×Ó´®, ÈÃÖÕµãµÈÓÚ×Ö·û´®µÄ³¤¶È
+            // åˆ¤æ–­æ˜¯å¦å·²åˆ°è¾¾å­—ç¬¦ä¸²çš„æœ€åä¸€ä¸ªå­ä¸², è®©ç»ˆç‚¹ç­‰äºå­—ç¬¦ä¸²çš„é•¿åº¦
             if (end == 0) {
                 end = len;
             }
             if (end > start) {
-                // »ñÈ¡ÏÂÒ»¸ö·Ö¸îµãµÄÆğÊ¼Î»ÖÃ
+                // è·å–ä¸‹ä¸€ä¸ªåˆ†å‰²ç‚¹çš„èµ·å§‹ä½ç½®
                 strs[i] = Integer.parseInt(src.substring(start, end));
                 start = end + 1;
             } else {
@@ -1084,7 +1084,7 @@ public class GpsUtils {
     }
 
     /**
-     * ½«×Ö·û´®Êı×é¸ù¾İ·Ö¸ô·ûÕûºÏ³ÉÒ»¸ö×Ö·û´®
+     * å°†å­—ç¬¦ä¸²æ•°ç»„æ ¹æ®åˆ†éš”ç¬¦æ•´åˆæˆä¸€ä¸ªå­—ç¬¦ä¸²
      * 
      * @param strArray
      * @param split
@@ -1107,7 +1107,7 @@ public class GpsUtils {
     }
 
     /**
-     * ½«×Ö·û´®ÁĞ±í¸ù¾İ·Ö¸ô·ûÕûºÏ³ÉÒ»¸ö×Ö·û´®
+     * å°†å­—ç¬¦ä¸²åˆ—è¡¨æ ¹æ®åˆ†éš”ç¬¦æ•´åˆæˆä¸€ä¸ªå­—ç¬¦ä¸²
      * 
      * @param strList
      * @param split
@@ -1125,7 +1125,7 @@ public class GpsUtils {
     }
 
     /**
-     * ½«ÕûĞÍÊı×é¸ù¾İ·Ö¸ô·ûÕûºÏ³ÉÒ»¸ö×Ö·û´®
+     * å°†æ•´å‹æ•°ç»„æ ¹æ®åˆ†éš”ç¬¦æ•´åˆæˆä¸€ä¸ªå­—ç¬¦ä¸²
      * 
      * @param strArray
      * @param split
@@ -1148,13 +1148,13 @@ public class GpsUtils {
     }
 
     /**
-     * ½«Ò»¸öÕûĞÍÊı×éµÄÄÚÈİÆ´½Ó³ÉÒÔ·Ö¸ô×Ö·û(Èç',')¸ô¿ªµÄ×Ö·û´®
+     * å°†ä¸€ä¸ªæ•´å‹æ•°ç»„çš„å†…å®¹æ‹¼æ¥æˆä»¥åˆ†éš”å­—ç¬¦(å¦‚',')éš”å¼€çš„å­—ç¬¦ä¸²
      * 
      * @param input
-     *            ÕûĞÍÊı×é
+     *            æ•´å‹æ•°ç»„
      * @param split
-     *            ·Ö¸ô×Ö·û
-     * @return ×Ö·û´®
+     *            åˆ†éš”å­—ç¬¦
+     * @return å­—ç¬¦ä¸²
      */
     public static String arrayToString(JSONArray input, String split) {
         String output = "";
@@ -1179,22 +1179,22 @@ public class GpsUtils {
     }
 
     /**
-     * ×Ö·û´®×ª¸¡µãĞÍÊı
+     * å­—ç¬¦ä¸²è½¬æµ®ç‚¹å‹æ•°
      * 
      * @param str
-     * @return ¸¡µãĞÍÊı,Èç¹û×Ö·û´®Îª¿Õ¶ÔÏó»ò×Ö·û´®ÓĞĞ§³¤¶ÈÎª0Ôò·µ»Ø0.0
+     * @return æµ®ç‚¹å‹æ•°,å¦‚æœå­—ç¬¦ä¸²ä¸ºç©ºå¯¹è±¡æˆ–å­—ç¬¦ä¸²æœ‰æ•ˆé•¿åº¦ä¸º0åˆ™è¿”å›0.0
      */
     public static float strToFloat(String str) {
         float result = (float) 0.0;
 
         if (str == null) {
-            // ¿Õ¶ÔÏóÖ±½Ó·µ»Ø0.0
+            // ç©ºå¯¹è±¡ç›´æ¥è¿”å›0.0
             return result;
         }
 
         String tmpStr = str.trim();
         if (tmpStr.length() <= 0) {
-            // ¿Õ×Ö·û´®Ö±½Ó·µ»Ø0.0
+            // ç©ºå­—ç¬¦ä¸²ç›´æ¥è¿”å›0.0
             return result;
         }
 
@@ -1203,10 +1203,10 @@ public class GpsUtils {
     }
 
     /**
-     * °Ñ¼Û¸ñ×Ö·û´®×ª³É³¤ÕûÊı£¨Ğ¡ÊıµãºóÒÆÁ½Î»£¬±ÈÈç1.11 ×ª³É111£»1.1×ª³É100£»1×ª³É100£©
+     * æŠŠä»·æ ¼å­—ç¬¦ä¸²è½¬æˆé•¿æ•´æ•°ï¼ˆå°æ•°ç‚¹åç§»ä¸¤ä½ï¼Œæ¯”å¦‚1.11 è½¬æˆ111ï¼›1.1è½¬æˆ100ï¼›1è½¬æˆ100ï¼‰
      * 
      * @param priceStr
-     * @return ×ª»»ºóµÄÕûÊı
+     * @return è½¬æ¢åçš„æ•´æ•°
      */
     public static long priceStrToLong(String priceStr) {
         long result = 0;
@@ -1238,7 +1238,7 @@ public class GpsUtils {
     }
 
     /**
-     * °Ñ³¤ÕûÊı×ª³ÉÓĞÁ½Î»Ğ¡ÊıµãµÄ¼Û¸ñ×Ö·û´®£¨ÀıÈç1×ª³É0.01£»10×ª³É0.10£»100×ª³É1.00£©
+     * æŠŠé•¿æ•´æ•°è½¬æˆæœ‰ä¸¤ä½å°æ•°ç‚¹çš„ä»·æ ¼å­—ç¬¦ä¸²ï¼ˆä¾‹å¦‚1è½¬æˆ0.01ï¼›10è½¬æˆ0.10ï¼›100è½¬æˆ1.00ï¼‰
      * 
      * @param priceNum
      * @return
@@ -1263,21 +1263,21 @@ public class GpsUtils {
     }
 
     /**
-     * ¼ÆËãµ¥¸ö×Ö½ÚµÄ²¹Âë£¬¼´: Èçb>=0£¬Ôò·µ»Øb£»·´Ö®£¬Ôò·µ»ØbµÄ·´Âë¼Ó1
+     * è®¡ç®—å•ä¸ªå­—èŠ‚çš„è¡¥ç ï¼Œå³: å¦‚b>=0ï¼Œåˆ™è¿”å›bï¼›åä¹‹ï¼Œåˆ™è¿”å›bçš„åç åŠ 1
      * 
      * @param b
-     *            ´ı¼ÆËãµÄµ¥×Ö½ÚÊı¾İ
-     * @return ²¹Âë
+     *            å¾…è®¡ç®—çš„å•å­—èŠ‚æ•°æ®
+     * @return è¡¥ç 
      */
     public static int calComplement(byte b) {
         return (b >= 0) ? b : (256 + b);
     }
 
     /**
-     * ½«¶ş½øÖÆ×ª»¯Îª16½øÖÆ×Ö·û´®
+     * å°†äºŒè¿›åˆ¶è½¬åŒ–ä¸º16è¿›åˆ¶å­—ç¬¦ä¸²
      * 
      * @param b
-     *            ¶ş½øÖÆ×Ö½ÚÊı×é
+     *            äºŒè¿›åˆ¶å­—èŠ‚æ•°ç»„
      * @return String
      */
     public static String byte2hex(byte[] b) {
@@ -1298,7 +1298,7 @@ public class GpsUtils {
     }
 
     /**
-     * Ê®Áù½øÖÆ×Ö·û´®×ª»¯Îª2½øÖÆ
+     * åå…­è¿›åˆ¶å­—ç¬¦ä¸²è½¬åŒ–ä¸º2è¿›åˆ¶
      * 
      * @param hex
      * @return
@@ -1313,7 +1313,7 @@ public class GpsUtils {
     }
 
     /**
-     * ½«Á½¸öASCII×Ö·ûºÏ³ÉÒ»¸ö×Ö½Ú£» Èç£º"EF"--> 0xEF
+     * å°†ä¸¤ä¸ªASCIIå­—ç¬¦åˆæˆä¸€ä¸ªå­—èŠ‚ï¼› å¦‚ï¼š"EF"--> 0xEF
      * 
      * @param src0
      *            byte
@@ -1332,13 +1332,13 @@ public class GpsUtils {
     }
 
     /**
-     * ¸ù¾İ·Ö¸ô·û²ğ·ÖÊäÈë×Ö·û´®Îª×Ö·û´®Êı×é, ÔÊĞíÁ½·Ö¸ô·û¼äÎŞÄÚÈİ
+     * æ ¹æ®åˆ†éš”ç¬¦æ‹†åˆ†è¾“å…¥å­—ç¬¦ä¸²ä¸ºå­—ç¬¦ä¸²æ•°ç»„, å…è®¸ä¸¤åˆ†éš”ç¬¦é—´æ— å†…å®¹
      * 
      * @param src
-     *            ´ı·Ö¸ô×Ö·û´®
+     *            å¾…åˆ†éš”å­—ç¬¦ä¸²
      * @param split
-     *            ·Ö¸ô×Ö·û
-     * @return ·Ö¸ôºóÊı×é, ¿ÕÊı¾İ·µ»Ø¿Õ´®
+     *            åˆ†éš”å­—ç¬¦
+     * @return åˆ†éš”åæ•°ç»„, ç©ºæ•°æ®è¿”å›ç©ºä¸²
      */
     public static String[] yxStringSplit(String src, char split) {
         int i, len, count, start, end;
@@ -1349,7 +1349,7 @@ public class GpsUtils {
         }
 
         len = src.length();
-        count = findCharNum(src, split, len) + 1;// ×Ó´®µÄ¸öÊıµÈÓÚ·Ö¸ô·ûµÄ¸öÊı¼Ó1
+        count = findCharNum(src, split, len) + 1;// å­ä¸²çš„ä¸ªæ•°ç­‰äºåˆ†éš”ç¬¦çš„ä¸ªæ•°åŠ 1
         strs = new String[count];
         start = 0;
         end = 0;
@@ -1366,13 +1366,13 @@ public class GpsUtils {
     }
 
     /**
-     * ÅĞ¶ÏÄ³×Ö·û´®ÊÇ·ñ°üº¬¹Ø¼ü×ÖÄÚÈİ, Èç¹û¹Ø¼ü×ÖÊÇ×ÖÄ¸µÄ»°, ¸ù¾İÆ´Òô½øĞĞÄ£ºıÆ¥Åä
+     * åˆ¤æ–­æŸå­—ç¬¦ä¸²æ˜¯å¦åŒ…å«å…³é”®å­—å†…å®¹, å¦‚æœå…³é”®å­—æ˜¯å­—æ¯çš„è¯, æ ¹æ®æ‹¼éŸ³è¿›è¡Œæ¨¡ç³ŠåŒ¹é…
      * 
      * @param key
-     *            ¹Ø¼ü×Ö
+     *            å…³é”®å­—
      * @param pinyinStrs
-     *            ×Ö·û´®µÄÊ××ÖÄ¸ËõĞ´ºÍÈ«Æ´ĞÅÏ¢
-     * @return true °üº¬; false ²»°üº¬
+     *            å­—ç¬¦ä¸²çš„é¦–å­—æ¯ç¼©å†™å’Œå…¨æ‹¼ä¿¡æ¯
+     * @return true åŒ…å«; false ä¸åŒ…å«
      */
     public static boolean isContainKey(String key, String[] pinyinStrs) {
         boolean isContain = false;
@@ -1388,12 +1388,12 @@ public class GpsUtils {
         if (Character.isLetter(c)) {
             key = key.toUpperCase(Locale.CHINA);
             int keyLen = key.length();
-            // ÏÈ¼ì²éÊ××ÖÄ¸ÊÇ·ñÆ¥Åä
+            // å…ˆæ£€æŸ¥é¦–å­—æ¯æ˜¯å¦åŒ¹é…
             if (pinyinStrs[0].contains(key)) {
                 return true;
             }
 
-            // È»ºóÖğ×Ö½øĞĞÆ¥Åä
+            // ç„¶åé€å­—è¿›è¡ŒåŒ¹é…
             for (int i = 1; i < pinyinStrs.length; i++) {
                 int wordLen = pinyinStrs[i].length();
                 if (wordLen > keyLen) {
@@ -1401,7 +1401,7 @@ public class GpsUtils {
                         return true;
                     }
                 } else {
-                    // Èç¹û¹Ø¼ü×Ö³¤¶È±Èµ¥×ÖÆ´Òô³¤, Ôò´Óµ¥×ÖÆ¥ÅäµÄÎ»ÖÃ¿ªÊ¼, ½«ÆäÖ®ºóµÄÄÚÈİÆ´½Ó½øĞĞÆ¥Åä
+                    // å¦‚æœå…³é”®å­—é•¿åº¦æ¯”å•å­—æ‹¼éŸ³é•¿, åˆ™ä»å•å­—åŒ¹é…çš„ä½ç½®å¼€å§‹, å°†å…¶ä¹‹åçš„å†…å®¹æ‹¼æ¥è¿›è¡ŒåŒ¹é…
                     if (key.startsWith(pinyinStrs[i])) {
                         String tmp = "";
                         for (int j = i; j < pinyinStrs.length; j++) {
@@ -1419,10 +1419,10 @@ public class GpsUtils {
     }
 
     /**
-     * ²âÊÔÊäÈëµÄ×Ö·ûÊÇ·ñÎªGBÂë
+     * æµ‹è¯•è¾“å…¥çš„å­—ç¬¦æ˜¯å¦ä¸ºGBç 
      * 
      * @param ch
-     * @return true: ÊÇGBÂë; false: ²»ÊÇGBÂë
+     * @return true: æ˜¯GBç ; false: ä¸æ˜¯GBç 
      */
     public static boolean isGBCode(char ch) {
         if (ch > 0x80) {
@@ -1433,12 +1433,12 @@ public class GpsUtils {
     }
 
     /**
-     * ¼ÆËã×Ö·û´®Êµ¼Ê×Ö·û³¤¶È£¬ºº×ÖËã2¸ö×Ö·û³¤¶È£¬Óöµ½»»ĞĞÊ±£¬ÕûĞĞÌî³ä³¤¶ÈÎªmaxNum
+     * è®¡ç®—å­—ç¬¦ä¸²å®é™…å­—ç¬¦é•¿åº¦ï¼Œæ±‰å­—ç®—2ä¸ªå­—ç¬¦é•¿åº¦ï¼Œé‡åˆ°æ¢è¡Œæ—¶ï¼Œæ•´è¡Œå¡«å……é•¿åº¦ä¸ºmaxNum
      * 
      * @param str
      * @param maxNum
-     *            Ã¿ĞĞ×î¶àÏÔÊ¾µÄ×Ö·ûÊı£¨GBÂëËã2¸ö×Ö·û£©
-     * @return ĞèÒªÏÔÊ¾µÄ×Ö·ûÊı
+     *            æ¯è¡Œæœ€å¤šæ˜¾ç¤ºçš„å­—ç¬¦æ•°ï¼ˆGBç ç®—2ä¸ªå­—ç¬¦ï¼‰
+     * @return éœ€è¦æ˜¾ç¤ºçš„å­—ç¬¦æ•°
      */
     public static int calcTextRealCharNum(String str, int maxNum) {
         int i, codeNum = 0;
@@ -1454,7 +1454,7 @@ public class GpsUtils {
             if (isGBCode(ch)) {
                 codeNum += 2;
             } else if (ch == '\n' || ch == '\r') {
-                // ÈçÓöµ½'\r','\n',"\r\n"Ê±»»ĞĞ´¦Àí
+                // å¦‚é‡åˆ°'\r','\n',"\r\n"æ—¶æ¢è¡Œå¤„ç†
                 if (ch == '\r' && (str.length() > i + 1 && str.charAt(i + 1) == '\n')) {
                     i++;
                 }
@@ -1468,13 +1468,13 @@ public class GpsUtils {
     }
 
     /**
-     * ´Ó×Ö·û´®ÖĞ½ØÈ¡ÏàÓ¦×Ö·û³¤¶ÈµÄ×Ó´®£¨ºº×ÖËã2¸ö×Ö·û³¤¶È£¬Óöµ½»»ĞĞÊ±£¬ÕûĞĞÌî³ä³¤¶ÈÎªmaxNum£©
+     * ä»å­—ç¬¦ä¸²ä¸­æˆªå–ç›¸åº”å­—ç¬¦é•¿åº¦çš„å­ä¸²ï¼ˆæ±‰å­—ç®—2ä¸ªå­—ç¬¦é•¿åº¦ï¼Œé‡åˆ°æ¢è¡Œæ—¶ï¼Œæ•´è¡Œå¡«å……é•¿åº¦ä¸ºmaxNumï¼‰
      * 
      * @param str
-     *            ÍêÕûµÄ×Ö·û´®
+     *            å®Œæ•´çš„å­—ç¬¦ä¸²
      * @param len
-     *            ĞèÒª½ØÈ¡µÄ×Ó´®×Ö·û³¤¶È£¨GBÂëËã2¸ö×Ö·û£©
-     * @return ½ØÈ¡µÄ×Ó´®
+     *            éœ€è¦æˆªå–çš„å­ä¸²å­—ç¬¦é•¿åº¦ï¼ˆGBç ç®—2ä¸ªå­—ç¬¦ï¼‰
+     * @return æˆªå–çš„å­ä¸²
      */
     public static String getRealCharNumStr(String str, int len) {
         int i, codeNum = 0;
@@ -1491,7 +1491,7 @@ public class GpsUtils {
             if (isGBCode(ch)) {
                 codeNum += 2;
             } else if (ch == '\n' || ch == '\r') {
-                // ÈçÓöµ½'\r','\n',"\r\n"Ê±»»ĞĞ´¦Àí
+                // å¦‚é‡åˆ°'\r','\n',"\r\n"æ—¶æ¢è¡Œå¤„ç†
                 if (ch == '\r' && (str.length() > i + 1 && str.charAt(i + 1) == '\n')) {
                     i++;
                 }
@@ -1512,11 +1512,11 @@ public class GpsUtils {
     }
 
     /**
-     * ¼ì²éÊäÈëµÄ×Ö·û´®ÊÇ·ñÊÇÓĞĞ§µÄÎŞ·ûºÅÊı, ÀıÈç: 1.23
+     * æ£€æŸ¥è¾“å…¥çš„å­—ç¬¦ä¸²æ˜¯å¦æ˜¯æœ‰æ•ˆçš„æ— ç¬¦å·æ•°, ä¾‹å¦‚: 1.23
      * 
      * @param src
      * @param count
-     * @return ×Ö·û´®¸ñÊ½ÊÇ·ñÕıÈ·
+     * @return å­—ç¬¦ä¸²æ ¼å¼æ˜¯å¦æ­£ç¡®
      */
     public static boolean checkFloatNumber(String src, int count) {
         if (src == null || src.length() == 0) {
@@ -1527,7 +1527,7 @@ public class GpsUtils {
         if (num > 1) {
             return false;
         } else if (num == 1) {
-            // Ğ¡ÊıµãÇ°ºó¶¼±ØĞëÓĞÊı×Ö
+            // å°æ•°ç‚¹å‰åéƒ½å¿…é¡»æœ‰æ•°å­—
             int pos = findCharPos(src, '.', 0, len);
             if ((pos == 0) || (pos == len - 1)) {
                 return false;
@@ -1538,7 +1538,7 @@ public class GpsUtils {
     }
 
     /**
-     * ´ÓÓÎ±ê»ñÈ¡Êı¾İ´æÖÁÁĞ±íÊı¾İ¼¯ÖĞ
+     * ä»æ¸¸æ ‡è·å–æ•°æ®å­˜è‡³åˆ—è¡¨æ•°æ®é›†ä¸­
      * 
      * @param cur
      * @return
@@ -1573,13 +1573,13 @@ public class GpsUtils {
     }
 
     /**
-     * ½âÎöÊ±¼ä×Ö·û´®Îª±ê×¼µÄÈÕÀú¶ÔÏó
+     * è§£ææ—¶é—´å­—ç¬¦ä¸²ä¸ºæ ‡å‡†çš„æ—¥å†å¯¹è±¡
      * 
      * @param dateStr
-     *            Ê±¼ä×Ö·û´®, Ö§³ÖµÄ¸ñÊ½ÎªYYYY-MM-DD[ hh:mm][:ss], ·½À¨ºÅÄÚ±íÊ¾¿ÉÑ¡Ïî
+     *            æ—¶é—´å­—ç¬¦ä¸², æ”¯æŒçš„æ ¼å¼ä¸ºYYYY-MM-DD[ hh:mm][:ss], æ–¹æ‹¬å·å†…è¡¨ç¤ºå¯é€‰é¡¹
      * @param calendar
-     *            ¸ñÁ¦¸ßÀú¶ÔÏó, ÓÃÓÚ±£´æ½âÎöºóµÄÊ±¼äĞÅÏ¢
-     * @return ³É¹¦»òÊÇÊ§°Ü, ×Ö·û´®¸ñÊ½²»ÕıÈ·Ê±·µ»ØÊ§°Ü
+     *            æ ¼åŠ›é«˜å†å¯¹è±¡, ç”¨äºä¿å­˜è§£æåçš„æ—¶é—´ä¿¡æ¯
+     * @return æˆåŠŸæˆ–æ˜¯å¤±è´¥, å­—ç¬¦ä¸²æ ¼å¼ä¸æ­£ç¡®æ—¶è¿”å›å¤±è´¥
      */
     private static boolean parserDateStr(String dateStr, GregorianCalendar calendar) {
         int start = 0, pos = 0;
@@ -1597,7 +1597,7 @@ public class GpsUtils {
         }
         pos = findCharPos(dateStr, '-', 1, strLen);
         int month = strToInt(dateStr.substring(start, pos));
-        // ÈÕÀúÏµÍ³µÄÔÂ·İÊÇ´Ó0¿ªÊ¼µÄ
+        // æ—¥å†ç³»ç»Ÿçš„æœˆä»½æ˜¯ä»0å¼€å§‹çš„
         if (month > 0) {
             month--;
         }
@@ -1631,11 +1631,11 @@ public class GpsUtils {
     }
     
     /**
-     * Ìø×ªµ½ÉèÖÃwifiÒ³Ãæ
+     * è·³è½¬åˆ°è®¾ç½®wifié¡µé¢
      */
     public static void gotoSettingWifiActivity(Context context) {
         Intent intent = null;
-        // ´ò¿ªÍøÂçÁ¬½ÓÉèÖÃ½çÃæ, ¸ù¾İÉè±¸µÄ°²×¿°æ±¾ºÅµ÷ÓÃ¶ÔÓ¦µÄÉèÖÃ·½·¨
+        // æ‰“å¼€ç½‘ç»œè¿æ¥è®¾ç½®ç•Œé¢, æ ¹æ®è®¾å¤‡çš„å®‰å“ç‰ˆæœ¬å·è°ƒç”¨å¯¹åº”çš„è®¾ç½®æ–¹æ³•
         if (android.os.Build.VERSION.SDK_INT > 10) {
             intent = new Intent(android.provider.Settings.ACTION_SETTINGS);
         } else {
@@ -1650,7 +1650,7 @@ public class GpsUtils {
     }
 
     /**
-     * ¸ù¾İÊÖ»úµÄ·Ö±æÂÊ´Ó dip µÄµ¥Î» ×ª³ÉÎª px(ÏñËØ)
+     * æ ¹æ®æ‰‹æœºçš„åˆ†è¾¨ç‡ä» dip çš„å•ä½ è½¬æˆä¸º px(åƒç´ )
      */
     public static int dip2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
@@ -1658,7 +1658,7 @@ public class GpsUtils {
     }
 
     /**
-     * ¸ù¾İÊÖ»úµÄ·Ö±æÂÊ´Ó px µÄµ¥Î» ×ª³ÉÎª dip
+     * æ ¹æ®æ‰‹æœºçš„åˆ†è¾¨ç‡ä» px çš„å•ä½ è½¬æˆä¸º dip
      */
     public static int px2dip(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
@@ -1666,12 +1666,12 @@ public class GpsUtils {
     }
     
     /**
-     * »ñÈ¡ÆÁÄ»¸ß¶È
+     * è·å–å±å¹•é«˜åº¦
      * 
      * @return
      */
     public static int getScreenHeight(Context context) {
-        // ÒòÎªÊÖ»úµÄºáÊúÆÁ×´Ì¬ÒÔ¼°µ¼º½À¸ÊÇ·ñÏÔÊ¾»áÓ°Ïìµ½ÏÔÊ¾ÇøÓò, Òò´ËÃ¿´Î¶¼ÒªÖØĞÂ»ñÈ¡
+        // å› ä¸ºæ‰‹æœºçš„æ¨ªç«–å±çŠ¶æ€ä»¥åŠå¯¼èˆªæ æ˜¯å¦æ˜¾ç¤ºä¼šå½±å“åˆ°æ˜¾ç¤ºåŒºåŸŸ, å› æ­¤æ¯æ¬¡éƒ½è¦é‡æ–°è·å–
         DisplayMetrics dm = new DisplayMetrics();
         ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
                     .getMetrics(dm);
@@ -1679,12 +1679,12 @@ public class GpsUtils {
     }
 
     /**
-     * »ñÈ¡ÆÁÄ»¿í¶È
+     * è·å–å±å¹•å®½åº¦
      * 
      * @return
      */
     public static int getScreenWidth(Context context) {
-        // ÒòÎªÊÖ»úµÄºáÊúÆÁ×´Ì¬ÒÔ¼°µ¼º½À¸ÊÇ·ñÏÔÊ¾»áÓ°Ïìµ½ÏÔÊ¾ÇøÓò, Òò´ËÃ¿´Î¶¼ÒªÖØĞÂ»ñÈ¡
+        // å› ä¸ºæ‰‹æœºçš„æ¨ªç«–å±çŠ¶æ€ä»¥åŠå¯¼èˆªæ æ˜¯å¦æ˜¾ç¤ºä¼šå½±å“åˆ°æ˜¾ç¤ºåŒºåŸŸ, å› æ­¤æ¯æ¬¡éƒ½è¦é‡æ–°è·å–
         DisplayMetrics dm = new DisplayMetrics();
         ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
                     .getMetrics(dm);
@@ -1692,20 +1692,20 @@ public class GpsUtils {
     }
 
     /**
-     * ½«GBÂë×ª»»³ÉÆ´ÒôÊ××ÖÄ¸×Ö·û´®, ´óĞ´¸ñÊ½
+     * å°†GBç è½¬æ¢æˆæ‹¼éŸ³é¦–å­—æ¯å­—ç¬¦ä¸², å¤§å†™æ ¼å¼
      * 
      * @param str
-     *            ´ı×ª»»µÄGBÂë
-     * @return Æ´Ê××ÖÄ¸×Ö·û´®
+     *            å¾…è½¬æ¢çš„GBç 
+     * @return æ‹¼é¦–å­—æ¯å­—ç¬¦ä¸²
      */
     public static String GB2PinyinSzmStr(String str) {
         String convert = "";
         for (int j = 0; j < str.length(); j++) {
-            if (j > 10) { // ×î´ó²»ÄÜ³¬¹ı10¸öºº×Ö
+            if (j > 10) { // æœ€å¤§ä¸èƒ½è¶…è¿‡10ä¸ªæ±‰å­—
                 break;
             }
             char word = str.charAt(j);
-            // ÌáÈ¡ºº×ÖµÄÊ××ÖÄ¸
+            // æå–æ±‰å­—çš„é¦–å­—æ¯
             String[] pinyinArray = PinyinHelper.toHanyuPinyinStringArray(word);
             if (pinyinArray != null) {
                 convert += pinyinArray[0].charAt(0);
@@ -1717,26 +1717,26 @@ public class GpsUtils {
     }
 
     /**
-     * ½«ÈËÃû×ª»»ÎªÆ´ÒôÊ××ÖÄ¸×Ö·û´®, ´óĞ´¸ñÊ½, ¶Ô²¿·Ö¶àÒô×Ö½øĞĞÌØÊâ´¦Àí
+     * å°†äººåè½¬æ¢ä¸ºæ‹¼éŸ³é¦–å­—æ¯å­—ç¬¦ä¸², å¤§å†™æ ¼å¼, å¯¹éƒ¨åˆ†å¤šéŸ³å­—è¿›è¡Œç‰¹æ®Šå¤„ç†
      * 
      * @param str
-     *            ÈËÔ±ĞÕÃû×Ö·û´®
-     * @return Æ´Ê××ÖÄ¸×Ö·û´®
+     *            äººå‘˜å§“åå­—ç¬¦ä¸²
+     * @return æ‹¼é¦–å­—æ¯å­—ç¬¦ä¸²
      */
     public static String name2PinyinSzmStr(String str) {
         String convert = "";
 //        str = str.trim();
 //        if (str != null && str.length() > 0) {
 //            char firstChar = str.charAt(0);
-//            if ("Ôø".equals(String.valueOf(firstChar))) {
-//                str = str.replaceFirst("Ôø", "Z");
-//            } else if ("½â".equals(String.valueOf(firstChar))) {
-//                str = str.replaceFirst("½â", "X");
-//            } else if ("µ¥".equals(String.valueOf(firstChar))) {
-//                str = str.replaceFirst("µ¥", "S");
+//            if ("æ›¾".equals(String.valueOf(firstChar))) {
+//                str = str.replaceFirst("æ›¾", "Z");
+//            } else if ("è§£".equals(String.valueOf(firstChar))) {
+//                str = str.replaceFirst("è§£", "X");
+//            } else if ("å•".equals(String.valueOf(firstChar))) {
+//                str = str.replaceFirst("å•", "S");
 //            }
 //        }
-        // ÉèÖÃÆ´ÒôÊä³ö¸ñÊ½, Ğ¡Ğ´, ´øÒô±ê
+        // è®¾ç½®æ‹¼éŸ³è¾“å‡ºæ ¼å¼, å°å†™, å¸¦éŸ³æ ‡
         HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
         format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
         format.setToneType(HanyuPinyinToneType.WITH_TONE_MARK);
@@ -1744,7 +1744,7 @@ public class GpsUtils {
         try {
             for (int j = 0; j < str.length(); j++) {
                 char word = str.charAt(j);
-                // ÌáÈ¡ºº×ÖµÄÆ´Òô×ÖÄ¸
+                // æå–æ±‰å­—çš„æ‹¼éŸ³å­—æ¯
                 String[] pinyinArray = PinyinHelper.toHanyuPinyinStringArray(word, format);
                 if (pinyinArray != null && pinyinArray.length > 0) {
                     convert += pinyinArray[0];
@@ -1759,13 +1759,13 @@ public class GpsUtils {
     }
 
     /**
-     * ÊäÈëÁ÷×ª»»Îª×Ö·û´®
+     * è¾“å…¥æµè½¬æ¢ä¸ºå­—ç¬¦ä¸²
      * 
      * @param inputStream
-     *            ÊäÈëÁ÷
+     *            è¾“å…¥æµ
      * @param encoding
-     *            ±àÂë¸ñÊ½
-     * @return ×ª»»ºóµÄ×Ö·û´®
+     *            ç¼–ç æ ¼å¼
+     * @return è½¬æ¢åçš„å­—ç¬¦ä¸²
      * @throws Exception
      */
     public static String inputStreamToString(InputStream inputStream) throws Exception {
@@ -1782,11 +1782,11 @@ public class GpsUtils {
     }
 
     /**
-     * ÊäÈëÁ÷×ª»»Îª¶ş½øÖÆÊı¾İ
+     * è¾“å…¥æµè½¬æ¢ä¸ºäºŒè¿›åˆ¶æ•°æ®
      * 
      * @param inputStream
-     *            ÊäÈëÁ÷
-     * @return ×Ö½ÚÊı×é
+     *            è¾“å…¥æµ
+     * @return å­—èŠ‚æ•°ç»„
      * @throws Exception
      */
     public static byte[] inputStreamToByteArray(InputStream inputStream) throws Exception {

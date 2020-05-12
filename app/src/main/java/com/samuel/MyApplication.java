@@ -22,7 +22,7 @@ public class MyApplication extends LitePalApplication {
     public void onCreate() {
         super.onCreate();
         mApp = this;
-        // »ñÈ¡Ö÷Context
+        // è·å–ä¸»Context
         mAppContext = getApplicationContext();
 
         initApp();
@@ -31,28 +31,28 @@ public class MyApplication extends LitePalApplication {
     }
 
     /**
-     * ÍË³öÓ¦ÓÃ³ÌĞò
+     * é€€å‡ºåº”ç”¨ç¨‹åº
      */
     public void exitApp() {
         mIsCrmStop = true;
 
-        // ¹Ø±ÕËùÓĞserviceºÍ½ÓÊÕÕß, ÒòÎª¹Ø±Õ²Ù×÷ÊÇÒì²½µÄ¿ÉÄÜ»áÓĞĞ©ÑÓ³Ù, ËùÒÔÕâ²¿·Ö²Ù×÷Òª·ÅÔÚ¿¿Ç°µÄÎ»ÖÃ
+        // å…³é—­æ‰€æœ‰serviceå’Œæ¥æ”¶è€…, å› ä¸ºå…³é—­æ“ä½œæ˜¯å¼‚æ­¥çš„å¯èƒ½ä¼šæœ‰äº›å»¶è¿Ÿ, æ‰€ä»¥è¿™éƒ¨åˆ†æ“ä½œè¦æ”¾åœ¨é å‰çš„ä½ç½®
         stopAllService(mAppContext);
         
         Connector.getDatabase().close();
     }
 
     /**
-     * »ñÈ¡Ó¦ÓÃ¶ÔÏóÊµÀı
+     * è·å–åº”ç”¨å¯¹è±¡å®ä¾‹
      */
     public static MyApplication getApp() {
         return mApp;
     }
 
     /**
-     * »ñÈ¡Ó¦ÓÃ³ÌĞòÉÏÏÂÎÄ
+     * è·å–åº”ç”¨ç¨‹åºä¸Šä¸‹æ–‡
      * 
-     * @return Ö÷ÉÏÏÂÎÄ
+     * @return ä¸»ä¸Šä¸‹æ–‡
      */
     public static Context getAppContext() {
         return mAppContext;
@@ -69,17 +69,17 @@ public class MyApplication extends LitePalApplication {
     }
 
     /**
-     * ³õÊ¼»¯ÉèÖÃ
+     * åˆå§‹åŒ–è®¾ç½®
      */
     private void initSetting() {
 
     }
 
     /**
-     * Ó¦ÓÃ³ÌĞò³õÊ¼»¯
+     * åº”ç”¨ç¨‹åºåˆå§‹åŒ–
      */
     private void initApp() {
-        // Æô¶¯³ÌĞòÎ´²¶»ñÒì³£¼à¿Ø
+        // å¯åŠ¨ç¨‹åºæœªæ•è·å¼‚å¸¸ç›‘æ§
         CrashExceptionHandler.getInstance().init(this);
         FileManager.createDir(Constant.FILE_IMAGE_DIR);
         WorklogManage.init();
@@ -87,7 +87,7 @@ public class MyApplication extends LitePalApplication {
     }
 
     /**
-     * Æô¶¯ËùÓĞService·şÎñ
+     * å¯åŠ¨æ‰€æœ‰ServiceæœåŠ¡
      * 
      * @param context
      */
@@ -96,7 +96,7 @@ public class MyApplication extends LitePalApplication {
     }
 
     /**
-     * Í£Ö¹ËùÓĞService·şÎñ, ÈÕÖ¾ÉÏ±¨·şÎñµ¥¶À´¦Àí
+     * åœæ­¢æ‰€æœ‰ServiceæœåŠ¡, æ—¥å¿—ä¸ŠæŠ¥æœåŠ¡å•ç‹¬å¤„ç†
      * 
      * @param context
      */
@@ -105,7 +105,7 @@ public class MyApplication extends LitePalApplication {
     }
 
     /**
-     * CRMÊÇ·ñÍ£Ö¹
+     * CRMæ˜¯å¦åœæ­¢
      * 
      * @return
      */

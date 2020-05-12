@@ -5,39 +5,39 @@
 package com.samuel.common;
 
 /**
- * ·µ»ØÖµÀàĞÍ
+ * è¿”å›å€¼ç±»å‹
  * 
- * @author: zzh 2013-3-22 ´´½¨<br>
+ * @author: zzh 2013-3-22 åˆ›å»º<br>
  */
 public interface Ret {
-    public static final int NULL = 0; // ÎŞÓ¦´ğ
-    public static final int SUCCESS = 1; // ³É¹¦
-    public static final int FAIL = 2; // Ê§°Ü
-    public static final int OVERTIME = 3; // ³¬Ê±
-    public static final int UNFINISHED = 4; // ±¾°ü³É¹¦,µ«ºóĞø»¹ÓĞ·Ö°ü
+    public static final int NULL = 0; // æ— åº”ç­”
+    public static final int SUCCESS = 1; // æˆåŠŸ
+    public static final int FAIL = 2; // å¤±è´¥
+    public static final int OVERTIME = 3; // è¶…æ—¶
+    public static final int UNFINISHED = 4; // æœ¬åŒ…æˆåŠŸ,ä½†åç»­è¿˜æœ‰åˆ†åŒ…
 
-    public static final int ERRUNZIP = 100; // ½âÃÜ½âÑ¹Ëõ´íÎó
-    public static final int ERRCHKSUM = 101; // Ğ£ÑéÂë´íÎó
-    public static final int ERRSEQID = 102; // Á÷Ë®ºÅ´íÎó
-    public static final int ERRDATALEN = 103; // Êı¾İ³¤¶È´íÎó
-    public static final int ERRDATA = 104; // Êı¾İ´¦ÀíÒì³£
-    public static final int ERRVER = 105; // ³ÌĞò°æ±¾ºÅÓëÖĞĞÄ²»Æ¥Åä
-    public static final int ERRLOGIN = 106; // µÇÂ¼±»Õ¼
-    public static final int ERRPROTO = 107; // Ğ­Òé´¦ÀíÈ±Ê§
-    public static final int ERRCACHE = 108; // »º´æÒì³£
+    public static final int ERRUNZIP = 100; // è§£å¯†è§£å‹ç¼©é”™è¯¯
+    public static final int ERRCHKSUM = 101; // æ ¡éªŒç é”™è¯¯
+    public static final int ERRSEQID = 102; // æµæ°´å·é”™è¯¯
+    public static final int ERRDATALEN = 103; // æ•°æ®é•¿åº¦é”™è¯¯
+    public static final int ERRDATA = 104; // æ•°æ®å¤„ç†å¼‚å¸¸
+    public static final int ERRVER = 105; // ç¨‹åºç‰ˆæœ¬å·ä¸ä¸­å¿ƒä¸åŒ¹é…
+    public static final int ERRLOGIN = 106; // ç™»å½•è¢«å 
+    public static final int ERRPROTO = 107; // åè®®å¤„ç†ç¼ºå¤±
+    public static final int ERRCACHE = 108; // ç¼“å­˜å¼‚å¸¸
 
-    public static final int UPDATENOSPACE = 200;// SD¿¨¿Õ¼ä²»×ã
-    public static final int UPDATECHKSUM = 201;// Ğ£ÑéºÍ´íÎó
-    public static final int UPDATEAPK = 202;// Éı¼¶°ü¸ñÊ½´íÎó
-    public static final int UPDATEFAIL = 203;// ÏÂÔØÊ§°Ü
-    public static final int UPDATEWRITE = 204;// ÎÄ¼şĞ´ÈëÊ§°Ü
+    public static final int UPDATENOSPACE = 200;// SDå¡ç©ºé—´ä¸è¶³
+    public static final int UPDATECHKSUM = 201;// æ ¡éªŒå’Œé”™è¯¯
+    public static final int UPDATEAPK = 202;// å‡çº§åŒ…æ ¼å¼é”™è¯¯
+    public static final int UPDATEFAIL = 203;// ä¸‹è½½å¤±è´¥
+    public static final int UPDATEWRITE = 204;// æ–‡ä»¶å†™å…¥å¤±è´¥
 
-    public static final int EXCEPTION = 400;// ÍøÂçÒì³£
-    public static final int ERRTIMEOUT = 410;// ÍøÂçÁ¬½Ó³¬Ê±
-    public static final int ERRUNCONNET = 420;// ÍøÂçÎ´Á¬½Ó
-    public static final int ERRCALLING = 430;// µç»°ÖĞ
-    public static final int ERRURL = 440;// URL´íÎó
-    public static final int ERRUNKNOWN = 490;// Î´Öª´íÎó
-    public static final int ERRSERVER = 500;// ·şÎñÆ÷´íÎó
-    public static final int ERRSERV = 600;// ÖĞĞÄ·şÎñÆ÷´íÎó
+    public static final int EXCEPTION = 400;// ç½‘ç»œå¼‚å¸¸
+    public static final int ERRTIMEOUT = 410;// ç½‘ç»œè¿æ¥è¶…æ—¶
+    public static final int ERRUNCONNET = 420;// ç½‘ç»œæœªè¿æ¥
+    public static final int ERRCALLING = 430;// ç”µè¯ä¸­
+    public static final int ERRURL = 440;// URLé”™è¯¯
+    public static final int ERRUNKNOWN = 490;// æœªçŸ¥é”™è¯¯
+    public static final int ERRSERVER = 500;// æœåŠ¡å™¨é”™è¯¯
+    public static final int ERRSERV = 600;// ä¸­å¿ƒæœåŠ¡å™¨é”™è¯¯
 }

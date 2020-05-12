@@ -1,18 +1,18 @@
 package com.samuel.common.worklog;
 
 /**
- * ´ıÉÏ´«ÈÕÖ¾µÄÊı¾İÀà
+ * å¾…ä¸Šä¼ æ—¥å¿—çš„æ•°æ®ç±»
  * 
  * @author Samuel Zhou
  * 
  */
 public class WorklogForm {
-    /** Ò»´ÎÉÏ´«µÄÊı¾İ°üµÄ´óĞ¡, ÉèÖÃÎª500K×Ö½Ú */
+    /** ä¸€æ¬¡ä¸Šä¼ çš„æ•°æ®åŒ…çš„å¤§å°, è®¾ç½®ä¸º500Kå­—èŠ‚ */
     public static final int LOG_PACKET_SIZE = (500 * 1024);
-    private int mTotalPack;// ÈÕÖ¾µÄ×Ü°üÊı
-    private int mCurPack;// ÈÕÖ¾µÄµ±Ç°°üĞòºÅ, ´Ó1¿ªÊ¼
-    private String mDate = "";// ÈÕÖ¾µÄÈÕÆÚ
-    private String mLog = "";// µ±Ç°´ıÉÏ´«µÄÈÕÖ¾°ü
+    private int mTotalPack;// æ—¥å¿—çš„æ€»åŒ…æ•°
+    private int mCurPack;// æ—¥å¿—çš„å½“å‰åŒ…åºå·, ä»1å¼€å§‹
+    private String mDate = "";// æ—¥å¿—çš„æ—¥æœŸ
+    private String mLog = "";// å½“å‰å¾…ä¸Šä¼ çš„æ—¥å¿—åŒ…
 
     public void setTotalPack(int total) {
         mTotalPack = total;

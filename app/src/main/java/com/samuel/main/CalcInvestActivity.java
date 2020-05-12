@@ -14,7 +14,7 @@ import com.samuel.common.TableView;
 import com.samuel.mytools.R;
 
 /**
- * ¶¨Í¶ÊÕÒæ¼ÆËãÆ÷
+ * å®šæŠ•æ”¶ç›Šè®¡ç®—å™¨
  * 
  * @author Administrator
  *
@@ -30,11 +30,11 @@ public class CalcInvestActivity extends Activity {
 
         initTitle();
 
-        // ³õÊ¼»¯±í¸ñ
+        // åˆå§‹åŒ–è¡¨æ ¼
         int firstItemWidth = GpsUtils.dip2px(CalcInvestActivity.this, 60);
         int itemWidth = (GpsUtils.getScreenWidth(CalcInvestActivity.this) - firstItemWidth) / 3 - 2;
         int[] columnwidth = { firstItemWidth, itemWidth, itemWidth, itemWidth };
-        String[] title = { "ÆÚÊı", "ÀÛ¼ÆÍ¶Èë(Ôª)", "ÀÛ¼ÆÊÕÒæ(Ôª)", "×Ü½ğ¶î(Ôª)" };
+        String[] title = { "æœŸæ•°", "ç´¯è®¡æŠ•å…¥(å…ƒ)", "ç´¯è®¡æ”¶ç›Š(å…ƒ)", "æ€»é‡‘é¢(å…ƒ)" };
         mTableView = (TableView) findViewById(R.id.table_detail);
         mTableView.setColumeWidth(columnwidth);
         mTableView.setTitle(title);
@@ -64,7 +64,7 @@ public class CalcInvestActivity extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("Í¶×Ê¼ÆËãÆ÷");
+        textViewTitle.setText("æŠ•èµ„è®¡ç®—å™¨");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -75,7 +75,7 @@ public class CalcInvestActivity extends Activity {
         });
 
         Button btnCalc = (Button) findViewById(R.id.common_btn_right);
-        btnCalc.setText("¼ÆËã");
+        btnCalc.setText("è®¡ç®—");
         btnCalc.setOnClickListener(calcListener);
     }
 
@@ -83,36 +83,36 @@ public class CalcInvestActivity extends Activity {
 
         @Override
         public void onClick(View v) {
-            // ÊÕÆğÈí¼üÅÌ
+            // æ”¶èµ·è½¯é”®ç›˜
             InputMethodManager imManager = (InputMethodManager) CalcInvestActivity.this
                     .getSystemService(Activity.INPUT_METHOD_SERVICE);
             imManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
-            // ¶¨Í¶½ğ¶î
+            // å®šæŠ•é‡‘é¢
             EditText editMoney = (EditText) findViewById(R.id.edit_money);
-            // ÆÚÊı
+            // æœŸæ•°
             EditText editYear = (EditText) findViewById(R.id.edit_year);
             EditText editTotalYear = (EditText) findViewById(R.id.edit_total_year);
-            // »Ø±¨ÂÊ
+            // å›æŠ¥ç‡
             EditText editRate = (EditText) findViewById(R.id.edit_rate);
             int initMoney = GpsUtils.strToInt(editMoney.getText().toString());
             int yearNum = GpsUtils.strToInt(editYear.getText().toString());
             double rate = GpsUtils.strToFloat(editRate.getText().toString());
             if (initMoney <= 0 || yearNum <= 0 || rate <= 0) {
-                Toast.makeText(CalcInvestActivity.this, "ÇëÊäÈëÍ¶×Ê½ğ¶î¡¢ÆÚÊı¡¢»Ø±¨ÂÊµÈ!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalcInvestActivity.this, "è¯·è¾“å…¥æŠ•èµ„é‡‘é¢ã€æœŸæ•°ã€å›æŠ¥ç‡ç­‰!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             double prevYearMoney = 0;
             mTableData.clear();
             for (int i = 1; i < yearNum + 1; i++) {
-                // ×Ü½ğ¶î=(ÍùÆÚ½ğ¶î+µ±ÆÚÍ¶×Ê)*(1+Ã¿ÆÚÊÕÒæÂÊ)
+                // æ€»é‡‘é¢=(å¾€æœŸé‡‘é¢+å½“æœŸæŠ•èµ„)*(1+æ¯æœŸæ”¶ç›Šç‡)
                 int totalMoney = (int) ((prevYearMoney + initMoney) * (1 + rate / 100));
                 ArrayList<String> itemData = new ArrayList<String>();
-                itemData.add("µÚ" + i + "ÆÚ");
-                itemData.add(String.valueOf(initMoney * i)); // ÀÛ¼ÆÍ¶Èë±¾½ğ
-                itemData.add(String.valueOf(totalMoney - initMoney * i)); // ÀÛ¼ÆÊÕÒæ
-                itemData.add(String.valueOf(totalMoney)); // ×Ü½ğ¶î
+                itemData.add("ç¬¬" + i + "æœŸ");
+                itemData.add(String.valueOf(initMoney * i)); // ç´¯è®¡æŠ•å…¥æœ¬é‡‘
+                itemData.add(String.valueOf(totalMoney - initMoney * i)); // ç´¯è®¡æ”¶ç›Š
+                itemData.add(String.valueOf(totalMoney)); // æ€»é‡‘é¢
                 mTableData.add(itemData);
                 prevYearMoney = totalMoney;
             }
@@ -120,16 +120,16 @@ public class CalcInvestActivity extends Activity {
             if (totalYearNum < yearNum) {
                 totalYearNum = yearNum;
             }
-            // ¼ÆËãÍ£Ö¹¶¨Í¶ºóµ½Í¶×ÊÆÚÄ©µÄÊÕÒæ
+            // è®¡ç®—åœæ­¢å®šæŠ•ååˆ°æŠ•èµ„æœŸæœ«çš„æ”¶ç›Š
             initMoney = initMoney * yearNum;
             for (int i = yearNum + 1; i < totalYearNum + 1; i++) {
-                // ×Ü½ğ¶î=(ÍùÆÚ½ğ¶î)*(1+Ã¿ÆÚÊÕÒæÂÊ)
+                // æ€»é‡‘é¢=(å¾€æœŸé‡‘é¢)*(1+æ¯æœŸæ”¶ç›Šç‡)
                 int totalMoney = (int) (prevYearMoney * (1 + rate / 100));
                 ArrayList<String> itemData = new ArrayList<String>();
-                itemData.add("µÚ" + i + "ÆÚ");
-                itemData.add(String.valueOf(initMoney)); // ÀÛ¼ÆÍ¶Èë±¾½ğ
-                itemData.add(String.valueOf(totalMoney - initMoney)); // ÀÛ¼ÆÊÕÒæ
-                itemData.add(String.valueOf(totalMoney)); // ×Ü½ğ¶î
+                itemData.add("ç¬¬" + i + "æœŸ");
+                itemData.add(String.valueOf(initMoney)); // ç´¯è®¡æŠ•å…¥æœ¬é‡‘
+                itemData.add(String.valueOf(totalMoney - initMoney)); // ç´¯è®¡æ”¶ç›Š
+                itemData.add(String.valueOf(totalMoney)); // æ€»é‡‘é¢
                 mTableData.add(itemData);
                 prevYearMoney = totalMoney;
             }
@@ -137,10 +137,10 @@ public class CalcInvestActivity extends Activity {
             mTableView.refreshTableView();
 
             StringBuffer sb = new StringBuffer(200);
-            sb.append(String.format("×ÜÍ¶×Ê¶î: %.2fÍòÔª, ", (float) (initMoney) / 10000L));
-            sb.append("ÀÛ¼ÆÊÕÒæ: ");
-            sb.append(String.format("%.2fÍòÔª, ", (prevYearMoney - initMoney) / 10000L));
-            sb.append(String.format("ÆÚÄ©×Ü½ğ¶î: %.2fÍòÔª", prevYearMoney / 10000L));
+            sb.append(String.format("æ€»æŠ•èµ„é¢: %.2fä¸‡å…ƒ, ", (float) (initMoney) / 10000L));
+            sb.append("ç´¯è®¡æ”¶ç›Š: ");
+            sb.append(String.format("%.2fä¸‡å…ƒ, ", (prevYearMoney - initMoney) / 10000L));
+            sb.append(String.format("æœŸæœ«æ€»é‡‘é¢: %.2fä¸‡å…ƒ", prevYearMoney / 10000L));
             TextView tvResult = (TextView) findViewById(R.id.text_summary_result);
             tvResult.setText(sb.toString());
             tvResult.setVisibility(View.VISIBLE);
@@ -148,15 +148,15 @@ public class CalcInvestActivity extends Activity {
     };
 
     /**
-     * ÔÚÄÚÈİÇ°Ãæ»òºóÃæ¼ÓÉÏÒ»¶Î¿Õ¸ñ, Êä³öÒ»¶Î¶¨³¤µÄ×Ö·û´®
+     * åœ¨å†…å®¹å‰é¢æˆ–åé¢åŠ ä¸Šä¸€æ®µç©ºæ ¼, è¾“å‡ºä¸€æ®µå®šé•¿çš„å­—ç¬¦ä¸²
      * 
      * @param number
-     *            ÊäÈëµÄÊı×Ö
+     *            è¾“å…¥çš„æ•°å­—
      * @param fiexedLength
-     *            ¶¨³¤×Ö·û´®µÄ³¤¶È
+     *            å®šé•¿å­—ç¬¦ä¸²çš„é•¿åº¦
      * @param isPrefix
-     *            ¿ÉÑ¡²ÎÊı, Ä¬ÈÏÎª0, 1±íÊ¾¿Õ¸ñ¼ÓÔÚÎÄ×ÖÇ°Ãæ
-     * @return ¶¨³¤×Ö·û´®
+     *            å¯é€‰å‚æ•°, é»˜è®¤ä¸º0, 1è¡¨ç¤ºç©ºæ ¼åŠ åœ¨æ–‡å­—å‰é¢
+     * @return å®šé•¿å­—ç¬¦ä¸²
      */
     @SuppressWarnings("unused")
     private String formatStr(int number, int fiexedLength, int isPrefix) {

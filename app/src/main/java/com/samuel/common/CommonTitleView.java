@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import com.samuel.mytools.R;
 
 /**
- * ¹«¹²±êÌâÀ¸×é¼ş
+ * å…¬å…±æ ‡é¢˜æ ç»„ä»¶
  */
 public class CommonTitleView extends LinearLayout {
     public CommonTitleView(Context context, AttributeSet attrs) {

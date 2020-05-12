@@ -31,15 +31,15 @@ public class PacerCalculate extends Activity {
         mEditSpeed = (EditText) findViewById(R.id.edit_speed);
         mEditTime = (EditText) findViewById(R.id.edit_totaltime);
         initTitle();
-        // ±í¸ñ×é¼ş
+        // è¡¨æ ¼ç»„ä»¶
         initTableView();
 
         Button mButtonCalc = (Button) findViewById(R.id.button_1);
         mButtonCalc.setOnClickListener(calcListener);
-        mButtonCalc.setText("¼ÆËãÊ±¼ä");
+        mButtonCalc.setText("è®¡ç®—æ—¶é—´");
         Button buttonReset = (Button) findViewById(R.id.button_2);
         buttonReset.setOnClickListener(calcSpeedListener);
-        buttonReset.setText("¼ÆËãÅäËÙ");
+        buttonReset.setText("è®¡ç®—é…é€Ÿ");
     }
 
     @Override
@@ -54,7 +54,7 @@ public class PacerCalculate extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("ÅäËÙ¼ÆËãÆ÷");
+        textViewTitle.setText("é…é€Ÿè®¡ç®—å™¨");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -65,7 +65,7 @@ public class PacerCalculate extends Activity {
         });
 
         Button btnRight = (Button) findViewById(R.id.common_btn_right);
-        btnRight.setText("¼ÆËã");
+        btnRight.setText("è®¡ç®—");
         btnRight.setOnClickListener(calcListener);
         btnRight.setVisibility(View.INVISIBLE);
     }
@@ -84,12 +84,12 @@ public class PacerCalculate extends Activity {
     }
 
     /**
-     * ³õÊ¼»¯±í¸ñ
+     * åˆå§‹åŒ–è¡¨æ ¼
      */
     private void initTableView() {
         int itemWidth = GpsUtils.getScreenWidth(PacerCalculate.this) / 2;
         int[] columnwidth = { itemWidth, itemWidth, itemWidth, itemWidth };
-        String[] title = { "Àï³Ì", "Ê±¼ä" };
+        String[] title = { "é‡Œç¨‹", "æ—¶é—´" };
 
         mTableView = (TableView) findViewById(R.id.table_detail);
         mTableView.setColumeWidth(columnwidth);
@@ -103,14 +103,14 @@ public class PacerCalculate extends Activity {
 
         @Override
         public void onClick(View v) {
-            // ÊÕÆğÈí¼üÅÌ
+            // æ”¶èµ·è½¯é”®ç›˜
             InputMethodManager imManager = (InputMethodManager) PacerCalculate.this
                     .getSystemService(Activity.INPUT_METHOD_SERVICE);
             imManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
             String speedStr = mEditSpeed.getEditableText().toString();
             if (TextUtils.isEmpty(speedStr) || speedStr.length() < 3) {
-                Toast.makeText(PacerCalculate.this, "ÅäËÙÊäÈë²»ÕıÈ·", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PacerCalculate.this, "é…é€Ÿè¾“å…¥ä¸æ­£ç¡®", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (mTableView != null) {
@@ -125,14 +125,14 @@ public class PacerCalculate extends Activity {
 
         @Override
         public void onClick(View v) {
-            // ÊÕÆğÈí¼üÅÌ
+            // æ”¶èµ·è½¯é”®ç›˜
             InputMethodManager imManager = (InputMethodManager) PacerCalculate.this
                     .getSystemService(Activity.INPUT_METHOD_SERVICE);
             imManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
             String timeStr = mEditTime.getEditableText().toString();
             if (TextUtils.isEmpty(timeStr)) {
-                Toast.makeText(PacerCalculate.this, "È«³ÌÓÃÊ±ÊäÈë²»ÕıÈ·", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PacerCalculate.this, "å…¨ç¨‹ç”¨æ—¶è¾“å…¥ä¸æ­£ç¡®", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (mTableView != null) {
@@ -146,15 +146,15 @@ public class PacerCalculate extends Activity {
     private void getTableData(String inputStr, int inputType) {
         mTableData.clear();
         int speedInSeconds = 0;
-        // 1: ÓÉÅäËÙ¼ÆËãÊ±¼ä; 2: ÓÉÊ±¼ä¼ÆËãÅäËÙ */
+        // 1: ç”±é…é€Ÿè®¡ç®—æ—¶é—´; 2: ç”±æ—¶é—´è®¡ç®—é…é€Ÿ */
         if (inputType == 1) {
-            int speed = GpsUtils.strToInt(inputStr); // ½«ÅäËÙµ¥Î»×ª»¯ÎªÃëÊı
+            int speed = GpsUtils.strToInt(inputStr); // å°†é…é€Ÿå•ä½è½¬åŒ–ä¸ºç§’æ•°
             if (speed < 100) {
-                Toast.makeText(PacerCalculate.this, "ÅäËÙÊäÈë²»ÕıÈ·", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PacerCalculate.this, "é…é€Ÿè¾“å…¥ä¸æ­£ç¡®", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // ¼ÆËãÈ«³ÌÓÃÊ±
+            // è®¡ç®—å…¨ç¨‹ç”¨æ—¶
             speedInSeconds = speed / 100 * 60 + speed % 100;
             int totalTime = (int) Math.round(speedInSeconds * 42.195);
             int usedHour = totalTime / 3600;
@@ -165,50 +165,50 @@ public class PacerCalculate extends Activity {
             int hour = input / 100;
             int minute = input % 100;
             if (hour == 0) {
-                Toast.makeText(PacerCalculate.this, "È«³ÌÓÃÊ±ÊäÈë²»ÕıÈ·", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PacerCalculate.this, "å…¨ç¨‹ç”¨æ—¶è¾“å…¥ä¸æ­£ç¡®", Toast.LENGTH_SHORT).show();
                 return;
             }
             int totalSeconds = hour * 3600 + minute * 60;
             speedInSeconds = (int) Math.round(totalSeconds / 42.195);
 
-            // ¼ÆËãÅäËÙ
+            // è®¡ç®—é…é€Ÿ
             int pacerMinute = speedInSeconds / 60;
             int pacerSecond = speedInSeconds % 60;
             mEditSpeed.setText(String.format("%d%02d", pacerMinute, pacerSecond));
         }
 
         ArrayList<String> itemData = new ArrayList<String>();
-        itemData.add("800Ã×");
+        itemData.add("800ç±³");
         itemData.add(convertTime(speedInSeconds * 4 / 5));
         mTableData.add(itemData);
 
         itemData = new ArrayList<String>();
-        itemData.add("1¹«Àï");
+        itemData.add("1å…¬é‡Œ");
         itemData.add(convertTime(speedInSeconds));
         mTableData.add(itemData);
 
         itemData = new ArrayList<String>();
-        itemData.add("5¹«Àï");
+        itemData.add("5å…¬é‡Œ");
         itemData.add(convertTime(speedInSeconds * 5));
         mTableData.add(itemData);
 
         itemData = new ArrayList<String>();
-        itemData.add("10¹«Àï");
+        itemData.add("10å…¬é‡Œ");
         itemData.add(convertTime(speedInSeconds * 10));
         mTableData.add(itemData);
 
         itemData = new ArrayList<String>();
-        itemData.add("°ë³Ì");
+        itemData.add("åŠç¨‹");
         itemData.add(convertTime((int) Math.round(speedInSeconds * 21.0975)));
         mTableData.add(itemData);
 
         itemData = new ArrayList<String>();
-        itemData.add("30¹«Àï");
+        itemData.add("30å…¬é‡Œ");
         itemData.add(convertTime(speedInSeconds * 30));
         mTableData.add(itemData);
 
         itemData = new ArrayList<String>();
-        itemData.add("È«³Ì");
+        itemData.add("å…¨ç¨‹");
         itemData.add(convertTime((int) Math.round(speedInSeconds * 42.195)));
         mTableData.add(itemData);
     }
