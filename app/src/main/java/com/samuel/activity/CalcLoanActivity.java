@@ -1,4 +1,4 @@
-package com.samuel.main;
+package com.samuel.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.samuel.main.bean.LoanDB;
-import com.samuel.main.bean.LoanInfo;
+import com.samuel.bean.LoanDB;
+import com.samuel.bean.LoanInfo;
 import com.samuel.mytools.R;
 
 import java.util.ArrayList;

@@ -1,15 +1,15 @@
-package com.samuel.main;
+package com.samuel.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,17 +21,16 @@ import java.util.ArrayList;
 
 /**
  * 我的贷款汇总
- * 
- * @author Administrator
  *
+ * @author Administrator
  */
+@SuppressLint("DefaultLocale")
 public class MyLoanActivity extends Activity {
-    private Spinner mSpinnerType;
     private double[] mLoanSummary = new double[3];
-    // 0: 按年显示; 2: 按月显示
+    // 0: 按年显示; 1: 按月显示
     private int mCurType = 0;
     private TableView mTableView;
-    private ArrayList<ArrayList<String>> mTableData = new ArrayList<ArrayList<String>>();
+    private ArrayList<ArrayList<String>> mTableData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,22 +42,16 @@ public class MyLoanActivity extends Activity {
         initTableView();
 
         // 表格显示格式选择框
-        String[] numAry = { "年", "月" };
-        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, R.layout.common_spinner, numAry);
-        mAdapter.setDropDownViewResource(R.layout.my_simple_spinner);
-        mSpinnerType = (Spinner) findViewById(R.id.spinner_type);
-        mSpinnerType.setAdapter(mAdapter);
-        mSpinnerType.setOnItemSelectedListener(new OnItemSelectedListener() {
-
+        RadioGroup group = findViewById(R.id.radiogroup_timetype);
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mCurType = position;
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radio_year) {
+                    mCurType = 0;
+                } else {
+                    mCurType = 1;
+                }
                 refreshLoanTable();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -84,10 +77,10 @@ public class MyLoanActivity extends Activity {
     }
 
     private void initTitle() {
-        TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
+        TextView textViewTitle = findViewById(R.id.commontitle_textview);
         textViewTitle.setText("贷款计算器");
 
-        Button btnReturn = (Button) findViewById(R.id.common_btn_left);
+        Button btnReturn = findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +88,7 @@ public class MyLoanActivity extends Activity {
             }
         });
 
-        Button btnRight = (Button) findViewById(R.id.common_btn_right);
+        Button btnRight = findViewById(R.id.common_btn_right);
         btnRight.setText("计算");
         btnRight.setOnClickListener(calcListener);
     }
@@ -105,11 +98,11 @@ public class MyLoanActivity extends Activity {
         @Override
         public void onClick(View v) {
             // 定投金额
-            EditText editMoney = (EditText) findViewById(R.id.edit_money);
+            EditText editMoney = findViewById(R.id.edit_money);
             // 期数
-            EditText editYear = (EditText) findViewById(R.id.edit_year);
+            EditText editYear = findViewById(R.id.edit_year);
             // 回报率
-            EditText editRate = (EditText) findViewById(R.id.edit_rate);
+            EditText editRate = findViewById(R.id.edit_rate);
             int initMoney = GpsUtils.strToInt(editMoney.getText().toString());
             int yearNum = GpsUtils.strToInt(editYear.getText().toString());
             double rate = GpsUtils.strToFloat(editRate.getText().toString());
@@ -117,9 +110,10 @@ public class MyLoanActivity extends Activity {
                 Toast.makeText(MyLoanActivity.this, "请输入贷款金额、年限、利率等!", Toast.LENGTH_SHORT).show();
                 return;
             }
+            hideKeyboard(MyLoanActivity.this);
 
             // 显示概要信息
-            TextView tvSummary = (TextView) findViewById(R.id.text_summary_result);
+            TextView tvSummary = findViewById(R.id.text_summary_result);
             double[] summary = calcEqualPrincipalAndInterest(initMoney, yearNum * 12, rate);
             String summaryStr = "";
             summaryStr += String.format(" 月供: %.2f元,", summary[2]);// 每月还款金额
@@ -138,9 +132,9 @@ public class MyLoanActivity extends Activity {
     };
 
     private void refreshLoanTable() {
-        EditText editMoney = (EditText) findViewById(R.id.edit_money);
-        EditText editYear = (EditText) findViewById(R.id.edit_year);
-        EditText editRate = (EditText) findViewById(R.id.edit_rate);
+        EditText editMoney = findViewById(R.id.edit_money);
+        EditText editYear = findViewById(R.id.edit_year);
+        EditText editRate = findViewById(R.id.edit_rate);
         int initMoney = GpsUtils.strToInt(editMoney.getText().toString());
         int yearNum = GpsUtils.strToInt(editYear.getText().toString());
         double rate = GpsUtils.strToFloat(editRate.getText().toString());
@@ -162,7 +156,7 @@ public class MyLoanActivity extends Activity {
         int[] columnwidth = { itemWidth, itemWidth, itemWidth, itemWidth };
         String[] title = { "期数", "本金(元)", "利息(元)", "余额(元)" };
 
-        mTableView = (TableView) findViewById(R.id.table_detail);
+        mTableView = findViewById(R.id.table_detail);
         mTableView.setColumeWidth(columnwidth);
         mTableView.setTitle(title);
         mTableView.setDatasArray(mTableData);
@@ -171,15 +165,15 @@ public class MyLoanActivity extends Activity {
 
     /**
      * 获取贷款还款的明细表格, 分为按年和按月两种模式
-     * 
+     *
      * @param principal
-     *            贷款总额
+     *         贷款总额
      * @param years
-     *            贷款年限
+     *         贷款年限
      * @param rate
-     *            贷款年利率
+     *         贷款年利率
      * @param preLoan
-     *            月供额
+     *         月供额
      */
     private void getTableData(double principal, int years, double rate, double preLoan) {
         double curPrincipal = principal; // 当期余额
@@ -194,11 +188,11 @@ public class MyLoanActivity extends Activity {
                 }
                 double monthInterest = curPrincipal * monthRate; // 本月的利息
                 double monthPrincipal = preLoan - monthInterest; // 本月归还本金
-                curPrincipal = curPrincipal - monthPrincipal;
+                curPrincipal = Math.max(curPrincipal - monthPrincipal, 0); // 确保余额一栏不会显示为负数
                 yearInterest += monthInterest;
                 yearPrincipal += monthPrincipal;
                 if (mCurType == 1) {
-                    ArrayList<String> rowData = new ArrayList<String>();
+                    ArrayList<String> rowData = new ArrayList<>();
                     rowData.add(String.format("第%d年%d月", (i + 1), j + 1));
                     rowData.add(String.format("%.1f", monthPrincipal));
                     rowData.add(String.format("%.1f", monthInterest));
@@ -207,7 +201,7 @@ public class MyLoanActivity extends Activity {
                 }
             }
             if (mCurType == 0) {
-                ArrayList<String> rowData = new ArrayList<String>();
+                ArrayList<String> rowData = new ArrayList<>();
                 rowData.add(String.format("第%d年", i + 1));
                 rowData.add(String.format("%.1f", yearPrincipal));
                 rowData.add(String.format("%.1f", yearInterest));
@@ -221,11 +215,11 @@ public class MyLoanActivity extends Activity {
      * 计算等额本息还款
      *
      * @param principal
-     *            贷款总额
+     *         贷款总额
      * @param months
-     *            贷款月数(年限*12)
+     *         贷款月数(年限*12)
      * @param rate
-     *            贷款年利率
+     *         贷款年利率
      * @return 返回贷款的 { 总还款额, 总利息, 月供 }
      */
     private double[] calcEqualPrincipalAndInterest(double principal, int months, double rate) {
@@ -237,5 +231,11 @@ public class MyLoanActivity extends Activity {
         double interest = totalMoney - principal;// 还款总利息
         mLoanSummary = new double[] { totalMoney, interest, preLoan };
         return mLoanSummary;
+    }
+
+    private void hideKeyboard(Activity context) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        // 隐藏软键盘
+        imm.hideSoftInputFromWindow(context.getWindow().getDecorView().getWindowToken(), 0);
     }
 }

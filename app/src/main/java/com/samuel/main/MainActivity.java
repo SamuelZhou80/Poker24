@@ -17,6 +17,11 @@ import android.widget.Toast;
 
 import com.framework.FileManager;
 import com.samuel.MyApplication;
+import com.samuel.activity.CalcInvestActivity;
+import com.samuel.activity.MyLoanActivity;
+import com.samuel.activity.PacerCalculate;
+import com.samuel.activity.PatternMatchTest;
+import com.samuel.activity.PlayPoker24;
 import com.samuel.common.Constant;
 import com.samuel.main.student.SearchNameActivity;
 import com.samuel.mytools.R;
@@ -36,7 +41,7 @@ public class MainActivity extends Activity {
         initTitle();
         initList();
         ToolListAdapter adapter = new ToolListAdapter();
-        ListView listView = (ListView) findViewById(R.id.listview_tools);
+        ListView listView = findViewById(R.id.listview_tools);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -68,10 +73,10 @@ public class MainActivity extends Activity {
     }
 
     private void initTitle() {
-        TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
+        TextView textViewTitle = findViewById(R.id.commontitle_textview);
         textViewTitle.setText("小工具");
 
-        Button btnReturn = (Button) findViewById(R.id.common_btn_left);
+        Button btnReturn = findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +84,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        Button btnRight = (Button) findViewById(R.id.common_btn_right);
+        Button btnRight = findViewById(R.id.common_btn_right);
         // btnRight.setVisibility(View.GONE);
         btnRight.setText("拷贝数据库");
         btnRight.setOnClickListener(new OnClickListener() {
@@ -93,7 +98,7 @@ public class MainActivity extends Activity {
     }
 
     private void initList() {
-        mToolList = new ArrayList<Modules>();
+        mToolList = new ArrayList<>();
         mToolList.add(new Modules("贷款计算器", MyLoanActivity.class)); // CalcLoanActivity.class));
         mToolList.add(new Modules("投资收益计算", CalcInvestActivity.class)); // 投资计算器
         mToolList.add(new Modules("24点游戏", PlayPoker24.class));
@@ -114,7 +119,7 @@ public class MainActivity extends Activity {
         try {
             if (FileManager.copyFile(srcDataPath, destDataPath)) {
                 Toast.makeText(MainActivity.this, "数据库拷贝成功", Toast.LENGTH_LONG).show();
-            // } else {
+                // } else {
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -143,16 +148,16 @@ public class MainActivity extends Activity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder = null;
+            ViewHolder holder;
             if (convertView == null) {
                 LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
                 convertView = inflater.inflate(R.layout.common_listview_item, parent, false);
                 holder = new ViewHolder();
-                holder.txtView = (TextView) convertView.findViewById(R.id.text);
+                holder.txtView = convertView.findViewById(R.id.text);
                 holder.txtView.setText(mToolList.get(position).name);
                 convertView.setTag(holder);
-            } else {
-                holder = (ViewHolder) convertView.getTag();
+//            } else {
+//                holder = (ViewHolder) convertView.getTag();
             }
             return convertView;
         }

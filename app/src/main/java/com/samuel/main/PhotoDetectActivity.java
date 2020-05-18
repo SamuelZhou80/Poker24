@@ -41,7 +41,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Í¼ÏñÊ¶±ğ¹¤¾ß½Ó¿Ú
+ * å›¾åƒè¯†åˆ«å·¥å…·æ¥å£
  * 
  * @author Administrator
  *
@@ -63,7 +63,7 @@ public class PhotoDetectActivity extends Activity {
         initTitleView();
         initData();
 
-        // ÅÄÕÕ°´Å¥
+        // æ‹ç…§æŒ‰é’®
         Button buttonTakePhoto = (Button) findViewById(R.id.button_takephoto);
         buttonTakePhoto.setOnClickListener(new OnClickListener() {
 
@@ -77,14 +77,14 @@ public class PhotoDetectActivity extends Activity {
             }
         });
 
-        // Í¼ÏñÊ¶±ğÈë¿Ú
+        // å›¾åƒè¯†åˆ«å…¥å£
         Button buttonDetectPhoto = (Button) findViewById(R.id.button_check);
         buttonDetectPhoto.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(mAccessToken)) {
-                    Toast.makeText(PhotoDetectActivity.this, "ÇëÏÈ»ñÈ¡·ÃÎÊÁîÅÆ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PhotoDetectActivity.this, "è¯·å…ˆè·å–è®¿é—®ä»¤ç‰Œ", Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (mPhotoBitmap == null) {
@@ -92,10 +92,10 @@ public class PhotoDetectActivity extends Activity {
                 }
 
                 TextView tvResult = (TextView) findViewById(R.id.text_check_result);
-                tvResult.setText("ÎïÌå¼ì²âÄ£ĞÍÊ¶±ğÖĞ¡­¡­");
+                tvResult.setText("ç‰©ä½“æ£€æµ‹æ¨¡å‹è¯†åˆ«ä¸­â€¦â€¦");
 
-                double threshold = 0.7; // ¼ì²âµÄãĞÖµ
-                // »ñÈ¡Í¼Æ¬µÄbase64Êı¾İ
+                double threshold = 0.7; // æ£€æµ‹çš„é˜ˆå€¼
+                // è·å–å›¾ç‰‡çš„base64æ•°æ®
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();  
                 mPhotoBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);  
                 String photoBase64Str = Base64Util.encode(baos.toByteArray());
@@ -137,7 +137,7 @@ public class PhotoDetectActivity extends Activity {
             return;
         }
 
-        // »ñÈ¡Í¼Æ¬Êı¾İ
+        // è·å–å›¾ç‰‡æ•°æ®
         BitmapFactory.Options op = new BitmapFactory.Options();
         op.inSampleSize = 2;
         op.inPreferredConfig = Bitmap.Config.RGB_565;
@@ -166,7 +166,7 @@ public class PhotoDetectActivity extends Activity {
 
     private void initTitleView() {
         TextView textViewTitle = (TextView) findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("Í¼Æ¬Ê¶±ğ½Ó¿Ú");
+        textViewTitle.setText("å›¾ç‰‡è¯†åˆ«æ¥å£");
 
         Button btnReturn = (Button) findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -177,14 +177,14 @@ public class PhotoDetectActivity extends Activity {
         });
 
         Button btnRight = (Button) findViewById(R.id.common_btn_right);
-        btnRight.setText("·ÃÎÊÁîÅÆ");
+        btnRight.setText("è®¿é—®ä»¤ç‰Œ");
         btnRight.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
 //                String url = "https://blog.csdn.net/samuelzhou99/article/details/80493640";
 //                url = "https://pan.baidu.com/s/1BDzJWG7p3S1PfeebAJJbqA";
-                // »ñÈ¡Access Token
+                // è·å–Access Token
                 ProtocolHandler mHandler = new ProtocolHandler();
                 HttpGetTask mHttpTask = new HttpGetTask(mHandler);
                 mHttpTask.execute("AccessToken");
@@ -194,28 +194,28 @@ public class PhotoDetectActivity extends Activity {
 
     private void initData() {
         mSkuMaps.clear();
-        mSkuMaps.put("moli_baicha", "¸ßÂ¶½à¾¢°×ÜÔÀò°×²è");
-        mSkuMaps.put("longjin_bingshuan", "¸ßÂ¶½à±ùË¬²èÏã(Áú¾®)");
-        mSkuMaps.put("bohe_bingshuan", "¸ßÂ¶½à±ùË¬±¡ºÉ");
-        mSkuMaps.put("fangzhu_bohe", "¸ßÂ¶½à³¬Ç¿ÑÀ¸à");
-        mSkuMaps.put("guiyuan_lianzi", "ÒøğØ¹ğÔ²Á«×Ó");
-        mSkuMaps.put("huasheng", "ÒøğØ»¨ÉúÅ£ÄÌ");
-        mSkuMaps.put("guiyuan", "ÒøğØ¹ğÔ²°Ë±¦Öà");
-        mSkuMaps.put("ditang_lianzi", "ÒøğØµÍÌÇÁ«×Ó");
-        mSkuMaps.put("hongdouzhou", "ºÃÖàµÀŞ²ÈÊºì¶¹Öà");
+        mSkuMaps.put("moli_baicha", "é«˜éœ²æ´åŠ²ç™½èŒ‰è‰ç™½èŒ¶");
+        mSkuMaps.put("longjin_bingshuan", "é«˜éœ²æ´å†°çˆ½èŒ¶é¦™(é¾™äº•)");
+        mSkuMaps.put("bohe_bingshuan", "é«˜éœ²æ´å†°çˆ½è–„è·");
+        mSkuMaps.put("fangzhu_bohe", "é«˜éœ²æ´è¶…å¼ºç‰™è†");
+        mSkuMaps.put("guiyuan_lianzi", "é“¶é¹­æ¡‚åœ†è²å­");
+        mSkuMaps.put("huasheng", "é“¶é¹­èŠ±ç”Ÿç‰›å¥¶");
+        mSkuMaps.put("guiyuan", "é“¶é¹­æ¡‚åœ†å…«å®ç²¥");
+        mSkuMaps.put("ditang_lianzi", "é“¶é¹­ä½ç³–è²å­");
+        mSkuMaps.put("hongdouzhou", "å¥½ç²¥é“è–ä»çº¢è±†ç²¥");
     }
 
     private void processPhoto(JSONArray array) {
         if (array == null || array.length() == 0) {
             TextView tvResult = (TextView) findViewById(R.id.text_check_result);
-            tvResult.setText("Êı¾İ½âÎöÍê±Ï, Ã»ÓĞÓĞĞ§Êı¾İ");
+            tvResult.setText("æ•°æ®è§£æå®Œæ¯•, æ²¡æœ‰æœ‰æ•ˆæ•°æ®");
             return;
         }
 
         try {
             StringBuffer sb = new StringBuffer(100);
             ArrayList<ItemMark> itemList = new ArrayList<ItemMark>(array.length());
-            // ´´½¨´ı±à¼­µÄÍ¼Æ¬ºÍ»­²¼¶ÔÏó
+            // åˆ›å»ºå¾…ç¼–è¾‘çš„å›¾ç‰‡å’Œç”»å¸ƒå¯¹è±¡
             Bitmap resizeBitmap = mPhotoBitmap.copy(Config.RGB_565, true);
             Canvas mCanvas = new Canvas(resizeBitmap);
             Paint paint = new Paint();
@@ -239,12 +239,12 @@ public class PhotoDetectActivity extends Activity {
                 sb.append(i + 1);
                 sb.append(". ");
                 sb.append(itemMark.getName());
-                sb.append(String.format(", ÖÃĞÅ¶È: %.3f", itemMark.getScore()));
+                sb.append(String.format(", ç½®ä¿¡åº¦: %.3f", itemMark.getScore()));
                 if (i < array.length() - 1) {
                     sb.append("\n");
                 }
 
-                // ÔÚÍ¼Æ¬ÉÏ½øĞĞ±ê×¢, »æÖÆ¾ØĞÎ¿òºÍÃû³ÆÌáÊ¾
+                // åœ¨å›¾ç‰‡ä¸Šè¿›è¡Œæ ‡æ³¨, ç»˜åˆ¶çŸ©å½¢æ¡†å’Œåç§°æç¤º
                 mCanvas.drawLine(left, top, left + width, top, paint);
                 mCanvas.drawLine(left + width, top, left + width, top + height, paint);
                 mCanvas.drawLine(left, top, left, top + height, paint);
@@ -266,7 +266,7 @@ public class PhotoDetectActivity extends Activity {
             ImageView imageView = (ImageView) findViewById(R.id.image_photo);
             imageView.setImageBitmap(mPhotoBitmap);
 
-            // ÏÔÊ¾ÎÄ±¾
+            // æ˜¾ç¤ºæ–‡æœ¬
             TextView tvResult = (TextView) findViewById(R.id.text_check_result);
             tvResult.setText(sb.toString());
         } catch (JSONException e) {
@@ -285,7 +285,7 @@ public class PhotoDetectActivity extends Activity {
                 String tokenStr = (String) msg.obj;
                 if (!TextUtils.isEmpty(tokenStr)) {
                     mAccessToken = tokenStr;
-                    Toast.makeText(PhotoDetectActivity.this, "·ÃÎÊÁîÅÆ: " + tokenStr, Toast.LENGTH_LONG).show();
+                    Toast.makeText(PhotoDetectActivity.this, "è®¿é—®ä»¤ç‰Œ: " + tokenStr, Toast.LENGTH_LONG).show();
                 }
             }
         }
@@ -297,12 +297,12 @@ public class PhotoDetectActivity extends Activity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg != null && msg.obj != null) {
-                // ±£´æÖĞĞÄÓ¦´ğµÄÊı¾İ¼¯
+                // ä¿å­˜ä¸­å¿ƒåº”ç­”çš„æ•°æ®é›†
                 String result = msg.obj.toString();
                 if (!TextUtils.isEmpty(result)) {
                     WorklogManage.saveWorklog(3, 0, result, 1);
 
-                    // ½âÎöÊı¾İ¼¯, ½«Ê¶±ğµ½µÄ±êÇ©±ê×¢ÔÚÍ¼Æ¬ÉÏÃè»æ³öÎ»ÖÃÂÖÀª
+                    // è§£ææ•°æ®é›†, å°†è¯†åˆ«åˆ°çš„æ ‡ç­¾æ ‡æ³¨åœ¨å›¾ç‰‡ä¸Šæç»˜å‡ºä½ç½®è½®å»“
                     JSONObject resultObj = (JSONObject) msg.obj;
                     try {
                         processPhoto(resultObj.getJSONArray("results"));
@@ -311,7 +311,7 @@ public class PhotoDetectActivity extends Activity {
                     }
                 } else {
                     TextView tvResult = (TextView) findViewById(R.id.text_check_result);
-                    tvResult.setText("Êı¾İ½âÎöÒì³£");
+                    tvResult.setText("æ•°æ®è§£æå¼‚å¸¸");
                 }
             }
         }

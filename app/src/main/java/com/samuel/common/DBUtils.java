@@ -103,9 +103,7 @@ public class DBUtils {
     /**
      * 更新数据
      * 
-     * @param mSQLiteDatabase
      * @param table
-     * @param values
      * @param whereClause
      * @param whereArgs
      * @return
@@ -161,7 +159,6 @@ public class DBUtils {
     /**
      * 删除数据
      * 
-     * @param mSQLiteDatabase
      * @param table
      *            表名
      * @param whereClause
@@ -198,9 +195,7 @@ public class DBUtils {
 
     /**
      * 根据字符串匹配删除表中项
-     * 
-     * @param mSQLiteDatabase
-     *            数据库对象
+     *
      * @param table
      *            表名
      * @param condition
@@ -222,9 +217,6 @@ public class DBUtils {
 
     /**
      * 向表中添加一条数据
-     * 
-     * @param mSQLiteDatabase
-     *            数据库对象
      * @param cv
      *            数据内容集合
      * @param table
@@ -272,12 +264,10 @@ public class DBUtils {
 
     /**
      * 根据ID 查找某个表的记录是否存在
-     * 
-     * @param sqlite
-     *            数据库对象
+     *
      * @param tablename
-     * @param columnname
-     * @return boolean 是否存在
+     * @param whereClause
+     * @return 是否存在
      */
     public boolean isExistbyCondition(String tablename,
             String whereClause, String[] whereArgs) {
@@ -304,9 +294,7 @@ public class DBUtils {
 
     /**
      * 根据ID 查找某个表的记录是否存在
-     * 
-     * @param sqlite
-     *            数据库对象
+     *
      * @param tablename
      * @param columnname
      * @return boolean 是否存在
@@ -336,9 +324,7 @@ public class DBUtils {
 
     /**
      * 根据ID 查找某个表的记录是否存在
-     * 
-     * @param sqlite
-     *            数据库对象
+     *
      * @param tablename
      * @param columnname
      * @return boolean 是否存在
@@ -396,9 +382,6 @@ public class DBUtils {
 
     /**
      * 根据ID和字符串 查找某个表的记录是否存在
-     * 
-     * @param sqlite
-     *            数据库对象
      * @param tablename
      * @param columnname
      * @return boolean 是否存在

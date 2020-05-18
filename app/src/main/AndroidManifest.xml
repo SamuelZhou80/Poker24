@@ -42,25 +42,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.samuel.main.CalcInvestActivity"
+            android:name="com.samuel.activity.CalcInvestActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name="com.samuel.main.GBKToUTFActivity"
+            android:name="com.samuel.activity.GBKToUTFActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name="com.samuel.main.PlayPoker24"
+            android:name="com.samuel.activity.PlayPoker24"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name="com.samuel.main.CalcLoanActivity"
+            android:name="com.samuel.activity.CalcLoanActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -72,7 +72,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name="com.samuel.main.PacerCalculate"
+            android:name="com.samuel.activity.PacerCalculate"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
@@ -91,20 +91,20 @@
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name="com.samuel.main.PatternMatchTest"
+            android:name="com.samuel.activity.PatternMatchTest"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
 
         <activity
-            android:name="com.samuel.main.AddLoanActivity"
+            android:name="com.samuel.activity.AddLoanActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name="com.samuel.main.MyLoanActivity"
+            android:name="com.samuel.activity.MyLoanActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >

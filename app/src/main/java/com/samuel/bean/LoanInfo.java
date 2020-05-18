@@ -1,4 +1,4 @@
-package com.samuel.main.bean;
+package com.samuel.bean;
 
 import org.litepal.crud.DataSupport;
 

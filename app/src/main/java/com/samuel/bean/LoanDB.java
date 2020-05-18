@@ -1,4 +1,4 @@
-package com.samuel.main.bean;
+package com.samuel.bean;
 
 import android.content.ContentValues;
 import android.database.Cursor;

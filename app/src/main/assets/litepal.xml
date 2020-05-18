@@ -16,7 +16,7 @@
         </mapping>
         <mapping class="com.samuel.main.education.DingXiang" >
         </mapping>
-        <mapping class="com.samuel.main.bean.LoanInfo" >
+        <mapping class="com.samuel.bean.LoanInfo" >
         </mapping>
     </list>
 </litepal>

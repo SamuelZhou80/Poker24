@@ -1,4 +1,4 @@
-package com.samuel.main;
+package com.samuel.activity;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -12,8 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.samuel.main.bean.LoanDB;
-import com.samuel.main.bean.LoanInfo;
+import com.samuel.bean.LoanDB;
+import com.samuel.bean.LoanInfo;
 import com.samuel.mytools.R;
 import com.samuel.utils.GpsUtils;
 
@@ -27,9 +27,6 @@ import java.util.Locale;
  */
 public class AddLoanActivity extends Activity {
     private TextView mTextDate;
-
-//    private double[] mLoanSummary = new double[3];
-//    private ArrayList<ArrayList<String>> mTableData = new ArrayList<ArrayList<String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,8 +109,8 @@ public class AddLoanActivity extends Activity {
             TextView tvSummary = findViewById(R.id.text_summary_result);
             double[] summary = calcEqualPrincipalAndInterest(initMoney, yearNum * 12, rate);
             String summaryStr = "";
-            summaryStr += String.format(Locale.CHINA, " 月供: %.2f元,", summary[2]);// 每月还款金额
-            summaryStr += String.format(Locale.CHINA, " 年供: %.2f元\n", summary[2] * 12);// 每年还款金额
+            summaryStr += String.format(Locale.CHINA, " 月供: %.1f元,", summary[2]);// 每月还款金额
+            summaryStr += String.format(Locale.CHINA, " 年供: %.1f元\n", (summary[2] * 12));// 每年还款金额
             summaryStr += String.format(Locale.CHINA, " 总还款额: %.1f元,", summary[0]);// 还款总额
             summaryStr += String.format(Locale.CHINA, " 利息合计: %.1f元", summary[1]);// 还款总利息
             tvSummary.setText(summaryStr);

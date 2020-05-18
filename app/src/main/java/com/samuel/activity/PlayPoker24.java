@@ -1,5 +1,6 @@
-package com.samuel.main;
+package com.samuel.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
  * @author Samuel Zhou
  *
  */
+@SuppressLint("DefaultLocale")
 public class PlayPoker24 extends Activity {
     private TextView mText1, mText2, mText3, mText4;
     private int mCurCardId;

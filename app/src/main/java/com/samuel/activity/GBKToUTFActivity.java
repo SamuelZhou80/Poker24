@@ -1,4 +1,4 @@
-package com.samuel.main;
+package com.samuel.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
