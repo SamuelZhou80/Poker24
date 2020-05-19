@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.framework.FileManager;
 import com.samuel.MyApplication;
 import com.samuel.activity.CalcInvestActivity;
+import com.samuel.activity.CalcLoanActivity;
 import com.samuel.activity.MyLoanActivity;
 import com.samuel.activity.PacerCalculate;
 import com.samuel.activity.PatternMatchTest;
@@ -99,7 +100,8 @@ public class MainActivity extends Activity {
 
     private void initList() {
         mToolList = new ArrayList<>();
-        mToolList.add(new Modules("贷款计算器", MyLoanActivity.class)); // CalcLoanActivity.class));
+        mToolList.add(new Modules("我的贷款", MyLoanActivity.class));
+        mToolList.add(new Modules("贷款计算器", CalcLoanActivity.class));
         mToolList.add(new Modules("投资收益计算", CalcInvestActivity.class)); // 投资计算器
         mToolList.add(new Modules("24点游戏", PlayPoker24.class));
 //        mToolList.add(new Modules("汉字编码工具", GBKToUTFActivity.class));

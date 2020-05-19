@@ -86,6 +86,11 @@ public class LoanDB {
         }
     }
 
+    public boolean deleteLoan(String loanId) {
+        DBUtils.getInstance().DeleteDataByStr(TABLE_LOAN, AckLoanColumns.LOAN_ID, loanId);
+        return true;
+    }
+
     /**
      * 将数据库查找到的记录写入贷款详情对象中
      *

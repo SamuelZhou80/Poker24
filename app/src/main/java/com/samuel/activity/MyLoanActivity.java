@@ -2,58 +2,93 @@ package com.samuel.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioGroup;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.samuel.bean.LoanDB;
+import com.samuel.bean.LoanInfo;
 import com.samuel.mytools.R;
 import com.samuel.utils.GpsUtils;
-import com.samuel.views.TableView;
 
 import java.util.ArrayList;
 
 /**
- * 我的贷款汇总
+ * 我的贷款汇总列表
  *
- * @author Administrator
+ * @author Samuel Zhou
  */
 @SuppressLint("DefaultLocale")
 public class MyLoanActivity extends Activity {
-    private double[] mLoanSummary = new double[3];
-    // 0: 按年显示; 1: 按月显示
-    private int mCurType = 0;
-    private TableView mTableView;
-    private ArrayList<ArrayList<String>> mTableData = new ArrayList<>();
+    private static final int ADD_LOAN = 100;
+    private ArrayList<LoanInfo> mLoanList;
+    private LoanListAdapter mAdapter = new LoanListAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculateloan);
+        setContentView(R.layout.activity_myloan_list);
 
         initTitle();
-        // 表格组件
-        initTableView();
+        mLoanList = LoanDB.getInstance().getLoanList();
 
-        // 表格显示格式选择框
-        RadioGroup group = findViewById(R.id.radiogroup_timetype);
-        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        ListView listView = findViewById(R.id.listview_loan);
+        listView.setAdapter(mAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.radio_year) {
-                    mCurType = 0;
-                } else {
-                    mCurType = 1;
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (mLoanList != null && mLoanList.size() > position) {
+                    Intent intent = new Intent();
+                    intent.putExtra("Loan", mLoanList.get(position));
+                    intent.setClass(MyLoanActivity.this, CalcLoanActivity.class);
+                    startActivity(intent);
                 }
-                refreshLoanTable();
             }
         });
+
+        // 长按删除一条记录
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position < mLoanList.size()) {
+                    if (LoanDB.getInstance().deleteLoan(mLoanList.get(position).getLoanId())) {
+                        mLoanList.remove(position);
+                        mAdapter.notifyDataSetChanged();
+                    }
+                }
+                return true;
+            }
+        });
+
+
+        Button btnAdd = findViewById(R.id.button_add);
+        btnAdd.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MyLoanActivity.this, AddLoanActivity.class);
+                startActivityForResult(intent, ADD_LOAN);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ADD_LOAN) {
+            if (resultCode == RESULT_OK) {
+                mLoanList = LoanDB.getInstance().getLoanList();
+                mAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
     @Override
@@ -78,7 +113,7 @@ public class MyLoanActivity extends Activity {
 
     private void initTitle() {
         TextView textViewTitle = findViewById(R.id.commontitle_textview);
-        textViewTitle.setText("贷款计算器");
+        textViewTitle.setText("我的贷款");
 
         Button btnReturn = findViewById(R.id.common_btn_left);
         btnReturn.setOnClickListener(new OnClickListener() {
@@ -89,153 +124,92 @@ public class MyLoanActivity extends Activity {
         });
 
         Button btnRight = findViewById(R.id.common_btn_right);
-        btnRight.setText("计算");
-        btnRight.setOnClickListener(calcListener);
+        btnRight.setText("查看");
+        // btnRight.setOnClickListener(calcListener);
     }
 
-    private OnClickListener calcListener = new OnClickListener() {
+    private class LoanListAdapter extends BaseAdapter {
 
         @Override
-        public void onClick(View v) {
-            // 定投金额
-            EditText editMoney = findViewById(R.id.edit_money);
-            // 期数
-            EditText editYear = findViewById(R.id.edit_year);
-            // 回报率
-            EditText editRate = findViewById(R.id.edit_rate);
-            int initMoney = GpsUtils.strToInt(editMoney.getText().toString());
-            int yearNum = GpsUtils.strToInt(editYear.getText().toString());
-            double rate = GpsUtils.strToFloat(editRate.getText().toString());
-            if (initMoney <= 0 || yearNum <= 0 || rate <= 0) {
-                Toast.makeText(MyLoanActivity.this, "请输入贷款金额、年限、利率等!", Toast.LENGTH_SHORT).show();
-                return;
+        public int getCount() {
+            if (mLoanList != null) {
+                return mLoanList.size();
             }
-            hideKeyboard(MyLoanActivity.this);
+            return 0;
+        }
 
-            // 显示概要信息
-            TextView tvSummary = findViewById(R.id.text_summary_result);
-            double[] summary = calcEqualPrincipalAndInterest(initMoney, yearNum * 12, rate);
-            String summaryStr = "";
-            summaryStr += String.format(" 月供: %.2f元,", summary[2]);// 每月还款金额
-            summaryStr += String.format(" 年供: %.2f元\n", summary[2] * 12);// 每年还款金额
-            summaryStr += String.format(" 总还款额: %.1f元,", summary[0]);// 还款总额
-            summaryStr += String.format(" 利息合计: %.1f元", summary[1]);// 还款总利息
-            tvSummary.setText(summaryStr);
-            tvSummary.setVisibility(View.VISIBLE);
+        @Override
+        public LoanInfo getItem(int position) {
+            return mLoanList.get(position);
+        }
 
-            // 加载明细表格的数据
-            if (mTableView != null) {
-                getTableData(initMoney, yearNum, rate, summary[2]);
-                mTableView.refreshTableView();
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                LayoutInflater inflater = LayoutInflater.from(MyLoanActivity.this);
+                convertView = inflater.inflate(R.layout.common_listview_item, parent, false);
+                holder = new ViewHolder();
+                holder.txtView = convertView.findViewById(R.id.text);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
             }
-        }
-    };
 
-    private void refreshLoanTable() {
-        EditText editMoney = findViewById(R.id.edit_money);
-        EditText editYear = findViewById(R.id.edit_year);
-        EditText editRate = findViewById(R.id.edit_rate);
-        int initMoney = GpsUtils.strToInt(editMoney.getText().toString());
-        int yearNum = GpsUtils.strToInt(editYear.getText().toString());
-        double rate = GpsUtils.strToFloat(editRate.getText().toString());
-        if (initMoney <= 0 || yearNum <= 0 || rate <= 0) {
-            return;
+            String[] remainInfo = getCurRemain(mLoanList.get(position));
+            String loanSum = String.format("贷款金额 %d元,", mLoanList.get(position).getAmount());
+            loanSum += " 月供 " + remainInfo[0] + "元";
+            loanSum += "\n已归还本金 " + remainInfo[1] + "元";
+            loanSum += ", 已归还利息 " + remainInfo[2] + "元";
+            holder.txtView.setText(loanSum);
+            return convertView;
         }
-        if (mTableView != null) {
-            calcEqualPrincipalAndInterest(initMoney, yearNum * 12, rate);
-            getTableData(initMoney, yearNum, rate, mLoanSummary[2]);
-            mTableView.refreshTableView();
+
+        class ViewHolder {
+            TextView txtView;
         }
     }
 
     /**
-     * 初始化表格
-     */
-    private void initTableView() {
-        int itemWidth = GpsUtils.getScreenWidth(MyLoanActivity.this) / 4 - 2;
-        int[] columnwidth = { itemWidth, itemWidth, itemWidth, itemWidth };
-        String[] title = { "期数", "本金(元)", "利息(元)", "余额(元)" };
-
-        mTableView = findViewById(R.id.table_detail);
-        mTableView.setColumeWidth(columnwidth);
-        mTableView.setTitle(title);
-        mTableView.setDatasArray(mTableData);
-        mTableView.buildListView();
-    }
-
-    /**
-     * 获取贷款还款的明细表格, 分为按年和按月两种模式
+     * 计算截止目前的贷款还款情况, 返回数组[月还款, 已还本金, 已还利息]
      *
-     * @param principal
-     *         贷款总额
-     * @param years
-     *         贷款年限
-     * @param rate
-     *         贷款年利率
-     * @param preLoan
-     *         月供额
+     * @param info
+     *         贷款记录信息
      */
-    private void getTableData(double principal, int years, double rate, double preLoan) {
-        double curPrincipal = principal; // 当期余额
-        double monthRate = rate / (100 * 12);// 月利率
-        mTableData.clear();
-        for (int i = 0; i < years; i++) {
-            double yearInterest = 0.0;
-            double yearPrincipal = 0.0;
-            for (int j = 0; j < 12; j++) {
-                if (curPrincipal <= 0) {
-                    break;
-                }
-                double monthInterest = curPrincipal * monthRate; // 本月的利息
-                double monthPrincipal = preLoan - monthInterest; // 本月归还本金
-                curPrincipal = Math.max(curPrincipal - monthPrincipal, 0); // 确保余额一栏不会显示为负数
-                yearInterest += monthInterest;
-                yearPrincipal += monthPrincipal;
-                if (mCurType == 1) {
-                    ArrayList<String> rowData = new ArrayList<>();
-                    rowData.add(String.format("第%d年%d月", (i + 1), j + 1));
-                    rowData.add(String.format("%.1f", monthPrincipal));
-                    rowData.add(String.format("%.1f", monthInterest));
-                    rowData.add(String.format("%.1f", curPrincipal));
-                    mTableData.add(rowData);
-                }
-            }
-            if (mCurType == 0) {
-                ArrayList<String> rowData = new ArrayList<>();
-                rowData.add(String.format("第%d年", i + 1));
-                rowData.add(String.format("%.1f", yearPrincipal));
-                rowData.add(String.format("%.1f", yearInterest));
-                rowData.add(String.format("%.1f", curPrincipal));
-                mTableData.add(rowData);
-            }
-        }
-    }
-
-    /**
-     * 计算等额本息还款
-     *
-     * @param principal
-     *         贷款总额
-     * @param months
-     *         贷款月数(年限*12)
-     * @param rate
-     *         贷款年利率
-     * @return 返回贷款的 { 总还款额, 总利息, 月供 }
-     */
-    private double[] calcEqualPrincipalAndInterest(double principal, int months, double rate) {
-        double monthRate = rate / (100 * 12);// 月利率
+    private String[] getCurRemain(LoanInfo info) {
+        double curPrincipal = info.getAmount(); // 当期余额
+        double monthRate = info.getRate() / (100 * 12);// 月利率
         // 每月月供额=贷款本金×月利率×[(1+月利率)^还款月数]÷[(1+月利率)^还款月数-1]
-        double tempValue = Math.pow((1 + monthRate), months);
-        double preLoan = (principal * monthRate * tempValue) / (tempValue - 1);// 每月还款金额
-        double totalMoney = preLoan * months;// 还款总额
-        double interest = totalMoney - principal;// 还款总利息
-        mLoanSummary = new double[] { totalMoney, interest, preLoan };
-        return mLoanSummary;
+        double tempValue = Math.pow((1 + monthRate), info.getYears() * 12);
+        double preLoan = (curPrincipal * monthRate * tempValue) / (tempValue - 1);// 每月还款金额
+
+        // 计算已归还期数
+        int[] startDay = GpsUtils.getCurDateBytes(info.getStartDate());
+        int[] curDay = GpsUtils.getCurDateBytes(GpsUtils.getDate());
+        int elapsedMonth = Math.max(0, (curDay[0] - startDay[0]) * 12 + curDay[1] - startDay[1]);
+        double totalReturnIntereset = 0.0; // 合计归还利息
+        double totalReturnPrincipal = 0.0; // 合计归还本金
+        for (int i = 0; i < elapsedMonth; i++) {
+            if (curPrincipal <= 0) {
+                break;
+            }
+            double monthInterest = curPrincipal * monthRate; // 本月的利息
+            double monthPrincipal = preLoan - monthInterest; // 本月归还本金
+            curPrincipal = Math.max(curPrincipal - monthPrincipal, 0); // 确保余额一栏不会显示为负数
+            totalReturnIntereset += monthInterest;
+            totalReturnPrincipal += monthPrincipal;
+        }
+
+        return new String[] {
+                String.format("%.1f", preLoan),
+                String.format("%.1f", totalReturnPrincipal),
+                String.format("%.1f", totalReturnIntereset),
+        };
     }
 
-    private void hideKeyboard(Activity context) {
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        // 隐藏软键盘
-        imm.hideSoftInputFromWindow(context.getWindow().getDecorView().getWindowToken(), 0);
-    }
 }
