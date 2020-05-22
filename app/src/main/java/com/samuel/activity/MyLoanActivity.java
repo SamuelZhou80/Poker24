@@ -48,7 +48,7 @@ public class MyLoanActivity extends Activity {
                 if (mLoanList != null && mLoanList.size() > position) {
                     Intent intent = new Intent();
                     intent.putExtra("Loan", mLoanList.get(position));
-                    intent.setClass(MyLoanActivity.this, CalcLoanActivity.class);
+                    intent.setClass(MyLoanActivity.this, AddLoanActivity.class);
                     startActivity(intent);
                 }
             }

@@ -146,5 +146,13 @@
         android:textColor="@color/text_color"
         android:textSize="@dimen/text_size_content"
         android:visibility="gone" />
-
+    <Button
+        android:id="@+id/button_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_height"
+        android:background="@drawable/selector_green_corner_btn"
+        android:layout_margin="@dimen/margin_content"
+        android:text="@string/tv_view"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_content" />
 </LinearLayout>

@@ -1,8 +1,11 @@
 package com.samuel.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
@@ -21,25 +24,54 @@ import java.util.Locale;
 
 /**
  * 新增贷款界面
- * 
- * @author Administrator
  *
+ * @author Administrator
  */
+@SuppressLint("DefaultLocale")
 public class AddLoanActivity extends Activity {
     private TextView mTextDate;
+    private LoanInfo mCurLoan = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_loan);
+        mCurLoan = (LoanInfo) getIntent().getSerializableExtra("Loan");
+        mTextDate = findViewById(R.id.text_seldate);
+        if (mCurLoan == null) {
+            mCurLoan = new LoanInfo();
+        } else {
+            EditText editMoney = findViewById(R.id.edit_money);
+            editMoney.setText(String.valueOf(mCurLoan.getAmount()));
+            // 期数
+            EditText editYear = findViewById(R.id.edit_year);
+            editYear.setText(String.valueOf(mCurLoan.getYears()));
+            // 回报率
+            EditText editRate = findViewById(R.id.edit_rate);
+            editRate.setText(String.format("%.2f", mCurLoan.getRate()));
+            mTextDate.setText(mCurLoan.getStartDate());
+        }
 
         initTitle();
-
-        mTextDate = findViewById(R.id.text_seldate);
         mTextDate.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDatePickDialog();
+            }
+        });
+
+        Button btnView = findViewById(R.id.button_view);
+        btnView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mCurLoan.getAmount() > 0) {
+                    Intent intent = new Intent();
+                    intent.putExtra("Loan", mCurLoan);
+                    intent.setClass(AddLoanActivity.this, CalcLoanActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(AddLoanActivity.this, "信息填写不完整", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -116,14 +148,17 @@ public class AddLoanActivity extends Activity {
             tvSummary.setText(summaryStr);
             tvSummary.setVisibility(View.VISIBLE);
 
-
             String dateStr = mTextDate.getText().toString();
             if (dateStr.startsWith("开始")) {
                 Toast.makeText(AddLoanActivity.this, "请选择开始日期", Toast.LENGTH_SHORT).show();
                 return;
             }
-            LoanInfo loan = new LoanInfo(dateStr, initMoney, yearNum, rate);
-            LoanDB.getInstance().saveLoanInfo(loan);
+
+            mCurLoan.setAmount(initMoney);
+            mCurLoan.setRate(rate);
+            mCurLoan.setStartDate(dateStr);
+            mCurLoan.setYears(yearNum);
+            LoanDB.getInstance().saveLoanInfo(mCurLoan);
             setResult(RESULT_OK);
             AddLoanActivity.this.finish();
         }
@@ -133,11 +168,11 @@ public class AddLoanActivity extends Activity {
      * 计算等额本息还款
      *
      * @param principal
-     *            贷款总额
+     *         贷款总额
      * @param months
-     *            贷款月数(年限*12)
+     *         贷款月数(年限*12)
      * @param rate
-     *            贷款年利率
+     *         贷款年利率
      * @return 返回贷款的 { 总还款额, 总利息, 月供 }
      */
     private double[] calcEqualPrincipalAndInterest(double principal, int months, double rate) {
@@ -151,12 +186,17 @@ public class AddLoanActivity extends Activity {
     }
 
     private void showDatePickDialog() {
+        String dateStr = mTextDate.getText().toString();
+        int[] dateAry = { 2020, 1, 1 };
+        if (TextUtils.isEmpty(dateStr)) {
+            dateAry = GpsUtils.getCurDateBytes(dateStr);
+        }
         DatePickerDialog dialog = new DatePickerDialog(AddLoanActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 mTextDate.setText(String.format(Locale.CHINA, "%04d-%02d-%02d", year, (monthOfYear + 1), dayOfMonth));
             }
-        }, 2020, 1, 1);
+        }, dateAry[0], dateAry[1] - 1, dateAry[2]);
         dialog.setTitle("选择开始日期");
         dialog.show();
     }
