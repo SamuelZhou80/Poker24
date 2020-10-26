@@ -105,7 +105,6 @@ public class MainActivity extends Activity {
         mToolList.add(new Modules("投资收益计算", CalcInvestActivity.class)); // 投资计算器
         mToolList.add(new Modules("24点游戏", PlayPoker24.class));
 //        mToolList.add(new Modules("汉字编码工具", GBKToUTFActivity.class));
-//        mToolList.add(new Modules("图像识别", PhotoDetectActivity.class));
         mToolList.add(new Modules("姓名统计", SearchNameActivity.class));
         mToolList.add(new Modules("配速计算器", PacerCalculate.class));
         mToolList.add(new Modules("正则表达式", PatternMatchTest.class));

@@ -24,7 +24,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/margin_content"
             android:layout_marginStart="@dimen/margin_content"
-            android:text="正则表达式:"
+            android:text="配速:"
             android:textColor="@color/text_color_new"
             android:textSize="@dimen/text_size_content" />
 
@@ -55,7 +55,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_marginStart="@dimen/margin_small"
-            android:text="测试语句"
+            android:text="时间:"
             android:textColor="@color/text_color_new"
             android:textSize="@dimen/text_size_content" />
 
